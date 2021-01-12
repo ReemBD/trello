@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class BoardContainer extends Component {
+export class BoardPreview extends Component {
     render() {
         return (
             <div>
