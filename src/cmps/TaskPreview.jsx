@@ -18,7 +18,7 @@ export class TaskPreview extends Component {
                 <h3>{task.title}</h3>
                 <p>{task.description}</p>
                 <button onClick={this.onOpenDetails}>Show more</button>
-                <TaskDetails isDetailsOpen={isDetailsOpen} task={task} />
+                {/* <TaskDetails isDetailsOpen={isDetailsOpen} task={task} /> */}
             </div>
         )
     }

@@ -19,7 +19,7 @@ export class Board extends Component {
         if (!board) return <h1>loading...</h1>
         return (
             <ul className="lists-group flex">
-                {lists.map(list => <li className="task-list flex column"><TaskList key={list.id} list={list} /></li>)}
+                {lists.map(list => <li key={list.id} className="task-list flex column"><TaskList  list={list} /></li>)}
             </ul>
         )
     }
