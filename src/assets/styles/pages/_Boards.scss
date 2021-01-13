@@ -1,21 +1,31 @@
-.board-box{
+.Board-box {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px,400px));
+    grid-template-columns: repeat(3, minmax(200px, 400px));
     grid-template-rows: auto;
 
-    .composer-wrapper{
-         display:flex ;
-         position: fixed;
-         right: 0;
-         left: 0;
-         top: 0;
-         bottom: 0;
-         background-color: rgba(7, 7, 7, 0.335);
+    
+  
+}
 
-        &.hidden{
-            visibility: hidden;
-        }
+.composer-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(7, 7, 7, 0.335);
+
+    &.hidden {
+        visibility: hidden;
+    }
+ 
+    .board-composer {
+        background-color: #fff;
+        max-width: 400px ;
+        min-height: 200px;
     }
 
 }
-

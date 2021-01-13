@@ -6,10 +6,10 @@ export class Boards extends Component {
     state = {
         boards: [],
         isComposerOpen: false,
-        newBoard:{
-            title:'',
-            members:[],
-            bg:''
+        newBoard: {
+            title: '',
+            members: [],
+            bg: ''
         }
     }
 
@@ -22,12 +22,19 @@ export class Boards extends Component {
         this.setState({ boards })
     }
 
+    onAddBoard = async () => {
+        const { newBoard } = this.state
+        const boardId = await boardService.save(newBoard)
+        this.props.history.push(`/board/${boardId}`)
+    }
+
+
     onOpenCompose = () => {
         this.setState({ isComposerOpen: true })
     }
 
     render() {
-        const { boards,isComposerOpen } = this.state
+        const { boards, isComposerOpen } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
             <main>
@@ -37,11 +44,11 @@ export class Boards extends Component {
                 </div>
 
                 <div className="add-board" onClick={this.onOpenCompose}>
-add a new board
+                    add a new board
                 </div>
 
-                <div className={`composer-wrapper ${!isComposerOpen && 'hidden'}`}>
-                    <form className="board-composer" onSubmit={this.onAddBoard} >
+                <div className={`composer-screen ${!isComposerOpen && 'hidden'}`}>
+                    <form className="board-composer" onClick={(ev) => ev.stopPropagation} onSubmit={this.onAddBoard} >
                         <input type="text" placeholder="Enter Board title here" />
                         <button>Create Board</button>
                     </form>
