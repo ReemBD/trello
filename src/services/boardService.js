@@ -1,4 +1,5 @@
 import { httpService } from './httpService'
+import { utilService } from './utilService'
 
 
 export const boardService = {
@@ -23,6 +24,8 @@ async function save(board) {
     var savedBoard;
 
     if (!board._id) {
+        board = _fillDefaultContent(board)
+        console.log('board', board);
         savedBoard = await httpService.post(endpoint, board)
     } else {
         savedBoard = await httpService.put(`${endpoint}/${board._id}`, board)
@@ -41,6 +44,61 @@ async function getById(boardId) {
     return board
 }
 
+// just temporerly just until we create the backend ...
+function _fillDefaultContent(board) {
+
+    return {
+        ...board,
+        createdAt: Date.now(),
+        lists: [
+            {
+                id: utilService.makeId(),
+                title: 'To Do',
+                tasks: [
+                    {
+                        id: utilService.makeId(),
+                        title: 'how easy to create tasks!'
+                    },
+                    {
+                        id: utilService.makeId(),
+                        title: 'invite your team!'
+                    }
+                ]
+            },
+            {
+                id: utilService.makeId(),
+                title: 'Doing',
+                tasks: [
+                    {
+                        id: utilService.makeId(),
+                        title: 'make dinner'
+                    },
+                    {
+                        id: utilService.makeId(),
+                        title: 'buy groceries',
+                        todos: [
+                            {
+                                title: 'Milk',
+                                isDone: false,
+                                id: utilService.makeId()
+                            },
+                            {
+                                title: 'Bread',
+                                isDone: false,
+                                id: utilService.makeId()
+                            },
+                            {
+                                title: 'Chocolate',
+                                isDone: false,
+                                id: utilService.makeId()
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
 
 async function getTaskById(boardId, taskId) {
     const board = await getById(boardId)
