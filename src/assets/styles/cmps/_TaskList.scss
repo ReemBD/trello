@@ -1,10 +1,60 @@
-.task-list {
-    background-color: grey;
+.task-list-container {
+    background-color: #fff;
     margin-inline-end: 40px;
     border-radius: 10px;
+    width: 220px;
+    .list-title {
+        font-weight: normal;
+        position: relative;
+        background-color: #e6eaf8;
+        margin-bottom: 25px;
+        color: #fff;
+        font-size: 1em;
+        padding: 8px 0 8px 16px;
+        border-radius: 7px;
+        input {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: #fff;
+        }
+        .fa-plus, .fa-times {
+            right: 10px;
+            font-size: .8em;
+            position: absolute;
+            cursor:pointer;
+        }
+    }
     .task-composer {
+        font-size: 0.8em;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    background-color: #e6eaf8;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+  
+        input, textarea {
+            background-color: transparent;
+            border: none;
+            // border-bottom: 1px solid black;
+            resize: none;
+            outline: none;
+            overflow: auto;
+            font-family: Segoe UI;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -moz-appearance:none;
+            min-height: 40px;
+            &::placeholder{
+                font-family: Segoe UI;
+            }
+        }
+        textarea {
+            padding-bottom: 15px;
+            padding-top: 5px;
+        }
     }
     .open-composer-btn {
-        
     }
 }
