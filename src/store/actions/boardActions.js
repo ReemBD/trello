@@ -23,9 +23,9 @@ export function updateBoard(board) {
             }
             
             dispatch(action)
+            
         } catch (err) {
             console.log('couldnt update board', err);
         }
-
     }
 }

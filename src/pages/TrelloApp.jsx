@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Board } from '../cmps/Board'
 import { setBoard } from '../store/actions/boardActions'
 import { BoardHeader } from '../cmps/BoardHeader'
+
+
 class _TrelloApp extends Component {
 
     state = {
@@ -24,7 +26,7 @@ class _TrelloApp extends Component {
 
     render() {
         const { board } = this.props
-
+        if (!board) return <h1>loading...</h1>
         return (
             <div>
                 <BoardHeader board={board} />
