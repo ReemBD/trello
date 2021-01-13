@@ -37,10 +37,10 @@ export class Boards extends Component {
                 </div>
 
                 <div className="add-board" onClick={this.onOpenCompose}>
-
+add a new board
                 </div>
 
-                <div>className={`composer-wrapper ${!isComposerOpen && 'hidden'}`}
+                <div className={`composer-wrapper ${!isComposerOpen && 'hidden'}`}>
                     <form className="board-composer" onSubmit={this.onAddBoard} >
                         <input type="text" placeholder="Enter Board title here" />
                         <button>Create Board</button>
