@@ -119,6 +119,14 @@ var dbJSON = {
                     "id": "c101",
                     "title": "Replace Logo"
                 }
+            },
+            {
+                "txt": "Changed Color",
+                "createdAt": 154514,
+                "task": {
+                    "id": "c101",
+                    "title": "Replace Logo"
+                }
             }
         ]
     },
@@ -127,6 +135,6 @@ var dbJSON = {
         "fullname": "Abi Abambi",
         "username": "abi@ababmi.com",
         "password": "aBambi123",
-        "imgUrl": "http://some-img.jpg"
+        "imgUrl": "http://some-img.jpg",
     }
 }
