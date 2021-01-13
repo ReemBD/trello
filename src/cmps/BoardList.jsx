@@ -8,6 +8,7 @@ export class BoardList extends Component {
         return (
             <div>
                 {boards.map(board => <BoardPreview key={board._id} board={board} />)}
+                
             </div>
         )
     }

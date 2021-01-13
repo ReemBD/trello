@@ -4,7 +4,13 @@ import { BoardList } from '../cmps/BoardList'
 export class Boards extends Component {
 
     state = {
-        boards: []
+        boards: [],
+        isComposerOpen: false,
+        newBoard:{
+            title:'',
+            members:[],
+            bg:''
+        }
     }
 
     componentDidMount() {
@@ -16,13 +22,33 @@ export class Boards extends Component {
         this.setState({ boards })
     }
 
+    onOpenCompose = () => {
+        this.setState({ isComposerOpen: true })
+    }
+
     render() {
-        const { boards } = this.state
+        const { boards,isComposerOpen } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
-            <div>
-                <BoardList boards={boards} />
-            </div>
+            <main>
+
+                <div className="Board-box">
+                    <BoardList boards={boards} />
+                </div>
+
+                <div className="add-board" onClick={this.onOpenCompose}>
+add a new board
+                </div>
+
+                <div className={`composer-wrapper ${!isComposerOpen && 'hidden'}`}>
+                    <form className="board-composer" onSubmit={this.onAddBoard} >
+                        <input type="text" placeholder="Enter Board title here" />
+                        <button>Create Board</button>
+                    </form>
+
+                </div>
+
+            </main>
         )
     }
 }
