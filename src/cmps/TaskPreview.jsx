@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { toggleTask } from '../store/actions/boardActions'
+import { toggleTask, setCurrList } from '../store/actions/boardActions'
 import { TaskDetails } from '../cmps/TaskDetails'
 import { connect } from 'react-redux'
+import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
 export class _TaskPreview extends Component {
 
@@ -11,8 +12,9 @@ export class _TaskPreview extends Component {
 
     onOpenDetails = async () => {
         const { task } = this.props
-        const { board } = this.props
-        console.log('board: ', board.lists);
+        const { currList, board } = this.props
+        const listIdx = boardService.getListIdxById(board, currList.id)
+        await this.props.setCurrList(listIdx)
         await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${task.id}`)
     }
@@ -31,6 +33,7 @@ export class _TaskPreview extends Component {
 
 const mapDispatchToProps = {
     toggleTask,
+    setCurrList
 }
 
 const mapStateToProps = state => {

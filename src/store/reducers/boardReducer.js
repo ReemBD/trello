@@ -2,6 +2,7 @@
 const initialState = {
     currBoard: null,
     isTaskOpen: false,
+    currListIdx: null,
 }
 
 export function boardReducer(state = initialState, action) {
@@ -10,6 +11,8 @@ export function boardReducer(state = initialState, action) {
             return { ...state, currBoard: action.board }
         case 'TOGGLE_TASK':
             return { ...state, isTaskOpen: !state.isTaskOpen }
+        case 'SET_CURR_LIST':
+            return { ...state, currListIdx: action.listIdx }
         default:
             return state
     }

@@ -39,3 +39,18 @@ export function toggleTask() {
         }
     }
 }
+
+export function setCurrList(listIdx) {
+    return async dispatch => {
+        try {
+            const action = {
+                type: 'SET_CURR_LIST',
+                listIdx
+            }
+            dispatch(action)
+        }
+        catch (err) {
+            console.log('Borad actions, failed to get curr list', err);
+        }
+    }
+}

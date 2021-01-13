@@ -15,6 +15,7 @@ class _TaskList extends Component {
     }
 
     elListTitleRef = React.createRef()
+    elTaskTitleRef = React.createRef()
 
     componentDidMount() {
         const { board } = this.props
@@ -62,24 +63,26 @@ class _TaskList extends Component {
 
     onToggleComposer = ev => {
         ev.stopPropagation()
-        this.setState({ isComposerOpen: !this.state.isComposerOpen })
+        this.setState({ isComposerOpen: !this.state.isComposerOpen }, ()=>{
+            this.elTaskTitleRef.current.focus()
+        })
     }
 
     render() {
         const { list } = this.props
         const { tasks } = list
         const { isComposerOpen } = this.state
-        const toggleFormBtn = isComposerOpen ? <i className="fas fa-times" onClick={this.onToggleComposer}></i> : <i className="fas fa-plus" onClick={this.onToggleComposer}></i>
+        const toggleFormBtn = /* isComposerOpen ? <i className="fas fa-times" onClick={this.onToggleComposer}></i> :  */<i className={`fas fa-plus ${isComposerOpen && 'close'}`} onClick={this.onToggleComposer}></i>
         return (
             <article className="task-list">
                 <form className="list-title flex align-center" onSubmit={this.onLeaveListTitleInput} style={{ backgroundColor: `${list.style.title.bgColor}` }}><input ref={this.elListTitleRef} value={list.title}
                     onChange={this.onChangeListTitle} name="title" /> {toggleFormBtn}</form>
                 <form className={`task-composer ${!isComposerOpen && 'display-none'}`} action="">
-                    <input type="text" name="title" onChange={this.handleChange} placeholder="Enter a title for this card... " autoFocus autoComplete="off" id="" />
+                    <input type="text" ref={this.elTaskTitleRef} name="title" onChange={this.handleChange} placeholder="Enter a title for this card... " autoFocus autoComplete="off" id="" />
                     <textarea type="text" name="description" onChange={this.handleChange} placeholder="Enter description for this card... " autoComplete="off" id="" />
                     <button className="save-task-btn">Add</button>
                 </form>
-                {tasks.map(task => <TaskPreview key={task.id} task={task} />)}
+                {tasks.map(task => <TaskPreview key={task.id} task={task} currList={list} />)}
             </article>
         )
     }
