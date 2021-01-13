@@ -21,11 +21,21 @@ export function updateBoard(board) {
                 type: 'UPDATE_BOARD',
                 updatedBoard
             }
-            
+
             dispatch(action)
-            
+
         } catch (err) {
             console.log('couldnt update board', err);
+        }
+    }
+}
+
+export function toggleTask() {
+    return async dispatch => {
+        try {
+            dispatch({ type: 'TOGGLE_TASK' })
+        } catch (err) {
+            console.log('Board actions, failed to toggle task', err)
         }
     }
 }
