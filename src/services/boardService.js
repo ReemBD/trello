@@ -5,7 +5,8 @@ export const boardService = {
     query,
     getById,
     save,
-    remove
+    remove,
+    getTaskById
 }
 
 const endpoint = 'board'
@@ -38,3 +39,17 @@ async function getById(boardId) {
     return board
 }
 
+<<<<<<< HEAD
+=======
+
+async function getTaskById(boardId, taskId) {
+    const board = await getById(boardId)
+    let tasks = board.lists.map(list => list.tasks)
+    const taskIds = []
+    tasks.forEach(task => {
+        taskIds.push(...task)
+    })
+    const task = taskIds.find(task => task.id === taskId)
+    return task
+}
+>>>>>>> ae3470be969387b53c459b3357426882299e3b45
