@@ -1,0 +1,20 @@
+.board-box{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px,400px));
+    grid-template-rows: auto;
+
+    composer-wrapper{
+         display:flex ;
+         position: absolute;
+         right: 0;
+         left: 0;
+         top: 0;
+         bottom: 0;
+
+        &.hidden{
+            visibility: hidden;
+        }
+    }
+
+}
+
