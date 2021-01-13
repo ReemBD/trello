@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 
-export default class TaskDetails extends Component {
+export class TaskDetails extends Component {
+    state = {
+
+    }
+
+    componentDidMount() {
+
+    }
+
     render() {
         return (
-            <div>
+            <div className="window-overlay">
 
             </div>
         )
