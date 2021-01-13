@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 export class _TaskDetails extends Component {
     state = {
         isDetailsOpen: false,
+        board: {},
         task: {}
 
     }
@@ -14,13 +15,44 @@ export class _TaskDetails extends Component {
         const { taskId } = this.props.match.params // Whenever someone opens task through URL
         console.log('The task id is', taskId);
         this.getCurrTask(this.props.board._id, taskId)
+        const { board } = this.props
+        this.setState({ board })
     }
 
     componentDidUpdate() {
         const { taskId } = this.props.match.params
+        const { board } = this.props
         if (taskId && !this.state.isDetailsOpen) { // When task is clicked on board
-            this.setState({ isDetailsOpen: true }, () => this.getCurrTask(this.props.board._id, taskId))
+            this.setState({ isDetailsOpen: true, board }, () => this.getCurrTask(this.props.board._id, taskId))
         }
+    }
+
+    handleInput = ({ target }) => {
+        const field = target.name
+        const value = target.value
+        this.setState(prevState => {
+            return {
+                task: {
+                    ...prevState.task,
+                    [field]: value
+                }
+            }
+        })
+    }
+
+    onEnterPress = ev => {
+        if (ev.keyCode === 13 && ev.shiftKey === false) {
+            ev.preventDefault()
+            this.onSubmitForm(ev)
+        }
+    }
+
+    onSubmitForm = (ev) => {
+        ev.preventDefault()
+        const { task } = this.state
+        if (!task.title) return
+        const boardCopy = { ...this.state.board }
+        console.log(boardCopy);
     }
 
     getCurrTask = async (boardId, taskId) => {
@@ -38,7 +70,14 @@ export class _TaskDetails extends Component {
                 <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
                     <div className="details-modal">
                         <div className="details-header flex column align-center justify-center">
-                            <textarea value={task.title}></textarea>
+                            <form>
+                                <textarea onKeyDown={this.onEnterPress}
+                                    value={task.title}
+                                    name="title"
+                                    onChange={this.handleInput}
+                                    spellCheck="false"
+                                />
+                            </form>
                             <p>{task.description}</p>
                         </div>
                     </div>

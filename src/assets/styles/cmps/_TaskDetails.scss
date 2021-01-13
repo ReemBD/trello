@@ -12,7 +12,7 @@
     width: 768px;
     margin: 48px auto 80px;
     border-radius: 2px;
-    background-color: #F4F5F7;
+    background-color:$task-bgc-clr;
     z-index: 20;
 
         .details-header {
@@ -28,7 +28,11 @@
                 padding: 4px 8px;
                 line-height: 24px;
                 width: 100%;
-                background-color: #F4F5F7;
+                background-color:$task-bgc-clr;
+
             }
+        form {
+            width: 100%;
+        }
         }
 }
