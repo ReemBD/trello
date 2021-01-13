@@ -37,10 +37,11 @@
         input, textarea {
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid black;
+            // border-bottom: 1px solid black;
             resize: none;
             outline: none;
             overflow: auto;
+            font-family: Segoe UI;
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             -moz-appearance:none;

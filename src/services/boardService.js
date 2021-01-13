@@ -6,7 +6,9 @@ export const boardService = {
     getById,
     save,
     remove,
-    getTaskById
+    getTaskById,
+    getListIdxById,
+    getTaskIdxById
 }
 
 const endpoint = 'board'
@@ -39,8 +41,6 @@ async function getById(boardId) {
     return board
 }
 
-<<<<<<< HEAD
-=======
 
 async function getTaskById(boardId, taskId) {
     const board = await getById(boardId)
@@ -52,4 +52,13 @@ async function getTaskById(boardId, taskId) {
     const task = taskIds.find(task => task.id === taskId)
     return task
 }
->>>>>>> ae3470be969387b53c459b3357426882299e3b45
+
+function getTaskIdxById(list, taskId) {
+    const taskIdx = list.tasks.findIndex(task => task.id === taskId)
+    return taskIdx
+}
+
+function getListIdxById(board, listId) {
+    const listIdx = board.lists.findIndex(list => list.id === listId)
+    return listIdx
+}
