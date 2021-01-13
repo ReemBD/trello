@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService.js'
 import { BoardList } from '../cmps/BoardList'
+import { ComposeBoard } from '../cmps/ComposeBoard.jsx'
 export class Boards extends Component {
 
     state = {
         boards: [],
         isComposerOpen: false,
-        newBoard: {
-            title: '',
-            members: [],
-            bg: ''
-        }
+
     }
 
     componentDidMount() {
@@ -22,36 +19,42 @@ export class Boards extends Component {
         this.setState({ boards })
     }
 
-    onAddBoard = async () => {
-        const { newBoard } = this.state
-        const boardId = await boardService.save(newBoard)
-        this.props.history.push(`/board/${boardId}`)
-    }
 
 
-    onOpenCompose = () => {
-        this.setState({ isComposerOpen: true })
+
+    onToggleCompose = () => {
+        const lastState = this.state.isComposerOpen
+        this.setState({ isComposerOpen: !lastState })//opens the add board form
     }
+
 
     render() {
+
         const { boards, isComposerOpen } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
             <main>
+                <div className="boards-hero flex row">
 
-                <div className="Board-box">
-                    <BoardList boards={boards} />
+                    <div className="main">
+                        <h1>Start With Us And Move Faster.</h1>
+
+                        <button className="CTA-btn" >login for the full effect</button>
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
 
-                <div className="add-board" onClick={this.onOpenCompose}>
+                <BoardList boards={boards} />
+
+
+                <div className="add-board" onClick={this.onToggleCompose}>
                     add a new board
                 </div>
 
-                <div className={`composer-screen ${!isComposerOpen && 'hidden'}`}>
-                    <form className="board-composer" onClick={(ev) => ev.stopPropagation} onSubmit={this.onAddBoard} >
-                        <input type="text" placeholder="Enter Board title here" />
-                        <button>Create Board</button>
-                    </form>
+                <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
+                    <ComposeBoard />
 
                 </div>
 
