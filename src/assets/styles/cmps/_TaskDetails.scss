@@ -14,4 +14,21 @@
     border-radius: 2px;
     background-color: #F4F5F7;
     z-index: 20;
+
+        .details-header {
+            padding-top: 20px;
+            textarea {
+                resize: none;
+                font-family: inherit;
+                font-weight: 600;
+                font-size: 20px;
+                height: 34px;
+                border: none;
+                border-radius: 3px;
+                padding: 4px 8px;
+                line-height: 24px;
+                width: 100%;
+                background-color: #F4F5F7;
+            }
+        }
 }
