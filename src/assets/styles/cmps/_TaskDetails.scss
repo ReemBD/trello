@@ -6,3 +6,12 @@
     top: 0;
     right: 0;
 }
+
+.details-modal{
+    height: 100vh;
+    width: 768px;
+    margin: 48px auto 80px;
+    border-radius: 2px;
+    background-color: #F4F5F7;
+    z-index: 20;
+}

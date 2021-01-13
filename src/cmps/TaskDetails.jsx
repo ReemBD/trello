@@ -16,7 +16,7 @@ export class _TaskDetails extends Component {
         this.getCurrTask(this.props.board._id, taskId)
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate() {
         const { taskId } = this.props.match.params
         if (taskId && !this.state.isDetailsOpen) { // When task is clicked on board
             this.setState({ isDetailsOpen: true }, () => this.getCurrTask(this.props.board._id, taskId))
@@ -31,11 +31,19 @@ export class _TaskDetails extends Component {
 
 
     render() {
-        const { isDetailsOpen } = this.state
+        const { isDetailsOpen, task } = this.state
+        if (!task) return <div>Loading details...</div>
         return (
-            <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
-
-            </div>
+            <section className="task-details">
+                <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
+                    <div className="details-modal">
+                        <div className="details-header flex column align-center justify-center">
+                            <h3>{task.title}</h3>
+                            <p>{task.description}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         )
     }
 }
