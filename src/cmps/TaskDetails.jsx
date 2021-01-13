@@ -38,7 +38,7 @@ export class _TaskDetails extends Component {
                 <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
                     <div className="details-modal">
                         <div className="details-header flex column align-center justify-center">
-                            <h3>{task.title}</h3>
+                            <textarea value={task.title}></textarea>
                             <p>{task.description}</p>
                         </div>
                     </div>
