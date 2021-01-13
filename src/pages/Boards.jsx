@@ -33,7 +33,7 @@ export class Boards extends Component {
         const { boards, isComposerOpen } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
-            <main>
+            <main className="main-boards">
                 <div className="boards-hero flex row">
 
                     <div className="main">
