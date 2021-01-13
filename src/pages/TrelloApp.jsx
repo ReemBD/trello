@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Board } from '../cmps/Board'
 import { setBoard } from '../store/actions/boardActions'
 import { BoardHeader } from '../cmps/BoardHeader'
+import { TaskDetails } from '../cmps/TaskDetails'
 
 
 class _TrelloApp extends Component {
@@ -33,6 +34,7 @@ class _TrelloApp extends Component {
                 <h1>{board.title}</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
                 <Board board={board} />
+                <TaskDetails />
             </div>
         )
     }

@@ -10,7 +10,7 @@ export const routes = [
         component: HomePage
     },
     {
-        path: "/board/:boardId",
+        path: "/board/:boardId/:taskId?",
         component: TrelloApp
     },
     {
