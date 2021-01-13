@@ -37,3 +37,4 @@ async function getById(boardId) {
     const board = await httpService.get(`${endpoint}/${boardId}`)
     return board
 }
+

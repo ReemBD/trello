@@ -3,26 +3,26 @@ import { withRouter } from 'react-router-dom'
 import { toggleTask } from '../store/actions/boardActions'
 import { TaskDetails } from '../cmps/TaskDetails'
 import { connect } from 'react-redux'
+import { utilService } from '../services/utilService'
 export class _TaskPreview extends Component {
 
     state = {
-        isDetailsOpen: false
     }
 
     onOpenDetails = async () => {
         const { task } = this.props
         const { board } = this.props
+        console.log('board: ', board.lists);
         await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${task.id}`)
     }
     render() {
         const { task } = this.props
-        const { isDetailsOpen } = this.state
         return (
-            <div>
-                <h3>{task.title}</h3>
-                <p>{task.description}</p>
-                <button onClick={this.onOpenDetails}>Show more</button>
+            <div className="task-preview" onClick={this.onOpenDetails}>
+                <h3 className="task-title">{task.title}</h3>
+                <p className="task-description">{/* {task.description?.substring(0, 50) + '...'} */} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.</p>
+                <h3 className="task-created-at">{utilService.formatTime(task.createdAt)}</h3>
             </div>
         )
     }

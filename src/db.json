@@ -24,23 +24,29 @@
                     "tasks": [
                         {
                             "id": "c101",
-                            "title": "Replace logo"
+                            "title": "Replace logo",
+                            "createdAt": 1590999817436.0
                         },
                         {
                             "id": "c102",
-                            "title": "Add Samples"
+                            "title": "Add Samples",
+                            "createdAt": 1590999817436.0
                         }
                     ],
-                    "style": {}
+                    "style": {
+                        "title": {
+                            "bgColor": "#9895e0"
+                        }
+                    }
                 },
                 {
                     "id": "g102",
                     "title": "In Progress",
                     "tasks": [
-                        
                         {
                             "id": "c103",
-                            "title": "Do that"
+                            "title": "Do that",
+                            "createdAt": 1590999817436.0
                         },
                         {
                             "id": "c104",
@@ -94,17 +100,19 @@
                                 "fullname": "Tal Tarablus",
                                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                             },
-                            "style": {
-                                "bgColor": "#26de81"
-                            }
+                            "style": {}
                         }
                     ],
-                    "style": {}
-                },  {
+                    "style": {
+                        "title": {
+                            "bgColor": "#4a94f8"
+                        }
+                    }
+                },
+                {
                     "id": "g103",
                     "title": "Done",
                     "tasks": [
-                        
                         {
                             "id": "e101",
                             "title": "Do that",
@@ -167,7 +175,11 @@
                             }
                         }
                     ],
-                    "style": {}
+                    "style": {
+                        "title": {
+                            "bgColor": "#56c991"
+                        }
+                    }
                 }
             ],
             "activities": [
