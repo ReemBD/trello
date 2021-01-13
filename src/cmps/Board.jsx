@@ -18,10 +18,9 @@ export class Board extends Component {
         const { lists } = board
         if (!board) return <h1>loading...</h1>
         return (
-            <div className="board">
-                <h1>this is board {board._id}</h1>
-                {lists.map(list => <TaskList key={list.id} list={list} />)}
-            </div>
+            <ul className="lists-group flex">
+                {lists.map(list => <li className="task-list flex column"><TaskList key={list.id} list={list} /></li>)}
+            </ul>
         )
     }
 }
