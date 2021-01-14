@@ -20,7 +20,13 @@ export class Boards extends Component {
     }
 
 
-
+    onRemove = async (boardId) => {
+        await boardService.remove(boardId)
+        let boards = this.state.boards
+        const newBoards = boards.filter(currBoard => currBoard._id !== boardId)
+        console.log('boards:', boards);
+        this.setState({ boards: newBoards })
+    }
 
     onToggleCompose = () => {
         const lastState = this.state.isComposerOpen
@@ -40,17 +46,14 @@ export class Boards extends Component {
 
                         <h1>With Us You`ll Get Further And Faster. </h1>
 
-                        <button>join us</button>
+                        <button className="btn-board" onClick={this.onToggleCompose}>Create a new board</button>
                     </div>
 
 
 
-                    <BoardList boards={boards} />
+                    <BoardList boards={boards} onRemove={this.onRemove} />
 
 
-                    <div className="add-board" onClick={this.onToggleCompose}>
-                        add a new board
-                </div>
 
                     <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
                         <ComposeBoard />
