@@ -13,38 +13,46 @@ export class _TaskDetails extends Component {
 
     }
 
+    elTitleRef = React.createRef()
+
     componentDidMount() {
         const { listId, taskId } = this.props.match.params // Whenever someone opens task through URL
-        const { board } = this.props
-        const listIdx = boardService.getListIdxById(board, listId)
-        const list = board.lists[listIdx]
-        console.log('cdm the list is', list);
-        this.getCurrTask(board._id, taskId)
-        this.setState({ board, list })
+        const details = this.getDetails()
+        if (details) {
+
+            const { board, list, task } = details
+            console.log('cdm the list is', list);
+            this.getCurrTask(board._id, taskId)
+            this.setState({ board, list })
+        }
 
     }
 
     componentDidUpdate() {
         const { listId, taskId } = this.props.match.params
-        const { board } = this.props
-        const listIdx = boardService.getListIdxById(board, listId)
-        const list = board.lists[listIdx]
-        console.log('cdu the list is', list);
-        if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
-            this.setState({ isDetailsOpen: true, board, list }, () => this.getCurrTask(board._id, taskId))
+        const details = this.getDetails()
+        if (details) {
+
+            const { board, list, task } = details
+            console.log('cdu the list is', list);
+            if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
+                this.setState({ isDetailsOpen: true, board, list }, () => this.getCurrTask(board._id, taskId))
+            }
         }
     }
 
     // TRY TO REFACTOR
-    // getDetails() {
-    //     const { listId, taskId } = this.props.match.params 
-    //     const { board } = this.props
-    //     const listIdx = boardService.getListIdxById(board, listId)
-    //     const list = board.lists[listIdx]
-    //     const taskIdx = boardService.getTaskIdxById(list, taskId)
-    //     const task = list.tasks[taskIdx]
-    //     return { board, list, task }
-    // }
+    getDetails() {
+        const { listId, taskId } = this.props.match.params
+        if (listId && taskId) {
+            const { board } = this.props
+            const listIdx = boardService.getListIdxById(board, listId)
+            const list = board.lists[listIdx]
+            const taskIdx = boardService.getTaskIdxById(list, taskId)
+            const task = list.tasks[taskIdx]
+            return { board, list, task }
+        }
+    }
 
     handleInput = ({ target }) => {
         const field = target.name
@@ -68,17 +76,15 @@ export class _TaskDetails extends Component {
 
     onSubmitForm = async (ev) => {
         ev.preventDefault()
-        const { task } = this.state
+        const { board, list, task } = this.state
         if (!task.title) return
         const boardCopy = { ...this.state.board }
-        const { currListIdx } = this.props
+        const currListIdx = boardService.getListIdxById(board, list.id)
         console.log(currListIdx); // If opened from a link, this is null
-        console.log(boardCopy);
         const taskIdx = boardCopy.lists[currListIdx].tasks.findIndex(currTask => currTask.id === task.id)
-        console.log('task idx is', taskIdx);
         boardCopy.lists[currListIdx].tasks[taskIdx] = task
-        console.log(boardCopy);
         await this.props.updateBoard(boardCopy)
+        this.elTitleRef.current.blur()
     }
 
     getCurrTask = async (boardId, taskId) => {
@@ -108,7 +114,7 @@ export class _TaskDetails extends Component {
                             <div className="details-header flex column justify-center">
                                 <form>
                                     <button onClick={this.onCloseModal}>Close</button>
-                                    <textarea onKeyDown={this.onEnterPress}
+                                    <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef}
                                         value={task.title}
                                         name="title"
                                         onChange={this.handleInput}
