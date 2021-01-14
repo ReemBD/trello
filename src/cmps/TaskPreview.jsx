@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { toggleTask, setCurrList } from '../store/actions/boardActions'
+import { toggleTask, setCurrList, toggleOverlay } from '../store/actions/boardActions'
 import { TaskDetails } from '../cmps/TaskDetails'
 import { connect } from 'react-redux'
 import { boardService } from '../services/boardService'
@@ -35,6 +35,7 @@ export class _TaskPreview extends Component {
 
     onToggleEdit = ev => {
         ev.stopPropagation()
+        this.props.toggleOverlay()
         this.setState({ isEditOpen: !this.state.isEditOpen })
     }
 
@@ -50,7 +51,6 @@ export class _TaskPreview extends Component {
                 </h3>
                 <p className="task-description">{/* {task.description?.substring(0, 50) + '...'} */} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.</p>
                 <h3 className="task-created-at">{utilService.formatTime(task.createdAt)}</h3>
-
             </div>
         )
     }
@@ -59,13 +59,15 @@ export class _TaskPreview extends Component {
 
 const mapDispatchToProps = {
     toggleTask,
-    setCurrList
+    setCurrList,
+    toggleOverlay
 }
 
 const mapStateToProps = state => {
     return {
         isTaskOpen: state.boardReducer.isTaskOpen,
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        isOverlayOpen: state.boardReducer.isOverlayOpen
     }
 }
 

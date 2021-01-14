@@ -1,3 +1,5 @@
+@import "../setup/variables";
+
 * {
     box-sizing: border-box;
 }
@@ -40,11 +42,11 @@ p {
 }
 
 .main-overlay {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(8, 8, 8, 0.61);
     top: 0;
     right: 0;
-    z-index: 10;
+    z-index: $overlay-z-index;
 }

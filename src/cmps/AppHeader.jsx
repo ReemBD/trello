@@ -6,7 +6,6 @@ export class _AppHeader extends Component {
     render() {
         return (
             <header className="main-nav-header flex">
-                {/* this.props.isOverlayOpen && */ <div className="main-overlay"></div>}
                 <div className="logo"></div>
                 <ul className="main-nav flex clear-list">
                     <li><NavLink to="/">Home</NavLink></li>

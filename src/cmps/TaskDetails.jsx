@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
 import { updateBoard, toggleTask } from '../store/actions/boardActions'
