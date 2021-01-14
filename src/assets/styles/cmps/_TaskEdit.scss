@@ -1,0 +1,28 @@
+.quick-edit-wrapper {
+    position: relative;
+    .quick-task-editor-buttons {
+        left: 240%;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        width: 240px;
+        transform: translateX(-20px);
+        transition: opacity 85ms ease-in, transform 85ms ease-in;
+        &-item {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 3px;
+            clear: both;
+            color: #e6e6e6;
+            display: block;
+            float: left;
+            margin: 0 0 4px 8px;
+            padding: 6px 12px 6px 8px;
+            text-decoration: none;
+            transition: transform 85ms ease-in;
+            &-text {
+                margin-left: 4px;
+            }
+        }
+    }
+}
+
