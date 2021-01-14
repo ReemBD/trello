@@ -101,28 +101,6 @@
                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
               },
               "style": {}
-            },
-            {
-              "title": "Check how my teammates are doing",
-              "description": "Check with Nofar and Yoni.",
-              "createdAt": 1610587051473,
-              "id": "dfUSe"
-            }
-          ],
-          "style": {
-            "title": {
-              "bgColor": "#4a94f8"
-            }
-          }
-        },
-        {
-          "id": "g103",
-          "title": "Done",
-          "tasks": [
-            {
-              "id": "e101",
-              "title": "Do that",
-              "createdAt": 1590999817436
             }
           ],
           "style": {
@@ -220,6 +198,76 @@
           }
         }
       ]
+    },
+    {
+      "title": "you can delete now",
+      "members": [],
+      "style": {
+        "bg": "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)"
+      },
+      "createdAt": 1610622927068,
+      "lists": [
+        {
+          "id": "K0KT7",
+          "title": "To Do",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "V0zWn",
+              "createdAt": 1610622927068,
+              "title": "how easy to create tasks!"
+            },
+            {
+              "id": "Lw5cc",
+              "createdAt": 1610622927068,
+              "title": "invite your team!"
+            }
+          ]
+        },
+        {
+          "id": "ThfrZ",
+          "title": "Doing",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "WnZ0c",
+              "createdAt": 1610622927068,
+              "title": "make dinner"
+            },
+            {
+              "id": "sHaTR",
+              "createdAt": 1610622927068,
+              "title": "buy groceries",
+              "todos": [
+                {
+                  "title": "Milk",
+                  "isDone": false,
+                  "id": "5lbnL"
+                },
+                {
+                  "title": "Bread",
+                  "isDone": false,
+                  "id": "E0xKh"
+                },
+                {
+                  "title": "Chocolate",
+                  "isDone": false,
+                  "id": "TKtHO"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "_id": "-qCFx96"
     }
   ],
   "user": [

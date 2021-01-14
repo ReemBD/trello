@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import React, { Fragment } from 'react'
 import { boardService } from '../services/boardService.js'
 import { userService } from '../services/userService.js'
 import { withRouter } from 'react-router-dom'
@@ -91,23 +92,29 @@ export class _ComposeBoard extends Component {
     render() {
         const { isMembersPreviewOpen, users, bgs, newBoard } = this.state
         return (
-            <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
+            <Fragment>
+                <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
 
-                <input type="text" onChange={this.handleInput} placeholder="Enter Board title here" name="title" value={newBoard.title} />
-                <button type="button" onClick={(ev) => this.toggleMembersPreview(ev)} > Add Members</button>
-                <ul className={`clear-list ${!isMembersPreviewOpen && 'hidden'}`} >
-                    {users.map(user => <li key={user._id} > <img className="AvatarPic" src={user.imgUrl} />{user.fullname} <button type="button" onClick={() => this.addMember(user)}>+</button> </li>)}
-                </ul>
+                    <input type="text" onChange={this.handleInput} placeholder="Enter Board title here" name="title" value={newBoard.title} />
+                    <button type="button" onClick={(ev) => this.toggleMembersPreview(ev)} > Add Members</button>
+                    <ul className={`clear-list ${!isMembersPreviewOpen && 'hidden'}`} >
+                        {users.map(user => <li key={user._id} > <img className="AvatarPic" src={user.imgUrl} />{user.fullname} <button type="button" onClick={() => this.addMember(user)}>+</button> </li>)}
+                    </ul>
 
-                {/* <div className="bg-options">
-                    {bgs.map(bg => {
-                        return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={"background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%)"}> </div>
-                    })}
-                </div> */}
-                <button>Create Board</button>
+                    <div className="bg-options">
+                        {bgs.map(bg => {
+                            return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg }}> </div>
+                        })}
+
+                    </div>
+                    <button>Create Board</button>
+                </form>
 
 
-            </form>
+                <div className="demo-board board-card flex flex justify-center align-center" style={{ background: newBoard.style.bg }}>
+                    <h1>{newBoard.title}</h1>
+                </div>
+            </Fragment>
         )
     }
 }

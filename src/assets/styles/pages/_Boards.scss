@@ -9,19 +9,8 @@
         position: fixed;
         max-width: 600px;
         line-height: 80px;
-        font-family: 'Times New Roman', Times, serif;
-    }
-
-    button {
-        position: relative;
-        left: 24%;
-        top: 35%;
         padding: 1em;
-        border: 1px solid #fff;
-        color: #fff;
-        background-color: rgba(255, 255, 255, 0);
-        border-radius: 1em;
-        font-size: 2em;
+        font-family: "Times New Roman", Times, serif;
     }
 }
 
@@ -35,32 +24,22 @@
     top: 0;
     bottom: 0;
     z-index: -4;
-}
 
-// ------------------------------------------------------- board grid cards-------------------------------------------------------
-.board-box {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 400px));
-    grid-template-rows: auto;
-}
-
-.board-card {
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(7.5px);
-    -webkit-backdrop-filter: blur(7.5px);
-    border-radius: 10px;
-    width: 300px;
-    height: 150px;
-    margin: 3em;
-
-    h1 {
-        text-decoration: none;
-        font-size: 2em;
-        color: rgb(27, 27, 27);
-        font-weight: normal;
-
+    .bg-overlay {
+        width: 90%;
     }
+}
+
+.btn-board {
+    position: relative;
+    left: 24%;
+    top: 35%;
+    padding: 1em;
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 1em;
+    font-size: 1.5em;
 }
 
 // --------------------------------------------------- Compose Board -----------------------------------------------------------------
@@ -84,14 +63,19 @@
 }
 
 .board-composer {
-   width: 600px;
-    height: 300px;
+    // max-width: 600px;
+    position: relative;
+    bottom: 140px;
     padding: 3em;
     background: rgba(255, 255, 255, 0.808);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
     border-radius: 10px;
+
+    button {
+        border-radius: 0.5em;
+    }
 }
 .bg-options {
     display: grid;
@@ -99,10 +83,19 @@
 }
 
 .bg-preview {
-    height: 2em;
-    width: 2em;
+    height: 5em;
+    width: 5em;
     border-radius: 3em;
     margin: 1em;
+    transition: all 0.5s;
+    cursor: pointer;
+    &:hover {
+        height: 5.5em;
+        width: 5.5em;
+        z-index: 5;
+        position: relative;
+        box-shadow: 1px 0px 8px #4343434f;
+    }
 }
 
 // -------------------------------------------------------------
@@ -112,4 +105,10 @@
     width: 2em;
     object-fit: scale-down, cover;
     border-radius: 3em;
+}
+
+.demo-board {
+position: absolute;
+z-index: 4;    
+    
 }
