@@ -1,0 +1,24 @@
+.main-bg {
+    background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -4;
+}
+
+.bg-overlay {
+    width: 1200px;
+    height: 97vh;
+    margin: 0 auto;
+    background: rgba(142, 142, 142, 0);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}

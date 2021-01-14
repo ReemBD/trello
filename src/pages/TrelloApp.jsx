@@ -30,11 +30,14 @@ class _TrelloApp extends Component {
         if (!board) return <h1>loading...</h1>
         return (
             <div>
-                <BoardHeader board={board} />
-                <h1>{board.title}</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
-                <Board board={board} />
-                <TaskDetails />
+                <div className="main-bg"></div>
+                <div className="bg-overlay">
+                    <BoardHeader board={board} />
+                    <h1>{board.title}</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
+                    <Board board={board} />
+                    <TaskDetails />
+                </div>
             </div>
         )
     }

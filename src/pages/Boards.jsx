@@ -33,31 +33,30 @@ export class Boards extends Component {
         const { boards, isComposerOpen } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
-            <main>
-                <div className="boards-hero flex row">
+            <main className="boards-bg">
+                <div className="bg-overlay">
 
-                    <div className="main">
-                        <h1>Start With Us And Move Faster.</h1>
+                    <div className="boards-hero flex justify-center align-center">
 
-                        <button className="CTA-btn" >login for the full effect</button>
+                        <h1>With Us You`ll Get Further And Faster. </h1>
+
+                        <button>join us</button>
                     </div>
-                    <div>
+
+
+
+                    <BoardList boards={boards} />
+
+
+                    <div className="add-board" onClick={this.onToggleCompose}>
+                        add a new board
+                </div>
+
+                    <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
+                        <ComposeBoard />
 
                     </div>
                 </div>
-
-                <BoardList boards={boards} />
-
-
-                <div className="add-board" onClick={this.onToggleCompose}>
-                    add a new board
-                </div>
-
-                <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
-                    <ComposeBoard />
-
-                </div>
-
             </main>
         )
     }

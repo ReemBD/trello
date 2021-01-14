@@ -3,6 +3,7 @@ import { boardService } from '../services/boardService.js'
 import { userService } from '../services/userService.js'
 import { withRouter } from 'react-router-dom'
 import { utilService } from '../services/utilService.js'
+import { styleService } from '../services/styleService.js'
 
 export class _ComposeBoard extends Component {
 
@@ -11,13 +12,15 @@ export class _ComposeBoard extends Component {
         newBoard: {
             title: '',
             members: [],
-            bg: '',
+            style: {},
         },
-        users: []
+        users: [],
+        bgs: []
     }
 
     componentDidMount() {
         this.loadUsers()
+        this.loadBgs()
     }
 
     onAddBoard = async (ev) => {
@@ -35,6 +38,12 @@ export class _ComposeBoard extends Component {
         this.setState({ users })
     }
 
+    //gets all the bg style options from the data
+    loadBgs = async () => {
+        const bgs = await styleService.getBgOptions()
+        this.setState({ bgs })
+    }
+
 
     //toggle the members list on the add board form
     toggleMembersPreview = () => {
@@ -42,17 +51,22 @@ export class _ComposeBoard extends Component {
         this.setState({ isMembersPreviewOpen: !lastState })
     }
 
+
+
     addMember = (user) => {
         console.log('user:', user);
         const users = this.state.users
-        const teamMembers = this.state.newBoard.members
-        teamMembers.unshift(user)
+        const members = this.state.newBoard.members
+        members.unshift(user)
 
         users.map(currUser => { return currUser._id !== user._id })
 
-        this.setState({ users, newBoard: { ...this.state.newBoard, members: teamMembers } })
+        this.setState({ users, newBoard: { ...this.state.newBoard, members } })
         console.log(this.state.newBoard);
     }
+
+
+
 
     handleInput = ({ target }) => {
         const value = target.value
@@ -60,8 +74,22 @@ export class _ComposeBoard extends Component {
     }
 
 
+
+    setBg = (bg) => {
+        this.setState({
+            newBoard: {
+                ...this.state.newBoard,
+                style: { ...this.state.newBoard.style, bg }
+            }
+        })
+    }
+
+
+
+
+
     render() {
-        const { isMembersPreviewOpen, users, newBoard } = this.state
+        const { isMembersPreviewOpen, users, bgs, newBoard } = this.state
         return (
             <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
 
@@ -70,6 +98,12 @@ export class _ComposeBoard extends Component {
                 <ul className={`clear-list ${!isMembersPreviewOpen && 'hidden'}`} >
                     {users.map(user => <li key={user._id} > <img className="AvatarPic" src={user.imgUrl} />{user.fullname} <button type="button" onClick={() => this.addMember(user)}>+</button> </li>)}
                 </ul>
+
+                {/* <div className="bg-options">
+                    {bgs.map(bg => {
+                        return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={"background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%)"}> </div>
+                    })}
+                </div> */}
                 <button>Create Board</button>
 
 
