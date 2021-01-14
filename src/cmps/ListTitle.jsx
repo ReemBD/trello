@@ -8,7 +8,7 @@ export class _ListTitle extends Component {
         board: null
     }
     elListTitleRef = React.createRef()
-    
+
     componentDidMount() {
         const { board } = this.props
         this.setState({ board: { ...board } })
@@ -36,9 +36,11 @@ export class _ListTitle extends Component {
             this.props.updateBoard(board)
         },
         onFocus: ({ target }) => {
+            const { list } = this.props
             target.style.backgroundColor = '#fff'
             target.style.color = '#212121'
             target.style.borderRadius = "2px"
+
             console.log('target style: ',);
         }
     }

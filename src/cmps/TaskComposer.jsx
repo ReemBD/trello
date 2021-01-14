@@ -27,7 +27,8 @@ export class _TaskComposer extends Component {
 
     onAddTask = ev => {
         ev.preventDefault()
-        const {task} = {...this.state}
+        const {task} = {...this.state
+        }
         const { board } = { ...this.state }
         const { list } = this.props
         const listIdx = boardService.getListIdxById(board, list.id)

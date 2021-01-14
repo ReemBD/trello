@@ -47,7 +47,7 @@
         },
         {
           "id": "g102",
-          "title": "In Progress",
+          "title": "in Progress",
           "tasks": [
             {
               "id": "c103",
@@ -185,6 +185,12 @@
               "style": {
                 "bgColor": "#26de81"
               }
+            },
+            {
+              "title": "Do This",
+              "description": "I ned to do this aasp",
+              "createdAt": 1610616266182,
+              "id": "yXkzS"
             }
           ],
           "style": {
