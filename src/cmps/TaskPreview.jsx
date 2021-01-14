@@ -16,7 +16,7 @@ export class _TaskPreview extends Component {
         const listIdx = boardService.getListIdxById(board, currList.id)
         await this.props.setCurrList(listIdx)
         await this.props.toggleTask()
-        this.props.history.push(`/board/${board._id}/${task.id}`)
+        this.props.history.push(`/board/${board._id}/${currList.id}/${task.id}`)
     }
     render() {
         const { task } = this.props
