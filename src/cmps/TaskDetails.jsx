@@ -52,6 +52,11 @@ export class _TaskDetails extends Component {
         const { task } = this.state
         if (!task.title) return
         const boardCopy = { ...this.state.board }
+        const { currListIdx } = this.props
+        console.log(boardCopy);
+        const taskIdx = boardCopy.lists[currListIdx].tasks.findIndex(currTask => currTask.id === task.id)
+        console.log('task idx is', taskIdx);
+        boardCopy.lists[currListIdx].tasks[taskIdx] = task
         console.log(boardCopy);
     }
 
@@ -94,7 +99,8 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
     return {
         isTaskOpen: state.boardReducer.isTaskOpen,
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        currListIdx: state.boardReducer.currListIdx
     }
 }
 
