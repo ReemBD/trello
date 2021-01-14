@@ -1,0 +1,32 @@
+.labels-popover {
+    background-color: grey;
+    width: 304px;
+    background-color: #fff;
+    .popover-header {
+        height: 40px;
+        position: relative;
+        margin-bottom: 8px;
+        text-align: center;
+        &-close-btn {
+            color: #6b778c;
+            padding: 10px 12px 10px 8px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            color: black;
+            font-size: 2.5  em;
+        }
+    }
+    .popover-section {
+        margin-top: 12px;
+        &-list{
+            &-item {
+                width: 100%;
+                height: 35px;
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

@@ -44,6 +44,8 @@ async function getById(boardId) {
     return board
 }
 
+
+
 // just temporerly just until we create the backend ...
 function _fillDefaultContent(board) {
 
@@ -114,6 +116,10 @@ function _fillDefaultContent(board) {
     }
 }
 
+async function removeTask() {
+
+}
+
 async function getTaskById(boardId, taskId) {
     const board = await getById(boardId)
     let tasks = board.lists.map(list => list.tasks)
@@ -135,3 +141,6 @@ function getListIdxById(board, listId) {
     return listIdx
 }
 
+function getLabelById(task, id) {
+    const label = task.labels.map(label => label.id === id)
+}

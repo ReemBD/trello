@@ -2,46 +2,41 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
+import ToggleFormIcon from '@material-ui/icons/AddCircleOutline';
 
 export class _ListTitle extends Component {
     state = {
-        board: null
+        title: ''
     }
+
     elListTitleRef = React.createRef()
 
     componentDidMount() {
-        const { board } = this.props
-        this.setState({ board: { ...board } })
+
     }
 
-
-    updateBoard = async (board = this.state.board) => {
+    updateBoard = async (board) => {
         await this.props.updateBoard(board)
     }
 
     listTitleHandlers = {
         onChange: (ev) => {
             const { name, value } = ev.target
-            const { list } = this.props
-            const board = { ...this.state.board }
-            const listIdx = boardService.getListIdxById(board, list.id)
-            board.lists[listIdx][name] = value
-            this.setState({ board })
+            this.setState({ [name]: value })
         },
         onBlur: ({ target }) => {
-            const { board } = this.state
+            const board = { ...this.props.board }
             const { list } = this.props
+            const listIdx = boardService.getListIdxById(board, list.id)
+            board.lists[listIdx][target.name] = target.value
             target.style.backgroundColor = list.style.title.bgColor
             target.style.color = '#fff'
             this.props.updateBoard(board)
         },
         onFocus: ({ target }) => {
-            const { list } = this.props
             target.style.backgroundColor = '#fff'
             target.style.color = '#212121'
             target.style.borderRadius = "2px"
-
-            console.log('target style: ',);
         }
     }
 
@@ -57,10 +52,11 @@ export class _ListTitle extends Component {
         return (
             <form onSubmit={this.onPressEnter} className="list-title flex align-center" style={{ backgroundColor: `${list.style.title.bgColor}` }}><input
                 {...this.listTitleHandlers} ref={this.elListTitleRef} value={list.title}
-                name="title" />{ToggleFormBtn}</form>
+                name="title" />{<ToggleFormIcon onClick={onToggleComposer} className={`toggle-form-icon ${isComposerOpen && 'close'}`} />}</form>
         )
     }
 }
+
 
 
 const mapStateToProps = state => {

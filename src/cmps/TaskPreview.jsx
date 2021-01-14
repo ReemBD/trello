@@ -15,6 +15,10 @@ export class _TaskPreview extends Component {
         isEditOpen: false
     }
 
+    componentDidMount() {
+
+    }
+
     onOpenDetails = async () => {
         const { task } = this.props
         const { currList, board } = this.props
@@ -35,23 +39,26 @@ export class _TaskPreview extends Component {
 
     onToggleEdit = ev => {
         ev.stopPropagation()
-        this.props.toggleOverlay()
+        // this.props.toggleOverlay()
         this.setState({ isEditOpen: !this.state.isEditOpen })
     }
 
     render() {
-        const { task } = this.props
+        const { task, currList } = this.props
         const { isEditOpen, isTaskHovered } = this.state
         return (
             <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
+                {task.labels?.length && <div className="labels-container flex">
+                    {task.labels.map(label => {return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+                </div>}
                 <h3 className="task-title flex">{task.title}  <div className="quick-edit-wrapper">
                     {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                    {isEditOpen && <TaskEdit />}
+                    {isEditOpen && <TaskEdit task={task} list={currList} />}
                 </div>
                 </h3>
-                <p className="task-description">{/* {task.description?.substring(0, 50) + '...'} */} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.</p>
+                <p className="task-description">{task.description || 'No description'}</p>
                 <h3 className="task-created-at">{utilService.formatTime(task.createdAt)}</h3>
-            </div>
+            </div >
         )
     }
 }
