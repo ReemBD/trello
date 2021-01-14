@@ -20,6 +20,7 @@ export class _TaskPreview extends Component {
         const { currList, board } = this.props
         const listIdx = boardService.getListIdxById(board, currList.id)
         await this.props.setCurrList(listIdx)
+        await this.props.toggleOverlay()
         await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${currList.id}/${task.id}`)
     }

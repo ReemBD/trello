@@ -2,3 +2,14 @@
     border: none;
     background-color: transparent;
 }
+
+.small-btn-bgc {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    border-radius: 2em;
+    text-align: center;
+    background-color: $task-button-bgc;
+
+    &:hover {background-color: $task-button-bgc-hover;}
+}

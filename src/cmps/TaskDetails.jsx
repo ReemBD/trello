@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
+import { TaskDetailsInfo } from './TaskDetailsInfo'
 import { connect } from 'react-redux'
-import { updateBoard, toggleTask } from '../store/actions/boardActions'
+import { updateBoard, toggleTask, toggleOverlay } from '../store/actions/boardActions'
 import { withRouter, Link } from 'react-router-dom'
-
+import DvrOutlinedIcon from '@material-ui/icons/DvrOutlined';
+import CloseIcon from '@material-ui/icons/Close';
 export class _TaskDetails extends Component {
     state = {
         isDetailsOpen: false,
@@ -23,7 +25,7 @@ export class _TaskDetails extends Component {
             const { board, list, task } = details
             console.log('cdm the list is', list);
             this.getCurrTask(board._id, taskId)
-            this.setState({ board, list })
+            this.setState({ board, list, task })
         }
 
     }
@@ -36,7 +38,7 @@ export class _TaskDetails extends Component {
             const { board, list, task } = details
             console.log('cdu the list is', list);
             if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
-                this.setState({ isDetailsOpen: true, board, list }, () => this.getCurrTask(board._id, taskId))
+                this.setState({ isDetailsOpen: true, board, list, task }, () => this.getCurrTask(board._id, taskId))
             }
         }
     }
@@ -98,6 +100,7 @@ export class _TaskDetails extends Component {
         const { board } = this.state
         this.props.history.push(`/board/${board._id}`)
         this.setState({ isDetailsOpen: false }, () => {
+            this.props.toggleOverlay()
             this.props.toggleTask()
         })
     }
@@ -109,20 +112,32 @@ export class _TaskDetails extends Component {
         return (
             <section className="task-details">
                 {this.state.isDetailsOpen &&
-                    <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
-                        <div className="details-modal">
-                            <div className="details-header flex column justify-center">
-                                <form>
-                                    <button onClick={this.onCloseModal}>Close</button>
-                                    <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef}
-                                        value={task.title}
-                                        name="title"
-                                        onChange={this.handleInput}
-                                        spellCheck="false"
-                                    />
-                                </form>
-                                <p>in list <span className="details-list-name">{list?.title}</span></p>
-                                <p>{task.description}</p>
+                    <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`}>
+                        <div className="details-modal flex">
+                            <div className="main-details flex column">
+
+                                <div className="details-header flex column">
+                                    <form>
+                                        <DvrOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
+                                        <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef}
+                                            value={task.title}
+                                            name="title"
+                                            onChange={this.handleInput}
+                                            spellCheck="false"
+                                        />
+                                    </form>
+                                    <p>in list <span className="details-list-name">{list?.title}</span></p>
+                                    <p>{task.description}</p>
+                                </div>
+                                <div className="details-info">
+                                    <TaskDetailsInfo board={board} list={list} task={task} />
+                                </div>
+                            </div>
+                            <div className="details-buttons">
+                                <div className="task-details-close-btn small-btn-bgc flex align-center justify-center">
+                                    <CloseIcon onClick={this.onCloseModal} />
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -134,14 +149,16 @@ export class _TaskDetails extends Component {
 
 const mapDispatchToProps = {
     updateBoard,
-    toggleTask
+    toggleTask,
+    toggleOverlay
 }
 
 const mapStateToProps = state => {
     return {
         isTaskOpen: state.boardReducer.isTaskOpen,
         board: state.boardReducer.currBoard,
-        currListIdx: state.boardReducer.currListIdx
+        currListIdx: state.boardReducer.currListIdx,
+        isOverlayOpen: state.boardReducer.isOverlayOpen
     }
 }
 
