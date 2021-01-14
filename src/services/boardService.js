@@ -54,13 +54,20 @@ function _fillDefaultContent(board) {
             {
                 id: utilService.makeId(),
                 title: 'To Do',
+                style: {
+                    title: {
+                        bgColor: 'rgb(152 149 224)'
+                    }
+                },
                 tasks: [
                     {
                         id: utilService.makeId(),
+                        createdAt: Date.now(),
                         title: 'how easy to create tasks!'
                     },
                     {
                         id: utilService.makeId(),
+                        createdAt: Date.now(),
                         title: 'invite your team!'
                     }
                 ]
@@ -68,13 +75,20 @@ function _fillDefaultContent(board) {
             {
                 id: utilService.makeId(),
                 title: 'Doing',
+                style: {
+                    title: {
+                        bgColor: 'rgb(152 149 224)'
+                    }
+                },
                 tasks: [
                     {
                         id: utilService.makeId(),
+                        createdAt: Date.now(),
                         title: 'make dinner'
                     },
                     {
                         id: utilService.makeId(),
+                        createdAt: Date.now(),
                         title: 'buy groceries',
                         todos: [
                             {

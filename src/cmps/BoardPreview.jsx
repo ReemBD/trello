@@ -5,7 +5,7 @@ export class BoardPreview extends Component {
     render() {
         const { board } = this.props
         return (
-            <div>
+            <div className="board-card flex flex justify-center align-center">
                 <Link to={`/board/${board._id}`}><h1>{board.title}</h1></Link>
             </div>
         )
