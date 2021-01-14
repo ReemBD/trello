@@ -18,35 +18,44 @@
             border: none;
             color: #fff;
         }
-        .fa-plus, .fa-times {
+        .fa-plus,
+        .fa-times {
             right: 10px;
-            font-size: .8em;
+            font-size: 0.8em;
             position: absolute;
-            cursor:pointer;
+            cursor: pointer;
+        }
+        .fa-plus {
+            transition: transform .11s;
+            &.close {
+                transform: rotate(45deg);
+            }
         }
     }
     .task-composer {
         font-size: 0.8em;
-    margin-bottom: 25px;
-    border-radius: 6px;
-    background-color: #e6eaf8;
-    cursor: pointer;
-    padding: 15px;
-    width: 100%;
-  
-        input, textarea {
+        margin-bottom: 25px;
+        border-radius: 6px;
+        background-color: #e6eaf8;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+
+        input,
+        textarea {
             background-color: transparent;
             border: none;
             // border-bottom: 1px solid black;
             resize: none;
+            overflow: break-row;
             outline: none;
-            overflow: auto;
+            // overflow: auto;
             font-family: Segoe UI;
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
-            -moz-appearance:none;
-            min-height: 40px;
-            &::placeholder{
+            -moz-appearance: none;
+            // min-height: 40px;
+            &::placeholder {
                 font-family: Segoe UI;
             }
         }
