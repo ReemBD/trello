@@ -44,7 +44,7 @@ export class _TaskPreview extends Component {
         return (
             <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
                 <h3 className="task-title flex">{task.title}  <div className="quick-edit-wrapper">
-                    { (isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                    {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                     {isEditOpen && <TaskEdit />}
                 </div>
                 </h3>

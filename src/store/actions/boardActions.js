@@ -40,6 +40,17 @@ export function toggleTask() {
     }
 }
 
+export function toggleOverlay() {
+    return async dispatch => {
+        try {
+            dispatch({ type: 'TOGGLE_OVERLAY' })
+        }
+        catch (err) {
+            console.log('Couldnt put overlay', err);
+        }
+    }
+}
+
 export function setCurrList(listIdx) {
     return async dispatch => {
         try {

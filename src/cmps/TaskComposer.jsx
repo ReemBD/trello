@@ -4,6 +4,7 @@ import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
 
+
 export class _TaskComposer extends Component {
 
     state = {
