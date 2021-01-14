@@ -13,6 +13,8 @@ export function boardReducer(state = initialState, action) {
             return { ...state, isTaskOpen: !state.isTaskOpen }
         case 'SET_CURR_LIST':
             return { ...state, currListIdx: action.listIdx }
+        case "UPDATE_BOARD":
+            return { ...state, currBoard: action.updatedBoard }
         default:
             return state
     }

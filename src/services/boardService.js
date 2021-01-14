@@ -9,7 +9,7 @@ export const boardService = {
     remove,
     getTaskById,
     getListIdxById,
-    getTaskIdxById
+    getTaskIdxById,
 }
 
 const endpoint = 'board'
@@ -134,3 +134,4 @@ function getListIdxById(board, listId) {
     const listIdx = board.lists.findIndex(list => list.id === listId)
     return listIdx
 }
+

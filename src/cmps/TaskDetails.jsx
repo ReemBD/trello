@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
+import { updateBoard } from '../store/actions/boardActions'
 import { withRouter } from 'react-router-dom'
 
 export class _TaskDetails extends Component {
     state = {
         isDetailsOpen: false,
         board: {},
+        list: {},
         task: {}
 
     }
@@ -16,15 +18,20 @@ export class _TaskDetails extends Component {
         console.log('The task id is', taskId);
         this.getCurrTask(this.props.board._id, taskId)
         const { board } = this.props
+
         this.setState({ board })
     }
 
     componentDidUpdate() {
         const { taskId } = this.props.match.params
         const { board } = this.props
+        const { currListIdx } = this.props
+        const list = board.lists[currListIdx]
+        console.log('the list is', list);
         if (taskId && !this.state.isDetailsOpen) { // When task is clicked on board
-            this.setState({ isDetailsOpen: true, board }, () => this.getCurrTask(this.props.board._id, taskId))
+            this.setState({ isDetailsOpen: true, board, list }, () => this.getCurrTask(this.props.board._id, taskId))
         }
+
     }
 
     handleInput = ({ target }) => {
@@ -47,17 +54,19 @@ export class _TaskDetails extends Component {
         }
     }
 
-    onSubmitForm = (ev) => {
+    onSubmitForm = async (ev) => {
         ev.preventDefault()
         const { task } = this.state
         if (!task.title) return
         const boardCopy = { ...this.state.board }
         const { currListIdx } = this.props
+        console.log(currListIdx); // If opened from a link, this is null
         console.log(boardCopy);
         const taskIdx = boardCopy.lists[currListIdx].tasks.findIndex(currTask => currTask.id === task.id)
         console.log('task idx is', taskIdx);
         boardCopy.lists[currListIdx].tasks[taskIdx] = task
         console.log(boardCopy);
+        await this.props.updateBoard(boardCopy)
     }
 
     getCurrTask = async (boardId, taskId) => {
@@ -68,13 +77,13 @@ export class _TaskDetails extends Component {
 
 
     render() {
-        const { isDetailsOpen, task } = this.state
+        const { isDetailsOpen, task, list } = this.state
         if (!task) return <div>Loading details...</div>
         return (
             <section className="task-details">
                 <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
                     <div className="details-modal">
-                        <div className="details-header flex column align-center justify-center">
+                        <div className="details-header flex column justify-center">
                             <form>
                                 <textarea onKeyDown={this.onEnterPress}
                                     value={task.title}
@@ -83,6 +92,7 @@ export class _TaskDetails extends Component {
                                     spellCheck="false"
                                 />
                             </form>
+                            <p>in list <span className="details-list-name">{list.title}</span></p>
                             <p>{task.description}</p>
                         </div>
                     </div>
@@ -93,7 +103,7 @@ export class _TaskDetails extends Component {
 }
 
 const mapDispatchToProps = {
-
+    updateBoard,
 }
 
 const mapStateToProps = state => {
