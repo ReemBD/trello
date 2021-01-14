@@ -1,28 +1,13 @@
 import React, { Component } from 'react'
 import { TaskList } from './TaskList'
 
-export class Board extends Component {
+export function Board({ board }) {
+    const { lists } = board
+    if (!board) return <h1>loading...</h1>
+    return (
+        <ul className="lists-group flex">
+            {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList list={list} /></li>)}
+        </ul>
+    )
 
-    state = {
-        board: null
-    }
-
-    componentDidMount() {
-        const { board } = this.props
-
-        this.setState({ board: { ...board } })
-    }
-
-    
-
-    render() {
-        const { board } = this.props
-        const { lists } = board
-        if (!board) return <h1>loading...</h1>
-        return (
-            <ul className="lists-group flex">
-                {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList board={board} handleChange={this.handleChange} list={list} /></li>)}
-            </ul>
-        )
-    }
 }

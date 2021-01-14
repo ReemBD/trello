@@ -32,7 +32,7 @@ class _TrelloApp extends Component {
             <div>
                 <div className="main-bg"></div>
                 <div className="bg-overlay">
-                    {this.props.isOverlayOpen && <div className="main-overlay"></div>}
+                    {/* {this.props.isOverlayOpen && <div className="main-overlay"></div>} */}
 
                     <BoardHeader board={board} />
                     <h1>{board.title}</h1>
