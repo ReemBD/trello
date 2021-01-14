@@ -2,13 +2,24 @@
     font-size: 0.8em;
     margin-bottom: 25px;
     border-radius: 6px;
-    background-color: #e6eaf8;
-    padding: 15px;
+    background-color: #fff;
+    padding: 15px 12px 15px 15px;
     width: 100%;
     cursor: pointer;
     .task-title {
         font-weight: normal;
-        margin-bottom: 12px;
+        // margin-bottom: 12px;
+        justify-content: space-between;
+        line-height: 1.4;
+        height: 26px;
+        
+        .edit-icon {
+            font-size: 1.5em;
+            padding: 3px;
+            &:hover{
+                background-color: rgb(206, 209, 218);
+            }
+        }
     }
     .task-description {
         font-weight: 700;

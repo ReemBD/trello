@@ -1,31 +1,50 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { updateBoard, toggleTask } from '../store/actions/boardActions'
+import { withRouter, Link } from 'react-router-dom'
 
 export class _TaskDetails extends Component {
     state = {
         isDetailsOpen: false,
         board: {},
+        list: {},
         task: {}
 
     }
 
     componentDidMount() {
-        const { taskId } = this.props.match.params // Whenever someone opens task through URL
-        console.log('The task id is', taskId);
-        this.getCurrTask(this.props.board._id, taskId)
+        const { listId, taskId } = this.props.match.params // Whenever someone opens task through URL
         const { board } = this.props
-        this.setState({ board })
+        const listIdx = boardService.getListIdxById(board, listId)
+        const list = board.lists[listIdx]
+        console.log('cdm the list is', list);
+        this.getCurrTask(board._id, taskId)
+        this.setState({ board, list })
+
     }
 
     componentDidUpdate() {
-        const { taskId } = this.props.match.params
+        const { listId, taskId } = this.props.match.params
         const { board } = this.props
-        if (taskId && !this.state.isDetailsOpen) { // When task is clicked on board
-            this.setState({ isDetailsOpen: true, board }, () => this.getCurrTask(this.props.board._id, taskId))
+        const listIdx = boardService.getListIdxById(board, listId)
+        const list = board.lists[listIdx]
+        console.log('cdu the list is', list);
+        if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
+            this.setState({ isDetailsOpen: true, board, list }, () => this.getCurrTask(board._id, taskId))
         }
     }
+
+    // TRY TO REFACTOR
+    // getDetails() {
+    //     const { listId, taskId } = this.props.match.params 
+    //     const { board } = this.props
+    //     const listIdx = boardService.getListIdxById(board, listId)
+    //     const list = board.lists[listIdx]
+    //     const taskIdx = boardService.getTaskIdxById(list, taskId)
+    //     const task = list.tasks[taskIdx]
+    //     return { board, list, task }
+    // }
 
     handleInput = ({ target }) => {
         const field = target.name
@@ -47,17 +66,19 @@ export class _TaskDetails extends Component {
         }
     }
 
-    onSubmitForm = (ev) => {
+    onSubmitForm = async (ev) => {
         ev.preventDefault()
         const { task } = this.state
         if (!task.title) return
         const boardCopy = { ...this.state.board }
         const { currListIdx } = this.props
+        console.log(currListIdx); // If opened from a link, this is null
         console.log(boardCopy);
         const taskIdx = boardCopy.lists[currListIdx].tasks.findIndex(currTask => currTask.id === task.id)
         console.log('task idx is', taskIdx);
         boardCopy.lists[currListIdx].tasks[taskIdx] = task
         console.log(boardCopy);
+        await this.props.updateBoard(boardCopy)
     }
 
     getCurrTask = async (boardId, taskId) => {
@@ -66,34 +87,48 @@ export class _TaskDetails extends Component {
         this.setState({ task })
     }
 
+    onCloseModal = (ev) => {
+        ev.preventDefault()
+        const { board } = this.state
+        this.props.history.push(`/board/${board._id}`)
+        this.setState({ isDetailsOpen: false }, () => {
+            this.props.toggleTask()
+        })
+    }
+
 
     render() {
-        const { isDetailsOpen, task } = this.state
+        const { isDetailsOpen, board, list, task } = this.state
         if (!task) return <div>Loading details...</div>
         return (
             <section className="task-details">
-                <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
-                    <div className="details-modal">
-                        <div className="details-header flex column align-center justify-center">
-                            <form>
-                                <textarea onKeyDown={this.onEnterPress}
-                                    value={task.title}
-                                    name="title"
-                                    onChange={this.handleInput}
-                                    spellCheck="false"
-                                />
-                            </form>
-                            <p>{task.description}</p>
+                {this.state.isDetailsOpen &&
+                    <div className={`window-overlay ${!isDetailsOpen && "hidden"}`}>
+                        <div className="details-modal">
+                            <div className="details-header flex column justify-center">
+                                <form>
+                                    <button onClick={this.onCloseModal}>Close</button>
+                                    <textarea onKeyDown={this.onEnterPress}
+                                        value={task.title}
+                                        name="title"
+                                        onChange={this.handleInput}
+                                        spellCheck="false"
+                                    />
+                                </form>
+                                <p>in list <span className="details-list-name">{list?.title}</span></p>
+                                <p>{task.description}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             </section>
         )
     }
 }
 
 const mapDispatchToProps = {
-
+    updateBoard,
+    toggleTask
 }
 
 const mapStateToProps = state => {

@@ -3,18 +3,13 @@ import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { TaskPreview } from './TaskPreview'
 import { boardService } from '../services/boardService'
-
+import { ListTitle } from '../cmps/ListTitle'
+import { TaskComposer } from './TaskComposer'
 class _TaskList extends Component {
     state = {
         board: null,
-        task: {
-            title: '',
-            description: '',
-        },
         isComposerOpen: false
     }
-
-    elListTitleRef = React.createRef()
     elTaskTitleRef = React.createRef()
 
     componentDidMount() {
@@ -22,15 +17,11 @@ class _TaskList extends Component {
         this.setState({ board: { ...board } })
     }
 
-    onAddTask = () => {
 
+    updateBoard = async (board = this.state.board) => {
+        await this.props.updateBoard(board)
     }
-    updateBoard() {
-        const board = { ...this.state.board }
-        this.setState({ board }, () => {
-            this.props.updateBoard(board)
-        })
-    }
+
     onEditTask = () => {
         const { list } = this.props
         const { task } = this.state
@@ -40,30 +31,11 @@ class _TaskList extends Component {
         this.updateBoard()
     }
 
-    handleChange = ev => {
-        const { name, value } = ev.target
-        const board = { ...this.state.board }
 
-    }
-
-    onChangeListTitle = ev => {
-        const { name, value } = ev.target
-        const { board } = this.state
-        const { list } = this.props
-        const listIdx = boardService.getListIdxById(board, list.id)
-        board.lists[listIdx][name] = value
-        this.updateBoard()
-    }
-
-
-    onLeaveListTitleInput = ev => {
-        ev.preventDefault()
-        this.elListTitleRef.current.blur()
-    }
 
     onToggleComposer = ev => {
         ev.stopPropagation()
-        this.setState({ isComposerOpen: !this.state.isComposerOpen }, ()=>{
+        this.setState({ isComposerOpen: !this.state.isComposerOpen }, () => {
             this.elTaskTitleRef.current.focus()
         })
     }
@@ -72,16 +44,11 @@ class _TaskList extends Component {
         const { list } = this.props
         const { tasks } = list
         const { isComposerOpen } = this.state
-        const toggleFormBtn = /* isComposerOpen ? <i className="fas fa-times" onClick={this.onToggleComposer}></i> :  */<i className={`fas fa-plus ${isComposerOpen && 'close'}`} onClick={this.onToggleComposer}></i>
+        if (!this.state.board) return <h1>Loading...</h1>
         return (
             <article className="task-list">
-                <form className="list-title flex align-center" onSubmit={this.onLeaveListTitleInput} style={{ backgroundColor: `${list.style.title.bgColor}` }}><input ref={this.elListTitleRef} value={list.title}
-                    onChange={this.onChangeListTitle} name="title" /> {toggleFormBtn}</form>
-                <form className={`task-composer ${!isComposerOpen && 'display-none'}`} action="">
-                    <input type="text" ref={this.elTaskTitleRef} name="title" onChange={this.handleChange} placeholder="Enter a title for this card... " autoFocus autoComplete="off" id="" />
-                    <textarea type="text" name="description" onChange={this.handleChange} placeholder="Enter description for this card... " autoComplete="off" id="" />
-                    <button className="save-task-btn">Add</button>
-                </form>
+                <ListTitle list={list} isComposerOpen={isComposerOpen} onToggleComposer={this.onToggleComposer} />
+                <TaskComposer list={list} isComposerOpen={isComposerOpen} titleRef={this.elTaskTitleRef} onToggleComposer={this.onToggleComposer} />
                 {tasks.map(task => <TaskPreview key={task.id} task={task} currList={list} />)}
             </article>
         )

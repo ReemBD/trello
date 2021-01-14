@@ -1,10 +1,9 @@
 .task-list-container {
-    background-color: #fff;
+    // background-color: #fff;
     margin-inline-end: 40px;
     border-radius: 10px;
     width: 220px;
     .list-title {
-        font-weight: normal;
         position: relative;
         background-color: #e6eaf8;
         margin-bottom: 25px;
@@ -14,6 +13,7 @@
         border-radius: 7px;
         input {
             background-color: transparent;
+            font-weight: 600;
             outline: none;
             border: none;
             color: #fff;
@@ -51,8 +51,6 @@
             outline: none;
             // overflow: auto;
             font-family: Segoe UI;
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
             -moz-appearance: none;
             // min-height: 40px;
             &::placeholder {
