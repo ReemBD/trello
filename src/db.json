@@ -97,23 +97,8 @@
               ],
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": ""
-                },
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
                   "title": ""
                 }
               ],
@@ -134,13 +119,8 @@
               "id": "bGJKR",
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
+                  "id": "103",
+                  "color": "#f99f1b",
                   "title": ""
                 }
               ]

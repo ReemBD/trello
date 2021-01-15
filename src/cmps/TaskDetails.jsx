@@ -48,7 +48,7 @@ export class _TaskDetails extends Component {
     getDetails = () => {
         const { listId, taskId } = this.props.match.params
         if (listId && taskId) {
-            const { board, currListIdx, currTaskIdx } = this.props
+            const { board, currListIdx, currTaskIdx } = { ...this.props }
             const list = board.lists[currListIdx]
             const task = list.tasks[currTaskIdx]
             return { board, list, task }
@@ -106,7 +106,6 @@ export class _TaskDetails extends Component {
     render() {
         const { isDetailsOpen } = this.state
         const { board, list, task } = this.getDetails()
-
         if (!task) return <div>Loading details...</div>
         return (
             <section className="task-details">
