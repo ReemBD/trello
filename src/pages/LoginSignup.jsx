@@ -44,8 +44,8 @@ export class _LoginSignup extends Component {
         var userCreds;
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
-        if (!userCreds.password || !userCreds.email || !signupCred.fullname) {
-            this.setState({ msg: 'you need to fill all the forms' })
+        if (!userCreds.password || !userCreds.email) {
+            this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
 
