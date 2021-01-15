@@ -40,7 +40,7 @@ class _TaskList extends Component {
             <article className="task-list">
                 <ListTitle list={list} isComposerOpen={isComposerOpen} onToggleComposer={this.onToggleComposer} />
                 <TaskComposer list={list} isComposerOpen={isComposerOpen} titleRef={this.elTaskTitleRef} onToggleComposer={this.onToggleComposer} />
-                {tasks.map(task => <TaskPreview key={task.id} task={task} currList={list} />)}
+                {tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />)}
             </article>
         )
     }

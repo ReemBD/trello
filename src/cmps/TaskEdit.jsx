@@ -26,34 +26,34 @@ export class _TaskEdit extends Component {
     }
 
     render() {
-        const { task } = this.props
+        const { task,list } = this.props
         return (
-            /*    <div className="quick-task-editor-buttons">
-                   <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
-                       <span className="icon-sm icon-label light"></span>
-                       <span className="quick-task-editor-buttons-item-text">Edit Labels</span>
-                   </a>
-                   <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
-                       <span className="icon-sm icon-label light"></span>
-                       <span className="quick-task-editor-buttons-item-text">Change Members</span>
-                   </a>
-                   <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
-                       <span className="icon-sm icon-label light"></span>
-                       <span className="quick-task-editor-buttons-item-text">Move</span>
-                   </a>
-                   <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
-                       <span className="icon-sm icon-label light"></span>
-                       <span className="quick-task-editor-buttons-item-text">Copy</span>
-                   </a>
-                   <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
-                       <span className="icon-sm icon-label light"></span>
-                       <span className="quick-task-editor-buttons-item-text" onClick={this.onChooseEdit}>Change due date</span>
-                   </a>
-                   <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
-                       <span className="icon-sm icon-label light"></span>
-                       <span className="quick-task-editor-buttons-item-text">Remove</span>
-                   </a> */
-            <LabelsPopover task={task} />
+            //    <div className="quick-task-editor-buttons">
+            //        <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
+            //            <span className="icon-sm icon-label light"></span>
+            //            <span className="quick-task-editor-buttons-item-text">Edit Labels</span>
+            //        </a>
+            //        <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
+            //            <span className="icon-sm icon-label light"></span>
+            //            <span className="quick-task-editor-buttons-item-text">Change Members</span>
+            //        </a>
+            //        <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
+            //            <span className="icon-sm icon-label light"></span>
+            //            <span className="quick-task-editor-buttons-item-text">Move</span>
+            //        </a>
+            //        <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
+            //            <span className="icon-sm icon-label light"></span>
+            //            <span className="quick-task-editor-buttons-item-text">Copy</span>
+            //        </a>
+            //        <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onChooseEdit}>
+            //            <span className="icon-sm icon-label light"></span>
+            //            <span className="quick-task-editor-buttons-item-text" onClick={this.onChooseEdit}>Change due date</span>
+            //        </a>
+            //        <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
+            //            <span className="icon-sm icon-label light"></span>
+            //            <span className="quick-task-editor-buttons-item-text">Remove</span>
+            //        </a>
+            <LabelsPopover task={task} list={list} />
             // </div>
         )
     }

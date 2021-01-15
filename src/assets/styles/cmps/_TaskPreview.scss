@@ -15,12 +15,15 @@
             margin-inline-end: 2.5px;
         }
     }
-    .task-title {
-        font-weight: normal;
-        // margin-bottom: 12px;
+    .task-title-wrapper {
         justify-content: space-between;
-        line-height: 1.4;
-        height: 26px;
+        .task-title{
+            font-weight: 600;
+            // margin-bottom: 12px;
+            line-height: 1.4;
+            height: 26px;
+        }
+       
         
         .edit-icon {
             font-size: 1.5em;

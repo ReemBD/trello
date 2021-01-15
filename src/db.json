@@ -26,7 +26,24 @@
               "title": "Finish full CRUDL",
               "description": "Delete done.\nNeed to finish update,\n(labels,members etc)",
               "createdAt": 1610634312873,
-              "id": "b89HN"
+              "id": "b89HN",
+              "labels": [
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": ""
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
+                  "title": ""
+                }
+              ]
             },
             {
               "title": "Lorem ipsum",
@@ -148,7 +165,19 @@
             {
               "id": "e101",
               "title": "Do that",
-              "createdAt": 1590999817436
+              "createdAt": 1590999817436,
+              "labels": [
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": ""
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
+                  "title": ""
+                }
+              ]
             }
           ],
           "style": {
