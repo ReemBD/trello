@@ -34,3 +34,12 @@ async function signup(user) {
         console.log('problem signing in ', err);
     }
 }
+
+
+async function filterUsersBy(value) {
+    const users = await getUsers()
+    const regex = new Regex
+    // return users.map
+
+
+}

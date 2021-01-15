@@ -24,7 +24,8 @@ export class _BoardComposer extends Component {
         },
         users: [],
         bgs: [],
-        anchorEl: null
+        anchorEl: null,
+        filterMembersBy: ''
     }
 
     componentDidMount() {
@@ -68,7 +69,6 @@ export class _BoardComposer extends Component {
         var users = this.state.users
         var members = this.state.newBoard.members
         members = members.filter(currMember => { return currMember._id !== user._id })
-        console.log('users before:', users);
         users.unshift(user)
         this.setState({ users, newBoard: { ...this.state.newBoard, members } })
     }
@@ -101,8 +101,16 @@ export class _BoardComposer extends Component {
     }
 
 
+    filterMembers = ({ target }) => {
+        const value = target.value
+        this.setState({ filterMembersBy: value })
+    }
 
+    // getFilteredUsers = () => {
+    //     var { users, filterMembersBy } = this.state
+    //     return users.filter(user=>return user.fullname.includs )
 
+    // }
 
 
     handleClick = (event) => {
@@ -144,15 +152,17 @@ export class _BoardComposer extends Component {
                             anchorEl={this.state.anchorEl}
                             keepMounted
                             open={Boolean(this.state.anchorEl)}
-                            onClose={this.handleClose}>
-                            {
-                                users.map(user =>
-                                    < MenuItem onClick={() => this.addMember(user)}><img key={user._id} className="AvatarPic" title={user.fullname} src={user.imgUrl} /><h4>{user.fullname}</h4> </MenuItem>
-                                )
+                            onClose={this.handleClose} >
+                            {/* < MenuItem onClick={() => this.addMember(user)}> */}
+
+                            <MenuItem> <input type="text" placeholder="Search Members" name="filterMembersBy" value={this.state.filterMembers} onChange={this.filterMembers} /> </MenuItem>
+                            {users.map(user =>
+                                < MenuItem onClick={() => this.addMember(user)}><img key={user._id} className="AvatarPic" title={user.fullname} src={user.imgUrl} /><h4>{user.fullname}</h4> </MenuItem>
+                            )
                             }
 
                         </Menu>
-                        {newBoard.members.map(member => <img className="AvatarPic" src={member.imgUrl} title={member.fullname} />)} </div>
+                        {newBoard.members.map(member => <img className="AvatarPic preview" src={member.imgUrl} onClick={() => this.removeMember(member)} title={member.fullname} />)} </div>
 
 
 
