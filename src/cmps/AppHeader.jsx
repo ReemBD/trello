@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-<<<<<<< HEAD
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AppsIcon from '@material-ui/icons/Apps';
-=======
 import { connect } from 'react-redux'
->>>>>>> f9997c30452c007d12f9c1fa8d78908cb451ad25
 
 export class _AppHeader extends Component {
     render() {
