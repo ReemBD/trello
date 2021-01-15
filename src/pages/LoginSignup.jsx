@@ -44,8 +44,8 @@ export class _LoginSignup extends Component {
         var userCreds;
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
-        if (!userCreds.password || !userCreds.email || !signupCred.fullname) {
-            this.setState({ msg: 'you need to fill all the forms' })
+        if (!userCreds.password || !userCreds.email) {
+            this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
 
@@ -121,7 +121,7 @@ export class _LoginSignup extends Component {
             <Fragment>
                 <div className="login-bg-screen" > </div>
 
-                <div className={`login-signup-wrapper flex justify-center align-center ${isUploading && 'uploadStage'}`} >
+                <div className={`login-signup-wrapper flex justify-center ${isUploading && 'uploadStage'}`} >
 
                     {user && <div className="glass-form flex column">
                         <h1>Welcome {user.fullname}</h1>

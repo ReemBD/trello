@@ -6,6 +6,9 @@ import { withRouter } from 'react-router-dom'
 import { utilService } from '../services/utilService.js'
 import { styleService } from '../services/styleService.js'
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export class _BoardComposer extends Component {
 
@@ -20,7 +23,8 @@ export class _BoardComposer extends Component {
             description: ''
         },
         users: [],
-        bgs: []
+        bgs: [],
+        anchorEl: null
     }
 
     componentDidMount() {
@@ -50,26 +54,24 @@ export class _BoardComposer extends Component {
     }
 
 
-    //toggle the members list on the add board form
-    toggleMembersPreview = () => {
-        const lastState = this.state.isMembersPreviewOpen
-        this.setState({ isMembersPreviewOpen: !lastState })
-    }
-
-
 
     addMember = (user) => {
-        console.log('user:', user);
-        const users = this.state.users
+        var users = this.state.users
         const members = this.state.newBoard.members
         members.unshift(user)
-
-        users.map(currUser => { return currUser._id !== user._id })
+        users = users.filter(currUser => { return currUser._id !== user._id })
 
         this.setState({ users, newBoard: { ...this.state.newBoard, members } })
-        console.log(this.state.newBoard);
     }
 
+    removeMember = (user) => {
+        var users = this.state.users
+        var members = this.state.newBoard.members
+        members = members.filter(currMember => { return currMember._id !== user._id })
+        console.log('users before:', users);
+        users.unshift(user)
+        this.setState({ users, newBoard: { ...this.state.newBoard, members } })
+    }
 
 
 
@@ -102,23 +104,29 @@ export class _BoardComposer extends Component {
 
 
 
+
+    handleClick = (event) => {
+        this.setState({ anchorEl: event.currentTarget })
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null })
+    }
+
+
+
     render() {
-        const { isMembersPreviewOpen, users, bgs, newBoard } = this.state
+        const { users, bgs, newBoard } = this.state
         console.log('newBoard:', newBoard);
         return (
             <Fragment>
                 <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
-                    <div className="flex">
+                    <div className="flex justify-content">
 
                         <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
 
-                        <div onClick={(ev) => this.toggleMembersPreview(ev)} className="member-preview" ><GroupAddIcon /> Add Members
-                    <ul className={`clear-list ${!isMembersPreviewOpen && 'hidden'}`} >
-                                {users.map(user => <img key={user._id} className="AvatarPic" onClick={() => this.addMember(user)} title={user.fullname} src={user.imgUrl} />)}
-                            </ul>
-                        </div>
 
                     </div>
                     <textarea
@@ -128,13 +136,29 @@ export class _BoardComposer extends Component {
                         onChange={this.handleInput}
                         spellCheck="false"
                     />
-                    <span> members:{newBoard.members.map(member => <img className="AvatarPic" src={member.imgUrl} title={member.fullname} />)} </span>
+                    <div>
+                        <Button style={{ borderRadius: '100px' }} aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
+                            <GroupAddIcon />  </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={this.state.anchorEl}
+                            keepMounted
+                            open={Boolean(this.state.anchorEl)}
+                            onClose={this.handleClose}>
+                            {
+                                users.map(user =>
+                                    < MenuItem onClick={() => this.addMember(user)}><img key={user._id} className="AvatarPic" title={user.fullname} src={user.imgUrl} /><h4>{user.fullname}</h4> </MenuItem>
+                                )
+                            }
+
+                        </Menu>
+                        {newBoard.members.map(member => <img className="AvatarPic" src={member.imgUrl} title={member.fullname} />)} </div>
 
 
 
 
 
-                    {/* <button type="button" onClick={() => this.addMember(user)}>+</button> */}
+
                     <div className="bg-options">
                         {bgs.map(bg => {
                             return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg }}> </div>
@@ -145,7 +169,7 @@ export class _BoardComposer extends Component {
                 </form>
 
 
-            </Fragment>
+            </Fragment >
         )
     }
 }

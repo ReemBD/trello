@@ -3,7 +3,6 @@
     position: absolute;
     right: 0;
     top: 0;
-    // left: 40%;
     left: 0;
     bottom: 0;
     background-repeat: no-repeat;
@@ -12,7 +11,7 @@
 }
 
 .login-signup-wrapper {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     .ghost {
@@ -35,8 +34,11 @@
         border-radius: 15px;
         padding: 4em;
         width: 450px;
-        min-height: 800px;
+        min-height: 600px;
+        margin-top: 2em;
+        max-height: 800px;
         text-align: center;
+        user-select: none;
 
         .login-h1 {
             margin-top: 125px;
@@ -45,7 +47,7 @@
         h1 {
             text-align: center;
             font-weight: 600;
-            line-height: 3em;
+            margin: 40px 0;
         }
 
         & > * {
