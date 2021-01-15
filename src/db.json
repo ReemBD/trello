@@ -29,18 +29,8 @@
               "id": "b89HN",
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
+                  "id": "105",
+                  "color": "#c377e0",
                   "title": ""
                 }
               ]
@@ -108,8 +98,23 @@
               "labels": [
                 {
                   "id": "101",
-                  "title": "done",
-                  "color": "#61bd4f"
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": ""
                 }
               ],
               "createdAt": 1590999730348,
@@ -157,14 +162,46 @@
               "createdAt": 1590999817436,
               "labels": [
                 {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": "",
+                  "isPicked": false
+                },
+                {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": ""
+                  "title": "",
+                  "isPicked": false
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
+                  "title": "",
+                  "isPicked": true
                 }
               ]
             }
@@ -182,7 +219,39 @@
             {
               "id": "e101",
               "title": "Do that",
-              "createdAt": 1590999817436
+              "createdAt": 1590999817436,
+              "labels": [
+                {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": ""
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
+                  "title": ""
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
+                  "title": ""
+                }
+              ]
             },
             {
               "id": "e102",
@@ -224,18 +293,45 @@
               "labels": [
                 {
                   "id": "101",
-                  "title": "done",
-                  "color": "#61bd4f"
+                  "color": "#61bd4f",
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "102",
-                  "title": "in check",
-                  "color": "#f2d602"
+                  "color": "#f2d602",
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "103",
-                  "title": "waiting for answer",
-                  "color": "#f99f1b"
+                  "color": "#f99f1b",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
+                  "title": "",
+                  "isPicked": true
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
+                  "title": "",
+                  "isPicked": true
                 }
               ],
               "createdAt": 1590999730348,

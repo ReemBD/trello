@@ -23,7 +23,6 @@ export class _TaskDetails extends Component {
         if (details) {
 
             const { board, list, task } = details
-            console.log('cdm the list is', list);
             this.getCurrTask(board._id, taskId)
             this.setState({ board, list, task })
         }
@@ -36,22 +35,22 @@ export class _TaskDetails extends Component {
         if (details) {
 
             const { board, list, task } = details
-            console.log('cdu the list is', list);
             if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
                 this.setState({ isDetailsOpen: true, board, list, task }, () => this.getCurrTask(board._id, taskId))
+            }
+            if (this.state.task.labels?.length !== details.task.labels?.length) {
+                this.setState({ task: details.task })
             }
         }
     }
 
     // TRY TO REFACTOR
-    getDetails() {
+    getDetails = () => {
         const { listId, taskId } = this.props.match.params
         if (listId && taskId) {
-            const { board } = this.props
-            const listIdx = boardService.getListIdxById(board, listId)
-            const list = board.lists[listIdx]
-            const taskIdx = boardService.getTaskIdxById(list, taskId)
-            const task = list.tasks[taskIdx]
+            const { board, currListIdx, currTaskIdx } = this.props
+            const list = board.lists[currListIdx]
+            const task = list.tasks[currTaskIdx]
             return { board, list, task }
         }
     }
@@ -82,7 +81,6 @@ export class _TaskDetails extends Component {
         if (!task.title) return
         const boardCopy = { ...this.state.board }
         const currListIdx = boardService.getListIdxById(board, list.id)
-        console.log(currListIdx); // If opened from a link, this is null
         const taskIdx = boardCopy.lists[currListIdx].tasks.findIndex(currTask => currTask.id === task.id)
         boardCopy.lists[currListIdx].tasks[taskIdx] = task
         await this.props.updateBoard(boardCopy)
@@ -91,7 +89,6 @@ export class _TaskDetails extends Component {
 
     getCurrTask = async (boardId, taskId) => {
         const task = await boardService.getTaskById(boardId, taskId)
-        console.log(task);
         this.setState({ task })
     }
 
@@ -107,7 +104,9 @@ export class _TaskDetails extends Component {
 
 
     render() {
-        const { isDetailsOpen, board, list, task } = this.state
+        const { isDetailsOpen } = this.state
+        const { board, list, task } = this.getDetails()
+
         if (!task) return <div>Loading details...</div>
         return (
             <section className="task-details">
@@ -157,6 +156,7 @@ const mapStateToProps = state => {
         isTaskOpen: state.boardReducer.isTaskOpen,
         board: state.boardReducer.currBoard,
         currListIdx: state.boardReducer.currListIdx,
+        currTaskIdx: state.boardReducer.currTaskIdx,
         isOverlayOpen: state.boardReducer.isOverlayOpen
     }
 }

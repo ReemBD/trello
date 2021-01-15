@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { toggleTask, setCurrList, toggleOverlay } from '../store/actions/boardActions'
-import { TaskDetails } from '../cmps/TaskDetails'
+import { toggleTask, setCurrListAndTaskIdx, toggleOverlay } from '../store/actions/boardActions'
+import { TaskDetails } from './TaskDetails'
 import { connect } from 'react-redux'
 import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
 import EditIcon from '@material-ui/icons/Edit';
 import { TaskEdit } from './TaskEdit'
+
 
 export class _TaskPreview extends Component {
 
@@ -22,8 +23,8 @@ export class _TaskPreview extends Component {
     onOpenDetails = async () => {
         const { task } = this.props
         const { list, board } = this.props
-        const listIdx = boardService.getListIdxById(board, list.id)
-        await this.props.setCurrList(listIdx)
+        const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+        await this.props.setCurrListAndTaskIdx(listIdx, taskIdx)
         await this.props.toggleOverlay()
         await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${list.id}/${task.id}`)
@@ -50,9 +51,9 @@ export class _TaskPreview extends Component {
         return (
             <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
                 {task.labels?.length && <div className="labels-container flex">
-                    {task.labels.map(label => {return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+                    {task.labels.map(label => { return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
                 </div>}
-                <div className="task-title-wrapper flex"><h3 className="task-title" style={{color: list.style.title.bgColor}}>{task.title}</h3>  <div className="quick-edit-wrapper">
+                <div className="task-title-wrapper flex"><h3 className="task-title" style={{ color: list.style.title.bgColor }}>{task.title}</h3>  <div className="quick-edit-wrapper">
                     {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                     {isEditOpen && <TaskEdit task={task} list={list} />}
                 </div>
@@ -67,7 +68,7 @@ export class _TaskPreview extends Component {
 
 const mapDispatchToProps = {
     toggleTask,
-    setCurrList,
+    setCurrListAndTaskIdx,
     toggleOverlay
 }
 

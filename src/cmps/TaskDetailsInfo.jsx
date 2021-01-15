@@ -1,11 +1,86 @@
 import React, { Component } from 'react'
+import { boardService } from '../services/boardService'
+import { connect } from 'react-redux'
+import { updateBoard } from '../store/actions/boardActions'
 import AddIcon from '@material-ui/icons/Add';
 import { utilService } from '../services/utilService'
 import { TaskDetailsDesc } from './TaskDetailsDesc'
+import CloseIcon from '@material-ui/icons/Close';
 
-export class TaskDetailsInfo extends Component {
+
+export class _TaskDetailsInfo extends Component {
+    state = {
+        labels: [
+            { id: '101', color: "#61bd4f", title: '', isPicked: false },
+            { id: '102', color: "#f2d602", title: '', isPicked: false },
+            { id: '103', color: "#f99f1b", title: '', isPicked: false },
+            { id: '104', color: "#eb5a46", title: '', isPicked: false },
+            { id: '105', color: "#c377e0", title: '', isPicked: false },
+            { id: '107', color: "#1f79bf", title: '', isPicked: false },
+            { id: '108', color: "#3cc2e0", title: '', isPicked: false },
+        ],
+        isLabelMenuOpen: false,
+    }
+
+    componentDidMount() {
+        this.markExistingLabels()
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log('prevprops', prevProps.task.labels)
+        if (prevProps.task.labels?.length !== this.props.task.labels?.length) {
+            this.markExistingLabels()
+        }
+    }
+
+    markExistingLabels() {
+        const { task } = this.props
+        if (!task.labels?.length) return;
+        let { labels } = { ...this.state }
+        const labelsIdsMap = labels.map(label => label.id)
+        task.labels.forEach(taskLabel => {
+            if (labelsIdsMap.includes(taskLabel.id)) {
+                const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
+                labels[labelIdx].isPicked = true
+            }
+        })
+        this.setState({ labels })
+    }
+
+    onToggleLabel = ev => {
+        const { id } = ev.target.dataset
+        const { labels } = { ...this.state }
+        const labelToUpdateIdx = labels.findIndex(label => label.id === id)
+        console.log(labelToUpdateIdx)
+        labels[labelToUpdateIdx].isPicked = !labels[labelToUpdateIdx].isPicked
+        this.setState({ labels }, () => {
+            let labelsToSend = labels.filter(label => label.isPicked)
+            console.log('the labels to send filtered are', labelsToSend)
+            labelsToSend.forEach(label => delete label.isPicked)
+            console.log('the labels to send without ispicked are', labelsToSend)
+            this.onAddLabel(labelsToSend)
+        })
+
+
+    }
+
+    toggleLabelMenu = () => {
+        this.setState({ isLabelMenuOpen: !this.state.isLabelMenuOpen })
+    }
+
+
+    onAddLabel = async (labels) => {
+        const { board, list, task, updateBoard } = { ...this.props }
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+        board.lists[listIdx].tasks[taskIdx].labels = labels
+        console.log('the board is', board.lists[listIdx].tasks[taskIdx])
+        await updateBoard(board)
+
+    }
+
     render() {
         const { board, list, task } = this.props
+        const { labels, isLabelMenuOpen } = this.state
         return (
             <div className="details-info">
                 <div className="flex">
@@ -33,7 +108,20 @@ export class TaskDetailsInfo extends Component {
                                 </span>
                             })}
                             <div className="task-add-label small-btn-bgc">
-                                {<AddIcon style={{ height: '32px' }} />}
+                                {<AddIcon onClick={this.toggleLabelMenu} style={{ height: '32px' }} />}
+
+                                <div className={`labels-popover ${!isLabelMenuOpen && "hidden"}`} onClick={(ev) => { ev.stopPropagation() }} style={{ position: 'relative', zIndex: '3', backgroundColor: '#fff' }}>
+                                    <div className="popover-header flex align-center justify-center">
+                                        <span className="popover-header-title" style={{ fontWeight: '300' }}>Labels</span>
+                                        <CloseIcon className="popover-header-close-btn" style={{ top: '-3px' }} onClick={this.toggleLabelMenu} />
+                                    </div>
+                                    <section className="popover-section">
+                                        <ul className="popover-section-list clear-list flex column">
+                                            <h3 className="popover-section-header">Labels</h3>
+                                            {labels.map(label => <div data-id={label.id} onClick={this.onToggleLabel} key={label.id} className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></div>)}
+                                        </ul>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>}
@@ -49,3 +137,19 @@ export class TaskDetailsInfo extends Component {
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        board: state.boardReducer.currBoard,
+        currListIdx: state.boardReducer.currListIdx,
+        currTaskIdx: state.boardReducer.currTaskIdx,
+
+    }
+}
+
+const mapDispatchToProps = {
+    updateBoard
+}
+
+export const TaskDetailsInfo = connect(mapStateToProps, mapDispatchToProps)(_TaskDetailsInfo)

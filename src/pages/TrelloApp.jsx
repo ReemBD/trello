@@ -38,7 +38,7 @@ class _TrelloApp extends Component {
                     <h1>{board.title}</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
                     <Board board={board} />
-                    <TaskDetails />
+                    {this.props.match.params.listId && <TaskDetails />}
                 </div>
             </div>
         )
