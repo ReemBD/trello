@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
-import { LabelsPopover } from '../cmps/LabelsPopover'
-import { QuickEditButton } from '../cmps/QuickEditButton'
+import { LabelsPopover } from './LabelsPopover'
+import { ChangeMembersPopover } from '../cmps/ChangeMembersPopover'
+import { QuickEditButton } from './QuickEditButton'
 
 export class _TaskEdit extends Component {
 
@@ -12,7 +13,7 @@ export class _TaskEdit extends Component {
         currOpenPopover: '',
         popovers: [
             { title: 'Edit Labels', Component: LabelsPopover },
-            { title: 'Change Members' },
+            { title: 'Change Members', Component: ChangeMembersPopover },
             { title: 'Move' },
             { title: 'Copy' },
             { title: 'Change Due Date' },
@@ -27,6 +28,7 @@ export class _TaskEdit extends Component {
 
     onRemoveTask = ev => {
         ev.stopPropagation()
+        console.log('curOpenPopover: ', this.state.currOpenPopover);
         const { task, list, board } = this.props
         const taskIdx = boardService.getTaskIdxById(list, task.id)
         const listIdx = boardService.getListIdxById(board, list.id)
@@ -56,7 +58,7 @@ export class _TaskEdit extends Component {
     render() {
         const { task, list } = this.props
         const { popovers } = this.state
-        
+
         return (
             <div className="quick-task-editor-buttons">
                 {popovers.map(popover => {
