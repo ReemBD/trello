@@ -14,7 +14,6 @@ export class _AppHeader extends Component {
                     <li><NavLink to="/"><HomeIcon fontSize="large" /><span> Home</span></NavLink></li>
                     <li><NavLink to="/board"><AppsIcon fontSize="large" /><span>Boards</span></NavLink></li>
                     <li><NavLink to="/login"><AccountCircleIcon fontSize="large" /><span>login</span></NavLink></li>
-                    {/* <li><NavLink to="/signup">signup</NavLink></li> */}
                 </ul>
             </header>
         )

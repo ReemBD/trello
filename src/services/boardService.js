@@ -10,6 +10,8 @@ export const boardService = {
     getTaskById,
     getListIdxById,
     getTaskIdxById,
+    getLabelIdxById,
+    getListAndTaskIdxById
 }
 
 const endpoint = 'board'
@@ -141,6 +143,18 @@ function getListIdxById(board, listId) {
     return listIdx
 }
 
+function getListAndTaskIdxById(board, listId, taskId) {
+    const list = board.lists.find(list => list.id === listId)
+    const listIdx = getListIdxById(board, listId)
+    const taskIdx = getTaskIdxById(list, taskId)
+    return { listIdx, taskIdx }
+}
+
 function getLabelById(task, id) {
     const label = task.labels.map(label => label.id === id)
+}
+
+function getLabelIdxById(task, labelId) {
+    const labelIdx = task.labels.findIndex(label => label.id === labelId)
+    return labelIdx
 }

@@ -121,7 +121,7 @@ export class _LoginSignup extends Component {
             <Fragment>
                 <div className="login-bg-screen" > </div>
 
-                <div className={`login-signup-wrapper flex justify-center align-center ${isUploading && 'uploadStage'}`} >
+                <div className={`login-signup-wrapper flex justify-center ${isUploading && 'uploadStage'}`} >
 
                     {user && <div className="glass-form flex column">
                         <h1>Welcome {user.fullname}</h1>

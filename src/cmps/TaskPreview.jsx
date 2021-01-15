@@ -21,12 +21,12 @@ export class _TaskPreview extends Component {
 
     onOpenDetails = async () => {
         const { task } = this.props
-        const { currList, board } = this.props
-        const listIdx = boardService.getListIdxById(board, currList.id)
+        const { list, board } = this.props
+        const listIdx = boardService.getListIdxById(board, list.id)
         await this.props.setCurrList(listIdx)
         await this.props.toggleOverlay()
         await this.props.toggleTask()
-        this.props.history.push(`/board/${board._id}/${currList.id}/${task.id}`)
+        this.props.history.push(`/board/${board._id}/${list.id}/${task.id}`)
     }
 
     taskPreviewHandlers = {
@@ -45,18 +45,18 @@ export class _TaskPreview extends Component {
     }
 
     render() {
-        const { task, currList } = this.props
+        const { task, list } = this.props
         const { isEditOpen, isTaskHovered } = this.state
         return (
             <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
                 {task.labels?.length && <div className="labels-container flex">
                     {task.labels.map(label => {return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
                 </div>}
-                <h3 className="task-title flex">{task.title}  <div className="quick-edit-wrapper">
+                <div className="task-title-wrapper flex"><h3 className="task-title" style={{color: list.style.title.bgColor}}>{task.title}</h3>  <div className="quick-edit-wrapper">
                     {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                    {isEditOpen && <TaskEdit task={task} list={currList} />}
+                    {isEditOpen && <TaskEdit task={task} list={list} />}
                 </div>
-                </h3>
+                </div>
                 <p className="task-description">{task.description || 'No description'}</p>
                 <h3 className="task-created-at">{utilService.formatTime(task.createdAt)}</h3>
             </div >

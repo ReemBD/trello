@@ -32,3 +32,4 @@ function formatTime(timestamp) {
     const date = new Date(timestamp).toLocaleDateString();
     return date;
 }
+

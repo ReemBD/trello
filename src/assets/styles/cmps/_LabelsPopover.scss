@@ -1,31 +1,55 @@
 .labels-popover {
-    background-color: grey;
     width: 304px;
-    background-color: #fff;
+    background-color: rgb(229, 226, 226);
+    border-radius: 5px;
+    padding-bottom: 10px;
     .popover-header {
         height: 40px;
+        color: #212121;
         position: relative;
         margin-bottom: 8px;
         text-align: center;
+        padding-inline-start: 11px ;
+        padding-inline-end: 11px ;
+        
+        &-title {
+            flex-grow: 1;
+            border-bottom: 1px solid rgba(9,30,66,.13);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 1.2em;
+        }
+
         &-close-btn {
             color: #6b778c;
             padding: 10px 12px 10px 8px;
             position: absolute;
-            top: 0;
+            top: 2px;
             right: 0;
             z-index: 2;
             color: black;
-            font-size: 2.5  em;
+            font-size: 3em;
         }
     }
     .popover-section {
         margin-top: 12px;
-        &-list{
+        &-header {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 1em;
+            letter-spacing: .05em;
+        }
+        &-list {
+            padding-inline-end: 8px;
+            padding-inline-start: 8px;
             &-item {
                 width: 100%;
                 height: 35px;
                 border-radius: 5px;
                 margin-bottom: 5px;
+                &.picked {
+                    border: 3px solid #635959;
+                }
             }
         }
     }
