@@ -3,6 +3,7 @@
     background-color: rgb(229, 226, 226);
     border-radius: 5px;
     padding-bottom: 10px;
+    cursor: default;
     .popover-header {
         height: 40px;
         color: #212121;
@@ -29,6 +30,7 @@
             z-index: 2;
             color: black;
             font-size: 3em;
+            cursor: pointer;
         }
     }
     .popover-section {
@@ -47,6 +49,7 @@
                 height: 35px;
                 border-radius: 5px;
                 margin-bottom: 5px;
+                cursor: pointer;
                 &.picked {
                     border: 3px solid #635959;
                 }
