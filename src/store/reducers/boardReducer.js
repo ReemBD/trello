@@ -3,6 +3,7 @@ const initialState = {
     currBoard: null,
     isTaskOpen: false,
     currListIdx: null,
+    isOverlayOpen: false
 }
 
 export function boardReducer(state = initialState, action) {
@@ -15,6 +16,8 @@ export function boardReducer(state = initialState, action) {
             return { ...state, currListIdx: action.listIdx }
         case "UPDATE_BOARD":
             return { ...state, currBoard: action.updatedBoard }
+        case "TOGGLE_OVERLAY":
+            return { ...state, isOverlayOpen: !state.isOverlayOpen }
         default:
             return state
     }

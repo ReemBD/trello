@@ -32,6 +32,8 @@ class _TrelloApp extends Component {
             <div>
                 <div className="main-bg"></div>
                 <div className="bg-overlay">
+                    {/* {this.props.isOverlayOpen && <div className="main-overlay"></div>} */}
+
                     <BoardHeader board={board} />
                     <h1>{board.title}</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
@@ -45,7 +47,8 @@ class _TrelloApp extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        isOverlayOpen: state.boardReducer.isOverlayOpen
     }
 }
 

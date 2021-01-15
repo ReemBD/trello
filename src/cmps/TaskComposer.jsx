@@ -4,20 +4,14 @@ import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
 
+
 export class _TaskComposer extends Component {
 
     state = {
-        board: null,
         task: {
             title: '',
             description: '',
         }
-    }
-
-
-    componentDidMount() {
-        const { board } = this.props
-        this.setState({ board: { ...board } })
     }
 
     handleChange = ev => {
@@ -27,9 +21,9 @@ export class _TaskComposer extends Component {
 
     onAddTask = ev => {
         ev.preventDefault()
-        const {task} = {...this.state
-        }
-        const { board } = { ...this.state }
+        ev.stopPropagation()
+        const { task } = { ...this.state }
+        const { board } = { ...this.props }
         const { list } = this.props
         const listIdx = boardService.getListIdxById(board, list.id)
         task.createdAt = Date.now()
@@ -45,7 +39,7 @@ export class _TaskComposer extends Component {
         })
     }
 
-    updateBoard(board = this.state.board) {
+    updateBoard(board = this.props.board) {
         this.props.updateBoard(board)
     }
 

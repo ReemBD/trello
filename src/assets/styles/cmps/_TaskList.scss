@@ -18,15 +18,13 @@
             border: none;
             color: #fff;
         }
-        .fa-plus,
-        .fa-times {
-            right: 10px;
-            font-size: 0.8em;
+
+        .toggle-form-icon {
+            transition: transform .11s;
+              right: 10px;
+            font-size: 1.3em;
             position: absolute;
             cursor: pointer;
-        }
-        .fa-plus {
-            transition: transform .11s;
             &.close {
                 transform: rotate(45deg);
             }

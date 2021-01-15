@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { toggleTask, setCurrList } from '../store/actions/boardActions'
+import { toggleTask, setCurrList, toggleOverlay } from '../store/actions/boardActions'
 import { TaskDetails } from '../cmps/TaskDetails'
 import { connect } from 'react-redux'
 import { boardService } from '../services/boardService'
@@ -15,11 +15,16 @@ export class _TaskPreview extends Component {
         isEditOpen: false
     }
 
+    componentDidMount() {
+
+    }
+
     onOpenDetails = async () => {
         const { task } = this.props
         const { currList, board } = this.props
         const listIdx = boardService.getListIdxById(board, currList.id)
         await this.props.setCurrList(listIdx)
+        await this.props.toggleOverlay()
         await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${currList.id}/${task.id}`)
     }
@@ -35,23 +40,26 @@ export class _TaskPreview extends Component {
 
     onToggleEdit = ev => {
         ev.stopPropagation()
+        // this.props.toggleOverlay()
         this.setState({ isEditOpen: !this.state.isEditOpen })
     }
 
     render() {
-        const { task } = this.props
+        const { task, currList } = this.props
         const { isEditOpen, isTaskHovered } = this.state
         return (
             <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
+                {task.labels?.length && <div className="labels-container flex">
+                    {task.labels.map(label => {return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+                </div>}
                 <h3 className="task-title flex">{task.title}  <div className="quick-edit-wrapper">
-                    { (isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                    {isEditOpen && <TaskEdit />}
+                    {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                    {isEditOpen && <TaskEdit task={task} list={currList} />}
                 </div>
                 </h3>
-                <p className="task-description">{/* {task.description?.substring(0, 50) + '...'} */} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.</p>
+                <p className="task-description">{task.description || 'No description'}</p>
                 <h3 className="task-created-at">{utilService.formatTime(task.createdAt)}</h3>
-
-            </div>
+            </div >
         )
     }
 }
@@ -59,13 +67,15 @@ export class _TaskPreview extends Component {
 
 const mapDispatchToProps = {
     toggleTask,
-    setCurrList
+    setCurrList,
+    toggleOverlay
 }
 
 const mapStateToProps = state => {
     return {
         isTaskOpen: state.boardReducer.isTaskOpen,
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        isOverlayOpen: state.boardReducer.isOverlayOpen
     }
 }
 

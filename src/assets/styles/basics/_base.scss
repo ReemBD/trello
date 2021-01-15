@@ -1,3 +1,5 @@
+@import "../setup/variables";
+
 * {
     box-sizing: border-box;
 }
@@ -7,10 +9,10 @@
 }
 
 html {
-    line-height: 1.6;
+    line-height: 20px;
     color: $clr2;
     scroll-behavior: smooth;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", sans-serif;
 }
 
 body {
@@ -21,9 +23,13 @@ img {
     width: 100%;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0 0 0.4em;
-    line-height: 0.9;
 }
 
 h1 {
@@ -34,3 +40,15 @@ p {
     margin: 0 0 2em;
 }
 
+<<<<<<< HEAD
+=======
+.main-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(8, 8, 8, 0.61);
+    top: 0;
+    right: 0;
+    z-index: $overlay-z-index;
+}
+>>>>>>> f9997c30452c007d12f9c1fa8d78908cb451ad25

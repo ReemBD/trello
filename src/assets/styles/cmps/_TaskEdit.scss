@@ -1,5 +1,8 @@
+@import "../setup/variables";
+
 .quick-edit-wrapper {
     position: relative;
+    // z-index: $overlay-z-index + 1;
     .quick-task-editor-buttons {
         left: 240%;
         opacity: 1;
@@ -25,4 +28,3 @@
         }
     }
 }
-
