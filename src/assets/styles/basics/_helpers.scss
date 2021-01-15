@@ -67,3 +67,24 @@
 .display-none {
     display: none;
 }
+
+// TASK
+
+.task-textarea {
+    resize: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 20px;
+    height: 36px;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 8px;
+    line-height: 24px;
+    width: 100%;
+    background-color: $task-bgc-clr;
+
+    &:focus {
+        outline: 2px solid lightskyblue;
+        background-color: #fff;
+    }
+}

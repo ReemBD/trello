@@ -5,15 +5,19 @@ import { userService } from '../services/userService.js'
 import { withRouter } from 'react-router-dom'
 import { utilService } from '../services/utilService.js'
 import { styleService } from '../services/styleService.js'
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
-export class _ComposeBoard extends Component {
+export class _BoardComposer extends Component {
 
     state = {
         isMembersPreviewOpen: false,
         newBoard: {
             title: '',
             members: [],
-            style: {},
+            style: {
+                bg: '#fff'
+            },
+            description: ''
         },
         users: [],
         bgs: []
@@ -71,7 +75,16 @@ export class _ComposeBoard extends Component {
 
     handleInput = ({ target }) => {
         const value = target.value
-        this.setState({ newBoard: { ...this.state.newBoard, title: value } })
+        const field = target.name
+        this.setState(prevState => {
+            return {
+                newBoard: {
+                    ...prevState.newBoard,
+                    [field]: value
+                }
+            }
+        })
+
     }
 
 
@@ -91,16 +104,37 @@ export class _ComposeBoard extends Component {
 
     render() {
         const { isMembersPreviewOpen, users, bgs, newBoard } = this.state
+        console.log('newBoard:', newBoard);
         return (
             <Fragment>
                 <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
+                    <div className="flex">
 
-                    <input type="text" onChange={this.handleInput} placeholder="Enter Board title here" name="title" value={newBoard.title} />
-                    <button type="button" onClick={(ev) => this.toggleMembersPreview(ev)} > Add Members</button>
+                        <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg }}>
+                            <textarea className="title" onChange={this.handleInput} placeholder="Enter Board title " name="title" autoComplete="off" value={newBoard.title} />
+                        </div>
+
+                        <div onClick={(ev) => this.toggleMembersPreview(ev)} className="member-preview" ><GroupAddIcon /> Add Members
                     <ul className={`clear-list ${!isMembersPreviewOpen && 'hidden'}`} >
-                        {users.map(user => <li key={user._id} > <img className="AvatarPic" src={user.imgUrl} />{user.fullname} <button type="button" onClick={() => this.addMember(user)}>+</button> </li>)}
-                    </ul>
+                                {users.map(user => <img key={user._id} className="AvatarPic" onClick={() => this.addMember(user)} title={user.fullname} src={user.imgUrl} />)}
+                            </ul>
+                        </div>
 
+                    </div>
+                    <textarea
+                        placeholder="Description"
+                        value={newBoard.description}
+                        name="description"
+                        onChange={this.handleInput}
+                        spellCheck="false"
+                    />
+                    <span> members:{newBoard.members.map(member => <img className="AvatarPic" src={member.imgUrl} title={member.fullname} />)} </span>
+
+
+
+
+
+                    {/* <button type="button" onClick={() => this.addMember(user)}>+</button> */}
                     <div className="bg-options">
                         {bgs.map(bg => {
                             return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg }}> </div>
@@ -111,12 +145,9 @@ export class _ComposeBoard extends Component {
                 </form>
 
 
-                <div className="demo-board board-card flex flex justify-center align-center" style={{ background: newBoard.style.bg }}>
-                    <h1>{newBoard.title}</h1>
-                </div>
             </Fragment>
         )
     }
 }
 
-export const ComposeBoard = withRouter(_ComposeBoard)
+export const BoardComposer = withRouter(_BoardComposer)
