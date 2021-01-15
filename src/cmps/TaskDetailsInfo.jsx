@@ -33,28 +33,16 @@ export class _TaskDetailsInfo extends Component {
         }
     }
 
-    // markExistingLabels() {
-    //     const { task } = this.props
-    //     if (!task.labels?.length) return;
-    //     let { labels } = { ...this.state }
-    //     const labelsIdsMap = labels.map(label => label.id)
-    //     task.labels.forEach(taskLabel => {
-    //         const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
-    //         console.log('the label idx is: ', labelIdx);
-    //         labels[labelIdx].isPicked = true
-    //         console.log('from loop', labels[labelIdx]);
-
-    //     })
-    //     this.setState({ labels })
-    // }
-
     markExistingLabels() {
         const { task } = this.props
-        const { labels } = { ...this.state }
-        if (!task.labels?.length) return
-        task.labels.forEach((label, idx) => {
-            const labelIdx = labels.findIndex(currLabel => currLabel.id === label.id)
-            labels[labelIdx].isPicked = true
+        if (!task.labels?.length) return;
+        let { labels } = { ...this.state }
+        const labelsIdsMap = labels.map(label => label.id)
+        task.labels.forEach(taskLabel => {
+            if (labelsIdsMap.includes(taskLabel.id)) {
+                const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
+                labels[labelIdx].isPicked = true
+            }
         })
         this.setState({ labels })
     }
@@ -65,10 +53,15 @@ export class _TaskDetailsInfo extends Component {
         const labelToUpdateIdx = labels.findIndex(label => label.id === id)
         console.log(labelToUpdateIdx)
         labels[labelToUpdateIdx].isPicked = !labels[labelToUpdateIdx].isPicked
-        const labelsToSend = labels.map(label => label.isPicked)
         this.setState({ labels }, () => {
-            this.onAddLabel(labels)
+            let labelsToSend = labels.filter(label => label.isPicked)
+            console.log('the labels to send filtered are', labelsToSend)
+            labelsToSend.forEach(label => delete label.isPicked)
+            console.log('the labels to send without ispicked are', labelsToSend)
+            this.onAddLabel(labelsToSend)
         })
+
+
     }
 
     toggleLabelMenu = () => {
@@ -76,27 +69,11 @@ export class _TaskDetailsInfo extends Component {
     }
 
 
-    // getLabelIdxById(labelId) {
-    //     const { labels } = this.state
-    //     return labels.findIndex(label => label.id === labelId)
-    // }
-
-    // onToggleLabel = ev => {
-    //     ev.stopPropagation()
-    //     const { labels } = { ...this.state }
-    //     const labelId = ev.target.dataset.id
-    //     const labelIdx = this.getLabelIdxById(labelId)
-    //     labels[labelIdx].isPicked = !labels[labelIdx].isPicked
-    //     this.setState({ labels }, () => {
-    //         this.onAddLabel()
-    //     })
-    // }
-
     onAddLabel = async (labels) => {
         const { board, list, task, updateBoard } = { ...this.props }
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         board.lists[listIdx].tasks[taskIdx].labels = labels
-        console.log('the board is', board)
+        console.log('the board is', board.lists[listIdx].tasks[taskIdx])
         await updateBoard(board)
 
     }
@@ -164,7 +141,10 @@ export class _TaskDetailsInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        currListIdx: state.boardReducer.currListIdx,
+        currTaskIdx: state.boardReducer.currTaskIdx,
+
     }
 }
 

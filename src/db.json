@@ -27,7 +27,13 @@
               "description": "Delete done.\nNeed to finish update,\n(labels,members etc)",
               "createdAt": 1610634312873,
               "id": "b89HN",
-              "labels": []
+              "labels": [
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": ""
+                }
+              ]
             },
             {
               "title": "Lorem ipsum",
@@ -89,7 +95,28 @@
                   "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                 }
               ],
-              "labels": [],
+              "labels": [
+                {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": ""
+                }
+              ],
               "createdAt": 1590999730348,
               "dueDate": 16156215211,
               "byMember": {
@@ -144,7 +171,7 @@
                   "id": "104",
                   "color": "#eb5a46",
                   "title": "",
-                  "isPicked": true
+                  "isPicked": false
                 },
                 {
                   "id": "105",
@@ -156,7 +183,7 @@
                   "id": "107",
                   "color": "#1f79bf",
                   "title": "",
-                  "isPicked": true
+                  "isPicked": false
                 },
                 {
                   "id": "108",
@@ -183,8 +210,33 @@
               "createdAt": 1590999817436,
               "labels": [
                 {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
                   "id": "102",
                   "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": ""
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
+                  "title": ""
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
                   "title": ""
                 }
               ]
@@ -230,37 +282,44 @@
                 {
                   "id": "101",
                   "color": "#61bd4f",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "102",
                   "color": "#f2d602",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "104",
                   "color": "#eb5a46",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 }
               ],
               "createdAt": 1590999730348,
