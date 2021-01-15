@@ -30,6 +30,7 @@ export class _TaskDetails extends Component {
     }
 
     componentDidUpdate() {
+        console.log('Parent did update')
         const { listId, taskId } = this.props.match.params
         const details = this.getDetails()
         if (details) {
@@ -106,6 +107,7 @@ export class _TaskDetails extends Component {
     render() {
         const { isDetailsOpen } = this.state
         const { board, list, task } = this.getDetails()
+        console.log('task:', task)
 
         if (!task) return <div>Loading details...</div>
         return (

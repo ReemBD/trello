@@ -29,8 +29,28 @@
               "id": "b89HN",
               "labels": [
                 {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
                   "id": "105",
                   "color": "#c377e0",
+                  "title": ""
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
                   "title": ""
                 }
               ]
@@ -114,6 +134,11 @@
                 {
                   "id": "104",
                   "color": "#eb5a46",
+                  "title": ""
+                },
+                {
+                  "id": "105",
+                  "color": "#c377e0",
                   "title": ""
                 }
               ],
