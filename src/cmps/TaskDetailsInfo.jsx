@@ -4,6 +4,40 @@ import { utilService } from '../services/utilService'
 import { TaskDetailsDesc } from './TaskDetailsDesc'
 
 export class TaskDetailsInfo extends Component {
+    state = {
+        labels: [
+            { id: '101', color: "#61bd4f", title: '', isPicked: false },
+            { id: '102', color: "#f2d602", title: '', isPicked: false },
+            { id: '103', color: "#f99f1b", title: '', isPicked: false },
+            { id: '104', color: "#eb5a46", title: '', isPicked: false },
+            { id: '105', color: "#c377e0", title: '', isPicked: false },
+            { id: '107', color: "#1f79bf", title: '', isPicked: false },
+            { id: '108', color: "#3cc2e0", title: '', isPicked: false },
+        ]
+    }
+
+    componentDidMount() {
+        this.markExistingLabels()
+    }
+
+    markExistingLabels() {
+        const { task } = this.props
+        if (!task.labels?.length) return;
+        let { labels } = { ...this.state }
+        const labelsIdsMap = labels.map(label => label.id)
+        task.labels.forEach(taskLabel => {
+            if (labelsIdsMap.includes(taskLabel.id)) {
+                const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
+                labels[labelIdx].isPicked = true
+            }
+        })
+        this.setState({ labels })
+    }
+
+    openLabelMenu = () => {
+
+    }
+
     render() {
         const { board, list, task } = this.props
         return (
@@ -33,7 +67,8 @@ export class TaskDetailsInfo extends Component {
                                 </span>
                             })}
                             <div className="task-add-label small-btn-bgc">
-                                {<AddIcon style={{ height: '32px' }} />}
+                                {<AddIcon onClick={this.openLabelMenu} style={{ height: '32px' }} />}
+
                             </div>
                         </div>
                     </div>}
