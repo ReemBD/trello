@@ -119,7 +119,7 @@ export class _TaskDetails extends Component {
                                 <div className="details-header flex column">
                                     <form>
                                         <DvrOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
-                                        <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef}
+                                        <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea" style={{ fontSize: '24px' }}
                                             value={task.title}
                                             name="title"
                                             onChange={this.handleInput}
@@ -127,7 +127,6 @@ export class _TaskDetails extends Component {
                                         />
                                     </form>
                                     <p>in list <span className="details-list-name">{list?.title}</span></p>
-                                    <p>{task.description}</p>
                                 </div>
                                 <div className="details-info">
                                     <TaskDetailsInfo board={board} list={list} task={task} />
