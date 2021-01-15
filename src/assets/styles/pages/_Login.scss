@@ -3,7 +3,6 @@
     position: absolute;
     right: 0;
     top: 0;
-    // left: 40%;
     left: 0;
     bottom: 0;
     background-repeat: no-repeat;
@@ -33,9 +32,11 @@
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         border-radius: 15px;
-        padding: 2em 4em;
+        padding: 4em;
         width: 450px;
         min-height: 600px;
+        margin-top: 2em;
+        max-height: 800px;
         text-align: center;
         user-select: none;
 
