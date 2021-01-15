@@ -9,7 +9,7 @@ export class BoardPreview extends Component {
             <div className="board-card flex flex justify-center align-center">
                 <Link to={`/board/${board._id}`}><h1>{board.title}</h1></Link>
 
-                <button className="icon-btn" onClick={() => onRemove(board._id)}><DeleteIcon style={{ color: '#fff' }} /> </button>
+                <button className="icon-btn" onClick={() => onRemove(board._id)}><DeleteIcon fontSize="large" style={{ color: '#092f32' }} /> </button>
 
             </div>
         )

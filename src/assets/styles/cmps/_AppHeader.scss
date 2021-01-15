@@ -1,7 +1,21 @@
 .main-nav-header {
+    // background-color: rgba(255, 255, 255, 0.63);
+    // box-shadow: -1px 1px 4px 0px #8c8989cf;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
     .main-nav {
-        &>*{
-            margin-inline-end: 10px;
+        & > * {
+            margin-inline-end: 1em;
         }
+    }
+    a {
+        text-decoration: none;
+        font-size: 1.5em;
+        color: $clr2;
+    }
+    span {
+        line-height: 35px;
     }
 }

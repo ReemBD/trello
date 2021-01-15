@@ -1,8 +1,7 @@
 import { HomePage } from './pages/HomePage.jsx'
 import { Boards } from './pages/Boards.jsx'
 import { TrelloApp } from './pages/TrelloApp.jsx'
-import { Login } from './pages/Login.jsx'
-import { Signup } from './pages/Signup.jsx'
+import { LoginSignup } from './pages/LoginSignup.jsx'
 
 export const routes = [
     {
@@ -18,12 +17,9 @@ export const routes = [
         component: Boards
     },
 
+
     {
         path: "/login",
-        component: Login
-    },
-    {
-        path: "/signup",
-        component: Signup
+        component: LoginSignup
     }
 ]
