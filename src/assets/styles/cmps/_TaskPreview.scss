@@ -5,7 +5,6 @@
     background-color: #fff;
     padding: 4px 12px 15px 15px;
     width: 100%;
-    cursor: pointer;
     .labels-container{
         margin-bottom: 10px;
         .task-label {
@@ -17,6 +16,7 @@
     }
     .task-title-wrapper {
         justify-content: space-between;
+        cursor: pointer;
         .task-title{
             font-weight: 600;
             // margin-bottom: 12px;
@@ -36,8 +36,12 @@
     .task-description {
         font-weight: 700;
         text-overflow: clip;
+        cursor: pointer;
+
     }
     .task-created-at {
         font-weight: normal;
+        cursor: pointer;
+
     }
 }

@@ -29,18 +29,18 @@
               "id": "b89HN",
               "labels": [
                 {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": ""
-                },
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": ""
-                },
-                {
-                  "id": "108",
-                  "color": "#3cc2e0",
                   "title": ""
                 }
               ]
@@ -127,29 +127,6 @@
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
               "id": "bGJKR"
-            },
-            {
-              "title": "popo",
-              "description": "",
-              "createdAt": 1610645091093,
-              "id": "SFcSh",
-              "labels": [
-                {
-                  "id": "101",
-                  "title": "done",
-                  "color": "#61bd4f"
-                },
-                {
-                  "id": "102",
-                  "title": "in check",
-                  "color": "#c377e0"
-                },
-                {
-                  "id": "103",
-                  "title": "waiting for answer",
-                  "color": "#3cc2e0"
-                }
-              ]
             }
           ],
           "style": {
