@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService.js'
 import { BoardList } from '../cmps/BoardList'
-import { ComposeBoard } from '../cmps/ComposeBoard.jsx'
+import { BoardComposer } from '../cmps/BoardComposer.jsx'
 export class Boards extends Component {
 
     state = {
@@ -40,7 +40,7 @@ export class Boards extends Component {
         if (!boards) return <h1>loading...</h1>
         return (
             <main className="boards-bg">
-                <div className="bg-overlay">
+                <div className="glass-screen main-layout">
 
                     <div className="boards-hero flex justify-center align-center">
 
@@ -56,7 +56,7 @@ export class Boards extends Component {
 
 
                     <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
-                        <ComposeBoard />
+                        <BoardComposer />
 
                     </div>
                 </div>
