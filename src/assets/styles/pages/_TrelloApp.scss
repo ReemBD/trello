@@ -15,8 +15,8 @@
 
 .bg-overlay {
     background-color: #e5eaf6c2;
-    width: 1300px;
-    margin: 0 auto;
+    min-width: 1300px;
+    margin: 0 5%;
     // background: rgba(142, 142, 142, 0);
     // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(12px);

@@ -2,14 +2,11 @@
     // background-color: #fff;
     margin-inline-end: 40px;
     border-radius: 10px;
-    width: 220px;
+    min-width: 230px;
     .list-title {
         position: relative;
-        margin-bottom: 25px;
-        color: #fff;
-        padding: 8px 0 8px 16px;
-        border-radius: 7px;
-     
+        @include list-title;
+
         input {
             max-width: 170px;
             background-color: transparent;
@@ -19,12 +16,11 @@
             color: #fff;
             padding: 4px;
             border-radius: 5px;
-            
         }
 
         .toggle-form-icon {
-            transition: transform .11s;
-              right: 10px;
+            transition: transform 0.11s;
+            right: 10px;
             font-size: 1.3em;
             position: absolute;
             top: 9px;
@@ -42,7 +38,7 @@
         cursor: pointer;
         padding: 15px;
         width: 100%;
-        input[name='title'] {
+        input[name="title"] {
             padding-bottom: 10px;
             border-bottom: 1px solid $border-bottom-clr;
         }
@@ -64,4 +60,3 @@
     .open-composer-btn {
     }
 }
-
