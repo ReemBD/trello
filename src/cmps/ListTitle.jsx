@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
-import ToggleFormIcon from '@material-ui/icons/AddCircleOutline';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { ListActions } from './ListActions'
 
 export class _ListTitle extends Component {
     state = {
@@ -12,8 +13,8 @@ export class _ListTitle extends Component {
     elListTitleRef = React.createRef()
 
     componentDidMount() {
-        const {title} = this.props
-        this.setState({title})
+        const { title } = this.props
+        this.setState({ title })
     }
 
     updateBoard = async (board) => {
@@ -47,12 +48,23 @@ export class _ListTitle extends Component {
     }
 
     render() {
-        const { list,isComposerOpen, onToggleComposer } = this.props
+        const { list, isComposerOpen, isListActionsOpen, onToggleComposer, onToggleListActions } = this.props
         if (!list) return <h1>Loading...</h1>
         return (
-            <form onSubmit={this.onPressEnter} autoComplete="off" className="list-title flex align-center" style={{ backgroundColor: `${list.style.title.bgColor}` }}><input
-                {...this.listTitleHandlers} placeholder="Enter list title" ref={this.elListTitleRef} value={this.state.title}
-                name="title" />{<ToggleFormIcon onClick={onToggleComposer} className={`toggle-form-icon ${isComposerOpen && 'close'}`} />}</form>
+            <form onSubmit={this.onPressEnter}
+                autoComplete="off"
+                className="list-title flex align-center"
+                style={{ backgroundColor: `${list.style.title.bgColor}` }}>
+                <input {...this.listTitleHandlers}
+                    placeholder="Enter list title"
+                    ref={this.elListTitleRef}
+                    value={this.state.title}
+                    name="title" />
+                <div className="list-actions-popover-wrapper">
+                    {<MoreHorizIcon onClick={onToggleListActions} className={`toggle-actions-icon ${isComposerOpen && 'close'}`} />}
+                    {isListActionsOpen && <ListActions {...this.props} />}
+                </div>
+            </form>
         )
     }
 }

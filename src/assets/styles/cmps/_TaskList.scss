@@ -2,11 +2,12 @@
     // background-color: #fff;
     margin-inline-end: 40px;
     border-radius: 10px;
-    min-width: 230px;
+    width: 230px;
     .list-title {
         position: relative;
         @include list-title;
-
+        width: 230px;
+        justify-content: space-between;
         input {
             max-width: 170px;
             background-color: transparent;
@@ -18,15 +19,17 @@
             border-radius: 5px;
         }
 
-        .toggle-form-icon {
+        .toggle-actions-icon {
             transition: transform 0.11s;
-            right: 10px;
-            font-size: 1.3em;
             position: absolute;
-            top: 9px;
+            right: 10px;
+            top: -12px;
+            width: 25px;
+            border-radius: 3px;
+            margin-inline-end: 4px;
             cursor: pointer;
-            &.close {
-                transform: rotate(45deg);
+            &:hover{
+                background-color: rgba(61, 61, 61, 0.411);
             }
         }
     }

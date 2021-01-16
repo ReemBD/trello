@@ -4,7 +4,8 @@ const initialState = {
     isTaskOpen: false,
     currListIdx: null,
     currTaskIdx: null,
-    isOverlayOpen: false
+    isOverlayOpen: false,
+    isPopoverOpen: false
 }
 
 export function boardReducer(state = initialState, action) {
@@ -19,6 +20,8 @@ export function boardReducer(state = initialState, action) {
             return { ...state, currBoard: action.updatedBoard }
         case "TOGGLE_OVERLAY":
             return { ...state, isOverlayOpen: !state.isOverlayOpen }
+        case "SET_POPOVER_STATUS":
+            return { ...state, isPopoverOpen: action.isPopover }
         default:
             return state
     }
