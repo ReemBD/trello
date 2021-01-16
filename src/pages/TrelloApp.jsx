@@ -36,7 +36,7 @@ class _TrelloApp extends Component {
 
                     <BoardHeader board={board} />
                    
-                    <Board board={board} />
+                    <Board  />
                     {this.props.match.params.listId && <TaskDetails />}
                 </div>
             </div>

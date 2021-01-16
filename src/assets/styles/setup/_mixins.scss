@@ -56,6 +56,23 @@
         }
     }
 }
+
+//lists 
+
+@mixin list-title {
+    margin-bottom: 25px;
+    color: #fff;
+    padding: 8px 0 8px 16px;
+    border-radius: 7px;
+}
+
+@mixin transparent-input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+}
 //Popovers
 @mixin popover-main {
     color: &clr2;
