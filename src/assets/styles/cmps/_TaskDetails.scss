@@ -125,5 +125,23 @@
         padding: 4px 8px;
         line-height: 24px;
         letter-spacing: 0.2px;
+
+        textarea {
+            margin-bottom: 10px;
+        }
+    }
+
+    .task-desc-buttons {
+        
+        svg {
+            margin-left: 8px;
+            cursor: pointer;
+            color: #172b4d;
+            
+            transition: color .2s;
+
+            &:hover {color: darken(#0d1a31, 15%);}
+        }
     }
 }
+

@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
-import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
-export class TaskDetailsDesc extends Component {
+import { connect } from 'react-redux'
+import { updateBoard } from '../store/actions/boardActions'
+import { cloneDeep } from 'lodash'
+import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined'
+import CloseIcon from '@material-ui/icons/Close'
+
+export class _TaskDetailsDesc extends Component {
     state = {
         currTask: '',
         isTxtAreaOpen: false,
+
     }
 
     componentDidMount() {
@@ -24,9 +30,22 @@ export class TaskDetailsDesc extends Component {
             }
         })
     }
+
+    toggleControls = (boolean) => {
+        this.setState({ isTxtAreaOpen: boolean })
+    }
+
+    saveDescription = () => {
+        const { board, currListIdx, currTaskIdx } = this.props
+        const { currTask } = this.state
+        const boardCopy = cloneDeep(board)
+        boardCopy.lists[currListIdx].tasks[currTaskIdx] = currTask
+        this.props.updateBoard(boardCopy)
+    }
+
     render() {
         const { board, list, task } = this.props
-        const { currTask } = this.state
+        const { currTask, isTxtAreaOpen } = this.state
         return (
             <div className="task-middle-details">
                 <div className="details-description">
@@ -39,6 +58,8 @@ export class TaskDetailsDesc extends Component {
                             spellCheck="false"
                             onChange={this.handleInput}
                             rows="5"
+                            onFocus={() => this.toggleControls(true)}
+                            onBlur={() => this.toggleControls(false)}
                         />
                         : <textarea className="task-textarea" style={{ fontSize: '16px', fontWeight: '400px', height: 'auto', backgroundColor: 'rgba(9,30,66,.04)' }}
                             value={currTask.description}
@@ -47,10 +68,32 @@ export class TaskDetailsDesc extends Component {
                             spellCheck="false"
                             onChange={this.handleInput}
                             rows="3"
+                            onFocus={() => this.toggleControls(true)}
+                            onBlur={() => this.toggleControls(false)}
                         />
                     }
+                    <div className={`task-desc-buttons flex align-center ${!isTxtAreaOpen && "hidden"}`}>
+                        <button onClick={this.saveDescription} className="primary-btn">Save</button>
+                        <CloseIcon onClick={() => this.toggleControls(false)} />
+                    </div>
                 </div>
             </div>
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        board: state.boardReducer.currBoard,
+        currListIdx: state.boardReducer.currListIdx,
+        currTaskIdx: state.boardReducer.currTaskIdx,
+
+    }
+}
+
+const mapDispatchToProps = {
+    updateBoard
+}
+
+export const TaskDetailsDesc = connect(mapStateToProps, mapDispatchToProps)(_TaskDetailsDesc)
