@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Board } from '../cmps/Board'
-import { setBoard, setPopoverStatus } from '../store/actions/boardActions'
+import { setBoard } from '../store/actions/boardActions'
+import { setCurrPopover } from '../store/actions/popoverActions'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { TaskDetails } from '../cmps/TaskDetails'
 
@@ -26,10 +27,10 @@ class _TrelloApp extends Component {
     }
 
     render() {
-        const { board } = this.props
+        const { board, setCurrPopover } = this.props
         if (!board) return <h1>loading...</h1>
         return (
-            <div onClick={() => { this.props.setPopoverStatus(false) }}>
+            <div onClick={() => { setCurrPopover() }}>
                 <div className="main-bg"></div>
                 <div className="bg-overlay">
                     {/* {this.props.isOverlayOpen && <div className="main-overlay"></div>} */}
@@ -53,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     setBoard,
-    setPopoverStatus
+    setCurrPopover
 }
 
 export const TrelloApp = connect(mapStateToProps, mapDispatchToProps)(_TrelloApp)
