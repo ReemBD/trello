@@ -2,12 +2,13 @@ import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService.js'
 import { BoardList } from '../cmps/BoardList'
 import { BoardComposer } from '../cmps/BoardComposer.jsx'
+
 export class Boards extends Component {
 
     state = {
         boards: [],
         isComposerOpen: false,
-
+        boardToEdit: null
     }
 
     componentDidMount() {
@@ -33,10 +34,13 @@ export class Boards extends Component {
         this.setState({ isComposerOpen: !lastState })//opens the add board form
     }
 
+    editBoard = (board) => {
+        this.setState({ isComposerOpen: true, boardToEdit: board })
+    }
 
     render() {
 
-        const { boards, isComposerOpen } = this.state
+        const { boards, isComposerOpen, boardToEdit } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
             <Fragment>
@@ -47,20 +51,19 @@ export class Boards extends Component {
 
                     <div className="boards-hero flex justify-center align-center">
 
-                        <h1>Get Started Now. </h1>
 
                         <button className="btn-board" onClick={this.onToggleCompose}>Create a new board</button>
                     </div>
 
 
 
-                    <BoardList boards={boards} onRemove={this.onRemove} />
+                    <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} />
 
 
 
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
-                    <BoardComposer />
+                    <BoardComposer board={boardToEdit} />
 
                 </div>
 

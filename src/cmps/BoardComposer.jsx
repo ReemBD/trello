@@ -23,9 +23,26 @@ export class _BoardComposer extends Component {
         },
         users: [],
         bgs: [],
-        anchorEl: null,
         filterMembersBy: ''
     }
+
+    componentDidMount() {
+        if (this.props.board) {
+            const { board } = this.props
+            this.setState({
+                newBoard: {
+                    title: board.title,
+                    style: {
+                        bg: board.style.bg
+                    },
+                    description: board.description,
+                    members: board.members
+                }
+            })
+        }
+    }
+
+
 
     componentDidMount() {
         this.loadUsers()

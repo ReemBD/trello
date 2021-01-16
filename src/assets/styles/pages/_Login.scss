@@ -1,5 +1,7 @@
 .login-bg-screen {
-    background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
+    // background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
+    background: linear-gradient(120deg, rgb(224, 195, 252) 0%, rgb(142, 197, 252) 100%);
+
     position: absolute;
     right: 0;
     top: 0;
@@ -69,9 +71,14 @@
         label {
             font-weight: 600;
             cursor: pointer;
+            transition: color .3s;
+            color: #131111;
+            &:hover {
+                color: rgb(87, 87, 87);
+            }
         }
         button {
-            background: rgba(150, 140, 140, 0.25);
+            background: rgba(245, 245, 245, 0.493);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             backdrop-filter: blur(10.5px);
             -webkit-backdrop-filter: blur(10.5px);
@@ -79,6 +86,10 @@
             border: none;
             padding: 1em;
             margin-top: 2em;
+            transition: all 0.4s;
+            &:hover {
+                background-color: rgba(253, 253, 253, 0.877);
+            }
         }
         .avatar {
             height: 8em;
@@ -90,7 +101,10 @@
             background-size: cover;
             cursor: pointer;
         }
-
+        a {
+            text-decoration: none;
+            color: rgb(34, 34, 34);
+        }
         span {
             width: 100%;
         }
@@ -104,7 +118,7 @@
             font-weight: 100;
 
             &.active {
-                border-bottom: 1px solid rgb(195, 195, 195);
+                border-bottom: 1px solid rgb(255, 255, 255);
             }
         }
     }

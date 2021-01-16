@@ -9,14 +9,12 @@
         max-width: 600px;
         line-height: 80px;
         padding: 1em;
-        font-family: "Times New Roman", Times, serif;
     }
 }
 
-
-
 .boards-bg {
-    background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
+    background: linear-gradient(120deg, rgb(224, 195, 252) 0%, rgb(142, 197, 252) 100%);
+    // background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -29,11 +27,16 @@
 
 .btn-board {
     padding: 1em;
-    border: 1px solid #fff;
+    border: none;
     color: #fff;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(216, 100, 144, 0.897);
     border-radius: 1em;
     font-size: 1.5em;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(238, 119, 165);
+    }
 }
 
 .glass-screen {
@@ -45,7 +48,7 @@
     padding: 2em;
     margin: 0 auto;
     left: 5%;
-    top: 2.5%;
+    top: 90px;
     height: 100%;
     width: 90%;
     position: fixed;

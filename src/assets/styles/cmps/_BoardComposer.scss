@@ -8,7 +8,7 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 100vw;
+    // width: 100vw;
     z-index: 1;
     background-color: rgba(7, 7, 7, 0.335);
 
@@ -31,10 +31,16 @@
 
     button {
         border-radius: 0.5em;
-        background-color: transparent;
-        border: 1px solid $clr2;
+        background-color: #fff;
+        border: none;
         padding: 1em;
         margin: 0.5em;
+        transition: color 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.685);
+        }
     }
 
     textarea.title {
@@ -75,9 +81,14 @@
             border-radius: 5px;
             margin-left: 21px;
             width: 40px;
-            background-color: #eef0f1;
+            // background-color: #eef0f1;
             padding: 2px;
             cursor: pointer;
+            transition: color 0.2s;
+
+            &:hover {
+                color: rgba(0, 0, 0, 0.609);
+            }
         }
     }
 }
@@ -87,7 +98,7 @@
     // grid-template-columns: repeat(4, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
 
-    background-color: rgba(255, 255, 255, 0.568);
+    // background-color: rgba(255, 255, 255, 0.568);
 }
 
 .member-preview {
@@ -98,7 +109,7 @@
 .bg-preview {
     height: 5em;
     width: 5em;
-    border-radius: 3em;
+    border-radius: 5px;
     margin: 1em;
     cursor: pointer;
     &:hover {

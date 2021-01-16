@@ -243,6 +243,12 @@
                   "username": "FartsPrince",
                   "fullname": "Yoni Segev",
                   "imgUrl": "http://some-img"
+                },
+                {
+                  "_id": "u101",
+                  "username": "YungiBabush",
+                  "fullname": "Nofar Yunger",
+                  "imgUrl": "https://www.google.com"
                 }
               ]
             }
@@ -520,6 +526,77 @@
         }
       ],
       "_id": "pKTwy8P"
+    },
+    {
+      "title": "board",
+      "members": [],
+      "style": {
+        "bg": "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)"
+      },
+      "description": "description",
+      "createdAt": 1610807682599,
+      "lists": [
+        {
+          "id": "1VVlI",
+          "title": "To Do",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "0YgE9",
+              "createdAt": 1610807682599,
+              "title": "how easy to create tasks!"
+            },
+            {
+              "id": "IxNCo",
+              "createdAt": 1610807682599,
+              "title": "invite your team!"
+            }
+          ]
+        },
+        {
+          "id": "YWjpI",
+          "title": "Doing",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "R6PP9",
+              "createdAt": 1610807682599,
+              "title": "make dinner"
+            },
+            {
+              "id": "zMvEc",
+              "createdAt": 1610807682599,
+              "title": "buy groceries",
+              "todos": [
+                {
+                  "title": "Milk",
+                  "isDone": false,
+                  "id": "3Pn8I"
+                },
+                {
+                  "title": "Bread",
+                  "isDone": false,
+                  "id": "cWAYZ"
+                },
+                {
+                  "title": "Chocolate",
+                  "isDone": false,
+                  "id": "qnvvy"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "_id": "ul9HrFs"
     }
   ],
   "user": [
