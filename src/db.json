@@ -81,7 +81,7 @@
             {
               "id": "c104",
               "title": "Help me",
-              "description": "description",
+              "description": "description check!",
               "comments": [
                 {
                   "id": "ZdPnm",
@@ -134,11 +134,6 @@
                 {
                   "id": "104",
                   "color": "#eb5a46",
-                  "title": ""
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
                   "title": ""
                 }
               ],
