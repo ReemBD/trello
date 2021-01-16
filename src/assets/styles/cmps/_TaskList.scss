@@ -2,14 +2,12 @@
     // background-color: #fff;
     margin-inline-end: 40px;
     border-radius: 10px;
-    width: 220px;
+    width: 230px;
     .list-title {
         position: relative;
-        margin-bottom: 25px;
-        color: #fff;
-        padding: 8px 0 8px 16px;
-        border-radius: 7px;
-     
+        @include list-title;
+        width: 230px;
+        justify-content: space-between;
         input {
             max-width: 170px;
             background-color: transparent;
@@ -19,18 +17,19 @@
             color: #fff;
             padding: 4px;
             border-radius: 5px;
-            
         }
 
-        .toggle-form-icon {
-            transition: transform .11s;
-              right: 10px;
-            font-size: 1.3em;
+        .toggle-actions-icon {
+            transition: transform 0.11s;
             position: absolute;
-            top: 9px;
+            right: 10px;
+            top: -12px;
+            width: 25px;
+            border-radius: 3px;
+            margin-inline-end: 4px;
             cursor: pointer;
-            &.close {
-                transform: rotate(45deg);
+            &:hover{
+                background-color: rgba(61, 61, 61, 0.411);
             }
         }
     }
@@ -42,7 +41,7 @@
         cursor: pointer;
         padding: 15px;
         width: 100%;
-        input[name='title'] {
+        input[name="title"] {
             padding-bottom: 10px;
             border-bottom: 1px solid $border-bottom-clr;
         }
@@ -64,4 +63,3 @@
     .open-composer-btn {
     }
 }
-

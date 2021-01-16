@@ -3,11 +3,12 @@
 .composer-screen {
     transition: opacity 0.5s;
     opacity: 1;
-    position: fixed;
+    position: absolute;
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
+    width: 100vw;
     z-index: 1;
     background-color: rgba(7, 7, 7, 0.335);
 
@@ -51,7 +52,7 @@
         background-color: rgba(255, 255, 255, 0.438);
         border: none;
         resize: none;
-        width: 100%;
+        width: 80%;
         overflow: break-row;
         outline: none;
         font-family: Segoe UI;
@@ -60,10 +61,32 @@
             font-family: Segoe UI;
         }
     }
+
+    .dec {
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        textarea {
+            width: -webkit-fill-available;
+            border-radius: 10px;
+        }
+        .addIcon {
+            height: 40px;
+            border-radius: 5px;
+            margin-left: 21px;
+            width: 40px;
+            background-color: #eef0f1;
+            padding: 2px;
+            cursor: pointer;
+        }
+    }
 }
 .bg-options {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    border-radius: 12px;
+    // grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
+
     background-color: rgba(255, 255, 255, 0.568);
 }
 
@@ -86,8 +109,52 @@
     }
 }
 
-.demo-board {
+.members-popup {
+    height: 300px;
+    overflow-y: auto;
+    width: fit-content;
+    position: absolute;
+    z-index: 1;
+    background-color: #fdfdfd;
+    transition: all 0.5s;
+    box-shadow: -1px 3px 7px 3px #58585882;
+
+    &.transparent {
+        box-shadow: none;
+        height: 0;
+    }
+    li {
+        border-top: 1px solid #ebe8e8b8;
+        transition: all 0.3s;
+        justify-content: space-between;
+        &:last-child {
+            border-bottom: 1px solid #ebe8e8b8;
+        }
+        &:hover {
+            background-color: #ebe8e8b8;
+        }
+        .icon {
+            transition: transform 0.3s;
+            cursor: pointer;
+            .remove {
+                transform: rotate(45);
+            }
+        }
+    }
+    input {
+        background-color: transparent;
+        font-weight: 100;
+        font-size: 1em;
+        outline: none;
+        border: none;
+        color: #5f5e5e;
+    }
+}
+
+.board-card.demo-board {
     display: inline-flex;
+    margin: 1em;
+    margin-bottom: 2em;
 }
 
 .AvatarPic {

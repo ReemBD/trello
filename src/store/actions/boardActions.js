@@ -13,6 +13,17 @@ export function setBoard(boardId) {
     }
 }
 
+export function setPopoverStatus(isPopover) {
+    return async dispatch => {
+        try {
+            console.log('ispopvoer: ', isPopover);
+            dispatch({ type: 'SET_POPOVER_STATUS', isPopover })
+        } catch (err) {
+            console.log('Could not set popover status, ', err);
+        }
+    }
+}
+
 export function updateBoard(board) {
     return async dispatch => {
         try {

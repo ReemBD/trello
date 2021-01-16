@@ -15,10 +15,10 @@
 
 .bg-overlay {
     background-color: #e5eaf6c2;
-    width: 1300px;
-    margin: 0 auto;
-    // background: rgba(142, 142, 142, 0);
-    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    min-width: 1300px;
+    min-height: 100vh;
+    overflow-x: scroll;
+    margin: 0 3em;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 10px;

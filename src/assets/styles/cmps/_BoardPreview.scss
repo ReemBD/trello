@@ -2,6 +2,8 @@
 .board-box {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+    width: -webkit-fill-available;
+    justify-content: center;
 }
 
 .board-card {
@@ -9,6 +11,7 @@
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
+
     border-radius: 10px;
     width: 300px;
     height: 150px;

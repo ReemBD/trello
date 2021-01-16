@@ -20,7 +20,11 @@
       "lists": [
         {
           "id": "g101",
+<<<<<<< HEAD
           "title": "saasda",
+=======
+          "title": "To Dם",
+>>>>>>> 408d16f15ccf0341dc6afef8ec0c53d085086722
           "tasks": [
             {
               "title": "Finish full CRUDL",

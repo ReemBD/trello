@@ -56,6 +56,23 @@
         }
     }
 }
+
+//lists 
+
+@mixin list-title {
+    margin-bottom: 25px;
+    color: #fff;
+    padding: 8px 0 8px 16px;
+    border-radius: 7px;
+}
+
+@mixin transparent-input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+}
 //Popovers
 @mixin popover-main {
     color: &clr2;
@@ -84,13 +101,12 @@
         right: 0;
         z-index: 2;
         color: black;
-        font-size: 3em;
+        font-size: 38px;
         cursor: pointer;
     }
 }
 @mixin popover-section {
     margin-top: 12px;
-
 }
 
 @mixin popover-section-header {
