@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
 import { TaskDetailsInfo } from './TaskDetailsInfo'
+import { TaskDetailsChecklist } from './TaskDetailsChecklist'
+import { cloneDeep } from 'lodash'
 import { connect } from 'react-redux'
 import { updateBoard, toggleTask, toggleOverlay } from '../store/actions/boardActions'
 import { withRouter, Link } from 'react-router-dom'
@@ -30,7 +32,6 @@ export class _TaskDetails extends Component {
     }
 
     componentDidUpdate() {
-        console.log('Parent did update')
         const { listId, taskId } = this.props.match.params
         const details = this.getDetails()
         if (details) {
@@ -56,17 +57,13 @@ export class _TaskDetails extends Component {
         }
     }
 
-    handleInput = ({ target }) => {
+    handleTitle = ({ target }) => {
         const field = target.name
         const value = target.value
-        this.setState(prevState => {
-            return {
-                task: {
-                    ...prevState.task,
-                    [field]: value
-                }
-            }
-        })
+        console.log('value', value)
+        const copyTask = cloneDeep(this.state.task)
+        copyTask.title = value
+        this.setState({ task: copyTask })
     }
 
     onEnterPress = ev => {
@@ -106,8 +103,7 @@ export class _TaskDetails extends Component {
 
     render() {
         const { isDetailsOpen } = this.state
-        const { board, list, task } = this.getDetails()
-        console.log('task:', task)
+        const { board, list, task } = this.state
 
         if (!task) return <div>Loading details...</div>
         return (
@@ -121,9 +117,9 @@ export class _TaskDetails extends Component {
                                     <form>
                                         <DvrOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
                                         <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea" style={{ fontSize: '24px' }}
-                                            value={task.title}
                                             name="title"
-                                            onChange={this.handleInput}
+                                            onChange={this.handleTitle}
+                                            value={task.title}
                                             spellCheck="false"
                                         />
                                     </form>
@@ -131,6 +127,9 @@ export class _TaskDetails extends Component {
                                 </div>
                                 <div className="details-info">
                                     <TaskDetailsInfo board={board} list={list} task={task} />
+                                </div>
+                                <div className="details-checklist">
+                                    <TaskDetailsChecklist board={board} list={list} task={task} />
                                 </div>
                             </div>
                             <div className="details-buttons">

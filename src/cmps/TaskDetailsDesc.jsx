@@ -35,7 +35,11 @@ export class _TaskDetailsDesc extends Component {
         this.setState({ isTxtAreaOpen: boolean })
     }
 
-    saveDescription = () => {
+    closeInput = () => {
+        this.setState({ currTask: this.props.task })
+    }
+
+    saveDescription = (ev) => {
         const { board, currListIdx, currTaskIdx } = this.props
         const { currTask } = this.state
         const boardCopy = cloneDeep(board)
@@ -57,9 +61,9 @@ export class _TaskDetailsDesc extends Component {
                             name="description"
                             spellCheck="false"
                             onChange={this.handleInput}
-                            rows="5"
+                            rows="3"
                             onFocus={() => this.toggleControls(true)}
-                            onBlur={() => this.toggleControls(false)}
+                            onBlur={() => this.saveDescription()}
                         />
                         : <textarea className="task-textarea" style={{ fontSize: '16px', fontWeight: '400px', height: 'auto', backgroundColor: 'rgba(9,30,66,.04)' }}
                             value={currTask.description}
@@ -69,12 +73,12 @@ export class _TaskDetailsDesc extends Component {
                             onChange={this.handleInput}
                             rows="3"
                             onFocus={() => this.toggleControls(true)}
-                            onBlur={() => this.toggleControls(false)}
+                            onBlur={() => this.saveDescription()}
                         />
                     }
                     <div className={`task-desc-buttons flex align-center ${!isTxtAreaOpen && "hidden"}`}>
                         <button onClick={this.saveDescription} className="primary-btn">Save</button>
-                        <CloseIcon onClick={() => this.toggleControls(false)} />
+                        <CloseIcon onClick={() => this.closeInput()} />
                     </div>
                 </div>
             </div>
