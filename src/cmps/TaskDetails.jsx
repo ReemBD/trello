@@ -30,6 +30,7 @@ export class _TaskDetails extends Component {
     }
 
     componentDidUpdate() {
+        console.log('Parent did update')
         const { listId, taskId } = this.props.match.params
         const details = this.getDetails()
         if (details) {
@@ -48,11 +49,9 @@ export class _TaskDetails extends Component {
     getDetails = () => {
         const { listId, taskId } = this.props.match.params
         if (listId && taskId) {
-            const { board } = this.props
-            const listIdx = boardService.getListIdxById(board, listId)
-            const list = board.lists[listIdx]
-            const taskIdx = boardService.getTaskIdxById(list, taskId)
-            const task = list.tasks[taskIdx]
+            const { board, currListIdx, currTaskIdx } = { ...this.props }
+            const list = board.lists[currListIdx]
+            const task = list.tasks[currTaskIdx]
             return { board, list, task }
         }
     }
@@ -106,7 +105,10 @@ export class _TaskDetails extends Component {
 
 
     render() {
-        const { isDetailsOpen, board, list, task } = this.state
+        const { isDetailsOpen } = this.state
+        const { board, list, task } = this.getDetails()
+        console.log('task:', task)
+
         if (!task) return <div>Loading details...</div>
         return (
             <section className="task-details">
@@ -156,6 +158,7 @@ const mapStateToProps = state => {
         isTaskOpen: state.boardReducer.isTaskOpen,
         board: state.boardReducer.currBoard,
         currListIdx: state.boardReducer.currListIdx,
+        currTaskIdx: state.boardReducer.currTaskIdx,
         isOverlayOpen: state.boardReducer.isOverlayOpen
     }
 }

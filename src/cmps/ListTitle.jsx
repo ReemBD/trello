@@ -12,7 +12,8 @@ export class _ListTitle extends Component {
     elListTitleRef = React.createRef()
 
     componentDidMount() {
-
+        const {title} = this.props
+        this.setState({title})
     }
 
     updateBoard = async (board) => {
@@ -46,12 +47,11 @@ export class _ListTitle extends Component {
     }
 
     render() {
-        const { list, isComposerOpen, onToggleComposer } = this.props
-        const ToggleFormBtn = <i className={`fas fa-plus ${isComposerOpen && 'close'}`} onClick={onToggleComposer}></i>
+        const { list,isComposerOpen, onToggleComposer } = this.props
         if (!list) return <h1>Loading...</h1>
         return (
-            <form onSubmit={this.onPressEnter} className="list-title flex align-center" style={{ backgroundColor: `${list.style.title.bgColor}` }}><input
-                {...this.listTitleHandlers} ref={this.elListTitleRef} value={list.title}
+            <form onSubmit={this.onPressEnter} autoComplete="off" className="list-title flex align-center" style={{ backgroundColor: `${list.style.title.bgColor}` }}><input
+                {...this.listTitleHandlers} placeholder="Enter list title" ref={this.elListTitleRef} value={this.state.title}
                 name="title" />{<ToggleFormIcon onClick={onToggleComposer} className={`toggle-form-icon ${isComposerOpen && 'close'}`} />}</form>
         )
     }

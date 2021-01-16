@@ -51,12 +51,12 @@ export function toggleOverlay() {
     }
 }
 
-export function setCurrList(listIdx) {
+export function setCurrListAndTaskIdx(listIdx, taskIdx) {
     return async dispatch => {
         try {
             const action = {
-                type: 'SET_CURR_LIST',
-                listIdx
+                type: 'SET_CURR_LIST_AND_TASK',
+                listIdx, taskIdx
             }
             dispatch(action)
         }

@@ -11,7 +11,8 @@ export const boardService = {
     getListIdxById,
     getTaskIdxById,
     getLabelIdxById,
-    getListAndTaskIdxById
+    getListAndTaskIdxById,
+    getEmptyList
 }
 
 const endpoint = 'board'
@@ -157,4 +158,15 @@ function getLabelById(task, id) {
 function getLabelIdxById(task, labelId) {
     const labelIdx = task.labels.findIndex(label => label.id === labelId)
     return labelIdx
+}
+
+function getEmptyList() {
+    return {
+        id: 'k23eps34fc',
+        title: '',
+        tasks: [],
+        style: {
+            title: {bgColor: '#3cc2e0'}
+        }
+    }
 }

@@ -5,10 +5,16 @@
     background-color: #fff;
     padding: 4px 12px 15px 15px;
     width: 100%;
+    &:hover{
+        background-color: #f3f3f3;
+    }
     .labels-container{
         margin-bottom: 10px;
+        flex-wrap: wrap;
+        cursor: pointer;
         .task-label {
-            width: 40px;
+            min-width: 40px;
+            margin-bottom: 5px;
             height: 8px;
             border-radius: 5px;
             margin-inline-end: 2.5px;
@@ -20,14 +26,16 @@
         .task-title{
             font-weight: 600;
             // margin-bottom: 12px;
+
             line-height: 1.4;
             height: 26px;
         }
        
         
         .edit-icon {
-            font-size: 1.5em;
-            padding: 3px;
+            font-size: 1.8em;
+            padding: 5px;
+            margin-top: 2px;
             &:hover{
                 background-color: rgb(206, 209, 218);
             }

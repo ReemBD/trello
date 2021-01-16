@@ -60,7 +60,6 @@ export class _BoardComposer extends Component {
         const members = this.state.newBoard.members
         members.unshift(user)
         users = users.filter(currUser => { return currUser._id !== user._id })
-
         this.setState({ users, newBoard: { ...this.state.newBoard, members } })
     }
 

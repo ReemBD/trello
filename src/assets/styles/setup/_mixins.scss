@@ -29,30 +29,79 @@
     position: relative;
     overflow: hidden;
     &::before {
-      display: block;
-      content: "";
-      width: 100%;
-      padding-top: ($height / $width) * 100%;
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
     }
     > * {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-  
+
     > img {
-      height: 100%;
-      object-fit: cover;
+        height: 100%;
+        object-fit: cover;
     }
-  }
-  
-  // Mixin for removing hover efects on iphone screen
-  @mixin hover-supported {    
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
     @media not all and (pointer: coarse) {
         &:hover {
             @content;
         }
     }
-  }
+}
+//Popovers
+@mixin popover-main {
+    color: &clr2;
+    width: 354px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding-bottom: 10px;
+    cursor: default;
+}
+
+@mixin popover-header {
+    &-title {
+        flex-grow: 1;
+        border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 1.2em;
+    }
+
+    &-close-btn {
+        color: #6b778c;
+        padding: 10px 12px 10px 8px;
+        position: absolute;
+        top: 2px;
+        right: 0;
+        z-index: 2;
+        color: black;
+        font-size: 3em;
+        cursor: pointer;
+    }
+}
+@mixin popover-section {
+    margin-top: 12px;
+
+}
+
+@mixin popover-section-header {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    color: $clr2;
+}
+
+@mixin popover-section-list {
+    padding-inline-end: 8px;
+            padding-inline-start: 8px;
+}

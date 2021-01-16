@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { toggleTask, setCurrList, toggleOverlay } from '../store/actions/boardActions'
+import { toggleTask, setCurrListAndTaskIdx, toggleOverlay } from '../store/actions/boardActions'
 import { TaskDetails } from './TaskDetails'
 import { connect } from 'react-redux'
 import { boardService } from '../services/boardService'
@@ -23,8 +23,8 @@ export class _TaskPreview extends Component {
     onOpenDetails = async () => {
         const { task } = this.props
         const { list, board } = this.props
-        const listIdx = boardService.getListIdxById(board, list.id)
-        await this.props.setCurrList(listIdx)
+        const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+        await this.props.setCurrListAndTaskIdx(listIdx, taskIdx)
         await this.props.toggleOverlay()
         await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${list.id}/${task.id}`)
@@ -68,7 +68,7 @@ export class _TaskPreview extends Component {
 
 const mapDispatchToProps = {
     toggleTask,
-    setCurrList,
+    setCurrListAndTaskIdx,
     toggleOverlay
 }
 
