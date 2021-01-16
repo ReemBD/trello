@@ -2,7 +2,7 @@
     // background-color: #fff;
     margin-inline-end: 40px;
     border-radius: 10px;
-    width: 220px;
+    min-width: 220px;
     .list-title {
         position: relative;
         margin-bottom: 25px;
@@ -63,5 +63,6 @@
     }
     .open-composer-btn {
     }
+  
 }
 

@@ -12,7 +12,11 @@ export function Board({ board }) {
             <ul className="lists-group clear-list flex">
 
                 {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList list={list} title={list.title} /></li>)}
-                <li className="task-list-container flex column"><TaskList list={boardService.getEmptyList()} title={''}/></li>
+                <li className="add-list task-list-container flex column">
+                    <form  className="add-list-form list-title">
+                        <input type="text" className="add-list-title" placeholder="Add New List"/>
+                    </form>
+                </li>
             </ul>
         </div>
     )

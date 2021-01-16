@@ -6,5 +6,19 @@
         line-height: 1.2;
     }
     .lists-group {
+        .add-list {
+            // padding: 8px 0 8px 16px;
+            .list-title {
+                background-color: rgba(140, 125, 125,.24);
+                input {
+                    color: $clr2;
+                    &::placeholder {
+                        // color: #fff;
+                        color: $clr2;
+
+                    }
+                }
+            }
+        }
     }
 }
