@@ -14,13 +14,26 @@
         {
           "_id": "u101",
           "fullname": "Nofar Yunger",
+          "username": "YungiBabush",
           "imgUrl": "https://www.google.com"
+        },
+        {
+          "_id": "u102",
+          "fullname": "Reem Ben David",
+          "username": "FartsKing",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u103",
+          "fullname": "Yoni Segev",
+          "username": "FartsPrince",
+          "imgUrl": "http://some-img"
         }
       ],
       "lists": [
         {
           "id": "g101",
-          "title": "saasda",
+          "title": "To Do",
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -29,28 +42,8 @@
               "id": "b89HN",
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": ""
-                },
-                {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": ""
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
                   "title": ""
                 }
               ]
@@ -108,11 +101,85 @@
                 }
               ],
               "members": [
+                [
+                  [
+                    [
+                      [
+                        [
+                          [
+                            [
+                              [
+                                [
+                                  [
+                                    {
+                                      "_id": "u101",
+                                      "username": "Tal",
+                                      "fullname": "Tal Tarablus",
+                                      "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                    }
+                                  ],
+                                  {
+                                    "_id": "u101",
+                                    "username": "YungiBabush",
+                                    "fullname": "Nofar Yunger",
+                                    "imgUrl": "https://www.google.com"
+                                  }
+                                ],
+                                {
+                                  "_id": "u102",
+                                  "username": "FartsKing",
+                                  "fullname": "Reem Ben David",
+                                  "imgUrl": "http://some-img"
+                                }
+                              ],
+                              {
+                                "_id": "u101",
+                                "username": "YungiBabush",
+                                "fullname": "Nofar Yunger",
+                                "imgUrl": "https://www.google.com"
+                              }
+                            ],
+                            {
+                              "_id": "u102",
+                              "username": "FartsKing",
+                              "fullname": "Reem Ben David",
+                              "imgUrl": "http://some-img"
+                            }
+                          ],
+                          {
+                            "_id": "u103",
+                            "username": "FartsPrince",
+                            "fullname": "Yoni Segev",
+                            "imgUrl": "http://some-img"
+                          }
+                        ],
+                        {
+                          "_id": "u102",
+                          "username": "FartsKing",
+                          "fullname": "Reem Ben David",
+                          "imgUrl": "http://some-img"
+                        }
+                      ],
+                      {
+                        "_id": "u101",
+                        "username": "YungiBabush",
+                        "fullname": "Nofar Yunger",
+                        "imgUrl": "https://www.google.com"
+                      }
+                    ]
+                  ]
+                ],
                 {
                   "_id": "u101",
-                  "username": "Tal",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                  "username": "YungiBabush",
+                  "fullname": "Nofar Yunger",
+                  "imgUrl": "https://www.google.com"
+                },
+                {
+                  "_id": "u102",
+                  "username": "FartsKing",
+                  "fullname": "Reem Ben David",
+                  "imgUrl": "http://some-img"
                 }
               ],
               "labels": [
@@ -130,11 +197,14 @@
                   "id": "103",
                   "color": "#f99f1b",
                   "title": ""
+<<<<<<< HEAD
                 },
                 {
                   "id": "104",
                   "color": "#eb5a46",
                   "title": ""
+=======
+>>>>>>> 41a1ee6c4a9543b04f091006522e559e53beef92
                 }
               ],
               "createdAt": 1590999730348,
@@ -151,7 +221,22 @@
               "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
-              "id": "bGJKR"
+              "id": "bGJKR",
+              "labels": [
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                }
+              ],
+              "members": [
+                {
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "http://some-img"
+                }
+              ]
             }
           ],
           "style": {
@@ -170,46 +255,19 @@
               "createdAt": 1590999817436,
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": false
-                },
-                {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": false
+                  "title": ""
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 }
               ]
             }
@@ -300,46 +358,24 @@
               ],
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
                   "id": "104",
                   "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 }
               ],
               "createdAt": 1590999730348,

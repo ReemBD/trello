@@ -33,6 +33,7 @@ export class _TaskDetailsInfo extends Component {
         console.log(' length', this.props.task.labels?.length)
         // console.log('prevprops', prevProps.task.labels)
         if (prevProps.task.labels?.length !== this.props.task.labels?.length) {
+            console.log('inside cpu');
             this.markExistingLabels()
         }
     }
@@ -41,12 +42,9 @@ export class _TaskDetailsInfo extends Component {
         const { task } = this.props
         if (!task.labels?.length) return;
         let { labels } = { ...this.state }
-        const labelsIdsMap = labels.map(label => label.id)
         task.labels.forEach(taskLabel => {
-            if (labelsIdsMap.includes(taskLabel.id)) {
                 const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
                 labels[labelIdx].isPicked = true
-            }
         })
         this.setState({ labels })
     }

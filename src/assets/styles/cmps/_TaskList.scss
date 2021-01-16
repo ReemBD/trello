@@ -5,18 +5,21 @@
     width: 220px;
     .list-title {
         position: relative;
-        background-color: #e6eaf8;
         margin-bottom: 25px;
         color: #fff;
-        font-size: 1em;
         padding: 8px 0 8px 16px;
         border-radius: 7px;
+     
         input {
+            max-width: 170px;
             background-color: transparent;
             font-weight: 600;
             outline: none;
             border: none;
             color: #fff;
+            padding: 4px;
+            border-radius: 5px;
+            
         }
 
         .toggle-form-icon {
@@ -24,6 +27,7 @@
               right: 10px;
             font-size: 1.3em;
             position: absolute;
+            top: 9px;
             cursor: pointer;
             &.close {
                 transform: rotate(45deg);
@@ -34,26 +38,23 @@
         font-size: 0.8em;
         margin-bottom: 25px;
         border-radius: 6px;
-        background-color: #e6eaf8;
+        background-color: #f3f3f3;
         cursor: pointer;
         padding: 15px;
         width: 100%;
-
+        input[name='title'] {
+            padding-bottom: 10px;
+            border-bottom: 1px solid $border-bottom-clr;
+        }
         input,
         textarea {
             background-color: transparent;
             border: none;
-            // border-bottom: 1px solid black;
             resize: none;
-            overflow: break-row;
             outline: none;
-            // overflow: auto;
-            font-family: Segoe UI;
+            font-family: inherit;
             -moz-appearance: none;
-            // min-height: 40px;
-            &::placeholder {
-                font-family: Segoe UI;
-            }
+            font-size: 1.2em;
         }
         textarea {
             padding-bottom: 15px;
@@ -63,3 +64,4 @@
     .open-composer-btn {
     }
 }
+
