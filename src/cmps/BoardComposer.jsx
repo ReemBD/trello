@@ -5,10 +5,9 @@ import { userService } from '../services/userService.js'
 import { withRouter } from 'react-router-dom'
 import { utilService } from '../services/utilService.js'
 import { styleService } from '../services/styleService.js'
+import ClearIcon from '@material-ui/icons/Clear';
+import AddIcon from '@material-ui/icons/Add';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 
 export class _BoardComposer extends Component {
 
@@ -103,33 +102,40 @@ export class _BoardComposer extends Component {
 
     filterMembers = ({ target }) => {
         const value = target.value
-        this.setState({ filterMembersBy: value })
+        this.setState({ filterMembersBy: value }, () => this.getUsers())
+        this.setState({ isMembersPreviewOpen: true })
+
+
     }
 
-    // getFilteredUsers = () => {
-    //     var { users, filterMembersBy } = this.state
-    //     return users.filter(user=>return user.fullname.includs )
 
-    // }
-
-
-    handleClick = (event) => {
-        this.setState({ anchorEl: event.currentTarget })
-    };
-
-    handleClose = () => {
-        this.setState({ anchorEl: null })
+    getUsers = async () => {
+        const { filterMembersBy } = this.state
+        const usersToShow = await userService.filterUsersBy(filterMembersBy)
+        this.setState({ users: usersToShow })
     }
 
+
+    toggleMemberPreview = () => {
+        const memberPreview = this.state.isMembersPreviewOpen
+        this.setState({ isMembersPreviewOpen: !memberPreview })
+    }
+    closeMembersPreview = () => {
+        console.log('blabla');
+        this.setState({ isMembersPreviewOpen: false })
+        console.log('isMembersPreviewOpen', this.state.isMembersPreviewOpen);
+    }
 
 
     render() {
-        const { users, bgs, newBoard } = this.state
+        const { users, bgs, newBoard, isMembersPreviewOpen } = this.state
+        console.log('usersss', users);
         console.log('newBoard:', newBoard);
+
         return (
             <Fragment>
                 <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
-                    <div className="flex justify-content">
+                    <div className="flex justify-center">
 
                         <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board title " name="title" autoComplete="off" value={newBoard.title} />
@@ -137,36 +143,29 @@ export class _BoardComposer extends Component {
 
 
                     </div>
-                    <textarea
-                        placeholder="Description"
-                        value={newBoard.description}
-                        name="description"
-                        onChange={this.handleInput}
-                        spellCheck="false"
-                    />
-                    <div>
-                        <Button style={{ borderRadius: '100px' }} aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-                            <GroupAddIcon />  </Button>
-                        <Menu
-                            id="simple-menu"
-                            anchorEl={this.state.anchorEl}
-                            keepMounted
-                            open={Boolean(this.state.anchorEl)}
-                            onClose={this.handleClose} >
-                            {/* < MenuItem onClick={() => this.addMember(user)}> */}
 
-                            <MenuItem> <input type="text" placeholder="Search Members" name="filterMembersBy" value={this.state.filterMembers} onChange={this.filterMembers} /> </MenuItem>
-                            {users.map(user =>
-                                < MenuItem onClick={() => this.addMember(user)}><img key={user._id} className="AvatarPic" title={user.fullname} src={user.imgUrl} /><h4>{user.fullname}</h4> </MenuItem>
-                            )
-                            }
+                    <div className="flex row dec">
+                        <textarea
+                            placeholder="Description"
+                            value={newBoard.description}
+                            name="description"
+                            onChange={this.handleInput}
+                            spellCheck="false"
+                        />
+                        <span>
+                            <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
+                            <div className={`members-popup ${!isMembersPreviewOpen && 'transparent'} `}>
+                                <input type="text" placeholder="Add Members" name="filterMembersBy" value={this.state.filterMembers} onChange={this.filterMembers} /><ClearIcon onClick={this.closeMembersPreview} />
+                                <ul className={`clear-list ${!isMembersPreviewOpen && 'transparent'}`}>
 
-                        </Menu>
-                        {newBoard.members.map(member => <img className="AvatarPic preview" src={member.imgUrl} onClick={() => this.removeMember(member)} title={member.fullname} />)} </div>
+                                    {users.map(user => <li className="flex row align-center">
+                                        <img key={user._id} className="AvatarPic" title={user.fullname} src={user.imgUrl} /><h4>{user.fullname}</h4><AddIcon className="icon" />
+                                    </li>)}
+                                </ul>
+                            </div>
 
-
-
-
+                        </span>
+                    </div>
 
 
                     <div className="bg-options">

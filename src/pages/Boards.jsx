@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService.js'
 import { BoardList } from '../cmps/BoardList'
 import { BoardComposer } from '../cmps/BoardComposer.jsx'
@@ -39,12 +39,15 @@ export class Boards extends Component {
         const { boards, isComposerOpen } = this.state
         if (!boards) return <h1>loading...</h1>
         return (
-            <main className="boards-bg">
-                <div className="glass-screen main-layout">
+            <Fragment>
+
+                <div className="glass-screen "></div>
+                <div className="boards-bg "></div>
+                <div className="main-layout flex column align-center">
 
                     <div className="boards-hero flex justify-center align-center">
 
-                        <h1>With Us You`ll Get Further And Faster. </h1>
+                        <h1>Get Started Now. </h1>
 
                         <button className="btn-board" onClick={this.onToggleCompose}>Create a new board</button>
                     </div>
@@ -55,12 +58,13 @@ export class Boards extends Component {
 
 
 
-                    <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
-                        <BoardComposer />
-
-                    </div>
                 </div>
-            </main>
+                <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
+                    <BoardComposer />
+
+                </div>
+
+            </Fragment>
         )
     }
 }

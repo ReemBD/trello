@@ -104,7 +104,24 @@
               "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
-              "id": "bGJKR"
+              "id": "bGJKR",
+              "labels": [
+                {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                }
+              ]
             }
           ],
           "style": {
@@ -123,46 +140,19 @@
               "createdAt": 1590999817436,
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "104",
                   "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 }
               ]
             }
@@ -182,11 +172,13 @@
               "title": "Do that",
               "createdAt": 1590999817436,
               "labels": [
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                }
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true
               ]
             },
             {
@@ -230,37 +222,44 @@
                 {
                   "id": "101",
                   "color": "#61bd4f",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "102",
                   "color": "#f2d602",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "104",
                   "color": "#eb5a46",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": ""
+                  "title": "",
+                  "isPicked": true
                 }
               ],
               "createdAt": 1590999730348,

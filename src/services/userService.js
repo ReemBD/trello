@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import { httpService } from './httpService'
 const endpoint = 'user'
 
@@ -5,7 +6,7 @@ export const userService = {
     getUsers,
     login,
     signup,
-
+    filterUsersBy
 
 }
 
@@ -37,9 +38,14 @@ async function signup(user) {
 
 
 async function filterUsersBy(value) {
-    const users = await getUsers()
-    const regex = new Regex
-    // return users.map
+    try {
 
-
+        var users = await httpService.get(endpoint)
+        const regex = new RegExp(value, 'i')
+        users = users.filter(user => regex.test(user.fullname) || regex.test(user.email))
+        console.log('filtered users:', users);
+        return users
+    } catch (err) {
+        console.log(err);
+    }
 }
