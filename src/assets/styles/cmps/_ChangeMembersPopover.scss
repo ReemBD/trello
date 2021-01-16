@@ -1,0 +1,35 @@
+.change-members-popover {
+  @include popover-main;
+    .popover-header {
+        height: 40px;
+        color: #212121;
+        position: relative;
+        margin-bottom: 8px;
+        text-align: center;
+        padding-inline-start: 11px;
+        padding-inline-end: 11px;
+
+        @include popover-header;
+    }
+    .popover-section {
+        @include popover-section;
+
+        &-header{
+            @include popover-section-header;
+        }
+        &-list {
+            @include popover-section-list;
+            cursor:pointer;
+            &-item {
+                color: $clr2;
+                margin-inline-start: 7px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                font-size: 1.2em;
+                &:hover{
+                    background-color: rgb(245, 246, 248);
+                }
+            }
+        }
+    }
+}

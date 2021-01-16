@@ -33,14 +33,14 @@ class _TaskList extends Component {
     }
 
     render() {
-        const { list } = this.props
+        const { list, title } = this.props
         const { tasks } = list
         const { isComposerOpen } = this.state
         return (
             <article className="task-list">
-                <ListTitle list={list} isComposerOpen={isComposerOpen} onToggleComposer={this.onToggleComposer} />
+                <ListTitle list={list} title={title} isComposerOpen={isComposerOpen} onToggleComposer={this.onToggleComposer} />
                 <TaskComposer list={list} isComposerOpen={isComposerOpen} titleRef={this.elTaskTitleRef} onToggleComposer={this.onToggleComposer} />
-                {tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />)}
+                {tasks?.length && tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />)}
             </article>
         )
     }

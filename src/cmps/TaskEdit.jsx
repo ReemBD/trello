@@ -5,6 +5,10 @@ import { boardService } from '../services/boardService'
 import { LabelsPopover } from './LabelsPopover'
 import { ChangeMembersPopover } from '../cmps/ChangeMembersPopover'
 import { QuickEditButton } from './QuickEditButton'
+import LabelIcon from '@material-ui/icons/Label';
+import ChangeMembersIcon from '@material-ui/icons/PeopleOutline';
+import RemoveIcon from '@material-ui/icons/DeleteOutline';
+import ChangeDueDateIcon from '@material-ui/icons/QueryBuilder';
 
 export class _TaskEdit extends Component {
 
@@ -12,11 +16,11 @@ export class _TaskEdit extends Component {
         board: null,
         currOpenPopover: '',
         popovers: [
-            { title: 'Edit Labels', Component: LabelsPopover },
-            { title: 'Change Members', Component: ChangeMembersPopover },
+            { title: 'Edit Labels', Component: LabelsPopover, Icon: LabelIcon },
+            { title: 'Change Members', Component: ChangeMembersPopover, Icon: ChangeMembersIcon },
             { title: 'Move' },
             { title: 'Copy' },
-            { title: 'Change Due Date' },
+            { title: 'Change Due Date', Icon: ChangeDueDateIcon },
         ]
     }
 
@@ -37,12 +41,13 @@ export class _TaskEdit extends Component {
         this.props.updateBoard(boardCopy)
     }
 
-    getQEBProps(task, list, title, Component, key = title, onSetCurrPopover = this.onSetCurrPopover, { currOpenPopover } = this.state) {
+    getQEBProps(task, list, title, Component, Icon, key = title, onSetCurrPopover = this.onSetCurrPopover, { currOpenPopover } = this.state) {
         return {
             task,
             list,
             title,
             Component,
+            Icon,
             key,
             onSetCurrPopover,
             currOpenPopover,
@@ -62,11 +67,11 @@ export class _TaskEdit extends Component {
         return (
             <div className="quick-task-editor-buttons">
                 {popovers.map(popover => {
-                    return <QuickEditButton {...this.getQEBProps(task, list, popover.title, popover.Component)} />
+                    return <QuickEditButton {...this.getQEBProps(task, list, popover.title, popover.Component, popover.Icon)} />
                 })}
                 <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
                     <span className="icon-sm icon-label light"></span>
-                    <span className="quick-task-editor-buttons-item-text">Remove</span>
+                    <span className="quick-task-editor-buttons-item-text flex align-center"><RemoveIcon className="quick-task-editor-buttons-item-icon"/>Remove</span>
                 </a>
             </div>
 

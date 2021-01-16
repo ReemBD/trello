@@ -35,8 +35,7 @@ class _TrelloApp extends Component {
                     {/* {this.props.isOverlayOpen && <div className="main-overlay"></div>} */}
 
                     <BoardHeader board={board} />
-                    <h1>{board.title}</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
+                   
                     <Board board={board} />
                     {this.props.match.params.listId && <TaskDetails />}
                 </div>

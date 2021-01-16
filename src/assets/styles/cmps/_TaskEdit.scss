@@ -22,6 +22,18 @@
             padding: 6px 12px 6px 8px;
             text-decoration: none;
             transition: transform 85ms ease-in;
+            &-text{
+                font-size: 1.2em;
+            }
+            &-icon {
+                width: .9em;
+                margin-right: 5px;
+                padding-top: 3px;
+            }
+            &:hover {
+                transform: translateX(5%);
+                background-color: #1d2021;
+            }
             &-text {
                 margin-left: 4px;
             }

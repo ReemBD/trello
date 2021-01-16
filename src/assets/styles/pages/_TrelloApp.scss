@@ -1,5 +1,7 @@
 .main-bg {
-    background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    // background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    background-image: linear-gradient(to top, #5ee7dece 0%, #b490cad8 100%);
+
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -12,11 +14,11 @@
 }
 
 .bg-overlay {
-    width: 1200px;
-    height: 97vh;
+    background-color: #e5eaf6c2;
+    width: 1300px;
     margin: 0 auto;
-    background: rgba(142, 142, 142, 0);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    // background: rgba(142, 142, 142, 0);
+    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 10px;
