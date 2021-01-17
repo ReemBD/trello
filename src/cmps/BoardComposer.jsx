@@ -8,6 +8,7 @@ import { styleService } from '../services/styleService.js'
 import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/Add';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import { BoardMemberComposer } from './BoardMembersComposer.jsx'
 
 export class _BoardComposer extends Component {
 
@@ -23,12 +24,15 @@ export class _BoardComposer extends Component {
         },
         users: [],
         bgs: [],
-        filterMembersBy: ''
+        filterMembersBy: '',
+        btnTxt: 'Create Board'
     }
 
-    componentDidMount() {
+
+    componentDidUpdate(prevProps, prevState) {
+        const { board } = this.props
+        if (prevProps.board === this.props.board) return
         if (this.props.board) {
-            const { board } = this.props
             this.setState({
                 newBoard: {
                     title: board.title,
@@ -36,8 +40,10 @@ export class _BoardComposer extends Component {
                         bg: board.style.bg
                     },
                     description: board.description,
-                    members: board.members
-                }
+                    members: board.members,
+                    _id: board._id
+                },
+                btnTxt: 'Update Board'
             })
         }
     }
@@ -51,7 +57,12 @@ export class _BoardComposer extends Component {
 
     onAddBoard = async (ev) => {
         ev.preventDefault()
-        const { newBoard } = this.state
+        var { newBoard } = this.state
+        if (newBoard._id) {
+            var newBoard = { ...this.props.board, ...newBoard }
+            console.log('saved board', newBoard);
+        }
+
         const savedBoard = await boardService.save(newBoard)//add a new board to data
         console.log(savedBoard);
         this.props.history.push(`/board/${savedBoard._id}`)//then gos to the board page
@@ -136,15 +147,37 @@ export class _BoardComposer extends Component {
         const memberPreview = this.state.isMembersPreviewOpen
         this.setState({ isMembersPreviewOpen: !memberPreview })
     }
+
+
     closeMembersPreview = () => {
-        console.log('blabla');
         this.setState({ isMembersPreviewOpen: false })
-        console.log('isMembersPreviewOpen', this.state.isMembersPreviewOpen);
+        // console.log('isMembersPreviewOpen', this.state.isMembersPreviewOpen);
+    }
+
+
+    isBoardMember = (id) => {
+        const { members } = this.state.newBoard
+        return members.some(member => member._id === id)
+    }
+
+    toggleMember = (user) => {
+        let { members } = { ...this.state.newBoard }
+        const isMember = this.isBoardMember(user._id)
+        if (isMember) {
+            console.log('before', members);
+            members = members.filter(member => member._id !== user._id)
+            console.log('after', members);
+        } else {
+            members.unshift(user)
+        }
+        const copyBoard = { ...this.state.newBoard }
+        copyBoard.members = members
+        this.setState({ newBoard: copyBoard })
     }
 
 
     render() {
-        const { users, bgs, newBoard, isMembersPreviewOpen } = this.state
+        const { users, bgs, newBoard, isMembersPreviewOpen, btnTxt } = this.state
         console.log('usersss', users);
         console.log('newBoard:', newBoard);
 
@@ -168,19 +201,12 @@ export class _BoardComposer extends Component {
                             onChange={this.handleInput}
                             spellCheck="false"
                         />
+
                         <span>
                             <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
-                            <div className={`members-popup ${!isMembersPreviewOpen && 'transparent'} `}>
-                                <input type="text" placeholder="Add Members" name="filterMembersBy" value={this.state.filterMembers} onChange={this.filterMembers} /><ClearIcon onClick={this.closeMembersPreview} />
-                                <ul className={`clear-list ${!isMembersPreviewOpen && 'transparent'}`}>
-
-                                    {users.map(user => <li className="flex row align-center">
-                                        <img key={user._id} className="AvatarPic" title={user.fullname} src={user.imgUrl} /><h4>{user.fullname}</h4><AddIcon className="icon" />
-                                    </li>)}
-                                </ul>
-                            </div>
-
+                            {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
                         </span>
+
                     </div>
 
 
@@ -190,7 +216,7 @@ export class _BoardComposer extends Component {
                         })}
 
                     </div>
-                    <button>Create Board</button>
+                    <button>{btnTxt}</button>
                 </form>
 
 

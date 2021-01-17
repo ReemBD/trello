@@ -13,8 +13,7 @@
 }
 
 .boards-bg {
-    background: linear-gradient(120deg, rgb(224, 195, 252) 0%, rgb(142, 197, 252) 100%);
-    // background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
+    background:#8ec5fc;
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -29,19 +28,21 @@
     padding: 1em;
     border: none;
     color: #fff;
-    background-color: rgba(216, 100, 144, 0.897);
+    background-color: rgb(100, 173, 216);
     border-radius: 1em;
     font-size: 1.5em;
     transition: all 0.3s;
     cursor: pointer;
     &:hover {
-        background-color: rgb(238, 119, 165);
+        background-color: rgb(119, 174, 238);
     }
 }
 
 .glass-screen {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    // background: rgba(255, 255, 255, 0.2);
+    background-color: #e5eaf6c2;
+
+    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
     border-radius: 10px;
