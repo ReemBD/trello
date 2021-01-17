@@ -198,7 +198,14 @@
         },
         {
           "title": "In Progress",
-          "tasks": [],
+          "tasks": [
+            {
+              "title": "asdfasd",
+              "description": "",
+              "createdAt": 1610913051755,
+              "id": "vaU9z"
+            }
+          ],
           "style": {
             "title": {
               "bgColor": "#56c991"
@@ -209,7 +216,14 @@
         },
         {
           "title": "Done",
-          "tasks": [],
+          "tasks": [
+            {
+              "title": "asdfasdf",
+              "description": "",
+              "createdAt": 1610913057205,
+              "id": "R2qU7"
+            }
+          ],
           "style": {
             "title": {
               "bgColor": "#3cc2e0"
