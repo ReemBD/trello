@@ -49,17 +49,13 @@ export class Boards extends Component {
                 <div className="boards-bg "></div>
                 <div className="main-layout flex column align-center">
 
-                    <div className="boards-hero flex justify-center align-center">
 
 
-                        <button className="btn-board" onClick={this.onToggleCompose}>Create a new board</button>
-                    </div>
+                    <p>Recently Seen Boards:</p>
 
+                    <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
 
-
-                    <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} />
-
-
+                    <p>Stared Boards:</p>
 
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>

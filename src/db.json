@@ -9,7 +9,9 @@
         "fullname": "Reem Ben David",
         "imgUrl": "http://some-img"
       },
-      "style": {},
+      "style": {
+        "bg": "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)"
+      },
       "members": [
         {
           "_id": "u101",
@@ -402,7 +404,7 @@
       "title": "Sprint 2",
       "members": [],
       "style": {
-        "bg": "#fff"
+        "bg": "linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)"
       },
       "description": "",
       "createdAt": 1610879253612,
