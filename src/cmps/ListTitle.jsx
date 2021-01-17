@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
+import { setCurrPopover } from '../store/actions/popoverActions'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { ListActions } from './ListActions'
 
@@ -47,8 +48,16 @@ export class _ListTitle extends Component {
         this.elListTitleRef.current.blur()
     }
 
+    onToggleListActions = (ev) => {
+        ev.stopPropagation()
+        const { setCurrPopover, currPopover } = this.props
+        currPopover === `LIST_ACTIONS${this.props.list.id}` ? setCurrPopover() : setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
+
+    }
+
     render() {
-        const { list, isComposerOpen, isListActionsOpen, onToggleComposer, onToggleListActions } = this.props
+        const { list, isComposerOpen } = this.props
+        const isCurrPopover = (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`)
         if (!list) return <h1>Loading...</h1>
         return (
             <form onSubmit={this.onPressEnter}
@@ -61,8 +70,8 @@ export class _ListTitle extends Component {
                     value={this.state.title}
                     name="title" />
                 <div className="list-actions-popover-wrapper">
-                    {<MoreHorizIcon onClick={onToggleListActions} className={`toggle-actions-icon ${isComposerOpen && 'close'}`} />}
-                    {isListActionsOpen && <ListActions {...this.props} />}
+                    {<MoreHorizIcon onClick={this.onToggleListActions} className={`toggle-actions-icon ${isComposerOpen && 'close'}`} />}
+                    {isCurrPopover && <ListActions {...this.props} />}
                 </div>
             </form>
         )
@@ -73,12 +82,14 @@ export class _ListTitle extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
+        currPopover: state.popoverReducer.currPopover
     }
 }
 
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
+    setCurrPopover
 }
 
 export const ListTitle = connect(mapStateToProps, mapDispatchToProps)(_ListTitle)

@@ -50,7 +50,7 @@ export class _TaskComposer extends Component {
             <form className={`task-composer ${!isComposerOpen && 'display-none'}`} onSubmit={this.onAddTask}>
                 <input value={task.title} type="text" ref={titleRef} name="title" onChange={this.handleChange} placeholder="Enter a title for this card... " autoComplete="off" id="" />
                 <textarea value={task.description} type="text" name="description" onChange={this.handleChange} placeholder="Enter description for this card... " autoComplete="off" id="" />
-                <button className="save-task-btn">Add</button>
+                <button className="save-task-btn primary-btn">Add</button>
             </form>
         )
     }

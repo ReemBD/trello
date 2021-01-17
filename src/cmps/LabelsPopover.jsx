@@ -78,7 +78,7 @@ export class _LabelsPopover extends Component {
                         <ul className="popover-section-list clear-list flex column">
                             <h3 className="popover-section-header">Labels</h3>
                             {labels.map(label => <div data-id={label.id} onClick={this.onToggleLabel} key={label.id} className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></div>)}
-                            <button className="save-labels-btn" onClick={this.onAddLabels}>Save</button>
+                            <button className="save-labels-btn primary-btn" onClick={this.onAddLabels}>Save</button>
                         </ul>
                     </section>
             </div>

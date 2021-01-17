@@ -69,14 +69,14 @@ export class _Board extends Component {
                 <h1 className="board-title">{board.title}</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
                 <ul className="lists-group clear-list flex">
-                    {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList list={list} title={list.title} /></li>)}
+                    {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList list={list} title={list.title} setCurrPopover={setCurrPopover} /></li>)}
                     <li className="add-list task-list-container flex column">
-                        <form {...this.addListHandlers} className={`add-list-form  flex column ${(isCurrPopover && 'LIST_ADD') && 'open'}`}>
+                        <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
                             <div className="input-wrapper align-center flex">
-                                <AddIcon />
+                                {!isCurrPopover && <AddIcon />}
                                 <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
                             </div>
-                            <button type="submit" className={`add-list-btn ${isCurrPopover && 'open'}`}>Add list</button>
+                            <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
                         </form>
                     </li>
                 </ul>
