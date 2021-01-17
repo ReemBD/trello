@@ -20,11 +20,7 @@
       "lists": [
         {
           "id": "g101",
-<<<<<<< HEAD
-          "title": "saasda",
-=======
           "title": "To Dם",
->>>>>>> 408d16f15ccf0341dc6afef8ec0c53d085086722
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -38,8 +34,6 @@
                   "title": ""
                 },
                 {
-<<<<<<< HEAD
-=======
                   "id": "102",
                   "color": "#f2d602",
                   "title": ""
@@ -50,7 +44,6 @@
                   "title": ""
                 },
                 {
->>>>>>> 5b4d20b8a119d0b26aab8962e9819603710c589f
                   "id": "105",
                   "color": "#c377e0",
                   "title": ""
@@ -179,42 +172,7 @@
               "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
-<<<<<<< HEAD
-              "id": "bGJKR",
-              "labels": [
-                {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": ""
-                }
-              ],
-              "members": [
-                {
-                  "_id": "u103",
-                  "username": "FartsPrince",
-                  "fullname": "Yoni Segev",
-                  "imgUrl": "http://some-img"
-                },
-                {
-                  "_id": "u101",
-                  "username": "YungiBabush",
-                  "fullname": "Nofar Yunger",
-                  "imgUrl": "https://www.google.com"
-                }
-              ]
-=======
               "id": "bGJKR"
->>>>>>> 5b4d20b8a119d0b26aab8962e9819603710c589f
             }
           ],
           "style": {
@@ -424,6 +382,16 @@
               "bgColor": "#56c991"
             }
           }
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#eb5a46"
+            }
+          },
+          "id": "edCxr"
         }
       ],
       "activities": [
@@ -515,7 +483,22 @@
         "bg": "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)"
       },
       "description": "",
-      "members": [],
+      "members": [
+        {
+          "_id": "u103",
+          "fullname": "Justin Timberlake",
+          "email": "bibi@ababmi.com",
+          "password": "password",
+          "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+        },
+        {
+          "_id": "u102",
+          "fullname": "bobi bo",
+          "email": "abi@ababmi.com",
+          "password": "111",
+          "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
+        }
+      ],
       "createdAt": 1610810379332,
       "lists": [
         {
