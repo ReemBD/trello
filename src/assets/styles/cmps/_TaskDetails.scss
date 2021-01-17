@@ -1,21 +1,14 @@
-.window-overlay {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.7);
-    top: 0;
-    right: 0;
-}
-
 .details-modal {
     width: 768px;
     margin: 48px auto 80px;
     border-radius: 2px;
     background-color: $task-bgc-clr;
     z-index: 20;
-            padding-top: rem(20px);
+    padding-top: rem(20px);
+    min-height: 93vh;
 
 
+    transition: height .3s;
     .main-details {
         flex-basis: 78%;
         margin-left: 40px;
@@ -115,6 +108,7 @@
 
         textarea {
             margin-bottom: 10px;
+            font-weight: 400;
         }
     }
 
@@ -238,6 +232,34 @@
             box-shadow: 0 1px 2px -1px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
             span {
                 font-size: 14px;
+            }
+        }
+        form {
+            flex-grow: 1;
+            .comment-box {
+
+                .comment-textarea {
+                    resize: none;
+                    font-family: inherit;
+                    font-weight: 300;
+                    height: 36px;
+                    border-radius: 3px;
+                    padding: 4px 8px;
+                    line-height: 24px;
+                    width: 100%;
+                    background-color: #fff;
+                    color: inherit;
+
+
+                }
+
+                .task-desc-buttons {
+                    button {
+                        padding: 3px 6px;
+                        font-size: 12px;
+                    }
+
+                }
             }
         }
     }

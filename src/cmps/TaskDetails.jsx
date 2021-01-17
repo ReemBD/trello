@@ -39,7 +39,10 @@ export class _TaskDetails extends Component {
 
             const { board, list, task } = details
             if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
-                this.setState({ isDetailsOpen: true, board, list, task }, () => this.getCurrTask(board._id, taskId))
+                this.setState({ isDetailsOpen: true, board, list, task }, async () => {
+                    this.getCurrTask(board._id, taskId)
+                    await this.props.toggleOverlay()
+                })
             }
             if (this.state.task.labels?.length !== details.task.labels?.length) {
                 this.setState({ task: details.task })
@@ -135,7 +138,7 @@ export class _TaskDetails extends Component {
                                     <TaskDetailsChecklist board={board} list={list} task={task} />
                                 </div>
                                 <div className="details-activity">
-                                    <TaskDetailsActivity board={board} list={list} task={task} />
+                                    <TaskDetailsActivity board={board} list={list} task={task} {...this.props} />
                                 </div>
                             </div>
                             <div className="details-buttons">

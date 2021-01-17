@@ -126,4 +126,11 @@
         border-radius: 2em;
         object-fit: cover;
     }
+
+    svg {
+        border-radius: 2em;
+        background-color: darken(#eee, 5%);
+        font-size: 26px;
+        padding: 2px;
+    }
 }

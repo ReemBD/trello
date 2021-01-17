@@ -71,13 +71,107 @@
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
                 }
+              ],
+              "comments": [
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "tBrrq",
+                  "createdAt": 1610921694333,
+                  "txt": "test"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "623Bk",
+                  "createdAt": 1610920113127,
+                  "txt": "asfadf"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "p8B0n",
+                  "createdAt": 1610919866680,
+                  "txt": "yo"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "IjCx0",
+                  "createdAt": 1610919858986,
+                  "txt": "adsasd"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "fZedU",
+                  "createdAt": 1610919613839,
+                  "txt": "adsasdasd"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "CWxOQ",
+                  "createdAt": 1610919603049,
+                  "txt": "adsasd"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "XMBMn",
+                  "createdAt": 1610919343680,
+                  "txt": "TEST"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "SkHrC",
+                  "createdAt": 1610919155607,
+                  "txt": "aqqweqewwqewqewqewqwe"
+                }
               ]
             },
             {
               "title": "Lorem ipsum",
               "description": "Decide how we want the application to look",
               "createdAt": 1610634356029,
-              "id": "UkYv0"
+              "id": "UkYv0",
+              "comments": [
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "szm3k",
+                  "createdAt": 1610920176859,
+                  "txt": "dafadfadf"
+                }
+              ]
             },
             {
               "title": "Implement D&D",
