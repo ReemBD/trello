@@ -36,7 +36,7 @@ export class _TaskDetailsDesc extends Component {
     }
 
     closeInput = () => {
-        this.setState({ currTask: this.props.task })
+        this.setState({ currTask: this.props.task }, () => this.toggleControls(false))
     }
 
     saveDescription = (ev) => {
@@ -45,6 +45,7 @@ export class _TaskDetailsDesc extends Component {
         const boardCopy = cloneDeep(board)
         boardCopy.lists[currListIdx].tasks[currTaskIdx] = currTask
         this.props.updateBoard(boardCopy)
+        this.toggleControls(false)
     }
 
     render() {
