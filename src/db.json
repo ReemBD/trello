@@ -33,11 +33,7 @@
       "lists": [
         {
           "id": "g101",
-<<<<<<< HEAD
           "title": "To Do",
-=======
-          "title": "To Dם",
->>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -46,24 +42,6 @@
               "id": "b89HN",
               "labels": [
                 {
-<<<<<<< HEAD
-=======
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": ""
-                },
-                {
->>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
                   "id": "105",
                   "color": "#c377e0",
                   "title": ""
@@ -122,7 +100,7 @@
                   ]
                 }
               ],
-             "members": [],
+              "members": [],
               "labels": [
                 {
                   "id": "101",
@@ -154,7 +132,6 @@
               "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
-<<<<<<< HEAD
               "id": "bGJKR",
               "labels": [
                 {
@@ -169,42 +146,6 @@
                   "username": "FartsPrince",
                   "fullname": "Yoni Segev",
                   "imgUrl": "http://some-img"
-                }
-              ]
-=======
-              "id": "bGJKR"
->>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
-            }
-          ],
-          "style": {
-            "title": {
-              "bgColor": "#4a94f8"
-            }
-          }
-        },
-        {
-          "id": "g103",
-          "title": "Done",
-          "tasks": [
-            {
-              "id": "e101",
-              "title": "Do that",
-              "createdAt": 1590999817436,
-              "labels": [
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": ""
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": ""
-                },
-                {
-                  "id": "108",
-                  "color": "#3cc2e0",
-                  "title": ""
                 }
               ]
             }
@@ -333,16 +274,6 @@
               "bgColor": "#56c991"
             }
           }
-        },
-        {
-          "title": "",
-          "tasks": [],
-          "style": {
-            "title": {
-              "bgColor": "#eb5a46"
-            }
-          },
-          "id": "edCxr"
         }
       ],
       "activities": [
@@ -383,29 +314,8 @@
       "style": {
         "bg": "linear-gradient(120deg, #a6c0fe 0%, #f68084 100%)"
       },
-<<<<<<< HEAD
       "description": "to build our business",
       "createdAt": 1610647239461,
-=======
-      "description": "",
-      "members": [
-        {
-          "_id": "u103",
-          "fullname": "Justin Timberlake",
-          "email": "bibi@ababmi.com",
-          "password": "password",
-          "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
-        },
-        {
-          "_id": "u102",
-          "fullname": "bobi bo",
-          "email": "abi@ababmi.com",
-          "password": "111",
-          "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
-        }
-      ],
-      "createdAt": 1610810379332,
->>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
       "lists": [
         {
           "id": "yVlF2",
