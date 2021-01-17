@@ -18,7 +18,7 @@
 
 
     .main-details {
-        flex-basis: 87%;
+        flex-basis: 78%;
         margin-left: 40px;
         line-height: 20px;
 
@@ -85,9 +85,11 @@
 
         .details-buttons {
             flex-grow: 1;
+            position: relative;
 
                 .task-details-close-btn {
-
+                    position: absolute;
+                    right: 15px;
                 }
         }
 }

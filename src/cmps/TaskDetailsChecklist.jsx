@@ -75,6 +75,10 @@ export class _TaskDetailsChecklist extends Component {
         this.elTitleRef.current.blur()
     }
 
+    onAddItem = () => {
+
+    }
+
     render() {
         const { board, list, task } = this.props
         const { checklists } = this.state
@@ -112,7 +116,7 @@ export class _TaskDetailsChecklist extends Component {
                             })
 
                         }
-                        <button> Add an item</button>
+                        <button onClick={this.onAddItem}>Add an item</button>
                     </div>
                 })
                 }

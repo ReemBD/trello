@@ -2,7 +2,7 @@
     // background-color: rgba(255, 255, 255, 0.63);
     // box-shadow: -1px 1px 4px 0px #8c8989cf;
     position: fixed;
-    background-color: #fff;
+    background-color: #ebeef582;
     z-index: 10;
     left: 0;
     right: 0;
@@ -14,10 +14,35 @@
     }
     a {
         text-decoration: none;
-        font-size: 1.5em;
+        font-size: 1.1em;
         color: $clr2;
     }
     span {
         line-height: 35px;
+
+    }
+    ul{
+        width: 100%;
+
+            li{
+
+
+                a {
+                    display: flex;
+                    align-items: center;
+
+                    transition: color .2s;
+                    &:hover {
+                    color: darken(#333, 10%)
+                    }
+                }
+
+              &:first-of-type {
+                  flex-grow: 1;
+                  margin-left: 50px;
+                  font-size: 1.5em;
+                  font-family: Kaushan;
+                }  
+            }
     }
 }
