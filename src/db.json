@@ -33,7 +33,7 @@
       "lists": [
         {
           "id": "g101",
-          "title": "To Dם",
+          "title": "To Do",
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -46,28 +46,13 @@
                   "color": "#c377e0",
                   "title": ""
                 }
-              ],
-              "members": []
+              ]
             },
             {
               "title": "Lorem ipsum",
               "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.",
               "createdAt": 1610634356029,
-              "id": "UkYv0",
-              "members": [
-                {
-                  "_id": "u102",
-                  "username": "FartsKing",
-                  "fullname": "Reem Ben David",
-                  "imgUrl": "http://some-img"
-                },
-                {
-                  "_id": "u101",
-                  "username": "YungiBabush",
-                  "fullname": "Nofar Yunger",
-                  "imgUrl": "https://www.google.com"
-                }
-              ]
+              "id": "UkYv0"
             },
             {
               "title": "popo",
@@ -115,7 +100,7 @@
                   ]
                 }
               ],
-              "members": [],
+             "members": [],
               "labels": [
                 {
                   "id": "101",
@@ -172,6 +157,39 @@
           }
         },
         {
+          "id": "g103",
+          "title": "Done",
+          "tasks": [
+            {
+              "id": "e101",
+              "title": "Do that",
+              "createdAt": 1590999817436,
+              "labels": [
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": ""
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
+                  "title": ""
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
+                  "title": ""
+                }
+              ]
+            }
+          ],
+          "style": {
+            "title": {
+              "bgColor": "#4a94f8"
+            }
+          }
+        },
+        {
           "id": "opd23",
           "title": "Done",
           "tasks": [
@@ -211,6 +229,77 @@
                   "title": ""
                 }
               ]
+            },
+            {
+              "id": "e102",
+              "title": "Help me",
+              "description": "description",
+              "comments": [
+                {
+                  "id": "ZdPnm",
+                  "txt": "a comment",
+                  "createdAt": 1590999817436,
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                  }
+                }
+              ],
+              "checklists": [
+                {
+                  "id": "YEhmF",
+                  "title": "Checklist",
+                  "todos": [
+                    {
+                      "title": "To Do 1",
+                      "isDone": false,
+                      "id": "212jX"
+                    }
+                  ]
+                }
+              ],
+              "members": [
+                {
+                  "_id": "u101",
+                  "username": "Tal",
+                  "fullname": "Tal Tarablus",
+                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                }
+              ],
+              "labels": [
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": ""
+                },
+                {
+                  "id": "105",
+                  "color": "#c377e0",
+                  "title": ""
+                },
+                {
+                  "id": "107",
+                  "color": "#1f79bf",
+                  "title": ""
+                },
+                {
+                  "id": "108",
+                  "color": "#3cc2e0",
+                  "title": ""
+                }
+              ],
+              "createdAt": 1590999730348,
+              "dueDate": 16156215211,
+              "byMember": {
+                "_id": "u101",
+                "username": "Tal",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+              },
+              "style": {
+                "bgColor": "#26de81"
+              }
             }
           ],
           "style": {
@@ -287,6 +376,44 @@
               "id": "5CuOz"
             }
           ]
+        },
+        {
+          "id": "EdPBL",
+          "title": "Doing",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "GYNi3",
+              "createdAt": 1610647239461,
+              "title": "make dinner"
+            },
+            {
+              "id": "zF69W",
+              "createdAt": 1610647239461,
+              "title": "buy groceries",
+              "todos": [
+                {
+                  "title": "Milk",
+                  "isDone": false,
+                  "id": "SlWU1"
+                },
+                {
+                  "title": "Bread",
+                  "isDone": false,
+                  "id": "FyB5x"
+                },
+                {
+                  "title": "Chocolate",
+                  "isDone": false,
+                  "id": "wxTdg"
+                }
+              ]
+            }
+          ]
         }
       ],
       "_id": "R_MgrSN"
@@ -318,6 +445,44 @@
               "id": "KEO86",
               "createdAt": 1610647299947,
               "title": "invite your team!"
+            }
+          ]
+        },
+        {
+          "id": "zfYDY",
+          "title": "Doing",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "PxBui",
+              "createdAt": 1610647299947,
+              "title": "make dinner"
+            },
+            {
+              "id": "lzp5K",
+              "createdAt": 1610647299947,
+              "title": "buy groceries",
+              "todos": [
+                {
+                  "title": "Milk",
+                  "isDone": false,
+                  "id": "aF0Ki"
+                },
+                {
+                  "title": "Bread",
+                  "isDone": false,
+                  "id": "awDuz"
+                },
+                {
+                  "title": "Chocolate",
+                  "isDone": false,
+                  "id": "ht4t0"
+                }
+              ]
             }
           ]
         }

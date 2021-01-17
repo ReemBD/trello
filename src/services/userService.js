@@ -17,12 +17,13 @@ async function getUsers() {
 
 async function login(user) {
     console.log(user);
+    let loggedUser;
     try {
-        var loggedUser = await httpService.get(`${endpoint}/?password=${user.password}&email=${user.email}}`)
+        loggedUser = await httpService.get(`${endpoint}/?password=${user.password}&email=${user.email}}`)
+        console.log('logged', loggedUser);
     } catch (err) {
         console.log('couldnt find user');
     }
-    console.log('logged', loggedUser);
     return loggedUser
 
 }
