@@ -24,18 +24,10 @@ export class _TaskEdit extends Component {
         ]
     }
 
-
-    onChooseEdit = (ev, name) => {
-        ev.stopPropagation()
-
-    }
-
     onRemoveTask = ev => {
         ev.stopPropagation()
-        console.log('curOpenPopover: ', this.state.currOpenPopover);
         const { task, list, board } = this.props
-        const taskIdx = boardService.getTaskIdxById(list, task.id)
-        const listIdx = boardService.getListIdxById(board, list.id)
+        const {listIdx,taskIdx} = boardService.getListAndTaskIdxById(board,list.id, task.id)
         const boardCopy = { ...this.props.board }
         boardCopy.lists[listIdx].tasks.splice(taskIdx, 1)
         this.props.updateBoard(boardCopy)

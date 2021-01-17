@@ -14,17 +14,26 @@
         {
           "_id": "u101",
           "fullname": "Nofar Yunger",
+          "username": "YungiBabush",
           "imgUrl": "https://www.google.com"
+        },
+        {
+          "_id": "u102",
+          "fullname": "Reem Ben David",
+          "username": "FartsKing",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u103",
+          "fullname": "Yoni Segev",
+          "username": "FartsPrince",
+          "imgUrl": "http://some-img"
         }
       ],
       "lists": [
         {
           "id": "g101",
-<<<<<<< HEAD
-          "title": "saasda",
-=======
           "title": "To Dם",
->>>>>>> 408d16f15ccf0341dc6afef8ec0c53d085086722
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -33,37 +42,32 @@
               "id": "b89HN",
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": ""
-                },
-                {
                   "id": "105",
                   "color": "#c377e0",
                   "title": ""
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": ""
                 }
-              ]
+              ],
+              "members": []
             },
             {
               "title": "Lorem ipsum",
               "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.",
               "createdAt": 1610634356029,
-              "id": "UkYv0"
+              "id": "UkYv0",
+              "members": [
+                {
+                  "_id": "u102",
+                  "username": "FartsKing",
+                  "fullname": "Reem Ben David",
+                  "imgUrl": "http://some-img"
+                },
+                {
+                  "_id": "u101",
+                  "username": "YungiBabush",
+                  "fullname": "Nofar Yunger",
+                  "imgUrl": "https://www.google.com"
+                }
+              ]
             },
             {
               "title": "popo",
@@ -84,8 +88,8 @@
           "tasks": [
             {
               "id": "c104",
-              "title": "Testing",
-              "description": "A mighty description\n",
+              "title": "Help me",
+              "description": "description",
               "comments": [
                 {
                   "id": "ZdPnm",
@@ -101,45 +105,17 @@
               "checklists": [
                 {
                   "id": "YEhmF",
-                  "title": "ChecklisttTESTENTER",
-                  "todos": [
-                    {
-                      "title": "To Do 1",
-                      "isDone": true,
-                      "id": "292jX"
-                    },
-                    {
-                      "title": "To Do 2",
-                      "isDone": false,
-                      "id": "212js"
-                    }
-                  ]
-                },
-                {
-                  "id": "JEhmF",
                   "title": "Checklist",
                   "todos": [
                     {
                       "title": "To Do 1",
                       "isDone": false,
-                      "id": "272jX"
-                    },
-                    {
-                      "title": "To Do 2",
-                      "isDone": false,
-                      "id": "242js"
+                      "id": "212jX"
                     }
                   ]
                 }
               ],
-              "members": [
-                {
-                  "_id": "u101",
-                  "username": "Tal",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                }
-              ],
+              "members": [],
               "labels": [
                 {
                   "id": "101",
@@ -154,11 +130,6 @@
                 {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": ""
-                },
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
                   "title": ""
                 }
               ],
@@ -176,65 +147,20 @@
               "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
-              "id": "bGJKR"
-            }
-          ],
-          "style": {
-            "title": {
-              "bgColor": "#4a94f8"
-            }
-          }
-        },
-        {
-          "id": "g103",
-          "title": "Done",
-          "tasks": [
-            {
-              "id": "e101",
-              "title": "Do that",
-              "createdAt": 1590999817436,
+              "id": "bGJKR",
               "labels": [
-                {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
                 {
                   "id": "103",
                   "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
-                },
+                  "title": ""
+                }
+              ],
+              "members": [
                 {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": false
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": false
-                },
-                {
-                  "id": "108",
-                  "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "http://some-img"
                 }
               ]
             }
@@ -285,99 +211,6 @@
                   "title": ""
                 }
               ]
-            },
-            {
-              "id": "e102",
-              "title": "Help me",
-              "description": "description",
-              "comments": [
-                {
-                  "id": "ZdPnm",
-                  "txt": "a comment",
-                  "createdAt": 1590999817436,
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Tal Tarablus",
-                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                  }
-                }
-              ],
-              "checklists": [
-                {
-                  "id": "YEhmF",
-                  "title": "Checklist",
-                  "todos": [
-                    {
-                      "title": "To Do 1",
-                      "isDone": false,
-                      "id": "212jX"
-                    }
-                  ]
-                }
-              ],
-              "members": [
-                {
-                  "_id": "u101",
-                  "username": "Tal",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                }
-              ],
-              "labels": [
-                {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "108",
-                  "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
-                }
-              ],
-              "createdAt": 1590999730348,
-              "dueDate": 16156215211,
-              "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-              },
-              "style": {
-                "bgColor": "#26de81"
-              }
             }
           ],
           "style": {
@@ -454,44 +287,6 @@
               "id": "5CuOz"
             }
           ]
-        },
-        {
-          "id": "EdPBL",
-          "title": "Doing",
-          "style": {
-            "title": {
-              "bgColor": "rgb(152 149 224)"
-            }
-          },
-          "tasks": [
-            {
-              "id": "GYNi3",
-              "createdAt": 1610647239461,
-              "title": "make dinner"
-            },
-            {
-              "id": "zF69W",
-              "createdAt": 1610647239461,
-              "title": "buy groceries",
-              "todos": [
-                {
-                  "title": "Milk",
-                  "isDone": false,
-                  "id": "SlWU1"
-                },
-                {
-                  "title": "Bread",
-                  "isDone": false,
-                  "id": "FyB5x"
-                },
-                {
-                  "title": "Chocolate",
-                  "isDone": false,
-                  "id": "wxTdg"
-                }
-              ]
-            }
-          ]
         }
       ],
       "_id": "R_MgrSN"
@@ -523,44 +318,6 @@
               "id": "KEO86",
               "createdAt": 1610647299947,
               "title": "invite your team!"
-            }
-          ]
-        },
-        {
-          "id": "zfYDY",
-          "title": "Doing",
-          "style": {
-            "title": {
-              "bgColor": "rgb(152 149 224)"
-            }
-          },
-          "tasks": [
-            {
-              "id": "PxBui",
-              "createdAt": 1610647299947,
-              "title": "make dinner"
-            },
-            {
-              "id": "lzp5K",
-              "createdAt": 1610647299947,
-              "title": "buy groceries",
-              "todos": [
-                {
-                  "title": "Milk",
-                  "isDone": false,
-                  "id": "aF0Ki"
-                },
-                {
-                  "title": "Bread",
-                  "isDone": false,
-                  "id": "awDuz"
-                },
-                {
-                  "title": "Chocolate",
-                  "isDone": false,
-                  "id": "ht4t0"
-                }
-              ]
             }
           ]
         }

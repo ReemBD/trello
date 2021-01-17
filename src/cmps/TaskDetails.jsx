@@ -92,11 +92,12 @@ export class _TaskDetails extends Component {
 
     onCloseModal = (ev) => {
         ev.preventDefault()
+        ev.stopPropagation()
         const { board } = this.state
-        this.props.history.push(`/board/${board._id}`)
-        this.setState({ isDetailsOpen: false }, () => {
-            this.props.toggleOverlay()
-            this.props.toggleTask()
+        this.setState({ isDetailsOpen: false }, async () => {
+            await this.props.toggleOverlay()
+            await this.props.toggleTask()
+            this.props.history.push(`/board/${board._id}`)
         })
     }
 
