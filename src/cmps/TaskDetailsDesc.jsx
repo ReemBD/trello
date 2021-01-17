@@ -55,7 +55,7 @@ export class _TaskDetailsDesc extends Component {
             <div className="task-middle-details">
                 <div className="details-description">
                     <NotesOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
-                    <h3>Description</h3>
+                    <h3 className="task-section-heading">Description</h3>
                     {(task.description)
                         ? <textarea className="task-textarea" style={{ fontSize: '16px', fontWeight: '400px', height: 'auto' }}
                             value={currTask.description}

@@ -8,7 +8,6 @@
 }
 
 .details-modal {
-    height: 88vh;
     width: 768px;
     margin: 48px auto 80px;
     border-radius: 2px;
@@ -62,20 +61,6 @@
 
                         & > * {
                             margin-left: 5px;
-                        }
-                        .task-member-img {
-                            height: 32px;
-                            width: 32px;
-                            img {
-                                height: 32px;
-                                width: 32px;
-                                border-radius: 2em;
-                                object-fit: cover;
-                            }
-                        }
-                        
-                        .task-add-member {
-
                         }
                     }
                 }
@@ -147,17 +132,112 @@
     }
 }
 
-.task-checklist {
-
+.details-checklist {
+    margin-bottom: rem(15px);
+    .task-checklist {
+        
     .checklist-header {
         position: relative;
     }
-
+    
     .todo-title {
         margin-left: 5px;
         
         transition: all .2s;
-
     }
+    
+    .task-todo-container {
+        margin-bottom: 5px;
+        &:hover {
+            .todo-delete-btn {
+                opacity: 1;
+            }
+        }
+        
+        .todo-delete-btn {
+            opacity: 0;
+            font-size: 20px;
+            padding: 2px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 5px;
+            
+            transition: all .3s;
+            
+            &:hover {
+                background-color: #ef4040cc;
+            }
+}
+}
+}
 }
 
+
+.task-activity {
+
+    .activity-header {
+        position: relative;
+
+        h3 {
+            flex-grow: 1;
+        }
+
+        button {
+            position: absolute;
+            right: 0;
+            top: -3px;
+            padding: 5px 8px;
+            
+            &:active {outline: none;}
+            &:focus {outline: none;}
+        }
+    }
+
+
+        .activity-container {
+            transition: opacity .2s;
+
+                .task-user-activity {
+                    margin-bottom: 10px;
+                }
+        }
+        
+        .activity-info {
+            
+            margin: 0 0 0 5px;
+            
+            .activity-txt {
+                margin-bottom: 0;
+                text-transform: lowercase;
+                .activity-member-name {
+                    font-weight: 600;
+                    text-transform: capitalize;
+                }
+            }
+            
+            .activity-date {
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+
+    }
+
+    .task-comments {
+        margin-bottom: rem(15px);
+
+        .comment-txt {
+            margin: 4px 2px 4px 0;
+            padding: 2px 8px;
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 0 1px 2px -1px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
+            span {
+                font-size: 14px;
+            }
+        }
+    }

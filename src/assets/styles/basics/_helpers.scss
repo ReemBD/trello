@@ -85,6 +85,7 @@
     line-height: 24px;
     width: 100%;
     background-color: $task-bgc-clr;
+    color: inherit;
 
     &:focus {
         outline: 2px solid lightskyblue;
@@ -92,7 +93,37 @@
     }
 }
 
+.task-todo-input {
+    border: none;
+    border-radius: 3px;
+    background-color: $task-bgc-clr;
+    width: 85%;
+    padding: 4px 8px;
+
+        &:focus {
+        outline: 2px solid lightskyblue;
+        background-color: #fff;
+    }
+
+}
+
+.task-section-heading {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .checked {
     text-decoration: line-through;
     color: #9b9595;
+}
+
+.task-member-img {
+    height: 32px;
+    width: 32px;
+    img {
+        height: 32px;
+        width: 32px;
+        border-radius: 2em;
+        object-fit: cover;
+    }
 }

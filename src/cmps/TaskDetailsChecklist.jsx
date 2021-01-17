@@ -9,11 +9,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 export class _TaskDetailsChecklist extends Component {
 
     state = {
-        checklists: []
+        checklists: [],
+        newTodo: {
+            txt: ''
+        }
 
     }
 
@@ -48,6 +52,13 @@ export class _TaskDetailsChecklist extends Component {
         })
     }
 
+    handleTodoChange = (todoIdx, listIdx, ev) => {
+        console.log('the list idx and todo idx is', listIdx, todoIdx);
+        const copyChecklists = cloneDeep(this.state.checklists)
+        copyChecklists[listIdx].todos[todoIdx].title = ev.target.value
+        this.setState({ checklists: copyChecklists })
+    }
+
     percentDone = (checklist) => {
         console.log('from function', checklist)
         const doneTodos = checklist.todos.filter(todo => todo.isDone)
@@ -72,7 +83,14 @@ export class _TaskDetailsChecklist extends Component {
         const taskIdx = boardService.getTaskIdxById(list, task.id)
         boardCopy.lists[listIdx].tasks[taskIdx].checklists = checklists
         await this.props.updateBoard(boardCopy)
-        this.elTitleRef.current.blur()
+        this.elTitleRef.current?.blur()
+    }
+
+    onRemoveTodo = (todoIdx, listIdx, ev) => {
+        let copyChecklists = cloneDeep(this.state.checklists)
+        copyChecklists[listIdx].todos.splice(todoIdx, 1)
+        this.setState({ checklists: copyChecklists }, () => this.onUpdateBoard())
+
     }
 
     onAddItem = () => {
@@ -81,7 +99,7 @@ export class _TaskDetailsChecklist extends Component {
 
     render() {
         const { board, list, task } = this.props
-        const { checklists } = this.state
+        const { checklists, newTodo } = this.state
         const { percentDone } = this
         if (!checklists) return <div>Loading...</div>
         return (
@@ -102,21 +120,33 @@ export class _TaskDetailsChecklist extends Component {
                         <LinearProgressWithLabel value={percentDone(checklist)} />
                         {checklist?.todos &&
                             checklist.todos.map((todo, todoIdx) => {
-                                return <div className="flex align-center">
+                                return <div className="task-todo-container flex align-center justify-center">
                                     <input
                                         type="checkbox"
                                         name="checkbox"
                                         onChange={(ev) => this.handleCheckbox(todoIdx, listIdx, ev)}
                                         checked={todo.isDone}
                                     />
-                                    <span className={`${todo.isDone && "checked"} todo-title`}>{todo.title}</span>
-
+                                    <input
+                                        type="text"
+                                        className={`${todo.isDone && "checked"} todo-title task-todo-input`}
+                                        value={todo.title}
+                                        onChange={(ev) => this.handleTodoChange(todoIdx, listIdx, ev)}
+                                        onKeyDown={this.onEnterPress}
+                                        ref={this.elTitleRef}
+                                        onBlur={this.onUpdateBoard}
+                                    />
+                                    <DeleteOutlinedIcon className="todo-delete-btn" onClick={(ev) => this.onRemoveTodo(todoIdx, listIdx, ev)} />
                                 </div>
 
                             })
 
                         }
-                        <button onClick={this.onAddItem}>Add an item</button>
+                        <input type="text"
+                            placeholder="Add an item"
+                            className="task-todo-input"
+                            value={newTodo.txt}
+                        />
                     </div>
                 })
                 }
