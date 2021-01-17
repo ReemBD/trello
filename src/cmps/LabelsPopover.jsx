@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import CloseIcon from '@material-ui/icons/Close';
 import { boardService } from '../services/boardService'
-
+import { connect } from 'react-redux'
+import { setCurrPopover } from '../store/actions/popoverActions'
 export class _LabelsPopover extends Component {
     state = {
         labels: [
@@ -49,7 +49,7 @@ export class _LabelsPopover extends Component {
         return labels.findIndex(label => label.id === labelId)
     }
 
-    onAddLabels =async ev => {
+    onAddLabels = async ev => {
         ev.stopPropagation()
 
         const labelsToAdd = this.state.labels.filter(label => label.isPicked)
@@ -59,28 +59,26 @@ export class _LabelsPopover extends Component {
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         board.lists[listIdx].tasks[taskIdx].labels = labelsToAdd
 
-       await  updateBoard(board)
-        const {onSetCurrPopover, title} = this.props
-
-        onSetCurrPopover(ev, title)
+        await updateBoard(board)
+    
     }
 
 
     render() {
         const { labels } = this.state
         return (
-            <div className="labels-popover" onClick={(ev)=>{ev.stopPropagation()}}>
+            <div className="labels-popover" >
                 <div className="popover-header flex align-center justify-center">
                     <span className="popover-header-title">Labels</span>
-                    <CloseIcon className="popover-header-close-btn" />
+                    <CloseIcon className="popover-header-close-btn" onClick={()=>{this.props.setCurrPopover()}} />
                 </div>
                 <section className="popover-section">
-                        <ul className="popover-section-list clear-list flex column">
-                            <h3 className="popover-section-header">Labels</h3>
-                            {labels.map(label => <div data-id={label.id} onClick={this.onToggleLabel} key={label.id} className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></div>)}
-                            <button className="save-labels-btn primary-btn" onClick={this.onAddLabels}>Save</button>
-                        </ul>
-                    </section>
+                    <ul className="popover-section-list clear-list flex column">
+                        <h3 className="popover-section-header">Labels</h3>
+                        {labels.map(label => <div data-id={label.id} onClick={this.onToggleLabel} key={label.id} className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></div>)}
+                        <button className="save-labels-btn primary-btn" onClick={this.onAddLabels}>Save</button>
+                    </ul>
+                </section>
             </div>
         )
     }
@@ -94,7 +92,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
 }
 
 export const LabelsPopover = connect(mapStateToProps, mapDispatchToProps)(_LabelsPopover)

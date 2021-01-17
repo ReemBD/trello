@@ -33,7 +33,7 @@
       "lists": [
         {
           "id": "g101",
-          "title": "To Do",
+          "title": "Backlog",
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -99,6 +99,7 @@
             }
           ],
           "style": {
+            "bgColor": "#9895e082",
             "title": {
               "bgColor": "#9895e0"
             }
@@ -106,7 +107,7 @@
         },
         {
           "id": "g102",
-          "title": "In Progress",
+          "title": "To Do",
           "tasks": [
             {
               "id": "c104",
@@ -211,104 +212,47 @@
             }
           ],
           "style": {
+            "bgColor": "#4a94f882",
             "title": {
               "bgColor": "#4a94f8"
             }
           }
         },
         {
-          "id": "opd23",
-          "title": "Done",
+          "title": "In Progress",
           "tasks": [
             {
-              "id": "e101",
-              "title": "Quick Edit Functionality",
-              "createdAt": 1590999817436,
-              "labels": [
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                }
-              ]
-            },
-            {
-              "id": "e102",
-              "title": "Labels functionality",
-              "description": "description",
-              "comments": [
-                {
-                  "id": "ZdPnm",
-                  "txt": "a comment",
-                  "createdAt": 1590999817436,
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Tal Tarablus",
-                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                  }
-                }
-              ],
-              "checklists": [
-                {
-                  "id": "YEhmF",
-                  "title": "Checklist",
-                  "todos": [
-                    {
-                      "title": "To Do 1",
-                      "isDone": false,
-                      "id": "212jX"
-                    }
-                  ]
-                }
-              ],
-              "members": [
-                {
-                  "_id": "u101",
-                  "username": "Tal",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                }
-              ],
-              "labels": [
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": ""
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": ""
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": ""
-                },
-                {
-                  "id": "108",
-                  "color": "#3cc2e0",
-                  "title": ""
-                }
-              ],
-              "createdAt": 1590999730348,
-              "dueDate": 16156215211,
-              "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-              },
-              "style": {
-                "bgColor": "#26de81"
-              }
+              "title": "asdfasd",
+              "description": "",
+              "createdAt": 1610913051755,
+              "id": "vaU9z"
             }
           ],
           "style": {
             "title": {
               "bgColor": "#56c991"
+            },
+            "bgColor": "#56c99182"
+          },
+          "id": "SKQCF"
+        },
+        {
+          "title": "Done",
+          "tasks": [
+            {
+              "title": "asdfasdf",
+              "description": "",
+              "createdAt": 1610913057205,
+              "id": "R2qU7"
             }
-          }
+          ],
+          "style": {
+            "title": {
+              "bgColor": "#3cc2e0"
+            },
+            "bgColor": "#3cc2e082"
+          },
+          "id": "X4xeN"
         }
       ],
       "activities": [
@@ -370,6 +314,7 @@
           "id": "yVlF2",
           "title": "To Do",
           "style": {
+            "bgColor": "rgb(152, 149, 224, .51)",
             "title": {
               "bgColor": "rgb(152 149 224)"
             }
@@ -397,6 +342,7 @@
           "id": "EdPBL",
           "title": "Doing",
           "style": {
+            "bgColor": "rgb(152, 149, 224, .51)",
             "title": {
               "bgColor": "rgb(152 149 224)"
             }
@@ -447,6 +393,7 @@
           "id": "GBRDy",
           "title": "To Do",
           "style": {
+            "bgColor": "rgb(152, 149, 224, .51)",
             "title": {
               "bgColor": "rgb(152 149 224)"
             }

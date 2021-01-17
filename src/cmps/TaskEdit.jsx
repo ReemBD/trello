@@ -14,7 +14,6 @@ export class _TaskEdit extends Component {
 
     state = {
         board: null,
-        currOpenPopover: '',
         popovers: [
             { title: 'Edit Labels', Component: LabelsPopover, Icon: LabelIcon },
             { title: 'Change Members', Component: ChangeMembersPopover, Icon: ChangeMembersIcon },
@@ -27,13 +26,13 @@ export class _TaskEdit extends Component {
     onRemoveTask = ev => {
         ev.stopPropagation()
         const { task, list, board } = this.props
-        const {listIdx,taskIdx} = boardService.getListAndTaskIdxById(board,list.id, task.id)
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const boardCopy = { ...this.props.board }
         boardCopy.lists[listIdx].tasks.splice(taskIdx, 1)
         this.props.updateBoard(boardCopy)
     }
 
-    getQEBProps(task, list, title, Component, Icon, key = title, onSetCurrPopover = this.onSetCurrPopover, { currOpenPopover } = this.state) {
+    getQEBProps(task, list, title, Component, Icon, key = title, { currOpenPopover } = this.state) {
         return {
             task,
             list,
@@ -41,17 +40,9 @@ export class _TaskEdit extends Component {
             Component,
             Icon,
             key,
-            onSetCurrPopover,
             currOpenPopover,
         }
     }
-
-    onSetCurrPopover = (ev, popover) => {
-        ev.stopPropagation()
-        const currOpenPopover = (popover === this.state.currOpenPopover) ? null : popover
-        this.setState({ currOpenPopover })
-    }
-
     render() {
         const { task, list } = this.props
         const { popovers } = this.state
@@ -63,7 +54,7 @@ export class _TaskEdit extends Component {
                 })}
                 <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
                     <span className="icon-sm icon-label light"></span>
-                    <span className="quick-task-editor-buttons-item-text flex align-center"><RemoveIcon className="quick-task-editor-buttons-item-icon"/>Remove</span>
+                    <span className="quick-task-editor-buttons-item-text flex align-center"><RemoveIcon className="quick-task-editor-buttons-item-icon" />Remove</span>
                 </a>
             </div>
 

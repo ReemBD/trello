@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import CloseIcon from '@material-ui/icons/Close';
-import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService';
 import DoneIcon from '@material-ui/icons/Done';
 
-export class _ChangeMembersPopover extends Component {
+export class ChangeMembersPopover extends Component {
     state = {
         currTask: {}
     }
@@ -53,7 +52,7 @@ export class _ChangeMembersPopover extends Component {
     }
 
     isTaskMember(id) {
-        const currTask  = this.props.task
+        const currTask = this.props.task
         const isTaskMember = currTask.members?.some(currMember => id === currMember._id)
         return isTaskMember
     }
@@ -70,7 +69,7 @@ export class _ChangeMembersPopover extends Component {
             <div className="change-members-popover " onClick={(ev) => { ev.stopPropagation() }}>
                 <div className="popover-header flex align-center justify-center">
                     <span className="popover-header-title">Members</span>
-                    <CloseIcon className="popover-header-close-btn" />
+                    <CloseIcon onClick={()=>{this.props.setCurrPopover()}} className="popover-header-close-btn" />
                 </div>
                 <section className="popover-section">
                     <ul className="popover-section-list clear-list">
@@ -91,12 +90,10 @@ export class _ChangeMembersPopover extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard
+        board: state.boardReducer.currBoard,
     }
 }
 
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
 }
-
-export const ChangeMembersPopover = connect(mapStateToProps, mapDispatchToProps)(_ChangeMembersPopover)

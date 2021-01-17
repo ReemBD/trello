@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
 import EditIcon from '@material-ui/icons/Edit';
+import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import { TaskEdit } from './TaskEdit'
 
 
@@ -41,7 +42,6 @@ export class _TaskPreview extends Component {
 
     onToggleEdit = ev => {
         ev.stopPropagation()
-        // this.props.toggleOverlay()
         this.setState({ isEditOpen: !this.state.isEditOpen })
     }
 
@@ -50,16 +50,31 @@ export class _TaskPreview extends Component {
         const { isEditOpen, isTaskHovered } = this.state
         return (
             <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
-                {task.labels?.length && <div className="labels-container flex">
-                    {task.labels.map(label => { return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+                {task.labels?.length && <div className="top-line-preview-container flex">
+                    <div className="labels-container flex">
+                        {task.labels.map(label => { return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+
+                    </div>
+                    <div className="quick-edit-wrapper">
+                        {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                        {isEditOpen && <TaskEdit task={task} list={list} />}
+                    </div>
                 </div>}
-                <div className="task-title-wrapper flex"><h3 className="task-title" style={{ color: list.style.title.bgColor }}>{task.title}</h3>  <div className="quick-edit-wrapper">
-                    {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                    {isEditOpen && <TaskEdit task={task} list={list} />}
+                <div className="task-title-wrapper flex space-between ">
+                    <h3 className="task-title" style={{ color: list.style.title.bgColor }}>{task.title}</h3>
+                    {!task.labels?.length && <div className="quick-edit-wrapper">
+                        {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                        {isEditOpen && <TaskEdit task={task} list={list} />}
+                    </div>}
                 </div>
+                <div className="task-preview-icons-container flex ">
+                    {task.description && <NotesOutlinedIcon className="description-indication-icon" />}
+                    {task.members?.length ?
+                        <div className="task-members-imgs flex">
+                            {task.members.map(member => { return <div key={member._id} className="task-member-img-wrapper"><img className="task-member-preview-img" src={member.imgUrl} /></div> })}
+                        </div>
+                        : ''}
                 </div>
-                <p className="task-description">{task.description || 'No description'}</p>
-                <h3 className="task-created-at">{utilService.formatTime(task.createdAt)}</h3>
             </div >
         )
     }

@@ -4,15 +4,17 @@
     position: relative;
     // z-index: $overlay-z-index + 1;
     .quick-task-editor-buttons {
-        left: 240%;
+        left: 20px;
         opacity: 1;
         position: absolute;
+        z-index: 10;
         top: 0;
         width: 240px;
         transform: translateX(-20px);
         transition: opacity 85ms ease-in, transform 85ms ease-in;
         &-item {
             background: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
             border-radius: 3px;
             clear: both;
             color: #e6e6e6;
