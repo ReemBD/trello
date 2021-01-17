@@ -55,3 +55,9 @@ p {
     z-index: $overlay-z-index;
 }
 
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: rgba(232, 240, 254, 0) !important;
+    background-image: none !important;
+    color: -internal-light-dark(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0)) !important;
+}

@@ -71,7 +71,7 @@ class _TaskList extends Component {
                     isListActionsOpen={isListActionsOpen}
                 />
                 <TaskComposer list={list} isComposerOpen={isComposerOpen} titleRef={this.elTaskTitleRef} onToggleComposer={this.onToggleComposer} />
-                {tasks?.length && tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />)}
+                {tasks?.length ? tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />) : ''}
             </article>
         )
     }

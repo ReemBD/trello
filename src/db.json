@@ -14,13 +14,34 @@
         {
           "_id": "u101",
           "fullname": "Nofar Yunger",
+          "username": "YungiBabush",
           "imgUrl": "https://www.google.com"
+        },
+        {
+          "_id": "u102",
+          "fullname": "Reem Ben David",
+          "username": "FartsKing",
+          "imgUrl": "http://some-img"
+        },
+        {
+          "_id": "u103",
+          "fullname": "Yoni Segev",
+          "username": "FartsPrince",
+          "imgUrl": "http://some-img"
         }
       ],
       "lists": [
         {
           "id": "g101",
+<<<<<<< HEAD
           "title": "Backlog",
+=======
+<<<<<<< HEAD
+          "title": "To Do",
+=======
+          "title": "To Dם",
+>>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
+>>>>>>> 817850ab8d851a917f1e8b2d7cfb3b5f965e04d9
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -29,6 +50,8 @@
               "id": "b89HN",
               "labels": [
                 {
+<<<<<<< HEAD
+=======
                   "id": "101",
                   "color": "#61bd4f",
                   "title": ""
@@ -44,13 +67,9 @@
                   "title": ""
                 },
                 {
+>>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
                   "id": "105",
                   "color": "#c377e0",
-                  "title": ""
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
                   "title": ""
                 }
               ]
@@ -80,8 +99,13 @@
           "tasks": [
             {
               "id": "c104",
+<<<<<<< HEAD
               "title": "Task Details Functionality",
               "description": "Finish task details functionality\n",
+=======
+              "title": "Help me",
+              "description": "description",
+>>>>>>> 817850ab8d851a917f1e8b2d7cfb3b5f965e04d9
               "comments": [
                 {
                   "id": "ZdPnm",
@@ -97,6 +121,7 @@
               "checklists": [
                 {
                   "id": "YEhmF",
+<<<<<<< HEAD
                   "title": "ChecklisttTESTENTER",
                   "todos": [
                     {
@@ -113,33 +138,38 @@
                 },
                 {
                   "id": "JEhmF",
+=======
+>>>>>>> 817850ab8d851a917f1e8b2d7cfb3b5f965e04d9
                   "title": "Checklist",
                   "todos": [
                     {
                       "title": "To Do 1",
                       "isDone": false,
-                      "id": "272jX"
-                    },
-                    {
-                      "title": "To Do 2",
-                      "isDone": false,
-                      "id": "242js"
+                      "id": "212jX"
                     }
                   ]
                 }
               ],
-              "members": [
-                {
-                  "_id": "u101",
-                  "username": "Tal",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                }
-              ],
+             "members": [],
               "labels": [
                 {
+<<<<<<< HEAD
                   "id": "104",
                   "color": "#eb5a46",
+=======
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+>>>>>>> 817850ab8d851a917f1e8b2d7cfb3b5f965e04d9
                   "title": ""
                 }
               ],
@@ -157,7 +187,26 @@
               "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
+<<<<<<< HEAD
+              "id": "bGJKR",
+              "labels": [
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                }
+              ],
+              "members": [
+                {
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "http://some-img"
+                }
+              ]
+=======
               "id": "bGJKR"
+>>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
             }
           ],
           "style": {
@@ -176,46 +225,19 @@
               "createdAt": 1590999817436,
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": false
-                },
-                {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": false
+                  "title": ""
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 }
               ]
             }
@@ -306,46 +328,24 @@
               ],
               "labels": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": "",
-                  "isPicked": true
-                },
-                {
                   "id": "104",
                   "color": "#eb5a46",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "105",
                   "color": "#c377e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "107",
                   "color": "#1f79bf",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 },
                 {
                   "id": "108",
                   "color": "#3cc2e0",
-                  "title": "",
-                  "isPicked": true
+                  "title": ""
                 }
               ],
               "createdAt": 1590999730348,
@@ -366,6 +366,16 @@
               "bgColor": "#56c991"
             }
           }
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#eb5a46"
+            }
+          },
+          "id": "edCxr"
         }
       ],
       "activities": [
@@ -406,8 +416,29 @@
       "style": {
         "bg": "linear-gradient(120deg, #a6c0fe 0%, #f68084 100%)"
       },
+<<<<<<< HEAD
       "description": "to build our business",
       "createdAt": 1610647239461,
+=======
+      "description": "",
+      "members": [
+        {
+          "_id": "u103",
+          "fullname": "Justin Timberlake",
+          "email": "bibi@ababmi.com",
+          "password": "password",
+          "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+        },
+        {
+          "_id": "u102",
+          "fullname": "bobi bo",
+          "email": "abi@ababmi.com",
+          "password": "111",
+          "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
+        }
+      ],
+      "createdAt": 1610810379332,
+>>>>>>> 887d5a772f82ef18c86549c100d2375f7d457ef3
       "lists": [
         {
           "id": "yVlF2",

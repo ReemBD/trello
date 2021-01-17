@@ -3,12 +3,12 @@
 .composer-screen {
     transition: opacity 0.5s;
     opacity: 1;
-    position: absolute;
+    position: fixed;
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 100vw;
+    // width: 100vw;
     z-index: 1;
     background-color: rgba(7, 7, 7, 0.335);
 
@@ -24,17 +24,23 @@
     // height: 70%;
     padding: 3em;
     background: rgba(255, 255, 255, 0.808);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: 0 8px 8px 1px rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
     border-radius: 10px;
 
     button {
         border-radius: 0.5em;
-        background-color: transparent;
-        border: 1px solid $clr2;
+        background-color: #fff;
+        border: none;
         padding: 1em;
         margin: 0.5em;
+        transition: color 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.685);
+        }
     }
 
     textarea.title {
@@ -75,9 +81,14 @@
             border-radius: 5px;
             margin-left: 21px;
             width: 40px;
-            background-color: #eef0f1;
+            // background-color: #eef0f1;
             padding: 2px;
             cursor: pointer;
+            transition: color 0.2s;
+
+            &:hover {
+                color: rgba(0, 0, 0, 0.609);
+            }
         }
     }
 }
@@ -87,7 +98,7 @@
     // grid-template-columns: repeat(4, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
 
-    background-color: rgba(255, 255, 255, 0.568);
+    // background-color: rgba(255, 255, 255, 0.568);
 }
 
 .member-preview {
@@ -98,7 +109,7 @@
 .bg-preview {
     height: 5em;
     width: 5em;
-    border-radius: 3em;
+    border-radius: 5px;
     margin: 1em;
     cursor: pointer;
     &:hover {
@@ -106,6 +117,33 @@
         z-index: 5;
         position: relative;
         box-shadow: 1px 0px 8px #4343434f;
+    }
+}
+
+.boards {
+    &.change-members-popover {
+        position: absolute;
+        right: 20px;
+        width: 400px;
+        height: 300px;
+        overflow-y: scroll;
+        border-radius: 10px;
+
+        .popover-header {
+            position: fixed;
+            width: 380px;
+            height: 50px;
+            background-color: rgb(46, 46, 46);
+            border-top-left-radius: 10px;
+
+            input {
+                border: none;
+                border-radius: 5px;
+                width: 93%;
+                height: 30px;
+                outline: none;
+            }
+        }
     }
 }
 
@@ -157,17 +195,10 @@
     margin-bottom: 2em;
 }
 
-.AvatarPic {
-    height: 3em;
-    width: 3em;
+.avatarPic {
+    height: 2.5em;
+    width: 2.5em;
     object-fit: cover;
     border-radius: 3em;
     margin: 1em;
-    &::after {
-        content: "+";
-        background-color: rgba(36, 36, 36, 0.205);
-    }
-    &:hover {
-        background-color: rgba(83, 83, 83, 0.308);
-    }
 }

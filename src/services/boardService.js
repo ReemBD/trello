@@ -119,9 +119,7 @@ function _fillDefaultContent(board) {
     }
 }
 
-async function removeTask() {
 
-}
 
 async function getTaskById(boardId, taskId) {
     const board = await getById(boardId)

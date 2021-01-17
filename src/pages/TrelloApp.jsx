@@ -33,8 +33,6 @@ class _TrelloApp extends Component {
             <div onClick={() => { setCurrPopover() }}>
                 <div className="main-bg"></div>
                 <div className="bg-overlay">
-                    {/* {this.props.isOverlayOpen && <div className="main-overlay"></div>} */}
-
                     <BoardHeader board={board} />
 
                     <Board />

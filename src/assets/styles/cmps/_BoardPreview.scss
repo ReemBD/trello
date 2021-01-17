@@ -1,14 +1,14 @@
 // ------------------------------------------------------- board grid cards-------------------------------------------------------
 .board-box {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fill, 350px);
     width: -webkit-fill-available;
     justify-content: center;
 }
 
 .board-card {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background: rgba(255, 255, 255, 0.924);
+    // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
 
@@ -35,13 +35,17 @@
     .icon-btn {
         position: absolute;
         top: 13px;
-        right: 22px;
+        right: 13px;
 
         opacity: 0;
         transition: opacity 0.3s;
         height: 2em;
         width: 2em;
         cursor: pointer;
+        &.edit {
+            top: 13px;
+            right: 44px;
+        }
     }
 
     &:hover {

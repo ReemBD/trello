@@ -126,8 +126,8 @@ export class _LoginSignup extends Component {
                     {user && <div className="glass-form flex column">
                         <h1>Welcome {user.fullname}</h1>
                         <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
-                        <Link to="/board"> Start Now </Link>
-                        <button onClick={this.onLogout}>logout</button>
+                        <button> <Link to="/board"> Start Now </Link> </button>
+                        <a onClick={this.onLogout}>logout</a>
                     </div>}
 
 

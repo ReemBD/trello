@@ -9,14 +9,11 @@
         max-width: 600px;
         line-height: 80px;
         padding: 1em;
-        font-family: "Times New Roman", Times, serif;
     }
 }
 
-
-
 .boards-bg {
-    background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
+    background:#8ec5fc;
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -29,23 +26,30 @@
 
 .btn-board {
     padding: 1em;
-    border: 1px solid #fff;
+    border: none;
     color: #fff;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgb(100, 173, 216);
     border-radius: 1em;
     font-size: 1.5em;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(119, 174, 238);
+    }
 }
 
 .glass-screen {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    // background: rgba(255, 255, 255, 0.2);
+    background-color: #e5eaf6c2;
+
+    // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
     border-radius: 10px;
     padding: 2em;
     margin: 0 auto;
     left: 5%;
-    top: 2.5%;
+    top: 90px;
     height: 100%;
     width: 90%;
     position: fixed;
