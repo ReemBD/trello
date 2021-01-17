@@ -39,9 +39,10 @@
     grid-gap: 20px;
 }
 
-.main-layout {
-    padding: 2em;
-    max-width: 1400px;
+.board-layout {
+    margin-left: 30px;
+    margin-right: 30px;
+    // max-width: 1400px;
 
     @media screen and (max-width: 1450px) {
         max-width: 1100px;

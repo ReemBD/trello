@@ -37,6 +37,7 @@ class _TaskList extends Component {
         },
         onToggleComposer: ev => {
             ev.stopPropagation()
+            this.props.setCurrPopover(`TASK_COMPOSER${this.props.list.id}`)
             this.setState({ isComposerOpen: !this.state.isComposerOpen }, () => {
                 this.elTaskTitleRef.current.focus()
             })
@@ -60,7 +61,7 @@ class _TaskList extends Component {
         return listIdx
     }
     render() {
-        const { list } = this.props
+        const { list, currPopover } = this.props
         const { tasks } = list
         const { isComposerOpen, isListActionsOpen } = this.state
         return (
@@ -70,8 +71,10 @@ class _TaskList extends Component {
                     {...this.listTitleHandlersProps}
                     isListActionsOpen={isListActionsOpen}
                 />
-                <TaskComposer list={list} isComposerOpen={isComposerOpen} titleRef={this.elTaskTitleRef} onToggleComposer={this.onToggleComposer} />
-                {tasks?.length ? tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />) : ''}
+                <div className="task-previews-container">
+                    {tasks?.length ? tasks.map(task => <TaskPreview key={task.id} {...this.props} task={task} />) : ''}
+                    <TaskComposer {...this.props}  titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+                </div>
             </article>
         )
     }

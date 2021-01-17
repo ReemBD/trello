@@ -1,9 +1,23 @@
 .board-header {
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items:center;
+    .board-title {
+        font-size: 20px;
+        font-weight: 700;
+    }
     .board-nav {
         padding-top: 10px;
-        &>* {
+        &>*:not(:last-child) {
             margin-inline-end: 20px;
         }
     }
+.board-member-img-wrapper {
+    width: 30px;
+    @include aspect-ratio(1,1);
+    .board-member-img{
+        border-radius: 999px;
+        width: 100%;
+    }
+}
+   
 }

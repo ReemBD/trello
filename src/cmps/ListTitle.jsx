@@ -50,8 +50,9 @@ export class _ListTitle extends Component {
 
     onToggleListActions = (ev) => {
         ev.stopPropagation()
-        const { setCurrPopover, currPopover } = this.props
-        currPopover === `LIST_ACTIONS${this.props.list.id}` ? setCurrPopover() : setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
+        console.log('hellp from on toggle list acctions');
+        // const { setCurrPopover, currPopover } = this.props
+        (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
 
     }
 
@@ -83,13 +84,11 @@ export class _ListTitle extends Component {
 const mapStateToProps = state => {
     return {
         board: state.boardReducer.currBoard,
-        currPopover: state.popoverReducer.currPopover
     }
 }
 
 const mapDispatchToProps = {
     updateBoard,
-    setCurrPopover
 }
 
 export const ListTitle = connect(mapStateToProps, mapDispatchToProps)(_ListTitle)
