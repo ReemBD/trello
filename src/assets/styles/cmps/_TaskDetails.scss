@@ -145,3 +145,17 @@
     }
 }
 
+.task-checklist {
+
+    .checklist-header {
+        position: relative;
+    }
+
+    .todo-title {
+        margin-left: 5px;
+        
+        transition: all .2s;
+
+    }
+}
+

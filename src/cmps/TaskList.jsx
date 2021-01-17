@@ -5,9 +5,11 @@ import { TaskPreview } from './TaskPreview'
 import { boardService } from '../services/boardService'
 import { ListTitle } from '../cmps/ListTitle'
 import { TaskComposer } from './TaskComposer'
+
 class _TaskList extends Component {
     state = {
-        isComposerOpen: false
+        isComposerOpen: false,
+        isListActionsOpen: false,
     }
 
     elTaskTitleRef = React.createRef()
@@ -25,20 +27,49 @@ class _TaskList extends Component {
         this.updateBoard()
     }
 
-    onToggleComposer = ev => {
-        ev.stopPropagation()
-        this.setState({ isComposerOpen: !this.state.isComposerOpen }, () => {
-            this.elTaskTitleRef.current.focus()
-        })
+    listTitleHandlersProps = {
+        onRemoveList: () => {
+            const listIdx = this.listIdx
+            const { board, updateBoard } = { ...this.props }
+            board.lists.splice(listIdx, 1)
+            updateBoard(board)
+
+        },
+        onToggleComposer: ev => {
+            ev.stopPropagation()
+            this.setState({ isComposerOpen: !this.state.isComposerOpen }, () => {
+                this.elTaskTitleRef.current.focus()
+            })
+        },
+        onToggleListActions: ev => {
+            ev.stopPropagation()
+            this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
+        }
     }
 
+
+
+    get listTitleProps() {
+        return {
+
+        }
+    }
+    get listIdx() {
+        const { list, board } = this.props
+        const listIdx = boardService.getListIdxById(board, list.id)
+        return listIdx
+    }
     render() {
-        const { list, title } = this.props
+        const { list } = this.props
         const { tasks } = list
-        const { isComposerOpen } = this.state
+        const { isComposerOpen, isListActionsOpen } = this.state
         return (
             <article className="task-list">
-                <ListTitle list={list} title={title} isComposerOpen={isComposerOpen} onToggleComposer={this.onToggleComposer} />
+                <ListTitle
+                    {...this.props}
+                    {...this.listTitleHandlersProps}
+                    isListActionsOpen={isListActionsOpen}
+                />
                 <TaskComposer list={list} isComposerOpen={isComposerOpen} titleRef={this.elTaskTitleRef} onToggleComposer={this.onToggleComposer} />
                 {tasks?.length && tasks.map(task => <TaskPreview key={task.id} task={task} list={list} />)}
             </article>

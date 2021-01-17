@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { TaskList } from './TaskList'
 import { boardService } from '../services/boardService'
+import { setCurrPopover } from '../store/actions/popoverActions'
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import { connect } from 'react-redux'
@@ -9,7 +10,6 @@ import { utilService } from '../services/utilService'
 
 export class _Board extends Component {
     state = {
-        isAdding: false,
         listColors: ['#9895e0', '#4a94f8', '#56c991', '#3cc2e0', '#eb5a46'],
         listToAdd: {
             title: '',
@@ -23,9 +23,11 @@ export class _Board extends Component {
     elListTitleRef = React.createRef()
 
     addListHandlers = {
-        onClick: () => {
+        onClick: (ev) => {
+            ev.stopPropagation()
             this.elListTitleRef.current.focus()
-            this.setState({ isAdding: true })
+            const { setCurrPopover } = this.props
+            setCurrPopover('LIST_ADD')
         },
         onSubmit: ev => {
             ev.preventDefault()
@@ -47,11 +49,6 @@ export class _Board extends Component {
                 }
             })
             updateBoard(board)
-        },
-        onBlur: () => {
-            const { listToAdd } = this.state
-            this.setState({ isAdding: false })
-            if (!listToAdd) return
         }
     }
 
@@ -62,24 +59,24 @@ export class _Board extends Component {
 
 
     render() {
-        const { board } = this.props
+        const { board, currPopover, setCurrPopover } = this.props
         const { lists } = board
-        const { isAdding,listToAdd } = this.state
+        const isCurrPopover = (currPopover === 'LIST_ADD')
+        const { isAdding, listToAdd } = this.state
         if (!board) return <h1>loading...</h1>
         return (
             <div className="board main-layout">
                 <h1 className="board-title">{board.title}</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
                 <ul className="lists-group clear-list flex">
-
                     {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList list={list} title={list.title} /></li>)}
                     <li className="add-list task-list-container flex column">
-                        <form {...this.addListHandlers} className={`add-list-form  flex column ${isAdding && 'open'}`}>
+                        <form {...this.addListHandlers} className={`add-list-form  flex column ${(isCurrPopover && 'LIST_ADD') && 'open'}`}>
                             <div className="input-wrapper align-center flex">
                                 <AddIcon />
                                 <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
                             </div>
-                            <button className={`add-list-btn ${isAdding && 'open'}`}>Add list</button>
+                            <button type="submit" className={`add-list-btn ${isCurrPopover && 'open'}`}>Add list</button>
                         </form>
                     </li>
                 </ul>
@@ -92,12 +89,14 @@ export class _Board extends Component {
 const mapStateToProps = state => {
     return {
         board: state.boardReducer.currBoard,
-        isOverlayOpen: state.boardReducer.isOverlayOpen
+        isOverlayOpen: state.boardReducer.isOverlayOpen,
+        currPopover: state.popoverReducer.currPopover
     }
 }
 
 const mapDispatchToProps = {
-    updateBoard
+    updateBoard,
+    setCurrPopover
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

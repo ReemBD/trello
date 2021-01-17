@@ -65,6 +65,7 @@
 .hidden {
     visibility: hidden;
     opacity: 0;
+    max-height: 0;
 }
 .display-none {
     display: none;
@@ -89,4 +90,9 @@
         outline: 2px solid lightskyblue;
         background-color: #fff;
     }
+}
+
+.checked {
+    text-decoration: line-through;
+    color: #9b9595;
 }

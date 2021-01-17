@@ -13,6 +13,7 @@ export function setBoard(boardId) {
     }
 }
 
+
 export function updateBoard(board) {
     return async dispatch => {
         try {

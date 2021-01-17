@@ -101,13 +101,12 @@
         right: 0;
         z-index: 2;
         color: black;
-        font-size: 3em;
+        font-size: 38px;
         cursor: pointer;
     }
 }
 @mixin popover-section {
     margin-top: 12px;
-
 }
 
 @mixin popover-section-header {

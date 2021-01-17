@@ -1,0 +1,9 @@
+.board-header {
+    justify-content: flex-end;
+    .board-nav {
+        padding-top: 10px;
+        &>* {
+            margin-inline-end: 20px;
+        }
+    }
+}

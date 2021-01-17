@@ -82,7 +82,7 @@ function _fillDefaultContent(board) {
                 title: 'Doing',
                 style: {
                     title: {
-                        bgColor: 'rgb(152 149 224)'
+                        bgColor: '#4a94f8'
                     }
                 },
                 tasks: [
