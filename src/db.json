@@ -1,41 +1,44 @@
 {
   "board": [
     {
-      "_id": "b101",
-      "title": "Sprint 4",
+      "title": "Sprint 4 Project",
       "createdAt": 1589983468418,
       "createdBy": {
-        "_id": "u101",
+        "_id": "600556f6fb996f4ca453bb0d",
+        "username": "FartsKing",
         "fullname": "Reem Ben David",
-        "imgUrl": "http://some-img"
+        "imgUrl": "https://res-console.cloudinary.com/nofar/thumbnails/v1/image/upload/v1610714978/eWFoYnlvZ2J3c3ByY2Rkc3ExbzA=/grid/"
+      },
+      "style": {
+        "bg": "linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%)"
       },
       "style": {
         "bg": "linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)"
       },
       "members": [
         {
-          "_id": "u101",
-          "fullname": "Nofar Yunger",
-          "username": "YungiBabush",
-          "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610699982/igckslovcmq4zyl1sqou.jpg"
-        },
-        {
-          "_id": "u102",
-          "fullname": "Reem Ben David",
+          "_id": "600556f6fb996f4ca453bb0d",
           "username": "FartsKing",
-          "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+          "fullname": "Reem Ben David",
+          "imgUrl": "https://res-console.cloudinary.com/nofar/thumbnails/v1/image/upload/v1610714978/eWFoYnlvZ2J3c3ByY2Rkc3ExbzA=/grid/"
         },
         {
-          "_id": "u103",
-          "fullname": "Yoni Segev",
+          "_id": "600558837f6dcf4ebc046dbc",
+          "username": "YungiBabush",
+          "fullname": "Nofar Yunger",
+          "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610706165/zwqitxime2emoefcizwi.jpg"
+        },
+        {
+          "_id": "600557dc7f6dcf4ebc046dbb",
           "username": "FartsPrince",
-          "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+          "fullname": "Yoni Segev",
+          "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg"
         }
       ],
       "lists": [
         {
           "id": "g101",
-          "title": "Backlog",
+          "title": "To Do",
           "tasks": [
             {
               "id": "c104",
@@ -73,32 +76,22 @@
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
                 }
-              ],
-              "createdAt": 1590999730348,
-              "dueDate": 16156215211,
-              "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-              },
-              "style": {}
+              ]
             },
             {
               "title": "Lorem ipsum",
-              "description": "Decide how we want the application to look",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, autem.",
               "createdAt": 1610634356029,
               "id": "UkYv0"
             },
             {
-              "title": "Implement D&D",
-              "description": "Code a fully functioning drag and drop board",
+              "title": "popo",
+              "description": "Always need one popo ",
               "createdAt": 1610634412444,
               "id": "Zh9hU"
             }
           ],
           "style": {
-            "bgColor": "#9895e082",
             "title": {
               "bgColor": "#9895e0"
             }
@@ -106,7 +99,7 @@
         },
         {
           "id": "g102",
-          "title": "To Do",
+          "title": "In Progress",
           "tasks": [
             {
               "id": "c104",
@@ -118,9 +111,10 @@
                   "txt": "a comment",
                   "createdAt": 1590999817436,
                   "byMember": {
-                    "_id": "u101",
-                    "fullname": "Tal Tarablus",
-                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                    "_id": "600557dc7f6dcf4ebc046dbb",
+                    "username": "FartsPrince",
+                    "fullname": "Yoni Segev",
+                    "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg"
                   }
                 }
               ],
@@ -161,15 +155,15 @@
               "createdAt": 1590999730348,
               "dueDate": 16156215211,
               "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                "_id": "600557dc7f6dcf4ebc046dbb",
+                "username": "FartsPrince",
+                "fullname": "Yoni Segev",
+                "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg"
               },
               "style": {}
             },
             {
-              "title": "Put more dummy data",
+              "title": "Put more Demi-data",
               "description": "One man has walked downstairs then fell then suddenly schnitzel. More jokes from reem at - www.blabla.iJustNeedWords.com",
               "createdAt": 1610634626891,
               "id": "bGJKR",
@@ -182,47 +176,29 @@
               ],
               "members": [
                 {
-                  "_id": "u103",
+                  "_id": "600557dc7f6dcf4ebc046dbb",
                   "username": "FartsPrince",
                   "fullname": "Yoni Segev",
-                  "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                }
-              ],
-              "checklists": [
-                {
-                  "id": "SXgvE",
-                  "title": "Checklist",
-                  "todos": []
+                  "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg"
                 },
                 {
-                  "id": "rcyZO",
-                  "title": "Checklist",
-                  "todos": []
-                }
-              ],
-              "comments": [
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "MhtYd",
-                  "createdAt": 1610989581234,
-                  "txt": "Great job"
+                  "_id": "600558837f6dcf4ebc046dbc",
+                  "username": "YungiBabush",
+                  "fullname": "Nofar Yunger",
+                  "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610706165/zwqitxime2emoefcizwi.jpg"
                 }
               ]
             }
           ],
           "style": {
-            "bgColor": "#4a94f882",
             "title": {
               "bgColor": "#4a94f8"
             }
           }
         },
         {
-          "title": "In Progress",
+          "id": "g103",
+          "title": "Done",
           "tasks": [
             {
               "title": "asdfasd",
@@ -269,11 +245,9 @@
           ],
           "style": {
             "title": {
-              "bgColor": "#56c991"
-            },
-            "bgColor": "#56c99182"
-          },
-          "id": "SKQCF"
+              "bgColor": "#4a94f8"
+            }
+          }
         },
         {
           "title": "asdf",
@@ -293,7 +267,6 @@
           "txt": "Changed Color",
           "createdAt": 154514,
           "byMember": {
-            "_id": "u101",
             "fullname": "Abi Abambi",
             "imgUrl": "http://some-img"
           },
@@ -464,46 +437,40 @@
   ],
   "user": [
     {
-      "_id": "u101",
       "fullname": "Abi Abambi",
-      "email": "abi@ababmi.com",
+      "username": "abi@ababmi.com",
       "password": "aBambi123",
       "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
     },
     {
-      "_id": "u102",
       "fullname": "bobi bo",
-      "email": "abi@ababmi.com",
+      "username": "abi@ababmi.com",
       "password": "111",
       "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
     },
     {
-      "_id": "u103",
       "fullname": "Justin Timberlake",
-      "email": "bibi@ababmi.com",
+      "username": "bibi@ababmi.com",
       "password": "password",
       "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
     },
     {
-      "_id": "u104",
       "fullname": "puki ben david",
-      "email": "puki@gmail.com",
+      "username": "puki@gmail.com",
       "password": "123",
       "imgUrl": "https://www.byrdie.com/thmb/8XvZ5tH8mk7tK09GzvjDp9AmDWQ=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-970183136-337cd75d743746de87552e085880e2d0.jpeg"
     },
     {
-      "email": "bla@bla.gmail",
+      "username": "bla@bla.gmail",
       "fullname": "nofar ",
       "password": "1",
-      "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610699982/igckslovcmq4zyl1sqou.jpg",
-      "_id": "Lf8VgKe"
+      "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610699982/igckslovcmq4zyl1sqou.jpg"
     },
     {
-      "email": "puki@gmail.com",
+      "username": "puki@gmail.com",
       "fullname": "puki ben david",
       "password": "1",
-      "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg",
-      "_id": "AdGplvz"
+      "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg"
     }
   ],
   "background": [

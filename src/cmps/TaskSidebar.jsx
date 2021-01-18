@@ -8,11 +8,16 @@ import ArrowRightAltOutlinedIcon from '@material-ui/icons/ArrowRightAltOutlined'
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
 import { LabelsPopover } from './LabelsPopover'
+import { DateTimePopover } from './DateTimePopover'
 import { cloneDeep } from 'lodash'
 import { utilService } from '../services/utilService'
-
+import { parseISO } from 'date-fns'
+import { getTime } from 'date-fns'
 export class TaskSidebar extends Component {
 
+    state = {
+        dueDate: ''
+    }
 
     onAddNewList = async () => {
         const { board, currListIdx, currTaskIdx, updateBoard } = this.props
@@ -37,6 +42,20 @@ export class TaskSidebar extends Component {
         this.props.history.push(`/board/${board._id}`)
     }
 
+    onDateChange = (ev) => {
+        let parsedString = parseISO(ev.target.value)
+        let timestampedTime = getTime(parsedString)
+        this.setState({ dueDate: timestampedTime })
+    }
+
+    onSaveDate = () => {
+        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const copyBoard = cloneDeep(board)
+        copyBoard.lists[currListIdx].tasks[currTaskIdx].dueDate = this.state.dueDate
+        updateBoard(copyBoard)
+        this.props.togglePopover('')
+    }
+
     render() {
         const { currPopover, togglePopover } = this.props
         return (
@@ -54,9 +73,16 @@ export class TaskSidebar extends Component {
                         <span className="action-txt">Members</span>
                         {currPopover === 'members' && <ChangeMembersPopover setCurrPopover={() => togglePopover('')} {...this.props} />}
                     </div>
-                    <div className="action-container flex align-center">
+                    <div className="action-container flex align-center" onClick={() => togglePopover('date')}>
                         <span className="action-icon"><QueryBuilderOutlinedIcon /></span>
                         <span className="action-txt">Due Date</span>
+                        {currPopover === 'date' && <DateTimePopover
+                            onClick={(ev) => ev.stopPropagation()}
+                            setCurrPopover={() => togglePopover('')}
+                            onDateChange={this.onDateChange}
+                            onSaveDate={this.onSaveDate}
+                            {...this.props} />}
+
                     </div>
                     <div className="action-container flex align-center" onClick={this.onAddNewList}>
                         <span className="action-icon"><CheckBoxOutlinedIcon /></span>

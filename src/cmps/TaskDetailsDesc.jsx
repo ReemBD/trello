@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { boardService } from '../services/boardService'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { cloneDeep } from 'lodash'
@@ -40,10 +42,12 @@ export class _TaskDetailsDesc extends Component {
     }
 
     saveDescription = (ev) => {
-        const { board, currListIdx, currTaskIdx } = this.props
+        const { board } = this.props
+        const { listId, taskId } = this.props.match.params
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
         const { currTask } = this.state
         const boardCopy = cloneDeep(board)
-        boardCopy.lists[currListIdx].tasks[currTaskIdx] = currTask
+        boardCopy.lists[listIdx].tasks[taskIdx] = currTask
         this.props.updateBoard(boardCopy)
         this.toggleControls(false)
     }
@@ -101,4 +105,4 @@ const mapDispatchToProps = {
     updateBoard
 }
 
-export const TaskDetailsDesc = connect(mapStateToProps, mapDispatchToProps)(_TaskDetailsDesc)
+export const TaskDetailsDesc = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TaskDetailsDesc))

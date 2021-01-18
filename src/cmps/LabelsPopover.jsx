@@ -3,7 +3,6 @@ import { updateBoard } from '../store/actions/boardActions'
 import CloseIcon from '@material-ui/icons/Close';
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
-import { setCurrPopover } from '../store/actions/popoverActions'
 export class _LabelsPopover extends Component {
     state = {
         labels: [
