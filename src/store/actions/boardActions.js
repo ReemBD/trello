@@ -5,6 +5,7 @@ export function setBoard(boardId) {
     return async dispatch => {
         try {
             const board = await boardService.getById(boardId)
+            // board = board[0]
             dispatch({ type: 'SET_BOARD', board })
 
         } catch (err) {
