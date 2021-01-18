@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
+import { toggleTask, setCurrListAndTaskIdx } from '../store/actions/boardActions'
+import {connect} from 'react-redux'
+import {withRouter} from'react-router-dom'
 import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/CheckBoxOutlined';
 import DueDateIcon from '@material-ui/icons/QueryBuilderOutlined';
@@ -7,7 +10,7 @@ import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import { TaskEdit } from './TaskEdit'
 
 
-export class TaskPreview extends Component {
+export class _TaskPreview extends Component {
 
     state = {
         isTaskHovered: false,
@@ -97,16 +100,16 @@ export class TaskPreview extends Component {
 }
 
 
-// const mapDispatchToProps = {
-//     toggleTask,
-//     setCurrListAndTaskIdx,
-// }
+const mapDispatchToProps = {
+    toggleTask,
+    setCurrListAndTaskIdx,
+}
 
-// const mapStateToProps = state => {
-//     return {
-//         isTaskOpen: state.boardReducer.isTaskOpen,
-//         isOverlayOpen: state.boardReducer.isOverlayOpen
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        isTaskOpen: state.boardReducer.isTaskOpen,
+        isOverlayOpen: state.boardReducer.isOverlayOpen
+    }
+}
 
-// export const TaskPreview = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TaskPreview))
+export const TaskPreview = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TaskPreview))
