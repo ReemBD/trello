@@ -7,13 +7,13 @@ export class _LoginSignup extends Component {
 
     state = {
         signupCred: {
-            email: '',
+            username: '',
             fullname: '',
             password: '',
             imgUrl: 'https://res.cloudinary.com/nofar/image/upload/c_thumb,w_200,g_face/v1610699691/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1dab901.4508913715280626898959_lmrsj5.png'
         },
         loginCred: {
-            email: '',
+            username: '',
             password: ''
         },
         isNewUser: false,
@@ -44,7 +44,7 @@ export class _LoginSignup extends Component {
         var userCreds;
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
-        if (!userCreds.password || !userCreds.email) {
+        if (!userCreds.password || !userCreds.username) {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
@@ -96,13 +96,13 @@ export class _LoginSignup extends Component {
         await this.props.clearUser()
         this.setState({
             signupCred: {
-                email: '',
+                username: '',
                 fullname: '',
                 password: '',
                 imgUrl: 'https://res.cloudinary.com/nofar/image/upload/c_thumb,w_200,g_face/v1610699691/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1dab901.4508913715280626898959_lmrsj5.png'
             },
             loginCred: {
-                email: '',
+                username: '',
                 password: ''
             },
             isNewUser: false,
@@ -144,7 +144,7 @@ export class _LoginSignup extends Component {
                         }}>  </div>
                         <h1>Create Account</h1>
                         <input type="text" value={signupCred.fullname} name="fullname" placeholder="Name" onChange={this.handleInput} />
-                        <input type="email" value={signupCred.email} name="email" placeholder="Email" onChange={this.handleInput} />
+                        <input type="text" value={signupCred.username} name="username" placeholder="username" onChange={this.handleInput} />
                         <input type="password" value={signupCred.password} name="password" placeholder="Password" onChange={this.handleInput} />
                         <button>Sign Up</button>
                         <span style={{ color: '#fff' }}>{msg}</span>
@@ -157,7 +157,7 @@ export class _LoginSignup extends Component {
 
                         <h1 className="login-h1" >Log In</h1>
 
-                        <input type="email" name="email" value={loginCred.email} placeholder="Email" onChange={this.handleInput} />
+                        <input type="text" name="username" value={loginCred.username} placeholder="username"  onChange={this.handleInput} />
                         <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
                         <button>Sign In</button>
                         <span style={{ color: '#fff' }}>{msg}</span>

@@ -465,40 +465,40 @@
     {
       "_id": "u101",
       "fullname": "Abi Abambi",
-      "email": "abi@ababmi.com",
+      "username": "abi@ababmi.com",
       "password": "aBambi123",
       "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
     },
     {
       "_id": "u102",
       "fullname": "bobi bo",
-      "email": "abi@ababmi.com",
+      "username": "abi@ababmi.com",
       "password": "111",
       "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
     },
     {
       "_id": "u103",
       "fullname": "Justin Timberlake",
-      "email": "bibi@ababmi.com",
+      "username": "bibi@ababmi.com",
       "password": "password",
       "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
     },
     {
       "_id": "u104",
       "fullname": "puki ben david",
-      "email": "puki@gmail.com",
+      "username": "puki@gmail.com",
       "password": "123",
       "imgUrl": "https://www.byrdie.com/thmb/8XvZ5tH8mk7tK09GzvjDp9AmDWQ=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-970183136-337cd75d743746de87552e085880e2d0.jpeg"
     },
     {
-      "email": "bla@bla.gmail",
+      "username": "bla@bla.gmail",
       "fullname": "nofar ",
       "password": "1",
       "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610699982/igckslovcmq4zyl1sqou.jpg",
       "_id": "Lf8VgKe"
     },
     {
-      "email": "puki@gmail.com",
+      "username": "puki@gmail.com",
       "fullname": "puki ben david",
       "password": "1",
       "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610704078/eioo9rguuc17gepjusmn.jpg",
