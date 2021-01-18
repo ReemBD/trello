@@ -1,18 +1,30 @@
 .board-header {
     justify-content: space-between;
     align-items:center;
+    // background-color: #ffffff5e;
+    position: fixed;
+    width: 100%;
+    margin-left: 0%;
+    padding: 4px;
     .board-title {
         font-size: 20px;
         font-weight: 700;
+        margin-inline-start: 1.5em;
     }
+ul{
+    margin: 0 ;
+    margin-right: 3em;
+}
+
     .board-nav {
         padding-top: 10px;
         &>*:not(:last-child) {
-            margin-inline-end: 20px;
+            margin-inline-end: 1em;
         }
     }
 .board-member-img-wrapper {
     width: 30px;
+    margin: 4px;
     @include aspect-ratio(1,1);
     .board-member-img{
         border-radius: 999px;

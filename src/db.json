@@ -347,6 +347,50 @@
             "bgColor": "#3cc2e082"
           },
           "id": "X4xeN"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#eb5a46"
+            },
+            "bgColor": "#eb5a4682"
+          },
+          "id": "zzIuX"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#D02125"
+            },
+            "bgColor": "#D0212582"
+          },
+          "id": "2GlMb"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#BCD9AA"
+            },
+            "bgColor": "#BCD9AA82"
+          },
+          "id": "lK1aW"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#CD6CA8"
+            },
+            "bgColor": "#CD6CA882"
+          },
+          "id": "n93gj"
         }
       ],
       "activities": [

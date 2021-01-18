@@ -9,7 +9,7 @@ export class _AppHeader extends Component {
         return (
             <header className="main-nav-header flex">
                 <div className="logo"></div>
-                <ul className="main-nav flex clear-list flex">
+                <ul className="main-nav flex clear-list flex ">
                     <li className="logo"><NavLink to="/"><span>Chello</span></NavLink></li>
                     <li><NavLink to="/board"><AppsIcon /><span>Boards</span></NavLink></li>
                     <li><NavLink to="/login"><PersonRoundedIcon /><span>Login</span></NavLink></li>

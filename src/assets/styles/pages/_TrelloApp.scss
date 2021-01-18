@@ -15,10 +15,10 @@
 
 .bg-overlay {
     background-color: #ebeef582;
-    min-width: 1300px;
-    // overflow-x: scroll;
-    min-height: 100vh;
-    margin: 0 3em;
+    // min-width: 1300px;
+    overflow-x: auto;
+    min-height: 92vh;
+    margin: 0 1em;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
