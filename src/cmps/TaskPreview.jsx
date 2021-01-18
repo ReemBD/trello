@@ -10,6 +10,7 @@ import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import { TaskEdit } from './TaskEdit'
 import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import {format} from 'date-fns'
+
 export class _TaskPreview extends Component {
 
     state = {
