@@ -41,6 +41,9 @@
     &.align-center {
         align-items: center;
     }
+    &.space-between {
+        justify-content: space-between
+    }
 }
 
 // Media helpers
@@ -86,6 +89,7 @@
     width: 100%;
     background-color: $task-bgc-clr;
     color: inherit;
+    margin-bottom: 2px;
 
     &:focus {
         outline: 2px solid lightskyblue;

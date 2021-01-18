@@ -4,7 +4,7 @@ import { utilService } from '../services/utilService'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { cloneDeep } from 'lodash'
-import FormatListBulletedRoundedIcon from '@material-ui/icons/FormatListBulletedRounded';
+import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -18,7 +18,9 @@ export class _TaskDetailsChecklist extends Component {
         checklists: [],
         newTodo: {
             txt: ''
-        }
+        },
+        newTodos: []
+
 
     }
 
@@ -27,10 +29,24 @@ export class _TaskDetailsChecklist extends Component {
 
     componentDidMount() {
         const { checklists } = this.props.task
-        const copyChecklists = cloneDeep(this.state.checklists)
-        checklists?.map(checklist => copyChecklists.push(checklist))
-        this.setState({ checklists: copyChecklists })
+        if (checklists) {
+
+            const copyChecklists = cloneDeep(checklists)
+            this.setState({ checklists: copyChecklists })
+        } else {
+            this.setState({ checklists: [] })
+        }
     }
+
+    componentDidUpdate(prevProps) {
+        const { checklists } = this.props.task
+        if (prevProps.task.checklists !== checklists) {
+
+            const copyChecklists = cloneDeep(checklists)
+            this.setState({ checklists: copyChecklists })
+        }
+    }
+
 
 
     handleInput = (idx, { target }) => {
@@ -69,16 +85,11 @@ export class _TaskDetailsChecklist extends Component {
     }
 
     handleNewTodo = (ev) => {
-        const field = ev.target.name
+        const checklistIdx = ev.target.name
         const value = ev.target.value
-        this.setState(prevState => {
-            return {
-                newTodo: {
-                    ...prevState.newTodo,
-                    [field]: value
-                }
-            }
-        })
+        const newTodos = [...this.state.newTodos]
+        newTodos[checklistIdx] = value
+        this.setState({ newTodos })
     }
 
     onEnterPress = ev => {
@@ -103,6 +114,9 @@ export class _TaskDetailsChecklist extends Component {
     onRemoveTodo = (todoIdx, listIdx, ev) => {
         let copyChecklists = cloneDeep(this.state.checklists)
         copyChecklists[listIdx].todos.splice(todoIdx, 1)
+        if (!copyChecklists[listIdx].todos.length) {
+            copyChecklists.splice(listIdx, 1)
+        }
         this.setState({ checklists: copyChecklists }, () => this.onUpdateBoard())
 
     }
@@ -112,40 +126,54 @@ export class _TaskDetailsChecklist extends Component {
         if (ev.keyCode === 13 && ev.shiftKey === false) {
             const todoToAdd = {
                 id: utilService.makeId(),
-                title: this.state.newTodo.txt,
+                title: this.state.newTodos[listIdx],
                 isDone: false
             }
             const copyChecklists = cloneDeep(this.state.checklists)
             copyChecklists[listIdx].todos.push(todoToAdd)
             this.setState({ checklists: copyChecklists }, () => {
                 this.onUpdateBoard()
-                const newTodo = { txt: '' }
-                this.setState({ newTodo })
+                const newTodos = [...this.state.newTodos]
+                newTodos[listIdx] = ''
+                this.setState({ newTodos })
             })
         }
     }
 
+    onDeleteChecklist = (checklistIdx) => {
+        const boardCopy = cloneDeep(this.props.board)
+        const { list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(boardCopy, list.id, task.id)
+        boardCopy.lists[listIdx].tasks[taskIdx].checklists.splice(checklistIdx, 1)
+        updateBoard(boardCopy)
+    }
+
     render() {
         const { board, list, task } = this.props
-        const { checklists, newTodo } = this.state
+        const { checklists, newTodos } = this.state
         const { percentDone } = this
         if (!checklists) return <div>Loading...</div>
         return (
             <div className="task-checklist">
                 { checklists?.map((checklist, listIdx) => {
                     return <div className="checklist-header">
-                        <FormatListBulletedRoundedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
-                        <textarea
-                            className="task-textarea"
-                            value={checklist.title}
-                            style={{ width: 'auto' }}
-                            name="title"
-                            onChange={(ev) => this.handleInput(listIdx, ev)}
-                            spellCheck="false"
-                            onKeyDown={this.onEnterPress}
-                            ref={this.elTodoRef}
-                        />
-                        <LinearProgressWithLabel value={percentDone(checklist)} />
+                        <CheckBoxOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
+                        <div className="flex align-center space-between">
+
+                            <textarea
+                                className="task-textarea"
+                                value={checklist.title}
+                                style={{ width: 'auto' }}
+                                name="title"
+                                onChange={(ev) => this.handleInput(listIdx, ev)}
+                                spellCheck="false"
+                                onKeyDown={this.onEnterPress}
+                                ref={this.elTodoRef}
+                            />
+                            <span onClick={() => this.onDeleteChecklist(listIdx)}><button className="secondary-btn" style={{ padding: '5px 8px' }}>Delete</button></span>
+                        </div>
+                        {checklist?.todos.length ? <LinearProgressWithLabel value={percentDone(checklist)} /> : ''}
+
                         {checklist?.todos &&
                             checklist.todos.map((todo, todoIdx) => {
                                 return <div className="task-todo-container flex align-center justify-center">
@@ -172,10 +200,10 @@ export class _TaskDetailsChecklist extends Component {
                         }
                         <input
                             type="text"
-                            name="txt"
+                            name={listIdx}
                             placeholder="Add an item"
                             className="task-todo-input"
-                            value={newTodo.txt}
+                            value={newTodos[listIdx]}
                             onChange={this.handleNewTodo}
                             onKeyDown={(ev) => this.onAddItem(listIdx, ev)}
                             onBlur={() => {

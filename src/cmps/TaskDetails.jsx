@@ -14,6 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 export class _TaskDetails extends Component {
     state = {
         isDetailsOpen: false,
+        currPopover: '',
         board: {},
         list: {},
         task: {}
@@ -108,14 +109,29 @@ export class _TaskDetails extends Component {
         })
     }
 
+    togglePopover = (name) => {
+        const { currPopover } = this.state
+        if (currPopover === name) {
+            this.setState({ currPopover: '' })
+        } else {
+            this.setState({ currPopover: name })
+
+        }
+    }
+
 
     render() {
-        const { isDetailsOpen } = this.state
-        const { board, list, task } = this.state
+        const { isDetailsOpen, list, task, currPopover } = this.state
+        const { board } = this.props
+        const { listId, taskId } = this.props.match.params
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
+        const currList = board.lists[listIdx]
+        const currTask = board.lists[listIdx].tasks[taskIdx]
+
 
         if (!task) return <div>Loading details...</div>
         return (
-            <section className="task-details">
+            <section onClick={() => currPopover ? this.togglePopover('') : ''} className="task-details">
                 {this.state.isDetailsOpen &&
                     <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`}>
                         <div className="details-modal flex">
@@ -140,7 +156,7 @@ export class _TaskDetails extends Component {
                                     <TaskDetailsDesc board={board} list={list} task={task} />
                                 </div>
                                 <div className="details-checklist">
-                                    <TaskDetailsChecklist board={board} list={list} task={task} />
+                                    <TaskDetailsChecklist board={board} list={list} task={currTask} />
                                 </div>
                                 <div className="details-activity">
                                     <TaskDetailsActivity board={board} list={list} task={task} {...this.props} />
@@ -152,7 +168,7 @@ export class _TaskDetails extends Component {
                                 </div>
 
                                 <div className="task-sidebar">
-                                    <TaskSidebar />
+                                    <TaskSidebar board={board} list={currList} task={currTask} togglePopover={this.togglePopover} currPopover={this.state.currPopover} {...this.props} />
                                 </div>
 
                             </div>

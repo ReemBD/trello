@@ -87,13 +87,17 @@ export class _TaskDetailsInfo extends Component {
     }
 
     render() {
-        const { currBoard, list, task } = this.props
+        const { currBoard } = this.props
+        const { listId, taskId } = this.props.match.params
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(currBoard, listId, taskId)
+        const list = currBoard.lists[listIdx]
+        const task = currBoard.lists[listIdx].tasks[taskIdx]
         const { labels, isLabelMenuOpen, isMemberModalOpen } = this.state
         return (
             <div className="details-info">
                 <div className="flex">
 
-                    {task.members?.length && <div className="card-detail">
+                    {task?.members?.length && <div className="card-detail">
                         <h3>Members</h3>
                         <div className="member-imgs flex align-center">
 
@@ -104,7 +108,10 @@ export class _TaskDetailsInfo extends Component {
                             })}
                             <div className="task-add-member small-btn-bgc" title="Add Member">
                                 {<AddIcon onClick={this.onToggleMembersModal} style={{ height: '32px' }} />}
-                                {isMemberModalOpen && <ChangeMembersPopover list={list} task={task} setCurrPopover={this.onToggleMembersModal} {...this.props} />}
+                                {isMemberModalOpen && <ChangeMembersPopover board={currBoard} list={list} task={task} setCurrPopover={this.onToggleMembersModal} currListIdx={this.props.currListIdx}
+                                    currTaskIdx={this.props.currTaskIdx}
+                                    updateBoard={this.props.updateBoard}
+                                />}
                             </div>
                         </div>
                     </div>}
