@@ -29,6 +29,7 @@ class _TrelloApp extends Component {
     render() {
         const { board, setCurrPopover } = this.props
         if (!board) return <h1>loading...</h1>
+        console.log('board:',board);
         return (
             <div onClick={() => {
                 setCurrPopover()

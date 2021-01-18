@@ -27,7 +27,6 @@ async function save(board) {
     var savedBoard;
 
     if (!board._id) {
-        board = _fillDefaultContent(board)
         console.log('board', board);
         savedBoard = await httpService.post(endpoint, board)
     } else {
@@ -48,78 +47,6 @@ async function getById(boardId) {
 }
 
 
-
-// just temporerly just until we create the backend ...
-function _fillDefaultContent(board) {
-
-    return {
-        ...board,
-        createdAt: Date.now(),
-        lists: [
-            {
-                id: utilService.makeId(),
-                title: 'To Do',
-                style: {
-                    bgColor: 'rgb(152, 149, 224,82)',
-                    title: {
-                        bgColor: 'rgb(152, 149, 224)'
-                    }
-                },
-                tasks: [
-                    {
-                        id: utilService.makeId(),
-                        createdAt: Date.now(),
-                        title: 'how easy to create tasks!'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        createdAt: Date.now(),
-                        title: 'invite your team!'
-                    }
-                ]
-            },
-            {
-                id: utilService.makeId(),
-                title: 'Doing',
-                style: {
-                    bgColor: '#4a94f882',
-                    title: {
-                        bgColor: '#4a94f8'
-                    }
-                },
-                tasks: [
-                    {
-                        id: utilService.makeId(),
-                        createdAt: Date.now(),
-                        title: 'make dinner'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        createdAt: Date.now(),
-                        title: 'buy groceries',
-                        todos: [
-                            {
-                                title: 'Milk',
-                                isDone: false,
-                                id: utilService.makeId()
-                            },
-                            {
-                                title: 'Bread',
-                                isDone: false,
-                                id: utilService.makeId()
-                            },
-                            {
-                                title: 'Chocolate',
-                                isDone: false,
-                                id: utilService.makeId()
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-}
 
 
 

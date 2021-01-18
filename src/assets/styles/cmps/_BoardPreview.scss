@@ -1,14 +1,13 @@
 // ------------------------------------------------------- board grid cards-------------------------------------------------------
 .board-box {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 350px);
+    grid-template-columns: repeat(auto-fill, 300px);
     width: -webkit-fill-available;
     justify-content: center;
 }
 
 .board-card {
     background: rgba(255, 255, 255, 0.924);
-    // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
     cursor: pointer;

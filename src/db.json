@@ -7,7 +7,7 @@
       "createdBy": {
         "_id": "u101",
         "fullname": "Reem Ben David",
-        "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+        "imgUrl": "http://some-img"
       },
       "style": {},
       "members": [
@@ -58,28 +58,30 @@
                   "username": "YungiBabush",
                   "fullname": "Nofar Yunger",
                   "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610699982/igckslovcmq4zyl1sqou.jpg"
+                },
+                {
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                },
+                {
+                  "_id": "u102",
+                  "username": "FartsKing",
+                  "fullname": "Reem Ben David",
+                  "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
                 }
               ],
-              "labels": [
+              "comments": [
                 {
-                  "id": "101",
-                  "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "103",
-                  "color": "#f99f1b",
-                  "title": ""
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": ""
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "scKGA",
+                  "createdAt": 1610966793276,
+                  "txt": "Yo, this is a comment"
                 }
               ],
               "createdAt": 1590999730348,
@@ -96,19 +98,7 @@
               "title": "Lorem ipsum",
               "description": "Decide how we want the application to look",
               "createdAt": 1610634356029,
-              "id": "UkYv0",
-              "comments": [
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "szm3k",
-                  "createdAt": 1610920176859,
-                  "txt": "dafadfadf"
-                }
-              ]
+              "id": "UkYv0"
             },
             {
               "title": "Implement D&D",
@@ -150,15 +140,35 @@
                   }
                 }
               ],
-              "checklists": [],
-              "members": [
+              "checklists": [
                 {
-                  "_id": "u102",
-                  "username": "FartsKing",
-                  "fullname": "Reem Ben David",
-                  "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+                  "id": "YEhmF",
+                  "title": "Checklist",
+                  "todos": [
+                    {
+                      "title": "To Do 1",
+                      "isDone": true,
+                      "id": "212jX"
+                    },
+                    {
+                      "title": "To Do 2",
+                      "isDone": true,
+                      "id": "3212a"
+                    },
+                    {
+                      "title": "Testing",
+                      "isDone": false,
+                      "id": "212sfX"
+                    },
+                    {
+                      "id": "VU5mQ",
+                      "title": "asd",
+                      "isDone": false
+                    }
+                  ]
                 }
               ],
+              "members": [],
               "labels": [
                 {
                   "id": "101",
@@ -252,12 +262,6 @@
               "description": "Okay",
               "createdAt": 1610913051755,
               "id": "vaU9z"
-            },
-            {
-              "title": "שכגגשכ",
-              "description": "",
-              "createdAt": 1610991180730,
-              "id": "g0jmj"
             }
           ],
           "style": {
@@ -270,7 +274,14 @@
         },
         {
           "title": "Done",
-          "tasks": [],
+          "tasks": [
+            {
+              "title": "asdfasdf",
+              "description": "",
+              "createdAt": 1610913057205,
+              "id": "R2qU7"
+            }
+          ],
           "style": {
             "title": {
               "bgColor": "#3cc2e0"
@@ -278,23 +289,42 @@
             "bgColor": "#3cc2e082"
           },
           "id": "X4xeN"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#eb5a46"
+            },
+            "bgColor": "#eb5a4682"
+          },
+          "id": "hDfXq"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#484FAD"
+            },
+            "bgColor": "#484FAD82"
+          },
+          "id": "o0k6a"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#849190"
+            },
+            "bgColor": "#84919082"
+          },
+          "id": "Xkbdm"
         }
       ],
       "activities": [
-        {
-          "id": "a102",
-          "txt": "Added Checklist",
-          "createdAt": 1610905538264,
-          "byMember": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-          },
-          "task": {
-            "id": "b89HN",
-            "title": "Replace Logo"
-          }
-        },
         {
           "id": "a101",
           "txt": "Changed Color",
@@ -302,10 +332,10 @@
           "byMember": {
             "_id": "u101",
             "fullname": "Abi Abambi",
-            "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+            "imgUrl": "http://some-img"
           },
           "task": {
-            "id": "b89HN",
+            "id": "c101",
             "title": "Replace Logo"
           }
         }
@@ -409,7 +439,7 @@
       "title": "Sprint 2",
       "members": [],
       "style": {
-        "bg": "#fff"
+        "bg": "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)"
       },
       "description": "",
       "createdAt": 1610879253612,
@@ -515,20 +545,7 @@
               "createdAt": 1610887224717,
               "title": "how easy to create tasks!"
             },
-            {
-              "id": "dAByp",
-              "createdAt": 1610887224717,
-              "title": "invite your team!"
-            }
-          ]
-        },
-        {
-          "id": "Jb48X",
-          "title": "Doing",
-          "style": {
-            "title": {
-              "bgColor": "#4a94f8"
-            }
+            "bgColor": "#C9146282"
           },
           "tasks": [
             {

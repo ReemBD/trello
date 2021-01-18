@@ -6,43 +6,45 @@
     z-index: 10;
     left: 0;
     right: 0;
-    
+
     .main-nav {
         & > * {
-            margin-inline-end: 1em;
+            margin-inline-start: 1em;
         }
     }
     a {
         text-decoration: none;
-        font-size: 1.1em;
+        font-size: 1em;
         color: $clr2;
     }
     span {
-        line-height: 35px;
-
+        line-height: 30px;
     }
-    ul{
+    ul {
         width: 100%;
+        margin: 4px 1em;
 
-            li{
+        li {
+            a {
+                display: flex;
+                align-items: center;
 
-
-                a {
-                    display: flex;
-                    align-items: center;
-
-                    transition: color .2s;
-                    &:hover {
-                    color: darken(#333, 10%)
-                    }
+                transition: color 0.2s;
+                &:hover {
+                    color: darken(#333, 10%);
                 }
-
-              &:first-of-type {
-                  flex-grow: 1;
-                  margin-left: 50px;
-                  font-size: 1.5em;
-                  font-family: Kaushan;
-                }  
             }
+
+            .MuiSvgIcon-root {
+                font-size: 1.25em;
+            }
+
+            &:first-of-type {
+                flex-grow: 1;
+                // margin-left: 50px;
+                font-size: 1.5em;
+                font-family: Kaushan;
+            }
+        }
     }
 }
