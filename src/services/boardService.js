@@ -60,8 +60,9 @@ function _fillDefaultContent(board) {
                 id: utilService.makeId(),
                 title: 'To Do',
                 style: {
+                    bgColor: 'rgb(152, 149, 224,82)',
                     title: {
-                        bgColor: 'rgb(152 149 224)'
+                        bgColor: 'rgb(152, 149, 224)'
                     }
                 },
                 tasks: [
@@ -81,6 +82,7 @@ function _fillDefaultContent(board) {
                 id: utilService.makeId(),
                 title: 'Doing',
                 style: {
+                    bgColor: '#4a94f882',
                     title: {
                         bgColor: '#4a94f8'
                     }
@@ -164,7 +166,7 @@ function getEmptyList() {
         title: '',
         tasks: [],
         style: {
-            title: {bgColor: '#3cc2e0'}
+            title: { bgColor: '#3cc2e0' }
         }
     }
 }

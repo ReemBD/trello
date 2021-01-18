@@ -10,7 +10,7 @@ import ChangeMembersIcon from '@material-ui/icons/PeopleOutline';
 import RemoveIcon from '@material-ui/icons/DeleteOutline';
 import ChangeDueDateIcon from '@material-ui/icons/QueryBuilder';
 
-export class _TaskEdit extends Component {
+export class TaskEdit extends Component {
 
     state = {
         board: null,
@@ -22,6 +22,7 @@ export class _TaskEdit extends Component {
             { title: 'Change Due Date', Icon: ChangeDueDateIcon },
         ]
     }
+
 
     onRemoveTask = ev => {
         ev.stopPropagation()
@@ -50,7 +51,7 @@ export class _TaskEdit extends Component {
         return (
             <div className="quick-task-editor-buttons">
                 {popovers.map(popover => {
-                    return <QuickEditButton {...this.getQEBProps(task, list, popover.title, popover.Component, popover.Icon)} />
+                    return <QuickEditButton {...this.props} {...this.getQEBProps(task, list, popover.title, popover.Component, popover.Icon)} />
                 })}
                 <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
                     <span className="icon-sm icon-label light"></span>
@@ -63,14 +64,14 @@ export class _TaskEdit extends Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        board: state.boardReducer.currBoard
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         board: state.boardReducer.currBoard
+//     }
+// }
 
-const mapDispatchToProps = {
-    updateBoard
-}
+// const mapDispatchToProps = {
+//     updateBoard
+// }
 
-export const TaskEdit = connect(mapStateToProps, mapDispatchToProps)(_TaskEdit)
+// export const TaskEdit = connect(mapStateToProps, mapDispatchToProps)(_TaskEdit)

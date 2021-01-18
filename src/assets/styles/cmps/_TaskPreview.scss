@@ -41,13 +41,19 @@
     .task-preview-icons-container {
         margin-top: -8px;
         margin-bottom: 5px;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        .description-indication-icon {
-            width: 20px;
+        flex-wrap: wrap;
+        &>*{
+            margin-inline-start: 5px;
+        }
+        .indication-icon {
+            width: 15px;
+            color: #6b788c;
         }
         .task-members-imgs {
             // justify-content: space-between;
+            
             .task-member-img-wrapper {
                 @include aspect-ratio(1, 1);
                 width: 27px;
