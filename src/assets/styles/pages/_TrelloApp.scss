@@ -15,8 +15,10 @@
 
 .bg-overlay {
     background-color: #ebeef582;
+    // background-image: #4e5c7ae7;
     min-width: 1300px;
-    // overflow-x: scroll;
+    // width: -webkit-fill-available;
+
     min-height: 100vh;
     margin: 0 3em;
     border-radius: 10px;

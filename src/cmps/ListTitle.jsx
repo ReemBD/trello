@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateBoard } from '../store/actions/boardActions'
+import { updateBoard, toggleOverlay } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
 import { setCurrPopover } from '../store/actions/popoverActions'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -51,8 +51,8 @@ export class _ListTitle extends Component {
     onToggleListActions = (ev) => {
         ev.stopPropagation()
         console.log('hellp from on toggle list acctions');
-        // const { setCurrPopover, currPopover } = this.props
-        (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
+            // const { setCurrPopover, currPopover } = this.props
+            (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
 
     }
 
@@ -89,6 +89,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     updateBoard,
+    toggleOverlay
 }
 
 export const ListTitle = connect(mapStateToProps, mapDispatchToProps)(_ListTitle)
