@@ -43,8 +43,8 @@ export class _TaskDetailsInfo extends Component {
         if (!task.labels?.length) return;
         let { labels } = { ...this.state }
         task.labels.forEach(taskLabel => {
-                const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
-                labels[labelIdx].isPicked = true
+            const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
+            labels[labelIdx].isPicked = true
         })
         this.setState({ labels })
     }
@@ -98,7 +98,7 @@ export class _TaskDetailsInfo extends Component {
                                     <img src={member.imgUrl} alt="member" />
                                 </div>
                             })}
-                            <div className="task-add-member small-btn-bgc" title="Add member">
+                            <div className="task-add-member small-btn-bgc" title="Add Member">
                                 {<AddIcon style={{ height: '32px' }} />}
                             </div>
                         </div>
@@ -111,7 +111,7 @@ export class _TaskDetailsInfo extends Component {
                                     <span className="label-title">{label?.title}</span>
                                 </span>
                             })}
-                            <div className="task-add-label small-btn-bgc">
+                            <div className="task-add-label small-btn-bgc" title="Add Label">
                                 {<AddIcon onClick={this.toggleLabelMenu} style={{ height: '32px' }} />}
 
                                 <div className={`labels-popover ${!isLabelMenuOpen && "hidden"}`} onClick={(ev) => { ev.stopPropagation() }} style={{ position: 'relative', zIndex: '3', backgroundColor: '#fff' }}>
