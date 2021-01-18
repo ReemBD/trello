@@ -44,13 +44,14 @@ export class _TaskComposer extends Component {
     }
 
     render() {
-        const { isComposerOpen, titleRef } = this.props
+        const { isComposerOpen, titleRef, setCurrPopover, list } = this.props
         const { task } = this.state
         return (
-            <form className={`task-composer ${!isComposerOpen && 'display-none'}`} onSubmit={this.onAddTask}>
-                <input value={task.title} type="text" ref={titleRef} name="title" onChange={this.handleChange} placeholder="Enter a title for this card... " autoComplete="off" id="" />
-                <textarea value={task.description} type="text" name="description" onChange={this.handleChange} placeholder="Enter description for this card... " autoComplete="off" id="" />
-                <button className="save-task-btn primary-btn">Add</button>
+            <form className={`task-composer`} onSubmit={this.onAddTask}>
+                <input value={task.title} type="text" ref={titleRef} name="title" onClick={()=>{setCurrPopover(`TASK_COMPOSER${list.id}`)}} onChange={this.handleChange} placeholder="Enter a title for this card... " autoComplete="off" id="" />
+                <div className={`open-composer-section ${!isComposerOpen && 'display-none'}`}>
+                    <button className={`save-task-btn primary-btn `}>Add</button>
+                </div>
             </form>
         )
     }

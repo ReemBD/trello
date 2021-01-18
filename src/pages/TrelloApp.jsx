@@ -31,10 +31,9 @@ class _TrelloApp extends Component {
         if (!board) return <h1>loading...</h1>
         return (
             <div onClick={() => { setCurrPopover() }}>
-                <div className="main-bg"></div>
+                <div className="main-bg" onClick={ev=>ev.stopPropagation()}></div>
                 <div className="bg-overlay">
-                    <BoardHeader board={board} />
-
+                    <BoardHeader {...this.props} />
                     <Board />
                     {this.props.match.params.listId && <TaskDetails />}
                 </div>

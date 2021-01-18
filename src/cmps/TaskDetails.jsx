@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
 import { TaskDetailsInfo } from './TaskDetailsInfo'
 import { TaskDetailsChecklist } from './TaskDetailsChecklist'
+import { TaskDetailsActivity } from './TaskDetailsActivity'
 import { cloneDeep } from 'lodash'
 import { connect } from 'react-redux'
 import { updateBoard, toggleTask, toggleOverlay } from '../store/actions/boardActions'
@@ -38,7 +39,10 @@ export class _TaskDetails extends Component {
 
             const { board, list, task } = details
             if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
-                this.setState({ isDetailsOpen: true, board, list, task }, () => this.getCurrTask(board._id, taskId))
+                this.setState({ isDetailsOpen: true, board, list, task }, async () => {
+                    this.getCurrTask(board._id, taskId)
+                    await this.props.toggleOverlay()
+                })
             }
             if (this.state.task.labels?.length !== details.task.labels?.length) {
                 this.setState({ task: details.task })
@@ -133,9 +137,12 @@ export class _TaskDetails extends Component {
                                 <div className="details-checklist">
                                     <TaskDetailsChecklist board={board} list={list} task={task} />
                                 </div>
+                                <div className="details-activity">
+                                    <TaskDetailsActivity board={board} list={list} task={task} {...this.props} />
+                                </div>
                             </div>
                             <div className="details-buttons">
-                                <div className="task-details-close-btn small-btn-bgc flex align-center justify-center">
+                                <div className="task-details-close-btn close-btn flex align-center justify-center">
                                     <CloseIcon onClick={this.onCloseModal} />
                                 </div>
 

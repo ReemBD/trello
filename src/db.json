@@ -7,11 +7,9 @@
       "createdBy": {
         "_id": "u101",
         "fullname": "Reem Ben David",
-        "imgUrl": "http://some-img"
+        "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
       },
-      "style": {
-        "bg": "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)"
-      },
+      "style": {},
       "members": [
         {
           "_id": "u101",
@@ -35,7 +33,7 @@
       "lists": [
         {
           "id": "g101",
-          "title": "To Do",
+          "title": "Backlog",
           "tasks": [
             {
               "title": "Finish full CRUDL",
@@ -43,6 +41,11 @@
               "createdAt": 1610634312873,
               "id": "b89HN",
               "labels": [
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": ""
+                },
                 {
                   "id": "105",
                   "color": "#c377e0",
@@ -68,22 +71,129 @@
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
                 }
+              ],
+              "comments": [
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "tBrrq",
+                  "createdAt": 1610921694333,
+                  "txt": "test"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "623Bk",
+                  "createdAt": 1610920113127,
+                  "txt": "asfadf"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "p8B0n",
+                  "createdAt": 1610919866680,
+                  "txt": "yo"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "IjCx0",
+                  "createdAt": 1610919858986,
+                  "txt": "adsasd"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "fZedU",
+                  "createdAt": 1610919613839,
+                  "txt": "adsasdasd"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "CWxOQ",
+                  "createdAt": 1610919603049,
+                  "txt": "adsasd"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "XMBMn",
+                  "createdAt": 1610919343680,
+                  "txt": "TEST"
+                },
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "SkHrC",
+                  "createdAt": 1610919155607,
+                  "txt": "aqqweqewwqewqewqewqwe"
+                }
               ]
             },
             {
               "title": "Lorem ipsum",
               "description": "Decide how we want the application to look",
               "createdAt": 1610634356029,
-              "id": "UkYv0"
+              "id": "UkYv0",
+              "comments": [
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "szm3k",
+                  "createdAt": 1610920176859,
+                  "txt": "dafadfadf"
+                }
+              ]
             },
             {
               "title": "Implement D&D",
               "description": "Code a fully functioning drag and drop board",
               "createdAt": 1610634412444,
               "id": "Zh9hU"
+            },
+            {
+              "title": "Todo",
+              "description": "",
+              "createdAt": 1610887749392,
+              "id": "7wotB"
+            },
+            {
+              "title": "",
+              "description": "",
+              "createdAt": 1610887751910,
+              "id": "0yc5c"
             }
           ],
           "style": {
+            "bgColor": "#9895e082",
             "title": {
               "bgColor": "#9895e0"
             }
@@ -91,12 +201,12 @@
         },
         {
           "id": "g102",
-          "title": "In Progress",
+          "title": "To Do",
           "tasks": [
             {
               "id": "c104",
               "title": "Task Details Functionality",
-              "description": "",
+              "description": "Fully finish everything releated to task details functionality",
               "comments": [
                 {
                   "id": "ZdPnm",
@@ -116,8 +226,18 @@
                   "todos": [
                     {
                       "title": "To Do 1",
-                      "isDone": false,
+                      "isDone": true,
                       "id": "212jX"
+                    },
+                    {
+                      "title": "To Do 2",
+                      "isDone": false,
+                      "id": "3212a"
+                    },
+                    {
+                      "title": "To Do 3",
+                      "isDone": false,
+                      "id": "212sfX"
                     }
                   ]
                 }
@@ -128,6 +248,12 @@
                   "username": "FartsKing",
                   "fullname": "Reem Ben David",
                   "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+                },
+                {
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
                 }
               ],
               "labels": [
@@ -180,107 +306,64 @@
             }
           ],
           "style": {
+            "bgColor": "#4a94f882",
             "title": {
               "bgColor": "#4a94f8"
             }
           }
         },
         {
-          "id": "opd23",
-          "title": "Done",
+          "title": "In Progress",
           "tasks": [
             {
-              "id": "e101",
-              "title": "Quick Edit Functionality",
-              "createdAt": 1590999817436,
-              "labels": [
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                }
-              ]
-            },
-            {
-              "id": "e102",
-              "title": "Labels functionality",
-              "description": "description",
-              "comments": [
-                {
-                  "id": "ZdPnm",
-                  "txt": "a comment",
-                  "createdAt": 1590999817436,
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Tal Tarablus",
-                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                  }
-                }
-              ],
-              "checklists": [
-                {
-                  "id": "YEhmF",
-                  "title": "Checklist",
-                  "todos": [
-                    {
-                      "title": "To Do 1",
-                      "isDone": false,
-                      "id": "212jX"
-                    }
-                  ]
-                }
-              ],
-              "members": [
-                {
-                  "_id": "u101",
-                  "username": "Tal",
-                  "fullname": "Tal Tarablus",
-                  "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-                }
-              ],
-              "labels": [
-                {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": ""
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": ""
-                },
-                {
-                  "id": "107",
-                  "color": "#1f79bf",
-                  "title": ""
-                },
-                {
-                  "id": "108",
-                  "color": "#3cc2e0",
-                  "title": ""
-                }
-              ],
-              "createdAt": 1590999730348,
-              "dueDate": 16156215211,
-              "byMember": {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
-              },
-              "style": {
-                "bgColor": "#26de81"
-              }
+              "title": "asdfasd",
+              "description": "",
+              "createdAt": 1610913051755,
+              "id": "vaU9z"
             }
           ],
           "style": {
             "title": {
               "bgColor": "#56c991"
+            },
+            "bgColor": "#56c99182"
+          },
+          "id": "SKQCF"
+        },
+        {
+          "title": "Done",
+          "tasks": [
+            {
+              "title": "asdfasdf",
+              "description": "",
+              "createdAt": 1610913057205,
+              "id": "R2qU7"
             }
-          }
+          ],
+          "style": {
+            "title": {
+              "bgColor": "#3cc2e0"
+            },
+            "bgColor": "#3cc2e082"
+          },
+          "id": "X4xeN"
         }
       ],
       "activities": [
+        {
+          "id": "a102",
+          "txt": "Added Checklist",
+          "createdAt": 1610905538264,
+          "byMember": {
+            "_id": "u101",
+            "fullname": "Abi Abambi",
+            "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+          },
+          "task": {
+            "id": "b89HN",
+            "title": "Replace Logo"
+          }
+        },
         {
           "id": "a101",
           "txt": "Changed Color",
@@ -288,10 +371,10 @@
           "byMember": {
             "_id": "u101",
             "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
+            "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
           },
           "task": {
-            "id": "c101",
+            "id": "b89HN",
             "title": "Replace Logo"
           }
         }
@@ -325,6 +408,7 @@
           "id": "yVlF2",
           "title": "To Do",
           "style": {
+            "bgColor": "rgb(152, 149, 224, .51)",
             "title": {
               "bgColor": "rgb(152 149 224)"
             }
@@ -352,6 +436,7 @@
           "id": "EdPBL",
           "title": "Doing",
           "style": {
+            "bgColor": "rgb(152, 149, 224, .51)",
             "title": {
               "bgColor": "rgb(152 149 224)"
             }
@@ -393,7 +478,7 @@
       "title": "Sprint 2",
       "members": [],
       "style": {
-        "bg": "linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)"
+        "bg": "#fff"
       },
       "description": "",
       "createdAt": 1610879253612,
@@ -402,6 +487,7 @@
           "id": "GBRDy",
           "title": "To Do",
           "style": {
+            "bgColor": "rgb(152, 149, 224, .51)",
             "title": {
               "bgColor": "rgb(152 149 224)"
             }
@@ -459,6 +545,92 @@
         }
       ],
       "_id": "kna9n16"
+    },
+    {
+      "title": "Sprint 1",
+      "members": [
+        {
+          "_id": "u102",
+          "fullname": "bobi bo",
+          "email": "abi@ababmi.com",
+          "password": "111",
+          "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
+        },
+        {
+          "_id": "u101",
+          "fullname": "Abi Abambi",
+          "email": "abi@ababmi.com",
+          "password": "aBambi123",
+          "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+        }
+      ],
+      "style": {
+        "bg": "linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%)"
+      },
+      "description": "Coding Academy's first sprint",
+      "createdAt": 1610887224717,
+      "lists": [
+        {
+          "id": "VWtrO",
+          "title": "To Do",
+          "style": {
+            "title": {
+              "bgColor": "rgb(152 149 224)"
+            }
+          },
+          "tasks": [
+            {
+              "id": "uDzJf",
+              "createdAt": 1610887224717,
+              "title": "how easy to create tasks!"
+            },
+            {
+              "id": "dAByp",
+              "createdAt": 1610887224717,
+              "title": "invite your team!"
+            }
+          ]
+        },
+        {
+          "id": "Jb48X",
+          "title": "Doing",
+          "style": {
+            "title": {
+              "bgColor": "#4a94f8"
+            }
+          },
+          "tasks": [
+            {
+              "id": "40sqI",
+              "createdAt": 1610887224717,
+              "title": "make dinner"
+            },
+            {
+              "id": "x0Mt2",
+              "createdAt": 1610887224717,
+              "title": "buy groceries",
+              "todos": [
+                {
+                  "title": "Milk",
+                  "isDone": false,
+                  "id": "WI7Uk"
+                },
+                {
+                  "title": "Bread",
+                  "isDone": false,
+                  "id": "eWu5z"
+                },
+                {
+                  "title": "Chocolate",
+                  "isDone": false,
+                  "id": "mBRL9"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "_id": "PRqpVVs"
     }
   ],
   "user": [

@@ -40,8 +40,8 @@
 }
 
 .main-layout {
-    padding: 2em;
-    max-width: 1400px;
+    
+    // max-width: 1400px;
 
     @media screen and (max-width: 1450px) {
         max-width: 1100px;
@@ -60,6 +60,10 @@
     }
 }
 
+.board-layout {
+    margin-left: 30px;
+    margin-right: 30px;
+}
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;

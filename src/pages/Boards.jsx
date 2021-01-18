@@ -55,7 +55,7 @@ export class Boards extends Component {
 
                     <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
 
-                    <p>Stared Boards:</p>
+                    <p>Starred Boards:</p>
 
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>

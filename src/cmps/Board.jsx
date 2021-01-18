@@ -10,7 +10,7 @@ import { utilService } from '../services/utilService'
 
 export class _Board extends Component {
     state = {
-        listColors: ['#9895e0', '#4a94f8', '#56c991', '#3cc2e0', '#eb5a46'],
+        listColors: ['#9895E0', '#4A94F8', '#56c991', '#3cc2e0', '#eb5a46'],
         listToAdd: {
             title: '',
             tasks: [],
@@ -38,6 +38,7 @@ export class _Board extends Component {
             if (!listColor) listColor = utilService.getRandomColor()
             listToAdd.id = utilService.makeId()
             listToAdd.style.title.bgColor = listColor
+            listToAdd.style.bgColor = listToAdd.style.title.bgColor + '82'
             board.lists.push(listToAdd)
             this.setState({
                 listToAdd: {
@@ -59,17 +60,15 @@ export class _Board extends Component {
 
 
     render() {
-        const { board, currPopover, setCurrPopover } = this.props
+        const { board, currPopover, } = this.props
         const { lists } = board
         const isCurrPopover = (currPopover === 'LIST_ADD')
         const { isAdding, listToAdd } = this.state
         if (!board) return <h1>loading...</h1>
         return (
-            <div className="board main-layout">
-                <h1 className="board-title">{board.title}</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat adipisci cupiditate est provident voluptate aspernatur perferendis, natus illo nesciunt. Et?</p>
+            <div className="board board-layout">
                 <ul className="lists-group clear-list flex">
-                    {lists.map(list => <li key={list.id} className="task-list-container flex column"><TaskList list={list} title={list.title} setCurrPopover={setCurrPopover} /></li>)}
+                    {lists.map(list => <li key={list.id} style={{ backgroundColor: list.style.bgColor }} className="task-list-container flex column"><TaskList list={list} title={list.title} {...this.props} /></li>)}
                     <li className="add-list task-list-container flex column">
                         <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
                             <div className="input-wrapper align-center flex">
