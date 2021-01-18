@@ -41,15 +41,18 @@
     .task-preview-icons-container {
         margin-top: -8px;
         margin-bottom: 5px;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        &>*{
-            margin-inline-start: 5px;
-        }
-        .indication-icon {
-            width: 15px;
-            color: #6b788c;
+        .task-preview-indication-icons{
+            margin-inline-end: 10px;
+            &>* {
+                margin-inline-end: 10px;
+            }
+            .indication-icon {
+                width: 15px;
+                color: #6b788c;
+            }
         }
         .task-members-imgs {
             // justify-content: space-between;

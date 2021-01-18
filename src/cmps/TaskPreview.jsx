@@ -8,8 +8,8 @@ import CheckIcon from '@material-ui/icons/CheckBoxOutlined';
 import DueDateIcon from '@material-ui/icons/QueryBuilderOutlined';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import { TaskEdit } from './TaskEdit'
-
-
+import CommentIcon from '@material-ui/icons/TextsmsOutlined';
+import {format} from 'date-fns'
 export class _TaskPreview extends Component {
 
     state = {
@@ -83,9 +83,12 @@ export class _TaskPreview extends Component {
                         </div>}
                     </div>
                     <div className="task-preview-icons-container indication-icon flex ">
+                        <div className="task-preview-indication-icons flex start">
                         {task.description && <NotesOutlinedIcon className="description-indication-icon indication-icon" />}
                         {task.checklists?.length ? <div className="flex align-center"><CheckIcon className="indication-icon" />{this.taskDoneTodosLength}/{this.taskTodosLength}</div> : ''}
-                        {task.dueDate ? <div className="flex align-center"><DueDateIcon className="indication-icon" /></div> : ''}
+                        {task.dueDate ? <div className="flex align-center"><DueDateIcon className="indication-icon" /><div>{format(new Date(task.dueDate), 'LLL')} {format(new Date(task.dueDate), 'd')}</div></div> : ''}
+                        {task.comments && <CommentIcon className="comment-indication-icon indication-icon"/>}
+                        </div>
                         {task.members?.length ?
                             <div className="task-members-imgs flex">
                                 {task.members.map(member => { return <div key={member._id} className="task-member-img-wrapper"><img className="task-member-preview-img" src={member.imgUrl} /></div> })}

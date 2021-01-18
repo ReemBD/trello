@@ -7,7 +7,7 @@
       "createdBy": {
         "_id": "u101",
         "fullname": "Reem Ben David",
-        "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+        "imgUrl": "http://some-img"
       },
       "style": {},
       "members": [
@@ -89,19 +89,7 @@
               "title": "Lorem ipsum",
               "description": "Decide how we want the application to look",
               "createdAt": 1610634356029,
-              "id": "UkYv0",
-              "comments": [
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "szm3k",
-                  "createdAt": 1610920176859,
-                  "txt": "dafadfadf"
-                }
-              ]
+              "id": "UkYv0"
             },
             {
               "title": "Implement D&D",
@@ -300,30 +288,16 @@
       ],
       "activities": [
         {
-          "id": "a102",
-          "txt": "Added Checklist",
-          "createdAt": 1610905538264,
-          "byMember": {
-            "_id": "u101",
-            "fullname": "Abi Abambi",
-            "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-          },
-          "task": {
-            "id": "b89HN",
-            "title": "Replace Logo"
-          }
-        },
-        {
           "id": "a101",
           "txt": "Changed Color",
           "createdAt": 154514,
           "byMember": {
             "_id": "u101",
             "fullname": "Abi Abambi",
-            "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+            "imgUrl": "http://some-img"
           },
           "task": {
-            "id": "b89HN",
+            "id": "c101",
             "title": "Replace Logo"
           }
         }
@@ -533,20 +507,7 @@
               "createdAt": 1610887224717,
               "title": "how easy to create tasks!"
             },
-            {
-              "id": "dAByp",
-              "createdAt": 1610887224717,
-              "title": "invite your team!"
-            }
-          ]
-        },
-        {
-          "id": "Jb48X",
-          "title": "Doing",
-          "style": {
-            "title": {
-              "bgColor": "#4a94f8"
-            }
+            "bgColor": "#C9146282"
           },
           "tasks": [
             {
