@@ -5,7 +5,7 @@ import { boardService } from '../services/boardService'
 import { LabelsPopover } from './LabelsPopover'
 import { ChangeMembersPopover } from '../cmps/ChangeMembersPopover'
 import { QuickEditButton } from './QuickEditButton'
-import LabelIcon from '@material-ui/icons/Label';
+import LabelIcon from '@material-ui/icons/LabelOutlined';
 import ChangeMembersIcon from '@material-ui/icons/PeopleOutline';
 import RemoveIcon from '@material-ui/icons/DeleteOutline';
 import ChangeDueDateIcon from '@material-ui/icons/QueryBuilder';

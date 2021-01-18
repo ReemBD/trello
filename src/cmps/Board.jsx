@@ -7,6 +7,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { utilService } from '../services/utilService'
+import { DragDropContext } from 'react-beautiful-dnd';
+
 
 export class _Board extends Component {
     state = {
@@ -59,6 +61,51 @@ export class _Board extends Component {
     }
 
 
+
+
+    // activate when a dragged item is released
+    onDragEnd = async (res) => {
+        const { destination, source, draggableId } = res;
+        // LOOK LIKE THIS:
+        // destination: {droppableId: "g103", index: 0}
+        // draggableId: "e101"
+        // source: {index: 0, droppableId: "opd23"}
+
+        if (!destination) return
+
+        if (
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
+        ) return;
+
+        const copyBoard = { ...this.props.board }
+
+        const sourceListIdx = await boardService.getListIdxById(copyBoard, source.droppableId)
+        const destinationListIdx = await boardService.getListIdxById(copyBoard, destination.droppableId)
+        const task = await boardService.getTaskById(copyBoard._id, draggableId)
+
+        console.log('sourceListIdx', sourceListIdx);
+        console.log('destinationListIdx', destinationListIdx);
+        console.log('task', task);
+
+        copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
+        copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task);
+
+        this.props.updateBoard(copyBoard)
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
     render() {
         const { board, currPopover, } = this.props
         const { lists } = board
@@ -68,21 +115,25 @@ export class _Board extends Component {
         return (
             <div className="board board-layout">
                 <ul className="lists-group clear-list flex">
-                    {lists.map(list => <li key={list.id} style={{ backgroundColor: list.style.bgColor }} className="task-list-container flex column"><TaskList list={list} title={list.title} {...this.props} /></li>)}
-                    <li className="add-list task-list-container flex column">
-                        <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
-                            <div className="input-wrapper align-center flex">
-                                {!isCurrPopover && <AddIcon />}
-                                <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
-                            </div>
-                            <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
-                        </form>
-                    </li>
+                    <DragDropContext onDragEnd={this.onDragEnd}>
+                        {lists.map((list, idx) => <li key={list.id} style={{ backgroundColor: list.style.bgColor }} className="task-list-container flex column"><TaskList list={list} listIdx={idx} title={list.title} {...this.props} /></li>)}
+                        <li className="add-list task-list-container flex column">
+                            <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
+                                <div className="input-wrapper align-center flex">
+                                    {!isCurrPopover && <AddIcon />}
+                                    <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
+                                </div>
+                                <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
+                            </form>
+                        </li>
+                    </DragDropContext>
                 </ul>
             </div>
         )
     }
 }
+
+
 
 
 const mapStateToProps = state => {

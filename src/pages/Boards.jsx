@@ -47,20 +47,13 @@ export class Boards extends Component {
 
                 <div className="glass-screen "></div>
                 <div className="boards-bg "></div>
-                <div className="main-layout flex column align-center">
-
-
-
+                <div className="boards-page bg-overlay main-layout flex column align-center">
                     <p>Recently Seen Boards:</p>
-
                     <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
-
                     <p>Starred Boards:</p>
-
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
                     <BoardComposer board={boardToEdit} />
-
                 </div>
 
             </Fragment>

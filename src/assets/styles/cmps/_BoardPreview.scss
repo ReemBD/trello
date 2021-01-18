@@ -7,15 +7,32 @@
 }
 
 .board-card {
-    background: rgba(255, 255, 255, 0.924);
+    color: #fff;
+    position: relative;
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 3px;
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 3px;
+
+        // background-color: desaturate(#c95656, 50);
+        background: linear-gradient(180deg, rgba(252,252,252,0) 21%, rgba(32,32,32,0.5130427170868348) 93%);
+        
+
+    }
+    // background: rgba(255, 255, 255, 0.924);
+    // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
+  
     cursor: pointer;
-    border-radius: 10px;
-    width: 260px;
-    height: 130px;
-    margin: 2em;
-    transition: all 0.5s;
+    width: 220px;
+    height: 100px;
+    transition: all 0.2s;
     a {
         text-decoration: none;
         width: 100%;
@@ -28,27 +45,32 @@
     }
     h1 {
         font-size: 1.5em;
-        color: rgb(27, 27, 27);
+        color: #fff;
+        // color: rgb(27, 27, 27);
         font-weight: normal;
     }
     .icon-btn {
         position: absolute;
-        top: 13px;
-        right: 13px;
-
+        top: 3px;
+        right: 3px;
+        color: #fff;
         opacity: 0;
         transition: opacity 0.3s;
-        height: 2em;
-        width: 2em;
         cursor: pointer;
+        .icon {
+            width: 20px;
+        }
+        
         &.edit {
-            top: 13px;
-            right: 44px;
+            right: 33px;
+        }
+
+        &:hover{
+            background-color: #ffffff40;
         }
     }
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.438);
         .icon-btn {
             opacity: 1;
         }
