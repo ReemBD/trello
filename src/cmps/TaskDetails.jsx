@@ -1,17 +1,20 @@
 import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
 import { TaskDetailsInfo } from './TaskDetailsInfo'
+import { TaskDetailsDesc } from './TaskDetailsDesc'
 import { TaskDetailsChecklist } from './TaskDetailsChecklist'
 import { TaskDetailsActivity } from './TaskDetailsActivity'
+import { TaskSidebar } from './TaskSidebar'
 import { cloneDeep } from 'lodash'
 import { connect } from 'react-redux'
 import { updateBoard, toggleTask, toggleOverlay } from '../store/actions/boardActions'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import DvrOutlinedIcon from '@material-ui/icons/DvrOutlined';
 import CloseIcon from '@material-ui/icons/Close';
 export class _TaskDetails extends Component {
     state = {
         isDetailsOpen: false,
+        currPopover: '',
         board: {},
         list: {},
         task: {}
@@ -106,14 +109,29 @@ export class _TaskDetails extends Component {
         })
     }
 
+    togglePopover = (name) => {
+        const { currPopover } = this.state
+        if (currPopover === name) {
+            this.setState({ currPopover: '' })
+        } else {
+            this.setState({ currPopover: name })
+
+        }
+    }
+
 
     render() {
-        const { isDetailsOpen } = this.state
-        const { board, list, task } = this.state
+        const { isDetailsOpen, list, task, currPopover } = this.state
+        const { board } = this.props
+        const { listId, taskId } = this.props.match.params
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
+        const currList = board.lists[listIdx]
+        const currTask = board.lists[listIdx].tasks[taskIdx]
+
 
         if (!task) return <div>Loading details...</div>
         return (
-            <section className="task-details">
+            <section onClick={() => currPopover ? this.togglePopover('') : ''} className="task-details">
                 {this.state.isDetailsOpen &&
                     <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`}>
                         <div className="details-modal flex">
@@ -132,10 +150,13 @@ export class _TaskDetails extends Component {
                                     <p>in list <span className="details-list-name">{list?.title}</span></p>
                                 </div>
                                 <div className="details-info">
-                                    <TaskDetailsInfo board={board} list={list} task={task} />
+                                    <TaskDetailsInfo board={board} list={list} task={task} {...this.props} />
+                                </div>
+                                <div className="details-description">
+                                    <TaskDetailsDesc board={board} list={list} task={task} />
                                 </div>
                                 <div className="details-checklist">
-                                    <TaskDetailsChecklist board={board} list={list} task={task} />
+                                    <TaskDetailsChecklist board={board} list={list} task={currTask} />
                                 </div>
                                 <div className="details-activity">
                                     <TaskDetailsActivity board={board} list={list} task={task} {...this.props} />
@@ -144,6 +165,10 @@ export class _TaskDetails extends Component {
                             <div className="details-buttons">
                                 <div className="task-details-close-btn close-btn flex align-center justify-center">
                                     <CloseIcon onClick={this.onCloseModal} />
+                                </div>
+
+                                <div className="task-sidebar">
+                                    <TaskSidebar board={board} list={currList} task={currTask} togglePopover={this.togglePopover} currPopover={this.state.currPopover} {...this.props} />
                                 </div>
 
                             </div>

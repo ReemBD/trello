@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { cloneDeep } from 'lodash'
 import { boardService } from '../services/boardService'
+import { utilService } from '../services/utilService'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
+import { ChangeMembersPopover } from './ChangeMembersPopover'
 import AddIcon from '@material-ui/icons/Add';
-import { utilService } from '../services/utilService'
-import { TaskDetailsDesc } from './TaskDetailsDesc'
 import CloseIcon from '@material-ui/icons/Close';
 
 
@@ -21,6 +21,7 @@ export class _TaskDetailsInfo extends Component {
             { id: '108', color: "#3cc2e0", title: '', isPicked: false },
         ],
         isLabelMenuOpen: false,
+        isMemberModalOpen: false,
     }
 
     componentDidMount() {
@@ -73,23 +74,30 @@ export class _TaskDetailsInfo extends Component {
 
 
     onAddLabel = async (labels) => {
-        const { board, list, task, updateBoard } = this.props
-        const updatedBoard = cloneDeep(board)
+        const { currBoard, list, task, updateBoard } = this.props
+        const updatedBoard = cloneDeep(currBoard)
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(updatedBoard, list.id, task.id)
         updatedBoard.lists[listIdx].tasks[taskIdx].labels = labels
         console.log('the updatedBoard is', updatedBoard.lists[listIdx].tasks[taskIdx])
         await updateBoard(updatedBoard)
+    }
 
+    onToggleMembersModal = () => {
+        this.setState({ isMemberModalOpen: !this.state.isMemberModalOpen })
     }
 
     render() {
-        const { board, list, task } = this.props
-        const { labels, isLabelMenuOpen } = this.state
+        const { currBoard } = this.props
+        const { listId, taskId } = this.props.match.params
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(currBoard, listId, taskId)
+        const list = currBoard.lists[listIdx]
+        const task = currBoard.lists[listIdx].tasks[taskIdx]
+        const { labels, isLabelMenuOpen, isMemberModalOpen } = this.state
         return (
             <div className="details-info">
                 <div className="flex">
 
-                    {task.members?.length && <div className="card-detail">
+                    {task?.members?.length && <div className="card-detail">
                         <h3>Members</h3>
                         <div className="member-imgs flex align-center">
 
@@ -99,7 +107,11 @@ export class _TaskDetailsInfo extends Component {
                                 </div>
                             })}
                             <div className="task-add-member small-btn-bgc" title="Add Member">
-                                {<AddIcon style={{ height: '32px' }} />}
+                                {<AddIcon onClick={this.onToggleMembersModal} style={{ height: '32px' }} />}
+                                {isMemberModalOpen && <ChangeMembersPopover board={currBoard} list={list} task={task} setCurrPopover={this.onToggleMembersModal} currListIdx={this.props.currListIdx}
+                                    currTaskIdx={this.props.currTaskIdx}
+                                    updateBoard={this.props.updateBoard}
+                                />}
                             </div>
                         </div>
                     </div>}
@@ -136,7 +148,6 @@ export class _TaskDetailsInfo extends Component {
                         </div>
                     </div>}
                 </div>
-                <TaskDetailsDesc board={board} list={list} task={task} />
             </div>
         )
     }
@@ -145,7 +156,7 @@ export class _TaskDetailsInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard,
+        currBoard: state.boardReducer.currBoard,
         currListIdx: state.boardReducer.currListIdx,
         currTaskIdx: state.boardReducer.currTaskIdx,
 

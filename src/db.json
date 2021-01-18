@@ -38,22 +38,22 @@
           "title": "Backlog",
           "tasks": [
             {
-              "title": "Finish full CRUDL",
-              "description": "Delete done.\nNeed to finish update,\n(labels,members etc)",
-              "createdAt": 1610634312873,
-              "id": "b89HN",
-              "labels": [
+              "id": "c104",
+              "title": "Task Details Functionality",
+              "description": "Fully finish everything releated to task details functionality!",
+              "comments": [
                 {
-                  "id": "104",
-                  "color": "#eb5a46",
-                  "title": ""
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
-                  "title": ""
+                  "id": "ZdPnm",
+                  "txt": "a comment",
+                  "createdAt": 1590999817436,
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Tal Tarablus",
+                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                  }
                 }
               ],
+              "checklists": [],
               "members": [
                 {
                   "_id": "u102",
@@ -73,7 +73,16 @@
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
                 }
-              ]
+              ],
+              "createdAt": 1590999730348,
+              "dueDate": 16156215211,
+              "byMember": {
+                "_id": "u101",
+                "username": "Tal",
+                "fullname": "Tal Tarablus",
+                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+              },
+              "style": {}
             },
             {
               "title": "Lorem ipsum",
@@ -177,6 +186,30 @@
                   "username": "FartsPrince",
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                }
+              ],
+              "checklists": [
+                {
+                  "id": "SXgvE",
+                  "title": "Checklist",
+                  "todos": []
+                },
+                {
+                  "id": "rcyZO",
+                  "title": "Checklist",
+                  "todos": []
+                }
+              ],
+              "comments": [
+                {
+                  "byMember": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                  },
+                  "id": "MhtYd",
+                  "createdAt": 1610989581234,
+                  "txt": "Great job"
                 }
               ]
             }

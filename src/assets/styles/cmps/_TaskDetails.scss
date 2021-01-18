@@ -10,7 +10,7 @@
 
     transition: height .3s;
     .main-details {
-        flex-basis: 78%;
+        flex-basis: 75%;
         margin-left: 40px;
         line-height: 20px;
 
@@ -56,6 +56,10 @@
                             margin-left: 5px;
                         }
                     }
+
+                    .task-add-member {
+                        z-index: 21;
+                    }
                 }
             
         }
@@ -64,6 +68,7 @@
         .details-buttons {
             flex-grow: 1;
             position: relative;
+            margin-right: 10px;
 
                 .task-details-close-btn {
                     position: absolute;
@@ -132,6 +137,7 @@
         
     .checklist-header {
         position: relative;
+        margin-bottom: 5px;
     }
     
     .todo-title {
@@ -218,12 +224,37 @@
                 }
             }
         }
+                .comment-dlt-container {
+                    cursor: pointer;
+                    position: relative;
+                    .comment-dlt-btn {
+                        position: absolute;
+                        top: 26.5px;
+                        font-size: 20px;
+                        padding: 2px;
+                        border-radius: 3px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        margin-left: 5px;
+                        
+                        transition: all .3s;
+                        
+                        &:hover {
+                            background-color: #ef4040cc;
+                        }
+                    }
+                }
 
     }
 
     .task-comments {
         margin-bottom: rem(15px);
 
+        .new-comment {
+            margin-bottom: rem(10px);
+        }
         .comment-txt {
             margin: 4px 2px 4px 0;
             padding: 2px 8px;
