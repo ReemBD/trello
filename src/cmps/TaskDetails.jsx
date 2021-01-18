@@ -153,7 +153,7 @@ export class _TaskDetails extends Component {
                                     <TaskDetailsInfo board={board} list={list} task={task} {...this.props} />
                                 </div>
                                 <div className="details-description">
-                                    <TaskDetailsDesc board={board} list={list} task={task} />
+                                    <TaskDetailsDesc board={board} list={currList} task={currTask} />
                                 </div>
                                 <div className="details-checklist">
                                     <TaskDetailsChecklist board={board} list={list} task={currTask} />
