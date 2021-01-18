@@ -263,6 +263,39 @@
             "bgColor": "#3cc2e082"
           },
           "id": "X4xeN"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#eb5a46"
+            },
+            "bgColor": "#eb5a4682"
+          },
+          "id": "hDfXq"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#484FAD"
+            },
+            "bgColor": "#484FAD82"
+          },
+          "id": "o0k6a"
+        },
+        {
+          "title": "",
+          "tasks": [],
+          "style": {
+            "title": {
+              "bgColor": "#849190"
+            },
+            "bgColor": "#84919082"
+          },
+          "id": "Xkbdm"
         }
       ],
       "activities": [
@@ -394,7 +427,7 @@
       "title": "Sprint 2",
       "members": [],
       "style": {
-        "bg": "#fff"
+        "bg": "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)"
       },
       "description": "",
       "createdAt": 1610879253612,
