@@ -63,7 +63,7 @@ export class _Board extends Component {
         const { board, currPopover, } = this.props
         const { lists } = board
         const isCurrPopover = (currPopover === 'LIST_ADD')
-        const { isAdding, listToAdd } = this.state
+        const { listToAdd } = this.state
         if (!board) return <h1>loading...</h1>
         return (
             <div className="board board-layout">
@@ -87,15 +87,12 @@ export class _Board extends Component {
 
 const mapStateToProps = state => {
     return {
-        board: state.boardReducer.currBoard,
-        isOverlayOpen: state.boardReducer.isOverlayOpen,
         currPopover: state.popoverReducer.currPopover
     }
 }
 
 const mapDispatchToProps = {
     updateBoard,
-    setCurrPopover
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

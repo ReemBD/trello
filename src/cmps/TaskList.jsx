@@ -6,7 +6,7 @@ import { boardService } from '../services/boardService'
 import { ListTitle } from '../cmps/ListTitle'
 import { TaskComposer } from './TaskComposer'
 
-class _TaskList extends Component {
+export class TaskList extends Component {
     state = {
         isComposerOpen: false,
         isListActionsOpen: false,
@@ -48,13 +48,6 @@ class _TaskList extends Component {
         }
     }
 
-
-
-    get listTitleProps() {
-        return {
-
-        }
-    }
     get listIdx() {
         const { list, board } = this.props
         const listIdx = boardService.getListIdxById(board, list.id)
@@ -80,14 +73,3 @@ class _TaskList extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        board: state.boardReducer.currBoard
-    }
-}
-
-const mapDispatchToProps = {
-    updateBoard
-}
-
-export const TaskList = connect(mapStateToProps, mapDispatchToProps)(_TaskList)

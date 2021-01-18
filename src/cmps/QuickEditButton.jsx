@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { setCurrPopover } from '../store/actions/popoverActions'
-import { connect } from 'react-redux'
 
-export class _QuickEditButton extends Component {
+export class QuickEditButton extends Component {
 
     state = {
         isLabelsPopoverOpen: false
     }
 
     render() {
-        const { task, list, title, Component, setCurrPopover, currPopover, Icon } = this.props
+        const { title, Component, setCurrPopover, currPopover, Icon } = this.props
         return (
             <a className="quick-task-editor-buttons-item js-edit-labels" onClick={ev => {
                 ev.stopPropagation()
@@ -22,19 +20,5 @@ export class _QuickEditButton extends Component {
     }
 }
 
-
-
-const mapStateToProps = state => {
-    return {
-        board: state.boardReducer.currBoard,
-        currPopover: state.popoverReducer.currPopover
-    }
-}
-
-const mapDispatchToProps = {
-    setCurrPopover
-}
-
-export const QuickEditButton = connect(mapStateToProps, mapDispatchToProps)(_QuickEditButton)
 
 
