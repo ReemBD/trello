@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+
 
 export class _TaskDetailsActivity extends Component {
     state = {
@@ -80,6 +82,13 @@ export class _TaskDetailsActivity extends Component {
 
     }
 
+    onRemoveComment = async (listIdx, taskIdx, commentIdx) => {
+        console.log('the idxs are', listIdx, taskIdx, commentIdx)
+        const copyBoard = cloneDeep(this.props.currBoard)
+        copyBoard.lists[listIdx].tasks[taskIdx].comments.splice(commentIdx, 1)
+        await this.props.updateBoard(copyBoard)
+    }
+
     render() {
         const { currBoard } = this.props
         const { listId, taskId } = this.props.match.params
@@ -113,7 +122,7 @@ export class _TaskDetailsActivity extends Component {
                         </form>
                     </div>
                     {taskComments ?
-                        taskComments.map(comment => {
+                        taskComments.map((comment, commentIdx) => {
                             return <div className="task-user-comment flex">
                                 <div className="task-member-img"><img src={comment.byMember.imgUrl} /></div>
                                 <div className="activity-info flex column justify-center">
@@ -124,11 +133,8 @@ export class _TaskDetailsActivity extends Component {
                                     <div className="comment-txt">
                                         <span>{comment.txt}</span>
                                     </div>
-                                    <div className="comment-actions">
-                                        <span>Edit</span>
-                                        <span>Delete</span>
-                                    </div>
                                 </div>
+                                <span onClick={() => this.onRemoveComment(listIdx, taskIdx, commentIdx)} className="comment-dlt-container" ><DeleteOutlinedIcon className="comment-dlt-btn" /></span>
                             </div>
                         })
                         : ''}

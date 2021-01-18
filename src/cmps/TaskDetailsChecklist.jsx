@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService'
+import { utilService } from '../services/utilService'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { cloneDeep } from 'lodash'
@@ -21,7 +22,7 @@ export class _TaskDetailsChecklist extends Component {
 
     }
 
-    elTitleRef = React.createRef()
+    elTodoRef = React.createRef()
 
 
     componentDidMount() {
@@ -67,6 +68,19 @@ export class _TaskDetailsChecklist extends Component {
         return percent
     }
 
+    handleNewTodo = (ev) => {
+        const field = ev.target.name
+        const value = ev.target.value
+        this.setState(prevState => {
+            return {
+                newTodo: {
+                    ...prevState.newTodo,
+                    [field]: value
+                }
+            }
+        })
+    }
+
     onEnterPress = ev => {
         if (!ev.target.value) return
         if (ev.keyCode === 13 && ev.shiftKey === false) {
@@ -83,7 +97,7 @@ export class _TaskDetailsChecklist extends Component {
         const taskIdx = boardService.getTaskIdxById(list, task.id)
         boardCopy.lists[listIdx].tasks[taskIdx].checklists = checklists
         await this.props.updateBoard(boardCopy)
-        this.elTitleRef.current?.blur()
+        this.elTodoRef.current?.blur()
     }
 
     onRemoveTodo = (todoIdx, listIdx, ev) => {
@@ -93,8 +107,22 @@ export class _TaskDetailsChecklist extends Component {
 
     }
 
-    onAddItem = () => {
-
+    onAddItem = (listIdx, ev) => {
+        if (!ev.target.value) return
+        if (ev.keyCode === 13 && ev.shiftKey === false) {
+            const todoToAdd = {
+                id: utilService.makeId(),
+                title: this.state.newTodo.txt,
+                isDone: false
+            }
+            const copyChecklists = cloneDeep(this.state.checklists)
+            copyChecklists[listIdx].todos.push(todoToAdd)
+            this.setState({ checklists: copyChecklists }, () => {
+                this.onUpdateBoard()
+                const newTodo = { txt: '' }
+                this.setState({ newTodo })
+            })
+        }
     }
 
     render() {
@@ -115,7 +143,7 @@ export class _TaskDetailsChecklist extends Component {
                             onChange={(ev) => this.handleInput(listIdx, ev)}
                             spellCheck="false"
                             onKeyDown={this.onEnterPress}
-                            ref={this.elTitleRef}
+                            ref={this.elTodoRef}
                         />
                         <LinearProgressWithLabel value={percentDone(checklist)} />
                         {checklist?.todos &&
@@ -133,7 +161,7 @@ export class _TaskDetailsChecklist extends Component {
                                         value={todo.title}
                                         onChange={(ev) => this.handleTodoChange(todoIdx, listIdx, ev)}
                                         onKeyDown={this.onEnterPress}
-                                        ref={this.elTitleRef}
+                                        ref={this.elTodoRef}
                                         onBlur={this.onUpdateBoard}
                                     />
                                     <DeleteOutlinedIcon className="todo-delete-btn" onClick={(ev) => this.onRemoveTodo(todoIdx, listIdx, ev)} />
@@ -142,10 +170,18 @@ export class _TaskDetailsChecklist extends Component {
                             })
 
                         }
-                        <input type="text"
+                        <input
+                            type="text"
+                            name="txt"
                             placeholder="Add an item"
                             className="task-todo-input"
                             value={newTodo.txt}
+                            onChange={this.handleNewTodo}
+                            onKeyDown={(ev) => this.onAddItem(listIdx, ev)}
+                            onBlur={() => {
+                                const newTodo = { txt: '' }
+                                this.setState({ newTodo })
+                            }}
                         />
                     </div>
                 })

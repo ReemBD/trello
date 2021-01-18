@@ -79,79 +79,9 @@
                     "fullname": "Abi Abambi",
                     "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
                   },
-                  "id": "tBrrq",
-                  "createdAt": 1610921694333,
-                  "txt": "test"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "623Bk",
-                  "createdAt": 1610920113127,
-                  "txt": "asfadf"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "p8B0n",
-                  "createdAt": 1610919866680,
-                  "txt": "yo"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "IjCx0",
-                  "createdAt": 1610919858986,
-                  "txt": "adsasd"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "fZedU",
-                  "createdAt": 1610919613839,
-                  "txt": "adsasdasd"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "CWxOQ",
-                  "createdAt": 1610919603049,
-                  "txt": "adsasd"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "XMBMn",
-                  "createdAt": 1610919343680,
-                  "txt": "TEST"
-                },
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "SkHrC",
-                  "createdAt": 1610919155607,
-                  "txt": "aqqweqewwqewqewqewqwe"
+                  "id": "scKGA",
+                  "createdAt": 1610966793276,
+                  "txt": "Yo, this is a comment"
                 }
               ]
             },
@@ -184,12 +114,6 @@
               "description": "",
               "createdAt": 1610887749392,
               "id": "7wotB"
-            },
-            {
-              "title": "",
-              "description": "",
-              "createdAt": 1610887751910,
-              "id": "0yc5c"
             }
           ],
           "style": {
@@ -206,7 +130,7 @@
             {
               "id": "c104",
               "title": "Task Details Functionality",
-              "description": "Fully finish everything releated to task details functionality",
+              "description": "Fully finish everything releated to task details functionality!",
               "comments": [
                 {
                   "id": "ZdPnm",
@@ -231,13 +155,18 @@
                     },
                     {
                       "title": "To Do 2",
-                      "isDone": false,
+                      "isDone": true,
                       "id": "3212a"
                     },
                     {
-                      "title": "To Do 3",
+                      "title": "Testing",
                       "isDone": false,
                       "id": "212sfX"
+                    },
+                    {
+                      "id": "VU5mQ",
+                      "title": "asd",
+                      "isDone": false
                     }
                   ]
                 }
@@ -254,6 +183,12 @@
                   "username": "FartsPrince",
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                },
+                {
+                  "_id": "u101",
+                  "username": "YungiBabush",
+                  "fullname": "Nofar Yunger",
+                  "imgUrl": "https://res.cloudinary.com/nofar/image/upload/v1610699982/igckslovcmq4zyl1sqou.jpg"
                 }
               ],
               "labels": [
@@ -317,7 +252,7 @@
           "tasks": [
             {
               "title": "asdfasd",
-              "description": "",
+              "description": "Okay",
               "createdAt": 1610913051755,
               "id": "vaU9z"
             }

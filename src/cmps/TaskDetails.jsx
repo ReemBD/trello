@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
 import { TaskDetailsInfo } from './TaskDetailsInfo'
+import { TaskDetailsDesc } from './TaskDetailsDesc'
 import { TaskDetailsChecklist } from './TaskDetailsChecklist'
 import { TaskDetailsActivity } from './TaskDetailsActivity'
+import { TaskSidebar } from './TaskSidebar'
 import { cloneDeep } from 'lodash'
 import { connect } from 'react-redux'
 import { updateBoard, toggleTask, toggleOverlay } from '../store/actions/boardActions'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import DvrOutlinedIcon from '@material-ui/icons/DvrOutlined';
 import CloseIcon from '@material-ui/icons/Close';
 export class _TaskDetails extends Component {
@@ -132,7 +134,10 @@ export class _TaskDetails extends Component {
                                     <p>in list <span className="details-list-name">{list?.title}</span></p>
                                 </div>
                                 <div className="details-info">
-                                    <TaskDetailsInfo board={board} list={list} task={task} />
+                                    <TaskDetailsInfo board={board} list={list} task={task} {...this.props} />
+                                </div>
+                                <div className="details-description">
+                                    <TaskDetailsDesc board={board} list={list} task={task} />
                                 </div>
                                 <div className="details-checklist">
                                     <TaskDetailsChecklist board={board} list={list} task={task} />
@@ -144,6 +149,10 @@ export class _TaskDetails extends Component {
                             <div className="details-buttons">
                                 <div className="task-details-close-btn close-btn flex align-center justify-center">
                                     <CloseIcon onClick={this.onCloseModal} />
+                                </div>
+
+                                <div className="task-sidebar">
+                                    <TaskSidebar />
                                 </div>
 
                             </div>
