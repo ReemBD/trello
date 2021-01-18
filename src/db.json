@@ -9,7 +9,9 @@
         "fullname": "Reem Ben David",
         "imgUrl": "http://some-img"
       },
-      "style": {},
+      "style": {
+        "bg": "linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)"
+      },
       "members": [
         {
           "_id": "u101",
@@ -54,6 +56,12 @@
               ],
               "members": [
                 {
+                  "_id": "u102",
+                  "username": "FartsKing",
+                  "fullname": "Reem Ben David",
+                  "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+                },
+                {
                   "_id": "u101",
                   "username": "YungiBabush",
                   "fullname": "Nofar Yunger",
@@ -64,24 +72,6 @@
                   "username": "FartsPrince",
                   "fullname": "Yoni Segev",
                   "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                },
-                {
-                  "_id": "u102",
-                  "username": "FartsKing",
-                  "fullname": "Reem Ben David",
-                  "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
-                }
-              ],
-              "comments": [
-                {
-                  "byMember": {
-                    "_id": "u101",
-                    "fullname": "Abi Abambi",
-                    "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-                  },
-                  "id": "scKGA",
-                  "createdAt": 1610966793276,
-                  "txt": "Yo, this is a comment"
                 }
               ]
             },
@@ -96,12 +86,6 @@
               "description": "Code a fully functioning drag and drop board",
               "createdAt": 1610634412444,
               "id": "Zh9hU"
-            },
-            {
-              "title": "Todo",
-              "description": "",
-              "createdAt": 1610887749392,
-              "id": "7wotB"
             }
           ],
           "style": {
@@ -118,7 +102,7 @@
             {
               "id": "c104",
               "title": "Task Details Functionality",
-              "description": "Fully finish everything releated to task details functionality!",
+              "description": "Fully finish everything releated to task details functionality",
               "comments": [
                 {
                   "id": "ZdPnm",
@@ -138,42 +122,30 @@
                   "todos": [
                     {
                       "title": "To Do 1",
-                      "isDone": true,
-                      "id": "212jX"
-                    },
-                    {
-                      "title": "To Do 2",
-                      "isDone": true,
-                      "id": "3212a"
-                    },
-                    {
-                      "title": "Testing",
                       "isDone": false,
-                      "id": "212sfX"
-                    },
-                    {
-                      "id": "VU5mQ",
-                      "title": "asd",
-                      "isDone": false
+                      "id": "212jX"
                     }
                   ]
                 }
               ],
-              "members": [],
+              "members": [
+                {
+                  "_id": "u102",
+                  "username": "FartsKing",
+                  "fullname": "Reem Ben David",
+                  "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+                },
+                {
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                }
+              ],
               "labels": [
                 {
                   "id": "101",
                   "color": "#61bd4f",
-                  "title": ""
-                },
-                {
-                  "id": "102",
-                  "color": "#f2d602",
-                  "title": ""
-                },
-                {
-                  "id": "105",
-                  "color": "#c377e0",
                   "title": ""
                 }
               ],
@@ -221,9 +193,45 @@
           "tasks": [
             {
               "title": "asdfasd",
-              "description": "Okay",
+              "description": "",
               "createdAt": 1610913051755,
-              "id": "vaU9z"
+              "id": "vaU9z",
+              "labels": [
+                {
+                  "id": "101",
+                  "color": "#61bd4f",
+                  "title": ""
+                },
+                {
+                  "id": "102",
+                  "color": "#f2d602",
+                  "title": ""
+                },
+                {
+                  "id": "103",
+                  "color": "#f99f1b",
+                  "title": ""
+                },
+                {
+                  "id": "104",
+                  "color": "#eb5a46",
+                  "title": ""
+                }
+              ],
+              "members": [
+                {
+                  "_id": "u103",
+                  "username": "FartsPrince",
+                  "fullname": "Yoni Segev",
+                  "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
+                },
+                {
+                  "_id": "u102",
+                  "username": "FartsKing",
+                  "fullname": "Reem Ben David",
+                  "imgUrl": "https://www.byrdie.com/thmb/eZJ7or3B6M-yi9p5PlOm0kYWJL4=/800x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1035308964-5d15a77127854247b5c841d339a546c0.jpeg"
+                }
+              ]
             }
           ],
           "style": {
@@ -235,22 +243,15 @@
           "id": "SKQCF"
         },
         {
-          "title": "Done",
-          "tasks": [
-            {
-              "title": "asdfasdf",
-              "description": "",
-              "createdAt": 1610913057205,
-              "id": "R2qU7"
-            }
-          ],
+          "title": "asdf",
+          "tasks": [],
           "style": {
             "title": {
               "bgColor": "#3cc2e0"
             },
             "bgColor": "#3cc2e082"
           },
-          "id": "X4xeN"
+          "id": "5qS6k"
         }
       ],
       "activities": [
@@ -271,243 +272,161 @@
       ]
     },
     {
-      "title": "Sprint 3",
-      "members": [
-        {
-          "_id": "u102",
-          "fullname": "bobi bo",
-          "username": "abi@ababmi.com",
-          "password": "111",
-          "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
-        },
-        {
-          "_id": "u101",
-          "fullname": "Abi Abambi",
-          "username": "abi@ababmi.com",
-          "password": "aBambi123",
-          "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-        }
-      ],
-      "style": {
-        "bg": "linear-gradient(120deg, #a6c0fe 0%, #f68084 100%)"
-      },
-      "description": "Coding Academy's 2nd sprint",
-      "createdAt": 1610647239461,
-      "lists": [
-        {
-          "id": "yVlF2",
-          "title": "To Do",
-          "style": {
-            "bgColor": "rgb(152, 149, 224, .51)",
-            "title": {
-              "bgColor": "rgb(152 149 224)"
-            }
-          },
-          "tasks": [
-            {
-              "id": "5v4L7",
-              "createdAt": 1610647239461,
-              "title": "how easy to create tasks!"
-            },
-            {
-              "id": "LxWVZ",
-              "createdAt": 1610647239461,
-              "title": "invite your team!"
-            },
-            {
-              "title": "",
-              "description": "",
-              "createdAt": 1610716377943,
-              "id": "5CuOz"
-            }
-          ]
-        },
-        {
-          "id": "EdPBL",
-          "title": "Doing",
-          "style": {
-            "bgColor": "rgb(152, 149, 224, .51)",
-            "title": {
-              "bgColor": "rgb(152 149 224)"
-            }
-          },
-          "tasks": [
-            {
-              "id": "GYNi3",
-              "createdAt": 1610647239461,
-              "title": "make dinner"
-            },
-            {
-              "id": "zF69W",
-              "createdAt": 1610647239461,
-              "title": "buy groceries",
-              "todos": [
-                {
-                  "title": "Milk",
-                  "isDone": false,
-                  "id": "SlWU1"
-                },
-                {
-                  "title": "Bread",
-                  "isDone": false,
-                  "id": "FyB5x"
-                },
-                {
-                  "title": "Chocolate",
-                  "isDone": false,
-                  "id": "wxTdg"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "_id": "R_MgrSN"
-    },
-    {
-      "title": "Sprint 2",
+      "title": "",
       "members": [],
       "style": {
-        "bg": "#fff"
+        "bg": "linear-gradient(to top, #30cfd0 0%, #330867 100%)"
       },
       "description": "",
-      "createdAt": 1610879253612,
+      "createdAt": 1610926534244,
       "lists": [
         {
-          "id": "GBRDy",
+          "id": "vm3Md",
           "title": "To Do",
           "style": {
-            "bgColor": "rgb(152, 149, 224, .51)",
+            "bgColor": "rgb(152, 149, 224,82)",
             "title": {
-              "bgColor": "rgb(152 149 224)"
+              "bgColor": "rgb(152, 149, 224)"
             }
           },
           "tasks": [
             {
-              "id": "8WFqQ",
-              "createdAt": 1610879253612,
+              "id": "zjYgW",
+              "createdAt": 1610926534244,
               "title": "how easy to create tasks!"
             },
             {
-              "id": "SfpWW",
-              "createdAt": 1610879253612,
+              "id": "P9dQ7",
+              "createdAt": 1610926534244,
               "title": "invite your team!"
             }
           ]
         },
         {
-          "id": "EX4oR",
+          "id": "pI0po",
           "title": "Doing",
           "style": {
+            "bgColor": "#4a94f882",
             "title": {
               "bgColor": "#4a94f8"
             }
           },
           "tasks": [
             {
-              "id": "NS2fq",
-              "createdAt": 1610879253612,
+              "id": "OFe5X",
+              "createdAt": 1610926534244,
               "title": "make dinner"
             },
             {
-              "id": "o9Ot0",
-              "createdAt": 1610879253612,
+              "id": "uMmVz",
+              "createdAt": 1610926534244,
               "title": "buy groceries",
               "todos": [
                 {
                   "title": "Milk",
                   "isDone": false,
-                  "id": "2JY78"
+                  "id": "uOFUa"
                 },
                 {
                   "title": "Bread",
                   "isDone": false,
-                  "id": "mUPPB"
+                  "id": "j2hRC"
                 },
                 {
                   "title": "Chocolate",
                   "isDone": false,
-                  "id": "njveJ"
+                  "id": "7VTOs"
                 }
               ]
             }
           ]
-        }
-      ],
-      "_id": "kna9n16"
-    },
-    {
-      "title": "Sprint 1",
-      "members": [
-        {
-          "_id": "u102",
-          "fullname": "bobi bo",
-          "email": "abi@ababmi.com",
-          "password": "111",
-          "imgUrl": "https://cdn.pocket-lint.com/r/s/970x/assets/images/142207-phones-feature-what-is-apple-face-id-and-how-does-it-work-image1-5d72kjh6lq-jpg.webp?v1"
         },
         {
-          "_id": "u101",
-          "fullname": "Abi Abambi",
-          "email": "abi@ababmi.com",
-          "password": "aBambi123",
-          "imgUrl": "https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg"
-        }
-      ],
-      "style": {
-        "bg": "linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%)"
-      },
-      "description": "Coding Academy's first sprint",
-      "createdAt": 1610887224717,
-      "lists": [
-        {
-          "id": "VWtrO",
-          "title": "To Do",
+          "title": "lkm",
+          "tasks": [],
           "style": {
             "title": {
-              "bgColor": "rgb(152 149 224)"
-            }
-          },
-          "tasks": [
-            {
-              "id": "uDzJf",
-              "createdAt": 1610887224717,
-              "title": "how easy to create tasks!"
+              "bgColor": "#C91462"
             },
             "bgColor": "#C9146282"
           },
+          "id": "0zHyM"
+        }
+      ],
+      "_id": "vkPxnW0"
+    },
+    {
+      "title": "Boardie\n",
+      "members": [],
+      "style": {
+        "bg": "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"
+      },
+      "description": "",
+      "createdAt": 1610980142258,
+      "lists": [
+        {
+          "id": "MAmDk",
+          "title": "To Do",
+          "style": {
+            "bgColor": "rgb(152, 149, 224,82)",
+            "title": {
+              "bgColor": "rgb(152, 149, 224)"
+            }
+          },
           "tasks": [
             {
-              "id": "40sqI",
-              "createdAt": 1610887224717,
+              "id": "BuMGK",
+              "createdAt": 1610980142258,
+              "title": "how easy to create tasks!"
+            },
+            {
+              "id": "EhJNm",
+              "createdAt": 1610980142259,
+              "title": "invite your team!"
+            }
+          ]
+        },
+        {
+          "id": "M83QU",
+          "title": "Doing",
+          "style": {
+            "bgColor": "#4a94f882",
+            "title": {
+              "bgColor": "#4a94f8"
+            }
+          },
+          "tasks": [
+            {
+              "id": "n4Xtm",
+              "createdAt": 1610980142259,
               "title": "make dinner"
             },
             {
-              "id": "x0Mt2",
-              "createdAt": 1610887224717,
+              "id": "yNtz4",
+              "createdAt": 1610980142259,
               "title": "buy groceries",
               "todos": [
                 {
                   "title": "Milk",
                   "isDone": false,
-                  "id": "WI7Uk"
+                  "id": "euRzJ"
                 },
                 {
                   "title": "Bread",
                   "isDone": false,
-                  "id": "eWu5z"
+                  "id": "XOSf1"
                 },
                 {
                   "title": "Chocolate",
                   "isDone": false,
-                  "id": "mBRL9"
+                  "id": "nWmzm"
                 }
               ]
             }
           ]
         }
       ],
-      "_id": "PRqpVVs"
+      "_id": "zPebNhS"
     }
   ],
   "user": [

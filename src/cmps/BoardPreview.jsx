@@ -11,14 +11,11 @@ export class BoardPreview extends Component {
     render() {
         const { board, onRemove, onEdit } = this.props
         return (
-            <div className="board-card flex flex justify-center align-center" style={{ background:board.style.bg }}>
+            <div className="board-card flex flex justify-center align-center" style={{ backgroundImage:board.style.bg }} >
                 <Link to={`/board/${board._id}`}><h1>{board.title}</h1></Link>
-
-                <button className="icon-btn" onClick={() => onRemove(board._id)}><DeleteIcon fontSize="medium" style={{ color: '#092f32' }} /> </button>
-                <button className="icon-btn edit" onClick={() => onEdit(board)}><EditIcon fontSize="medium" style={{ color: '#092f32' }} /> </button>
-
-
-
+                <div className="card-overlay"></div>
+                <button className="icon-btn" onClick={() => onRemove(board._id)}><DeleteIcon  className="icon"/> </button>
+                <button className="icon-btn edit" onClick={() => onEdit(board)}><EditIcon className="icon" /> </button>
             </div>
         )
     }
