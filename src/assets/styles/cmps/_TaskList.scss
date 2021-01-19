@@ -29,6 +29,10 @@
       border-radius: 5px;
     }
 
+    ::placeholder {
+      color: #fff;
+    }
+
     .toggle-actions-icon {
       transition: transform 0.11s;
       position: absolute;
