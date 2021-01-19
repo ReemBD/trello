@@ -48,9 +48,6 @@ export class _TaskDetails extends Component {
                     await this.props.toggleOverlay()
                 })
             }
-            if (this.state.task.labels?.length !== details.task.labels?.length) {
-                this.setState({ task: details.task })
-            }
         }
     }
 
@@ -129,7 +126,7 @@ export class _TaskDetails extends Component {
         const currTask = board.lists[listIdx].tasks[taskIdx]
 
 
-        if (!task) return <div>Loading details...</div>
+        if (!currTask) return <div>Loading details...</div>
         return (
             <section onClick={() => currPopover ? this.togglePopover('') : ''} className="task-details">
                 {this.state.isDetailsOpen &&
@@ -143,14 +140,14 @@ export class _TaskDetails extends Component {
                                         <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea" style={{ fontSize: '24px' }}
                                             name="title"
                                             onChange={this.handleTitle}
-                                            value={task.title}
+                                            value={currTask.title}
                                             spellCheck="false"
                                         />
                                     </form>
-                                    <p>in list <span className="details-list-name">{list?.title}</span></p>
+                                    <p>in list <span className="details-list-name">{currList?.title}</span></p>
                                 </div>
                                 <div className="details-info">
-                                    <TaskDetailsInfo board={board} list={list} task={task} {...this.props} />
+                                    <TaskDetailsInfo board={board} list={currList} task={currTask} {...this.props} />
                                 </div>
                                 <div className="details-description">
                                     <TaskDetailsDesc board={board} list={currList} task={currTask} />
@@ -162,10 +159,10 @@ export class _TaskDetails extends Component {
                                     : ''
                                 }
                                 <div className="details-checklist">
-                                    <TaskDetailsChecklist board={board} list={list} task={currTask} />
+                                    <TaskDetailsChecklist board={board} list={currList} task={currTask} />
                                 </div>
                                 <div className="details-activity">
-                                    <TaskDetailsActivity board={board} list={list} task={task} {...this.props} />
+                                    <TaskDetailsActivity board={board} list={currList} task={currTask} {...this.props} />
                                 </div>
                             </div>
                             <div className="details-buttons">

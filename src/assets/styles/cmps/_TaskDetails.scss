@@ -94,6 +94,21 @@
 
 .task-due-time {
   line-height: 1.9;
+
+  .date-checkbox {
+    margin-right: 2px;
+  }
+
+  .date-complete {
+    background-color: #61bd4f;
+    padding: 0 12px;
+    letter-spacing: 0.2px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 3px;
+    margin-left: 3px;
+    line-height: 18px;
+  }
 }
 
 .task-middle-details {
@@ -342,5 +357,29 @@
         }
       }
     }
+  }
+}
+
+.move-task-popover {
+  @include popover-main;
+  z-index: 30;
+  left: -350px;
+  width: 335px;
+  position: absolute;
+
+  .popover-header {
+    @include popover-header;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  }
+
+  .popover-header-title {
+    border: none;
+    padding-left: rem(30px);
+  }
+
+  svg {
+    margin-right: 10px;
+    cursor: pointer;
   }
 }
