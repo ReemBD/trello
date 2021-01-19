@@ -155,7 +155,7 @@ export class _TaskDetails extends Component {
                                 <div className="details-description">
                                     <TaskDetailsDesc board={board} list={currList} task={currTask} />
                                 </div>
-                                {currTask.attachments.length ?
+                                {currTask.attachments?.length ?
                                     <div className="details-attachments">
                                         <TaskDetailsAttachments board={board} list={currList} task={currTask} {...this.props} />
                                     </div>
