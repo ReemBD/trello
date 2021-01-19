@@ -68,14 +68,14 @@ export class _TaskPreview extends Component {
         return (
             <Fragment>
                 <Draggable draggableId={task.id} index={taskIdx}>
-                    {provided => (
+                    {(provided, snapshot) => (
                         <div
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                         >
                             <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
-                            <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
+                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving' }  `} onClick={this.onOpenDetails} >
                                 {(task.attachments) ?
                                     <div className="preview-img" style={{ backgroundImage: `url(${task.attachments.slice(-1)[0]})` }}>
                                     </div>

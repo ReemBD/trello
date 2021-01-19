@@ -1,13 +1,21 @@
 .task-list-container {
-  // background-color: #fff;
+  background-color:  #ffffff82;
   position: relative;
   margin-inline-end: 10px;
   border-radius: 8px;
   width: 272px;
   min-width: 272px;
   padding: 10px;
-  
-  
+
+  // transition: transform 0.5s;
+  // transform: rotate(0deg);
+
+
+  // &.moving {
+  //   transform: rotate(5deg);
+  //   transition: transform 0.5s;
+  // }
+
   .list-title {
     position: relative;
     @include list-title;

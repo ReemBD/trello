@@ -59,17 +59,15 @@ export class _Board extends Component {
         this.setState(prevState => ({ listToAdd: { ...prevState.listToAdd, [name]: value } }))
     }
 
+
+
     // activate when a dragged item is released
-    onDragEnd = async (res) => {
-        const { destination, source, draggableId, type } = res;
-        // LOOK LIKE THIS:
-        // destination: {droppableId: "g103", index: 0}
-        // draggableId: "e101"
-        // source: {index: 0, droppableId: "opd23"}
+    onDragEnd = (res) => {
+        const { destination, source, type } = res;
 
         if (!destination) return
 
-        if (
+        if (//if the item stayed in the same spot 
             destination.droppableId === source.droppableId &&
             destination.index === source.index
         ) return;
@@ -78,18 +76,17 @@ export class _Board extends Component {
 
         if (type === 'task') {
 
-            const sourceListIdx = await boardService.getListIdxById(copyBoard, source.droppableId)
-            const destinationListIdx = await boardService.getListIdxById(copyBoard, destination.droppableId)
-            const task = await boardService.getTaskById(copyBoard._id, draggableId)
+            const sourceListIdx = boardService.getListIdxById(copyBoard, source.droppableId)
+            const destinationListIdx = boardService.getListIdxById(copyBoard, destination.droppableId)
 
-            copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
-            copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task);
+            const task = copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
+            copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task[0]);
 
         } else {
 
             const list = copyBoard.lists.splice(source.index, 1);
             copyBoard.lists.splice(destination.index, 0, list[0]);
-            
+
         }
 
         this.props.updateBoard(copyBoard)
@@ -106,7 +103,7 @@ export class _Board extends Component {
         return (
             <div className="board board-layout">
 
-                <DragDropContext onDragEnd={this.onDragEnd}>
+                <DragDropContext onDragEnd={this.onDragEnd} >
                     <Droppable
                         droppableId="all-columns"
                         direction="horizontal"
@@ -122,22 +119,22 @@ export class _Board extends Component {
                                     <TaskList
                                         key={list.id} list={list} listIdx={idx}
                                         title={list.title} {...this.props}
-                                        />)}
+                                    />)}
 
                                 {provided.placeholder}
 
 
                                 <li className="add-list task-list-container flex column">
-                                   
+
                                     <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
                                         <div className="input-wrapper align-center flex">
                                             {!isCurrPopover && <AddIcon />}
                                             <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
                                         </div>
-                                  
+
                                         <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
                                     </form>
-                                  
+
                                 </li>
                             </ul>
                         )}

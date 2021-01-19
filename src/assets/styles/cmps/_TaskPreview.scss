@@ -6,8 +6,15 @@
   padding: 4px;
   width: 100%;
   min-height: 40px;
+  transition: all 0.5s;
+  rotate: 0deg;
   &:hover {
     background-color: #f3f3f3;
+  }
+
+  &.moving {
+    transform: rotate(5deg);
+    // transition: transform 0.5s;
   }
 
   .preview-img {
