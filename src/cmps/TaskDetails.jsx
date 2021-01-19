@@ -45,10 +45,17 @@ export class _TaskDetails extends Component {
             if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
                 this.setState({ isDetailsOpen: true, board, list, task }, async () => {
                     this.getCurrTask(board._id, taskId)
-                    await this.props.toggleOverlay()
+                    if (!this.props.isOverlayOpen) {
+                        await this.props.toggleOverlay()
+                    }
+
                 })
             }
         }
+    }
+
+    componentWillUnmount() {
+        this.props.toggleOverlay()
     }
 
     // TRY TO REFACTOR
@@ -100,8 +107,6 @@ export class _TaskDetails extends Component {
         ev.stopPropagation()
         const { board } = this.state
         this.setState({ isDetailsOpen: false }, async () => {
-            await this.props.toggleOverlay()
-            await this.props.toggleTask()
             this.props.history.push(`/board/${board._id}`)
         })
     }
@@ -116,9 +121,14 @@ export class _TaskDetails extends Component {
         }
     }
 
+    onOverlayClick = () => {
+        const { board } = this.props
+        this.props.history.push(`/board/${board._id}`)
+    }
+
 
     render() {
-        const { isDetailsOpen, list, task, currPopover } = this.state
+        const { isDetailsOpen, currPopover } = this.state
         const { board } = this.props
         const { listId, taskId } = this.props.match.params
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
@@ -130,8 +140,8 @@ export class _TaskDetails extends Component {
         return (
             <section onClick={() => currPopover ? this.togglePopover('') : ''} className="task-details">
                 {this.state.isDetailsOpen &&
-                    <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`}>
-                        <div className="details-modal flex">
+                    <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`} onClick={this.onOverlayClick}>
+                        <div className="details-modal flex" onClick={(ev) => ev.stopPropagation()}>
                             <div className="main-details flex column">
 
                                 <div className="details-header flex column">
@@ -140,7 +150,7 @@ export class _TaskDetails extends Component {
                                         <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea" style={{ fontSize: '24px' }}
                                             name="title"
                                             onChange={this.handleTitle}
-                                            value={currTask.title}
+                                            value={this.state.task.title}
                                             spellCheck="false"
                                         />
                                     </form>
