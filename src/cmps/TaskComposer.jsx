@@ -4,7 +4,6 @@ import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
 
-
 export class _TaskComposer extends Component {
 
     state = {
@@ -38,7 +37,7 @@ export class _TaskComposer extends Component {
                 description: '',
             }
         }, () => {
-            this.updateBoard(board)
+            this.props.updateBoard(board, true, {txt: 'Added Task'})
         })
     }
 

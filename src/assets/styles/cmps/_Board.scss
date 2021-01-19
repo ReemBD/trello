@@ -19,6 +19,7 @@
                 transition: all .2s;
                 padding-inline-end: 14px;
                 cursor: pointer;
+             
 
                 &.open {
                     height: 90px;
@@ -38,6 +39,7 @@
                         opacity: 1;
                     }
                 }
+                
                     input {
                         cursor: pointer;
                         color: #fff;

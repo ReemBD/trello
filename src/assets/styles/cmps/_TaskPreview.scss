@@ -5,6 +5,7 @@
   background-color: #fff;
   padding: 4px;
   width: 100%;
+  outline: none;
   min-height: 40px;
   transition: all 0.5s;
   rotate: 0deg;
@@ -61,7 +62,7 @@
       border-radius: 5px;
       height: 100%;
       width: 92%;
-      
+
       &:focus {
         outline: none;
       }

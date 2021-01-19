@@ -1,6 +1,7 @@
 .board-header {
     justify-content: space-between;
     align-items: center;
+    z-index: 3;
     // background-color: #ffffff5e;
     position: fixed;
     width: 100%;
@@ -28,6 +29,11 @@
             &.unread{
                 background-color: #ef4040cc;
 
+            }
+            &:hover {
+                background-color: #3d3d3d36;
+
+                cursor: pointer;
             }
         }
     }

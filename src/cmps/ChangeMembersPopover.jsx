@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import CloseIcon from '@material-ui/icons/Close';
-import { boardService } from '../services/boardService';
-import DoneIcon from '@material-ui/icons/Done';
+import CloseIcon from '@material-ui/icons/Close'
+import { boardService } from '../services/boardService'
+import DoneIcon from '@material-ui/icons/Done'
+import { socketService } from '../services/socketService'
 
 export class ChangeMembersPopover extends Component {
     state = {
-        currTask: {}
+        currTask: {},
     }
+    componentDidMount() {
+    }
+
+    componentWillUnmount() {
+    }
+
+
 
     loadTaskMembers() {
         const { task } = this.props
@@ -17,8 +25,6 @@ export class ChangeMembersPopover extends Component {
         ev.stopPropagation()
         const { id } = ev.target.dataset
         const { board } = { ...this.props }
-        const { listIdx, taskIdx } = this.listAndTaskIdx
-        const currTask = board.lists[listIdx].tasks[taskIdx]
         const { members } = board
         const member = members.find(member => member._id === id)
         this.isTaskMember(member._id) ? this.onRemoveTaskMember(member)
@@ -34,6 +40,8 @@ export class ChangeMembersPopover extends Component {
         currTask.members ? currTask.members.push(miniMember) : currTask.members = [miniMember]
         this.setState({ currTask })
         await updateBoard(board)
+        // socketService.emit('task updated', { taskId: currTask.id, activityTxt: `${miniMember.fullname} has joined this task.` })
+        // socketService.emit('member joined task', currTask.id)
     }
 
     onRemoveTaskMember = async (member) => {
@@ -41,10 +49,14 @@ export class ChangeMembersPopover extends Component {
             { members } = task,
             memberIdx = members.findIndex(currMember => member._id === currMember._id)
         const { listIdx, taskIdx } = this.listAndTaskIdx
+        const { fullname } = { ...members[memberIdx] }
         const currTask = board.lists[listIdx].tasks[taskIdx]
         currTask.members.splice(memberIdx, 1)
         this.setState({ currTask })
         await updateBoard(board)
+        // socketService.emit('task updated', { taskId: currTask.id, activityTxt: `${fullname} has left this task.` })
+        // socketService.emit('member left task', currTask.id)
+
     }
 
     isTaskMember(id) {
@@ -73,7 +85,7 @@ export class ChangeMembersPopover extends Component {
                         {boardMembers.map(member => {
                             return <li key={member._id} data-id={member._id} onClick={this.onUpdateTaskMember} className={`popover-section-list-item flex align-center ${this.isTaskMember(member._id) && 'picked'}`}>
                                 <div className="members-popover-img-wrapper">
-                                    <img className="members-popover-member-img" src={member.imgUrl || ''}  />
+                                    <img className="members-popover-member-img" src={member.imgUrl || ''} />
                                 </div>
                                 <span data-id={member._id}>{member.fullname}  ({member.username})</span>
                                 {this.isTaskMember(member._id) && <DoneIcon className="picked-icon" />}
