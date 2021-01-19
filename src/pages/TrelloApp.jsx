@@ -22,9 +22,6 @@ class _TrelloApp extends Component {
 
     componentWillUnmount() {
     }
-    onMemberConnected({ boardId, username }) {
-        console.log(username + ' connected to ', boardId);
-    }
 
     componentDidUpdate(prevProps) {
         const { boardId } = this.props.match.params

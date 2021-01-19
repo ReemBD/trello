@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { TaskList } from './TaskList'
 import { boardService } from '../services/boardService'
-import { setCurrPopover } from '../store/actions/popoverActions'
 import AddIcon from '@material-ui/icons/Add';
-import CloseIcon from '@material-ui/icons/Close';
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { utilService } from '../services/utilService'
@@ -17,6 +15,7 @@ export class _Board extends Component {
             title: '',
             tasks: [],
             style: {
+                bgColor: '',
                 title: { bgColor: '' }
             }
         }
@@ -60,9 +59,6 @@ export class _Board extends Component {
         this.setState(prevState => ({ listToAdd: { ...prevState.listToAdd, [name]: value } }))
     }
 
-
-
-
     // activate when a dragged item is released
     onDragEnd = async (res) => {
         const { destination, source, draggableId } = res;
@@ -84,27 +80,11 @@ export class _Board extends Component {
         const destinationListIdx = await boardService.getListIdxById(copyBoard, destination.droppableId)
         const task = await boardService.getTaskById(copyBoard._id, draggableId)
 
-        console.log('sourceListIdx', sourceListIdx);
-        console.log('destinationListIdx', destinationListIdx);
-        console.log('task', task);
-
         copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
         copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task);
 
         this.props.updateBoard(copyBoard)
-
     };
-
-
-
-
-
-
-
-
-
-
-
 
     render() {
         const { board, currPopover, } = this.props

@@ -22,9 +22,6 @@ export class BoardHeader extends Component {
     }
 
     incNotificationBadge = ({ boardId, username }) => {
-        console.log('incremented ')
-        console.log(username + ' connected to: ', boardId);
-        console.log('this.state: ', this.state.currBadgeCount);
         this.setState({ currBadgeCount: this.state.currBadgeCount + 1 }, () => {
             console.log('afte inc:', this.state.currBadgeCount);
         })
@@ -37,11 +34,11 @@ export class BoardHeader extends Component {
             <header className="board-header board-layout flex">
                 <div className="board-title">{board.title}</div>
                 <div className="members-nav-display flex">
-                    {members.map(member => { return <div className="board-member-img-wrapper"><img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /></div> })}
+                    {members.map(member => { return <div key={member._id} className="board-member-img-wrapper"><img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /></div> })}
                 </div>
                 <ul className="board-nav clear-list flex">
                     <li><BoardFilter /></li>
-                    <li className={`notification-icon-container ${this.state.currBadgeCount && 'unread'}`}>
+                    <li className={`notification-icon-container ${currBadgeCount && 'unread'}`}>
                         <NotificationsIcon />
                     </li>
                 </ul>

@@ -12,7 +12,6 @@ export function setUser(user, isNewUser) {
                 loggedUser
             }
             dispatch(action)
-            console.log('we have a user!');
         } catch (err) {
             console.log('had problem seting the user', err);
         }

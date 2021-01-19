@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { updateBoard } from '../store/actions/boardActions'
 import { TaskPreview } from './TaskPreview'
 import { boardService } from '../services/boardService'
 import { ListTitle } from './ListTitle'
@@ -45,6 +43,7 @@ export class TaskList extends Component {
             })
         },
         onToggleListActions: ev => {
+            //'More...' Popover toggler (from List title)
             ev.stopPropagation()
             this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
         }
@@ -59,7 +58,7 @@ export class TaskList extends Component {
 
         const { list, currPopover } = this.props
         const { tasks } = list
-        const { isComposerOpen, isListActionsOpen } = this.state
+        const { isListActionsOpen } = this.state
         return (
             <article className="task-list">
                 <ListTitle
@@ -85,9 +84,3 @@ export class TaskList extends Component {
     }
 }
 
-
-
-{/* <div className="task-previews-container">
-    {tasks?.length ? tasks.map(task => <TaskPreview key={task.id} {...this.props} task={task} />) : ''}
-    <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
-</div> */}

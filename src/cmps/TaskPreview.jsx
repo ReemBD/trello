@@ -32,6 +32,7 @@ export class _TaskPreview extends Component {
     }
 
     taskPreviewHandlers = {
+        //To identify hover state (for revealing quick edit icon)
         onMouseEnter: () => {
             this.setState({ isTaskHovered: true })
         },

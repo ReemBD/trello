@@ -68,7 +68,6 @@ export class _TaskDetails extends Component {
     handleTitle = ({ target }) => {
         const field = target.name
         const value = target.value
-        console.log('value', value)
         const copyTask = cloneDeep(this.state.task)
         copyTask.title = value
         this.setState({ task: copyTask })

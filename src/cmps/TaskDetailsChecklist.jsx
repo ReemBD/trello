@@ -61,7 +61,6 @@ export class _TaskDetailsChecklist extends Component {
 
 
     handleCheckbox = (todoIdx, listIdx, ev) => {
-        console.log('the list idx and todo idx', listIdx, todoIdx)
         const copyChecklists = cloneDeep(this.state.checklists)
         copyChecklists[listIdx].todos[todoIdx].isDone = ev.target.checked
         this.setState({ checklists: copyChecklists }, () => {

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { updateBoard } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
 import { LabelsPopover } from './LabelsPopover'
 import { ChangeMembersPopover } from '../cmps/ChangeMembersPopover'
@@ -33,15 +31,12 @@ export class TaskEdit extends Component {
         this.props.updateBoard(boardCopy)
     }
 
-    getQEBProps(task, list, title, Component, Icon, key = title, { currOpenPopover } = this.state) {
+    getQEBProps(title, Component, Icon, key = title) {
         return {
-            task,
-            list,
             title,
             Component,
             Icon,
             key,
-            currOpenPopover,
         }
     }
     render() {
@@ -51,7 +46,7 @@ export class TaskEdit extends Component {
         return (
             <div className="quick-task-editor-buttons">
                 {popovers.map(popover => {
-                    return <QuickEditButton {...this.props} {...this.getQEBProps(task, list, popover.title, popover.Component, popover.Icon)} />
+                    return <QuickEditButton {...this.props} {...this.getQEBProps(popover.title, popover.Component, popover.Icon)} />
                 })}
                 <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
                     <span className="icon-sm icon-label light"></span>
