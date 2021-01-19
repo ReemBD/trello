@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 
 
+
 export class _TaskDetailsInfo extends Component {
     state = {
         labels: [
@@ -81,6 +82,14 @@ export class _TaskDetailsInfo extends Component {
         this.setState({ isMemberModalOpen: !this.state.isMemberModalOpen })
     }
 
+    onDateCheckChange = (listIdx, taskIdx, ev) => {
+        const { currBoard, updateBoard } = this.props
+        const copyBoard = cloneDeep(currBoard)
+        copyBoard.lists[listIdx].tasks[taskIdx].dueDate.isDone = ev.target.checked
+        updateBoard(copyBoard)
+    }
+
+
     render() {
         const { currBoard } = this.props
         const { listId, taskId } = this.props.match.params
@@ -139,7 +148,12 @@ export class _TaskDetailsInfo extends Component {
                     {task.dueDate?.timestamp && <div className="card-detail">
                         <h3>Due Date</h3>
                         <div className="task-due-time flex align-center justify-center">
-                            <span style={{ marginLeft: '5px' }}><span><input type="checkbox" /></span>{formatRelative(task?.dueDate?.timestamp, Date.now())}</span>
+                            <span style={{ marginLeft: '5px' }}>
+                                <span className="date-checkbox">
+                                    <input checked={task.dueDate.isDone} onChange={(ev) => this.onDateCheckChange(listIdx, taskIdx, ev)} type="checkbox" />
+                                </span>
+                                {formatRelative(task?.dueDate?.timestamp, Date.now())}</span>
+                            <span className={`date-complete ${!task.dueDate.isDone && "hidden"}`}>COMPLETE</span>
                         </div>
                     </div>}
                 </div>
