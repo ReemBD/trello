@@ -45,7 +45,9 @@ export class _TaskDetails extends Component {
             if (taskId && listId && !this.state.isDetailsOpen) { // When task is clicked on board
                 this.setState({ isDetailsOpen: true, board, list, task }, async () => {
                     this.getCurrTask(board._id, taskId)
-                    await this.props.toggleOverlay()
+                    if (!this.props.isOverlayOpen) {
+                        await this.props.toggleOverlay()
+                    }
 
                 })
             }
