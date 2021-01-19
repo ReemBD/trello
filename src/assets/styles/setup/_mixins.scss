@@ -57,7 +57,7 @@
     }
 }
 
-//lists 
+//lists
 
 @mixin list-title {
     margin-bottom: 25px;
@@ -119,5 +119,11 @@
 
 @mixin popover-section-list {
     padding-inline-end: 8px;
-            padding-inline-start: 8px;
+    padding-inline-start: 8px;
+}
+
+@mixin header-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-inline-start: 1.5em;
 }

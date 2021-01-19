@@ -68,7 +68,6 @@ export class _TaskDetailsActivity extends Component {
         const { currBoard, list, task } = this.props
         const copyTask = cloneDeep(task)
         const copyBoard = cloneDeep(currBoard)
-        console.log(copyTask)
         if (copyTask.comments) {
             copyTask.comments.unshift(commentToAdd)
         } else {
@@ -83,7 +82,6 @@ export class _TaskDetailsActivity extends Component {
     }
 
     onRemoveComment = async (listIdx, taskIdx, commentIdx) => {
-        console.log('the idxs are', listIdx, taskIdx, commentIdx)
         const copyBoard = cloneDeep(this.props.currBoard)
         copyBoard.lists[listIdx].tasks[taskIdx].comments.splice(commentIdx, 1)
         await this.props.updateBoard(copyBoard)

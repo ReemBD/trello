@@ -61,7 +61,6 @@ export class _TaskDetailsChecklist extends Component {
 
 
     handleCheckbox = (todoIdx, listIdx, ev) => {
-        console.log('the list idx and todo idx', listIdx, todoIdx)
         const copyChecklists = cloneDeep(this.state.checklists)
         copyChecklists[listIdx].todos[todoIdx].isDone = ev.target.checked
         this.setState({ checklists: copyChecklists }, () => {
@@ -70,17 +69,14 @@ export class _TaskDetailsChecklist extends Component {
     }
 
     handleTodoChange = (todoIdx, listIdx, ev) => {
-        console.log('the list idx and todo idx is', listIdx, todoIdx);
         const copyChecklists = cloneDeep(this.state.checklists)
         copyChecklists[listIdx].todos[todoIdx].title = ev.target.value
         this.setState({ checklists: copyChecklists })
     }
 
     percentDone = (checklist) => {
-        console.log('from function', checklist)
         const doneTodos = checklist.todos.filter(todo => todo.isDone)
         const percent = parseInt((doneTodos.length / checklist.todos.length) * 100)
-        console.log('THE PERCENT IS: ', percent)
         return percent
     }
 
@@ -149,7 +145,6 @@ export class _TaskDetailsChecklist extends Component {
     }
 
     render() {
-        const { board, list, task } = this.props
         const { checklists, newTodos } = this.state
         const { percentDone } = this
         if (!checklists) return <div>Loading...</div>

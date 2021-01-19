@@ -50,8 +50,7 @@ export class _ListTitle extends Component {
 
     onToggleListActions = (ev) => {
         ev.stopPropagation()
-        console.log('hellp from on toggle list acctions');
-            // const { setCurrPopover, currPopover } = this.props
+        console.log('event: ', ev.isPropagationStopped());
             (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
 
     }
@@ -89,6 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     updateBoard,
+    setCurrPopover,
     toggleOverlay
 }
 

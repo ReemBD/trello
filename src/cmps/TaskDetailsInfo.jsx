@@ -30,12 +30,7 @@ export class _TaskDetailsInfo extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log('Child did update')
-        console.log('prevprops length', prevProps.task.labels?.length)
-        console.log(' length', this.props.task.labels?.length)
-        // console.log('prevprops', prevProps.task.labels)
         if (prevProps.task.labels?.length !== this.props.task.labels?.length) {
-            console.log('inside cpu');
             this.markExistingLabels()
         }
     }
@@ -56,13 +51,11 @@ export class _TaskDetailsInfo extends Component {
         const { labels } = this.state
         const updatedLabels = [...labels]
         const labelToUpdateIdx = updatedLabels.findIndex(label => label.id === id)
-        // console.log(labelToUpdateIdx)
+
         updatedLabels[labelToUpdateIdx].isPicked = !updatedLabels[labelToUpdateIdx].isPicked
         this.setState({ labels: updatedLabels }, () => {
             let labelsToSend = updatedLabels.filter(label => label.isPicked)
-            // console.log('the labels to send filtered are', labelsToSend)
             labelsToSend.forEach(label => delete label.isPicked)
-            // console.log('the labels to send without ispicked are', labelsToSend)
             this.onAddLabel(labelsToSend)
         })
 
@@ -79,7 +72,7 @@ export class _TaskDetailsInfo extends Component {
         const updatedBoard = cloneDeep(currBoard)
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(updatedBoard, list.id, task.id)
         updatedBoard.lists[listIdx].tasks[taskIdx].labels = labels
-        console.log('the updatedBoard is', updatedBoard.lists[listIdx].tasks[taskIdx])
+
         await updateBoard(updatedBoard)
     }
 

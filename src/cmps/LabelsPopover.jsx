@@ -37,10 +37,25 @@ export class _LabelsPopover extends Component {
     onToggleLabel = ev => {
         ev.stopPropagation()
         const { labels } = { ...this.state }
+        const { board, list, task, updateBoard } = { ...this.props }
         const labelId = ev.target.dataset.id
         const labelIdx = this.getLabelIdxById(labelId)
         labels[labelIdx].isPicked = !labels[labelIdx].isPicked
-        this.setState({ labels })
+        this.setState({ labels }, async () => {
+            delete labels[labelIdx].isPicked
+            const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+            if (task.labels.some(label => label.id === labelId)) {
+                const taskLabelIdx = task.labels.findIndex(label => label.id === labelId)
+                task.labels.splice(taskLabelIdx, 1)
+                board.lists[listIdx].tasks[taskIdx] = task
+            }
+            else {
+                task.labels = task.labels ? [...task.labels, labels[labelIdx]] : [labels[labelIdx]]
+                board.lists[listIdx].tasks[taskIdx] = task
+            }
+            await updateBoard(board)
+            this.markExistingLabels()
+        })
     }
 
     getLabelIdxById(labelId) {
@@ -48,19 +63,6 @@ export class _LabelsPopover extends Component {
         return labels.findIndex(label => label.id === labelId)
     }
 
-    onAddLabels = async ev => {
-        ev.stopPropagation()
-
-        const labelsToAdd = this.state.labels.filter(label => label.isPicked)
-        labelsToAdd.forEach(label => { delete label.isPicked })
-
-        const { board, list, task, updateBoard } = { ...this.props }
-        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
-        board.lists[listIdx].tasks[taskIdx].labels = labelsToAdd
-
-        await updateBoard(board)
-    
-    }
 
 
     render() {
@@ -69,13 +71,12 @@ export class _LabelsPopover extends Component {
             <div className="labels-popover" >
                 <div className="popover-header flex align-center justify-center">
                     <span className="popover-header-title">Labels</span>
-                    <CloseIcon className="popover-header-close-btn" onClick={()=>{this.props.setCurrPopover()}} />
+                    <CloseIcon className="popover-header-close-btn" onClick={() => { this.props.setCurrPopover() }} />
                 </div>
                 <section className="popover-section">
                     <ul className="popover-section-list clear-list flex column">
                         <h3 className="popover-section-header">Labels</h3>
                         {labels.map(label => <div data-id={label.id} onClick={this.onToggleLabel} key={label.id} className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></div>)}
-                        <button className="save-labels-btn primary-btn" onClick={this.onAddLabels}>Save</button>
                     </ul>
                 </section>
             </div>

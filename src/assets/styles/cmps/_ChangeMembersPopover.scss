@@ -1,5 +1,5 @@
 .change-members-popover {
-  @include popover-main;
+    @include popover-main;
     .popover-header {
         height: 40px;
         color: #212121;
@@ -14,22 +14,38 @@
     .popover-section {
         @include popover-section;
 
-        &-header{
+        &-header {
             @include popover-section-header;
         }
         &-list {
             @include popover-section-list;
-            cursor:pointer;
+            cursor: pointer;
             &-item {
+                position: relative;
                 color: $clr2;
                 margin-inline-start: 7px;
                 padding-top: 8px;
                 padding-bottom: 8px;
-                font-size: 1.2em;
-                &:hover{
+                font-size: 1.11em;
+                .picked-icon{
+                    position: absolute;
+                    right: 5px;
+                    color: #6e6e6e;
+                    width: 16px;
+                }
+                &:hover {
                     background-color: rgb(245, 246, 248);
                 }
             }
         }
+    }
+}
+.members-popover-img-wrapper {
+    width: 40px;
+    @include aspect-ratio(1, 1);
+    margin-inline-end: 10px;
+    .members-popover-member-img {
+        width: 100%;
+        border-radius: 999px;
     }
 }

@@ -7,7 +7,7 @@ export class ChangeMembersPopover extends Component {
     state = {
         currTask: {}
     }
-    
+
     loadTaskMembers() {
         const { task } = this.props
         return task.members
@@ -72,9 +72,11 @@ export class ChangeMembersPopover extends Component {
                         <h3 className="popover-section-header">Board members</h3>
                         {boardMembers.map(member => {
                             return <li key={member._id} data-id={member._id} onClick={this.onUpdateTaskMember} className={`popover-section-list-item flex align-center ${this.isTaskMember(member._id) && 'picked'}`}>
-                                <img src={member.imgUrl || ''} style={{ width: '40px', borderRadius: '999px', marginInlineEnd: '5px' }} />
+                                <div className="members-popover-img-wrapper">
+                                    <img className="members-popover-member-img" src={member.imgUrl || ''}  />
+                                </div>
                                 <span data-id={member._id}>{member.fullname}  ({member.username})</span>
-                                {this.isTaskMember(member._id) && <DoneIcon />}
+                                {this.isTaskMember(member._id) && <DoneIcon className="picked-icon" />}
                             </li>
                         })}
                     </ul>

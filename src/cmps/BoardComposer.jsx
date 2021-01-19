@@ -16,7 +16,7 @@ export class _BoardComposer extends Component {
             title: '',
             members: [],
             style: {
-                bg: '#fff'
+                bg: '#3d3d3d'
             },
             description: ''
         },
@@ -57,11 +57,9 @@ export class _BoardComposer extends Component {
         var { newBoard } = this.state
         if (newBoard._id) {
             var newBoard = { ...this.props.board, ...newBoard }
-            console.log('saved board', newBoard);
         }
 
         const savedBoard = await boardService.save(newBoard)//add a new board to data
-        console.log(savedBoard);
         this.props.history.push(`/board/${savedBoard._id}`)//then gos to the board page
     }
 
@@ -145,15 +143,13 @@ export class _BoardComposer extends Component {
 
         return (
             <Fragment>
-                <form className="board-composer" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
+                <form className="board-composer board-composer-layout flex column" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
                     <div className="flex justify-center">
 
                         <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg }}>
-                            <textarea className="title" onChange={this.handleInput} placeholder="Enter Board title " name="title" autoComplete="off" value={newBoard.title} />
+                            <textarea className="title" onChange={this.handleInput} placeholder="Enter Board Title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
-
                     </div>
-
                     <div className="flex row dec">
                         <textarea
                             placeholder="Description"
@@ -162,19 +158,17 @@ export class _BoardComposer extends Component {
                             onChange={this.handleInput}
                             spellCheck="false"
                         />
-
                         <span>
                             <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
                             {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
                         </span>
                     </div>
-
                     <div className="bg-options">
                         {bgs.map(bg => {
                             return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg }}> </div>
                         })}
                     </div>
-                    <button>{btnTxt}</button>
+                    <button className="primary-btn compose-board-btn">{btnTxt}</button>
                 </form>
             </Fragment >
         )
