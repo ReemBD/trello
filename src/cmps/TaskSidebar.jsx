@@ -11,12 +11,14 @@ import { LabelsPopover } from './LabelsPopover'
 import { DateTimePopover } from './DateTimePopover'
 import { cloneDeep } from 'lodash'
 import { utilService } from '../services/utilService'
+import { cloudinaryService } from '../services/cloudinaryService'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
 export class TaskSidebar extends Component {
 
     state = {
-        dueDate: ''
+        dueDate: '',
+        taskImgUrl: ''
     }
 
     onAddNewList = async () => {
@@ -56,6 +58,31 @@ export class TaskSidebar extends Component {
         this.props.togglePopover('')
     }
 
+    onUploadImg = async ev => {
+        try {
+            const { secure_url } = await cloudinaryService.uploadImg(ev.target.files[0])
+            this.setState({ taskImgUrl: secure_url }, async () => {
+                const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+                const copyBoard = cloneDeep(board)
+                let currTask = copyBoard.lists[currListIdx].tasks[currTaskIdx]
+                if (currTask.attachments?.length) {
+                    currTask.attachments = [
+                        ...copyBoard.lists[currListIdx].tasks[currTaskIdx].attachments,
+                        this.state.taskImgUrl
+                    ]
+                } else {
+                    currTask.attachments = []
+                    currTask.attachments.push(this.state.taskImgUrl)
+                }
+                await updateBoard(copyBoard)
+            })
+
+        } catch (err) {
+            this.setState({ msg: 'Couldnt upload your image try again' })
+            console.log('problem loading the img ', err);
+        }
+    }
+
     render() {
         const { currPopover, togglePopover } = this.props
         return (
@@ -89,8 +116,10 @@ export class TaskSidebar extends Component {
                         <span className="action-txt">Checklist</span>
                     </div>
                     <div className="action-container flex align-center">
-                        <span className="action-icon"><ImageOutlinedIcon /></span>
-                        <span className="action-txt">Image</span>
+                        <label className="action-icon" style={{ width: '100%', cursor: 'pointer' }}>  <ImageOutlinedIcon className="add-img-icon" />
+                            <input onChange={this.onUploadImg} type="file" hidden />
+                            <span className="action-txt">Image</span>
+                        </label>
                     </div>
                     <div className="action-container flex align-center">
                         <span className="action-icon"><ArrowRightAltOutlinedIcon /></span>

@@ -4,6 +4,7 @@ import { TaskDetailsInfo } from './TaskDetailsInfo'
 import { TaskDetailsDesc } from './TaskDetailsDesc'
 import { TaskDetailsChecklist } from './TaskDetailsChecklist'
 import { TaskDetailsActivity } from './TaskDetailsActivity'
+import { TaskDetailsAttachments } from './TaskDetailsAttachments'
 import { TaskSidebar } from './TaskSidebar'
 import { cloneDeep } from 'lodash'
 import { connect } from 'react-redux'
@@ -68,7 +69,6 @@ export class _TaskDetails extends Component {
     handleTitle = ({ target }) => {
         const field = target.name
         const value = target.value
-        console.log('value', value)
         const copyTask = cloneDeep(this.state.task)
         copyTask.title = value
         this.setState({ task: copyTask })
@@ -155,6 +155,12 @@ export class _TaskDetails extends Component {
                                 <div className="details-description">
                                     <TaskDetailsDesc board={board} list={currList} task={currTask} />
                                 </div>
+                                {currTask.attachments ?
+                                    <div className="details-attachments">
+                                        <TaskDetailsAttachments board={board} list={currList} task={currTask} {...this.props} />
+                                    </div>
+                                    : ''
+                                }
                                 <div className="details-checklist">
                                     <TaskDetailsChecklist board={board} list={list} task={currTask} />
                                 </div>

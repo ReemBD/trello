@@ -1,82 +1,85 @@
 // ------------------------------------------------------- board grid cards-------------------------------------------------------
 .board-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
-    width: -webkit-fill-available;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  width: -webkit-fill-available;
+  width: -moz-available;
+  justify-content: center;
 }
 
 .board-card {
-    color: #fff;
-    position: relative;
-    backdrop-filter: blur(13.5px);
-    -webkit-backdrop-filter: blur(13.5px);
+  color: #fff;
+  position: relative;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 3px;
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     border-radius: 3px;
-    .card-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        border-radius: 3px;
 
-        // background-color: desaturate(#c95656, 50);
-        background: linear-gradient(180deg, rgba(252,252,252,0) 21%, rgba(32,32,32,0.5130427170868348) 93%);
-        
+    // background-color: desaturate(#c95656, 50);
+    background: linear-gradient(
+      180deg,
+      rgba(252, 252, 252, 0) 21%,
+      rgba(32, 32, 32, 0.5130427170868348) 93%
+    );
+  }
+  // background: rgba(255, 255, 255, 0.924);
+  // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
 
-    }
-    // background: rgba(255, 255, 255, 0.924);
-    // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
-  
+  cursor: pointer;
+  width: 220px;
+  height: 100px;
+  transition: all 0.2s;
+  a {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
-    width: 220px;
-    height: 100px;
-    transition: all 0.2s;
-    a {
-        text-decoration: none;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    font-size: 1.5em;
+    color: #fff;
+    // color: rgb(27, 27, 27);
+    font-weight: normal;
+  }
+  .icon-btn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    .icon {
+      width: 20px;
     }
-    h1 {
-        font-size: 1.5em;
-        color: #fff;
-        // color: rgb(27, 27, 27);
-        font-weight: normal;
-    }
-    .icon-btn {
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        color: #fff;
-        opacity: 0;
-        transition: opacity 0.3s;
-        cursor: pointer;
-        .icon {
-            width: 20px;
-        }
-        
-        &.edit {
-            right: 33px;
-        }
 
-        &:hover{
-            background-color: #ffffff40;
-        }
+    &.edit {
+      right: 33px;
     }
 
     &:hover {
-        .icon-btn {
-            opacity: 1;
-        }
+      background-color: #ffffff40;
     }
+  }
 
-    &.add-board {
-        background-color: rgba(236, 236, 236, 51%);
+  &:hover {
+    .icon-btn {
+      opacity: 1;
     }
+  }
+
+  &.add-board {
+    background-color: rgba(236, 236, 236, 51%);
+  }
 }
