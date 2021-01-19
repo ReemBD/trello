@@ -44,7 +44,7 @@ export class _LabelsPopover extends Component {
         this.setState({ labels }, async () => {
             delete labels[labelIdx].isPicked
             const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
-            if (task.labels.some(label => label.id === labelId)) {
+            if (task.labels?.some(label => label.id === labelId)) {
                 const taskLabelIdx = task.labels.findIndex(label => label.id === labelId)
                 task.labels.splice(taskLabelIdx, 1)
                 board.lists[listIdx].tasks[taskIdx] = task

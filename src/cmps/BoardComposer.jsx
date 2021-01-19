@@ -117,7 +117,7 @@ export class _BoardComposer extends Component {
 
     isBoardMember = (id) => {
         const { members } = this.state.newBoard
-        return members.some(member => member._id === id)
+        return members?.some(member => member._id === id)
     }
 
 
