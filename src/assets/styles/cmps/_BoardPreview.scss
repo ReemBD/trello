@@ -1,11 +1,5 @@
 // ------------------------------------------------------- board grid cards-------------------------------------------------------
-.board-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
-  width: -webkit-fill-available;
-  width: -moz-available;
-  justify-content: center;
-}
+
 
 .board-card {
   color: #fff;
