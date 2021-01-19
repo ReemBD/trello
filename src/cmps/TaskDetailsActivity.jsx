@@ -24,6 +24,7 @@ export class _TaskDetailsActivity extends Component {
         const { listId, taskId } = this.props.match.params
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(currBoard, listId, taskId)
         const task = currBoard.lists[listIdx].tasks[taskIdx]
+
         const taskActivities = currBoard.activities.filter(activity => {
             return activity.task.id === task.id
         })
@@ -78,6 +79,8 @@ export class _TaskDetailsActivity extends Component {
         const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(currBoard, list.id, task.id)
         copyBoard.lists[listIdx].tasks[taskIdx] = copyTask
         await this.props.updateBoard(copyBoard)
+        const comment = { txt: '' }
+        this.setState({ comment })
 
     }
 

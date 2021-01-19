@@ -47,7 +47,7 @@ export class _TaskPreview extends Component {
         const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         await this.props.setCurrListAndTaskIdx(listIdx, taskIdx)
         await this.props.toggleOverlay()
-        await this.props.toggleTask()
+        // await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${list.id}/${task.id}`)
     }
 
@@ -88,14 +88,19 @@ export class _TaskPreview extends Component {
         return (
             <Fragment>
                 <Draggable draggableId={task.id} index={taskIdx}>
-                    {provided => (
+                    {(provided, snapshot) => (
                         <div
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                         >
                             <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
-                            <div {...this.taskPreviewHandlers} className="task-preview" onClick={this.onOpenDetails}>
+                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving' }  `} onClick={this.onOpenDetails} >
+                                {(task.attachments) ?
+                                    <div className="preview-img" style={{ backgroundImage: `url(${task.attachments.slice(-1)[0]})` }}>
+                                    </div>
+                                    : ''
+                                }
                                 {task.labels?.length && <div className="top-line-preview-container flex">
                                     <div className="labels-container flex">
                                         {task.labels.map(label => { return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
