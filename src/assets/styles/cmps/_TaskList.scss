@@ -1,15 +1,14 @@
 .task-list-container {
-  background-color:  #ffffff82;
+  background-color: #ebecf0;
   position: relative;
   margin-inline-end: 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   width: 272px;
   min-width: 272px;
   padding: 10px;
 
   // transition: transform 0.5s;
   // transform: rotate(0deg);
-
 
   // &.moving {
   //   transform: rotate(5deg);
@@ -20,7 +19,10 @@
     position: relative;
     @include list-title;
     justify-content: space-between;
+    user-select: none;
+    outline: none;
     input {
+      user-select: none;
       background-color: transparent;
       font-weight: 600;
       outline: none;
@@ -50,18 +52,26 @@
   }
   .task-composer {
     min-width: 180px;
-    background-color: #fff3;
     font-size: 0.8em;
-    // margin-bottom: 25px;
-    border-radius: 6px;
-    box-shadow: -1px 2px 5px #857f7f40;
     cursor: pointer;
-
-    padding: 15px;
+    padding: 5px;
     width: 100%;
+    transition: all .3s;
+
+    &:hover{
+      background-color: rgba(9,30,66,.08);
+    }
+
     input[name="title"] {
       width: 100%;
-      // border-bottom: 1px solid $border-bottom-clr;
+      color: #5e6c84;
+      &::placeholder {
+        color: #5e6c84;
+      }
+      &:focus {
+        border: 2px solid lightskyblue;
+        border-radius: 2px;
+      }
     }
     input,
     textarea {

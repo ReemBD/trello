@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService'
-import { toggleTask, setCurrListAndTaskIdx } from '../store/actions/boardActions'
+import { toggleTask, setCurrListAndTaskIdx, updateBoard } from '../store/actions/boardActions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import EditIcon from '@material-ui/icons/Edit';
@@ -17,16 +17,39 @@ export class _TaskPreview extends Component {
 
     state = {
         isTaskHovered: false,
-        isEditOpen: false
+        isEditOpen: false,
+        taskTitle: '',
+        titleBeforeChange: ''
     }
+
+    componentDidMount() {
+        const { task } = this.props
+        this.setState({ taskTitle: task.title, titleBeforeChange: task.title })
+    }
+
+    componentDidUpdate(prevProps) {
+        const { task } = this.props
+        if (prevProps.task === task) return
+        this.setState({ taskTitle: task.title, titleBeforeChange: task.title })
+    }
+
+
+    setDefaultTitle = () => {
+        const { titleBeforeChange } = this.state
+        this.setState({ taskTitle: titleBeforeChange })
+    }
+
 
     onOpenDetails = async (ev) => {
         ev.stopPropagation()
-        const { task } = this.props
-        const { list, board } = this.props
+        if (this.state.isEditOpen) return
+
+        const { list, board, task } = this.props
         const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+
         await this.props.setCurrListAndTaskIdx(listIdx, taskIdx)
         await this.props.toggleOverlay()
+
         // await this.props.toggleTask()
         this.props.history.push(`/board/${board._id}/${list.id}/${task.id}`)
     }
@@ -44,7 +67,10 @@ export class _TaskPreview extends Component {
     onToggleEdit = ev => {
         ev.stopPropagation()
         this.setState({ isEditOpen: !this.state.isEditOpen })
+        if (this.state.isEditOpen) this.setDefaultTitle()
     }
+
+
 
     get taskTodosLength() {
         const { task } = this.props
@@ -62,11 +88,31 @@ export class _TaskPreview extends Component {
         return doneTodos.length
     }
 
+    onHandleInput = ({ target }) => {
+        const { value } = target
+
+        this.setState({ taskTitle: value })
+    }
+
+    onSaveTitle = async (ev) => {
+        console.log('save');
+        const { taskTitle } = this.state
+        const { list, board, task } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+
+        const copyBoard = { ...board }
+        copyBoard.lists[listIdx].tasks[taskIdx].title = taskTitle
+
+        await this.props.updateBoard(copyBoard)
+        this.onToggleEdit(ev)
+    }
+
     render() {
         const { task, list, taskIdx } = this.props
         const { isEditOpen, isTaskHovered } = this.state
         return (
             <Fragment>
+                <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
                 <Draggable draggableId={task.id} index={taskIdx}>
                     {(provided, snapshot) => (
                         <div
@@ -74,8 +120,7 @@ export class _TaskPreview extends Component {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                         >
-                            <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
-                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving' }  `} onClick={this.onOpenDetails} >
+                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving'} ${isEditOpen && ' quickEdit'}  `} onClick={this.onOpenDetails} >
                                 {(task.attachments) ?
                                     <div className="preview-img" style={{ backgroundImage: `url(${task.attachments.slice(-1)[0]})` }}>
                                     </div>
@@ -87,12 +132,12 @@ export class _TaskPreview extends Component {
 
                                     </div>
                                     <div className="quick-edit-wrapper">
-                                        {isTaskHovered && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                                        {isTaskHovered && <EditIcon fontSize="large" className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>
                                 </div>}
                                 <div className="task-title-wrapper flex space-between ">
-                                    <h3 className="task-title" style={{ color: list.style.title.bgColor }}>{task.title}</h3>
+                                    <input key={task.id} disabled={!isEditOpen} type="text" className="task-title-input" value={this.state.taskTitle} name="taskTitle" style={{ color: list.style.title.bgColor }} placeholder="Task Title" onChange={this.onHandleInput} />
                                     {!task.labels?.length && <div className="quick-edit-wrapper">
                                         {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
@@ -112,6 +157,8 @@ export class _TaskPreview extends Component {
                                         : ''}
 
                                 </div>
+
+                                {isEditOpen && <button className="primary-btn quick-btn" onClick={this.onSaveTitle}> Save </button>}
                             </div >
 
                         </div>
@@ -127,12 +174,14 @@ export class _TaskPreview extends Component {
 const mapDispatchToProps = {
     toggleTask,
     setCurrListAndTaskIdx,
+    updateBoard
 }
 
 const mapStateToProps = state => {
     return {
         isTaskOpen: state.boardReducer.isTaskOpen,
-        isOverlayOpen: state.boardReducer.isOverlayOpen
+        isOverlayOpen: state.boardReducer.isOverlayOpen,
+        board: state.boardReducer.currBoard
     }
 }
 

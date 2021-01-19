@@ -52,7 +52,7 @@ export class _TaskComposer extends Component {
         return (
             <form className={`task-composer`} onSubmit={this.onAddTask}>
                 <input value={task.title} type="text" ref={titleRef} name="title" onClick={() => { setCurrPopover(`TASK_COMPOSER${list.id}`) }} onChange={this.handleChange}
-                    placeholder={list.tasks.length ? "Add another card" : "Add a card"} autoComplete="off" id="" />
+                    placeholder={list.tasks.length ? "+ Add another card" : "+ Add a card"} autoComplete="off" id="" />
                 <div className={`open-composer-section ${!isComposerOpen && 'display-none'}`}>
                     <button className={`save-task-btn primary-btn `}>Add</button>
                 </div>
