@@ -1,5 +1,5 @@
 import { boardService } from '../../services/boardService'
-
+import { socketService } from '../../services/socketService'
 
 export function setBoard(boardId) {
     return async dispatch => {
@@ -15,7 +15,7 @@ export function setBoard(boardId) {
 }
 
 
-export function updateBoard(board) {
+export function updateBoard(board, isEmitting = true, notification = null) {
     return async dispatch => {
         try {
             const updatedBoard = await boardService.save(board)
@@ -23,9 +23,12 @@ export function updateBoard(board) {
                 type: 'UPDATE_BOARD',
                 updatedBoard
             }
-
             dispatch(action)
-
+            isEmitting && socketService.emit('board updated', updatedBoard)
+            console.log('notificaiton: ', notification);
+            if (notification) {
+                socketService.emit('do notification', notification)
+            }
         } catch (err) {
             console.log('couldnt update board', err);
         }

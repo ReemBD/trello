@@ -7,6 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/CheckBoxOutlined';
 import DueDateIcon from '@material-ui/icons/QueryBuilderOutlined';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
+import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import { TaskEdit } from './TaskEdit'
 import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import { format } from 'date-fns'
@@ -18,15 +19,25 @@ export class _TaskPreview extends Component {
 
     state = {
         isTaskHovered: false,
-        isEditOpen: false
+        isEditOpen: false,
+        unreadNotificationsCount: 0
     }
 
     componentDidMount() {
-        socketService.setup()
+        socketService.on('task updated fs', this.onTaskUpdated)
+
     }
 
     componentWillUnmount() {
-        socketService.terminate()
+        socketService.off('task updated fs')
+
+    }
+
+    onTaskUpdated = (activityTxt) => {
+        const { unreadNotificationsCount } = { ...this.state }
+        this.setState({ unreadNotificationsCount: unreadNotificationsCount + 1 }, () => {
+            // console.log('unread notif count: ', this.state.unreadNotificationsCount);
+        })
     }
 
     onOpenDetails = async (ev) => {
@@ -73,7 +84,7 @@ export class _TaskPreview extends Component {
 
     render() {
         const { task, list, taskIdx } = this.props
-        const { isEditOpen, isTaskHovered } = this.state
+        const { isEditOpen, isTaskHovered, unreadNotificationsCount } = this.state
         return (
             <Fragment>
                 <Draggable draggableId={task.id} index={taskIdx}>
@@ -108,6 +119,7 @@ export class _TaskPreview extends Component {
                                         {task.checklists?.length ? <div className="flex align-center"><CheckIcon className="indication-icon" />{this.taskDoneTodosLength}/{this.taskTodosLength}</div> : ''}
                                         {task.dueDate ? <div className="flex align-center"><DueDateIcon className="indication-icon" /><div>{format(new Date(task?.dueDate?.timestamp), 'LLL')} {format(new Date(task?.dueDate?.timestamp), 'd')}</div></div> : ''}
                                         {task.comments && <CommentIcon className="comment-indication-icon indication-icon" />}
+                                        {unreadNotificationsCount ? <div className="notification-indicaiton-container flex align-center"> <NotificationIcon className="indication-icon" /><div className="notification-count">{unreadNotificationsCount}</div></div> : ''}
                                     </div>
                                     {task.members?.length ?
                                         <div className="task-members-imgs flex">

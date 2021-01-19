@@ -1,4 +1,5 @@
 import { httpService } from './httpService'
+import { storageService } from './storageService'
 import { utilService } from './utilService'
 
 
@@ -12,10 +13,13 @@ export const boardService = {
     getTaskIdxById,
     getLabelIdxById,
     getListAndTaskIdxById,
-    getEmptyList
+    getEmptyList,
+    getNotifications,
+    saveNotifications
 }
 
 const endpoint = 'board'
+const NOTIFICATION_KEY = 'notificationDB'
 
 async function query() {
     const boards = await httpService.get(endpoint)
@@ -95,4 +99,29 @@ function getEmptyList() {
             title: { bgColor: '#3cc2e0' }
         }
     }
+}
+
+function getNotifications() {
+    return storageService.loadFromLocalStorage(NOTIFICATION_KEY) || [
+        {
+            id: 'i101',
+            txt: 'Yoni added you to task i101'
+        },
+        {
+            id: 'i102',
+            txt: 'Nofar broke the server'
+        },
+        {
+            id: 'i103',
+            txt: 'Its time for shnatz'
+        },
+        {
+            id: 'i104', 
+            txt: 'Guest has joined the board'
+        }
+    ]
+}
+
+function saveNotifications(notifications) {
+    storageService.saveToLocalStorage(NOTIFICATION_KEY, notifications)
 }
