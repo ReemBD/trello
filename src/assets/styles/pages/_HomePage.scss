@@ -1,0 +1,42 @@
+.home-page {
+  .homepage-fold {
+    height: 90vh;
+    background-color: #ebeef582;
+    .homepage-image {
+      height: 100%;
+      width: 980px;
+      background-image: url("../../img/05.Data.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .homepage-heading {
+      flex-basis: 45%;
+      padding-left: 20%;
+      h1 {
+        font-family: Kaushan, "Segoe UI";
+        font-size: 6rem;
+        margin-bottom: rem(60px);
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        line-height: 35px;
+        letter-spacing: 0.3px;
+
+        &:last-of-type {
+          margin-bottom: rem(25px);
+        }
+      }
+
+      .cta-btn {
+        font-size: 30px;
+        padding: 15px 30px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        line-height: initial;
+      }
+    }
+  }
+}
