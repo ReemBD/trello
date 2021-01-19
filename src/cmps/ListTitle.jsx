@@ -15,7 +15,12 @@ export class _ListTitle extends Component {
 
     componentDidMount() {
         const { title } = this.props
+        
         this.setState({ title })
+    }
+
+    componentWillUnmount() {
+
     }
 
     updateBoard = async (board) => {

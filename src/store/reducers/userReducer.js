@@ -7,7 +7,6 @@ const initialState = {
 export function userReducer(state = initialState, action) {
     switch (action.type) {
         case 'SET_USER':
-            console.log('set', action)
             return { ...state, user: action.loggedUser }
         case 'CLEAR_USER':
             return { ...state, user: {} }

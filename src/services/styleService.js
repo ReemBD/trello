@@ -10,13 +10,16 @@ export const styleService = {
 async function getBgOptions() {
 
     return  [
-        "linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%)",
-        "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)",
-        "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)",
-        "linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%)",
-        "linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)",
-        "linear-gradient(120deg, #a6c0fe 0%, #f68084 100%)",
-        "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)",
-        "linear-gradient(to top, #30cfd0 0%, #330867 100%)"
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088348/trello%20background/pexels-photo-3769139_szaes1.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088331/trello%20background/pexels-photo-2310885_zczpxr.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088313/trello%20background/pexels-photo-266451_cyv6ux.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088301/trello%20background/pexels-photo-417173_oq55fd.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088285/trello%20background/pexels-photo-326055_bxexhu.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088271/trello%20background/pexels-photo-39811_mauelm.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088256/trello%20background/pexels-photo-934718_xv1kkf.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088244/trello%20background/pexels-photo-2246476_xueoqq.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088228/trello%20background/pexels-photo-4101555_svdfsl.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611088214/trello%20background/pexels-photo-1591305_ui4iai.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611059426/photo-1610377551984-9dc3f82aa31f_wuk20y.jpg')",
     ]
 }

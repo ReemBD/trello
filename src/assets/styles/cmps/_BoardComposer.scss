@@ -109,6 +109,7 @@
     width: 5em;
     border-radius: 5px;
     margin: 0 .8em .8em 0;
+    background-size: cover;
     cursor: pointer;
     &:hover {
         border: 1px solid #3d3d3d;
@@ -190,6 +191,7 @@
 .board-card.demo-board {
     display: inline-flex;
     margin: 1em;
+    background-size: cover;
     margin-bottom: 2em;
     color: #fff;
     *::placeholder {

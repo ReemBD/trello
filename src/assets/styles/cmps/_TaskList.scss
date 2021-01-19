@@ -1,20 +1,21 @@
 .task-list-container {
-  // background-color: #fff;
+  background-color:  #ffffff82;
   position: relative;
   margin-inline-end: 10px;
   border-radius: 8px;
   width: 272px;
   min-width: 272px;
   padding: 10px;
-  .task-previews-container {
-    // max-height: 500px;
-    // overflow-y: auto;
-    // -ms-overflow-style: none; /* IE and Edge */
-    // scrollbar-width: none; /* Firefox */
-    // &::-webkit-scrollbar {
-    //     display: none;
-    // }
-  }
+
+  // transition: transform 0.5s;
+  // transform: rotate(0deg);
+
+
+  // &.moving {
+  //   transform: rotate(5deg);
+  //   transition: transform 0.5s;
+  // }
+
   .list-title {
     position: relative;
     @include list-title;
@@ -27,6 +28,7 @@
       color: #fff;
       padding: 4px;
       border-radius: 5px;
+      
     }
 
     ::placeholder {
@@ -60,7 +62,7 @@
     width: 100%;
     input[name="title"] {
       width: 100%;
-      // border-bottom: 1px solid $border-bottom-clr;
+     
     }
     input,
     textarea {

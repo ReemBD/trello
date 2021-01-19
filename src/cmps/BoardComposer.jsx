@@ -146,7 +146,7 @@ export class _BoardComposer extends Component {
                 <form className="board-composer board-composer-layout flex column" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
                     <div className="flex justify-center">
 
-                        <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg }}>
+                        <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg , backgroundSize: "cover" }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board Title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
                     </div>
@@ -165,7 +165,7 @@ export class _BoardComposer extends Component {
                     </div>
                     <div className="bg-options">
                         {bgs.map(bg => {
-                            return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg }}> </div>
+                            return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg, backgroundSize: "cover"}}> </div>
                         })}
                     </div>
                     <button className="primary-btn compose-board-btn">{btnTxt}</button>
