@@ -9,6 +9,7 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
 import { LabelsPopover } from './LabelsPopover'
 import { DateTimePopover } from './DateTimePopover'
+import { MoveTaskPopover } from './MoveTaskPopover'
 import { cloneDeep } from 'lodash'
 import { utilService } from '../services/utilService'
 import { cloudinaryService } from '../services/cloudinaryService'
@@ -133,9 +134,10 @@ export class TaskSidebar extends Component {
                             <span className="action-txt">Image</span>
                         </label>
                     </div>
-                    <div className="action-container flex align-center">
+                    <div className="action-container flex align-center" onClick={() => togglePopover('move')}>
                         <span className="action-icon"><ArrowRightAltOutlinedIcon /></span>
                         <span className="action-txt">Move</span>
+                        {currPopover === 'move' && <MoveTaskPopover setCurrPopover={() => togglePopover('')} {...this.props} />}
                     </div>
                     <div className="action-container flex align-center" onClick={this.onRemoveTask}>
                         <span className="action-icon"><DeleteOutlineOutlinedIcon /></span>

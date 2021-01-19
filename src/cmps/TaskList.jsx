@@ -3,7 +3,7 @@ import { TaskPreview } from './TaskPreview'
 import { boardService } from '../services/boardService'
 import { ListTitle } from './ListTitle'
 import { TaskComposer } from './TaskComposer'
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 
 export class TaskList extends Component {
@@ -54,32 +54,42 @@ export class TaskList extends Component {
         const listIdx = boardService.getListIdxById(board, list.id)
         return listIdx
     }
+
+
     render() {
 
-        const { list, currPopover } = this.props
+        const { list, currPopover, listIdx } = this.props
         const { tasks } = list
         const { isListActionsOpen } = this.state
         return (
-            <article className="task-list">
-                <ListTitle
-                    {...this.props}
-                    {...this.listTitleHandlersProps}
-                    isListActionsOpen={isListActionsOpen}
-                />
-                <div className="task-previews-container">
-                    <Droppable droppableId={list.id}>
-                        {provided => (
-                            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <Draggable draggableId={list.id} index={listIdx}>
 
-                                {tasks? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
+                {provided => (
+                    <article className="task-list"   {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
 
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                    <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
-                </div>
-            </article>
+                        <ListTitle
+                            {...provided.dragHandleProps}
+                            {...this.props}
+                            // {...this.listTitleHandlersProps}
+                            isListActionsOpen={isListActionsOpen}
+                        ></ListTitle>
+                        <div className="task-previews-container">
+                            <Droppable droppableId={list.id} type="task">
+                                {provided => (
+                                    <div ref={provided.innerRef} {...provided.droppableProps}>
+
+                                        {tasks ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
+
+                                        {provided.placeholder}
+                                    </div>
+                                )}
+                            </Droppable>
+                            <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+                        </div>
+                    </article>
+                )}
+            </Draggable>
+
         )
     }
 }

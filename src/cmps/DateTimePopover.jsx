@@ -4,9 +4,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 
 export class DateTimePopover extends Component {
-    state = {
 
-    }
 
     render() {
         return (
