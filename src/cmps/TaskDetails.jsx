@@ -121,6 +121,11 @@ export class _TaskDetails extends Component {
         }
     }
 
+    onOverlayClick = () => {
+        const { board } = this.props
+        this.props.history.push(`/board/${board._id}`)
+    }
+
 
     render() {
         const { isDetailsOpen, currPopover } = this.state
@@ -135,8 +140,8 @@ export class _TaskDetails extends Component {
         return (
             <section onClick={() => currPopover ? this.togglePopover('') : ''} className="task-details">
                 {this.state.isDetailsOpen &&
-                    <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`}>
-                        <div className="details-modal flex">
+                    <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`} onClick={this.onOverlayClick}>
+                        <div className="details-modal flex" onClick={(ev) => ev.stopPropagation()}>
                             <div className="main-details flex column">
 
                                 <div className="details-header flex column">
@@ -145,7 +150,7 @@ export class _TaskDetails extends Component {
                                         <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea" style={{ fontSize: '24px' }}
                                             name="title"
                                             onChange={this.handleTitle}
-                                            value={currTask.title}
+                                            value={this.state.task.title}
                                             spellCheck="false"
                                         />
                                     </form>

@@ -79,6 +79,8 @@ export class _TaskDetailsActivity extends Component {
         const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(currBoard, list.id, task.id)
         copyBoard.lists[listIdx].tasks[taskIdx] = copyTask
         await this.props.updateBoard(copyBoard)
+        const comment = { txt: '' }
+        this.setState({ comment })
 
     }
 
