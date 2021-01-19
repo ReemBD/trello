@@ -13,6 +13,9 @@
   backdrop-filter: blur(13.5px);
   -webkit-backdrop-filter: blur(13.5px);
   border-radius: 3px;
+  &:hover {
+    border: 2px solid #3d3d3d;
+  }
   .card-overlay {
     position: absolute;
     top: 0;
@@ -28,6 +31,8 @@
       rgba(252, 252, 252, 0) 21%,
       rgba(32, 32, 32, 0.5130427170868348) 93%
     );
+
+  
   }
   // background: rgba(255, 255, 255, 0.924);
   // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
@@ -35,7 +40,6 @@
   cursor: pointer;
   width: 220px;
   height: 100px;
-  transition: all 0.2s;
   a {
     text-decoration: none;
     width: 100%;
@@ -58,7 +62,7 @@
     right: 3px;
     color: #fff;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity .087s;
     cursor: pointer;
     .icon {
       width: 20px;
@@ -71,6 +75,7 @@
     &:hover {
       background-color: #ffffff40;
     }
+
   }
 
   &:hover {
@@ -80,6 +85,9 @@
   }
 
   &.add-board {
-    background-color: rgba(236, 236, 236, 51%);
+    background-color: #3d3d3d;
+    &:hover {
+      background-color:black;
+    }
   }
 }
