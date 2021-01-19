@@ -88,7 +88,8 @@ export class _Board extends Component {
         } else {
 
             const list = copyBoard.lists.splice(source.index, 1);
-            copyBoard.lists.splice(destination.index, 0, list);
+            copyBoard.lists.splice(destination.index, 0, list[0]);
+            
         }
 
         this.props.updateBoard(copyBoard)
@@ -113,28 +114,36 @@ export class _Board extends Component {
                     >
                         {provided => (
                             <ul
-                                className="lists-group clear-list flex"
+                                className="lists-group clear-list flex  "
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
                             >
-                                {lists.map((list, idx) => <li key={list.id} style={{ backgroundColor: list.style?.bgColor }} className="task-list-container flex column"><TaskList list={list} listIdx={idx} title={list.title} {...this.props} /></li>)}
+                                {lists.map((list, idx) =>
+                                    <TaskList
+                                        key={list.id} list={list} listIdx={idx}
+                                        title={list.title} {...this.props}
+                                        />)}
+
                                 {provided.placeholder}
 
 
                                 <li className="add-list task-list-container flex column">
+                                   
                                     <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
                                         <div className="input-wrapper align-center flex">
                                             {!isCurrPopover && <AddIcon />}
                                             <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
                                         </div>
+                                  
                                         <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
                                     </form>
+                                  
                                 </li>
-                                </ul>
+                            </ul>
                         )}
                     </Droppable>
                 </DragDropContext>
-               
+
             </div >
         )
     }

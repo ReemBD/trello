@@ -57,22 +57,26 @@ export class TaskList extends Component {
 
 
     render() {
-
         const { list, currPopover, listIdx } = this.props
         const { tasks } = list
         const { isListActionsOpen } = this.state
+
         return (
-            <Draggable draggableId={list.id} index={listIdx}>
+            <Draggable draggableId={list.id} index={listIdx} >
 
                 {provided => (
-                    <article className="task-list"   {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                    <li
+                        style={{ backgroundColor: list.style.bgColor }}
+                        className="task-list task-list-container "
+                        {...provided.dragHandleProps}
+                        {...provided.draggableProps}
+                        ref={provided.innerRef}>
 
                         <ListTitle
                             {...provided.dragHandleProps}
                             {...this.props}
-                            // {...this.listTitleHandlersProps}
-                            isListActionsOpen={isListActionsOpen}
-                        ></ListTitle>
+                            isListActionsOpen={isListActionsOpen} />
+
                         <div className="task-previews-container">
                             <Droppable droppableId={list.id} type="task">
                                 {provided => (
@@ -86,7 +90,7 @@ export class TaskList extends Component {
                             </Droppable>
                             <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
                         </div>
-                    </article>
+                    </li>
                 )}
             </Draggable>
 
