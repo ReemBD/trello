@@ -24,7 +24,6 @@
     z-index: -4;
 }
 
-
 .glass-screen {
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
@@ -41,7 +40,26 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-.main-layout {
+.board-page-container {
     margin: 0 auto;
+    justify-content: center;
+}
+
+.boards-page {
+    flex-grow: 1;
+
+    .user-boards-section {
+        margin-bottom: $boards-section-mb;
+        .user-boards-title {
+            @include header-title;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    .starred-boards-title {
+        @include header-title;
+        padding-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 // -------------------------------------------------------------

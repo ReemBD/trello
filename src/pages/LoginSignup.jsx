@@ -79,7 +79,6 @@ export class _LoginSignup extends Component {
 
     onUploadImg = async ev => {
         this.setState({ isUploading: true })
-        console.log(ev.target.files[0]);
         try {
             const { secure_url } = await cloudinaryService.uploadImg(ev.target.files[0])
             console.log('url:', secure_url);

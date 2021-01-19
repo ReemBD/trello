@@ -1,0 +1,7 @@
+.board-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-row-gap: 30px;
+    width: -webkit-fill-available;
+    // justify-content: center;
+}

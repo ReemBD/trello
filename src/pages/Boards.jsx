@@ -25,7 +25,6 @@ export class Boards extends Component {
         await boardService.remove(boardId)
         let boards = this.state.boards
         const newBoards = boards.filter(currBoard => currBoard._id !== boardId)
-        console.log('boards:', boards);
         this.setState({ boards: newBoards })
     }
 
@@ -47,10 +46,16 @@ export class Boards extends Component {
 
                 <div className="glass-screen "></div>
                 <div className="boards-bg "></div>
-                <div className="boards-page bg-overlay main-layout flex column align-center">
-                    <p>Recently Seen Boards:</p>
+                <div className="board-page-container flex">
+                <div className="boards-page bg-overlay main-layout flex column board-layout">
+                    <section className="user-boards-section">
+                    <div className="user-boards-title">Your Boards</div>
                     <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
-                    <p>Starred Boards:</p>
+                    </section>
+                    <section className="starred-boards">
+                        <div className="starred-boards-title">Starred</div>
+                    </section>
+                </div>
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
                     <BoardComposer board={boardToEdit} />

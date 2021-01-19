@@ -27,7 +27,6 @@ async function save(board) {
     var savedBoard;
 
     if (!board._id) {
-        console.log('board', board);
         savedBoard = await httpService.post(endpoint, board)
     } else {
         savedBoard = await httpService.put(`${endpoint}/${board._id}`, board)

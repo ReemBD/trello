@@ -42,15 +42,17 @@
 .main-layout {
     
     // max-width: 1400px;
-
     @media screen and (max-width: 1450px) {
         max-width: 1100px;
+
     }
     @media screen and (max-width: 1200px) {
         max-width: 980px;
+
     }
     @media screen and (max-width: 1000px) {
         max-width: 700px;
+
     }
     @media screen and (max-width: 780px) {
         max-width: 500px;
@@ -67,3 +69,7 @@
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+
+.board-composer-layout {
+    margin: 0 20px;
+}

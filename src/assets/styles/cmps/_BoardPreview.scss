@@ -1,11 +1,4 @@
 // ------------------------------------------------------- board grid cards-------------------------------------------------------
-.board-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
-    width: -webkit-fill-available;
-    justify-content: center;
-}
-
 .board-card {
     color: #fff;
     position: relative;
@@ -22,17 +15,15 @@
         border-radius: 3px;
 
         // background-color: desaturate(#c95656, 50);
-        background: linear-gradient(180deg, rgba(252,252,252,0) 21%, rgba(32,32,32,0.5130427170868348) 93%);
-        
-
+        background: linear-gradient(180deg, rgba(252, 252, 252, 0) 21%, rgba(32, 32, 32, 0.5130427170868348) 93%);
     }
     // background: rgba(255, 255, 255, 0.924);
     // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
-  
+
     cursor: pointer;
     width: 220px;
     height: 100px;
-    transition: all 0.2s;
+    // transition: opacity 0.2s;
     a {
         text-decoration: none;
         width: 100%;
@@ -55,28 +46,37 @@
         right: 3px;
         color: #fff;
         opacity: 0;
-        transition: opacity 0.3s;
         cursor: pointer;
         .icon {
             width: 20px;
         }
-        
+
         &.edit {
             right: 33px;
         }
 
-        &:hover{
+        &:hover {
             background-color: #ffffff40;
         }
     }
 
     &:hover {
+        border: 2px solid $clr2;
         .icon-btn {
             opacity: 1;
         }
     }
 
     &.add-board {
-        background-color: rgba(236, 236, 236, 51%);
+        // background-color: rgba(236, 236, 236, 51%);
+        background-color: #3d3d3d;
+
+        font-size: 1.3em;
+        transition: background-color 0.1s;
+        // border: 2px solid black;
+        &:hover {
+            // color: aqua;
+            background-color: black;
+        }
     }
 }
