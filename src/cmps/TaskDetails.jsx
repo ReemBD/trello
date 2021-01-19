@@ -46,9 +46,14 @@ export class _TaskDetails extends Component {
                 this.setState({ isDetailsOpen: true, board, list, task }, async () => {
                     this.getCurrTask(board._id, taskId)
                     await this.props.toggleOverlay()
+
                 })
             }
         }
+    }
+
+    componentWillUnmount() {
+        this.props.toggleOverlay()
     }
 
     // TRY TO REFACTOR
@@ -100,8 +105,6 @@ export class _TaskDetails extends Component {
         ev.stopPropagation()
         const { board } = this.state
         this.setState({ isDetailsOpen: false }, async () => {
-            await this.props.toggleOverlay()
-            await this.props.toggleTask()
             this.props.history.push(`/board/${board._id}`)
         })
     }
@@ -118,7 +121,7 @@ export class _TaskDetails extends Component {
 
 
     render() {
-        const { isDetailsOpen, list, task, currPopover } = this.state
+        const { isDetailsOpen, currPopover } = this.state
         const { board } = this.props
         const { listId, taskId } = this.props.match.params
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
