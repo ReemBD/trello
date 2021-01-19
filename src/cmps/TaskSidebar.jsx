@@ -14,6 +14,7 @@ import { utilService } from '../services/utilService'
 import { cloudinaryService } from '../services/cloudinaryService'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
+import { boardService } from '../services/boardService';
 export class TaskSidebar extends Component {
 
     state = {
@@ -22,24 +23,26 @@ export class TaskSidebar extends Component {
     }
 
     onAddNewList = async () => {
-        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const { board, list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
         const newChecklist = {
             "id": utilService.makeId(),
             "title": "Checklist",
             "todos": []
         }
-        if (!copyBoard.lists[currListIdx].tasks[currTaskIdx].checklists) {
-            copyBoard.lists[currListIdx].tasks[currTaskIdx].checklists = []
+        if (!copyBoard.lists[listIdx].tasks[taskIdx].checklists) {
+            copyBoard.lists[listIdx].tasks[taskIdx].checklists = []
         }
-        copyBoard.lists[currListIdx].tasks[currTaskIdx].checklists.push(newChecklist)
+        copyBoard.lists[listIdx].tasks[taskIdx].checklists.push(newChecklist)
         await updateBoard(copyBoard)
     }
 
     onRemoveTask = async () => {
-        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const { board, list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
-        copyBoard.lists[currListIdx].tasks.splice(currTaskIdx, 1)
+        copyBoard.lists[listIdx].tasks.splice(taskIdx, 1)
         updateBoard(copyBoard)
         this.props.history.push(`/board/${board._id}`)
     }
@@ -51,9 +54,10 @@ export class TaskSidebar extends Component {
     }
 
     onSaveDate = () => {
-        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const { board, list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
-        copyBoard.lists[currListIdx].tasks[currTaskIdx].dueDate = this.state.dueDate
+        copyBoard.lists[listIdx].tasks[taskIdx].dueDate = this.state.dueDate
         updateBoard(copyBoard)
         this.props.togglePopover('')
     }
@@ -62,12 +66,13 @@ export class TaskSidebar extends Component {
         try {
             const { secure_url } = await cloudinaryService.uploadImg(ev.target.files[0])
             this.setState({ taskImgUrl: secure_url }, async () => {
-                const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+                const { board, list, task, updateBoard } = this.props
+                const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
                 const copyBoard = cloneDeep(board)
-                let currTask = copyBoard.lists[currListIdx].tasks[currTaskIdx]
+                let currTask = copyBoard.lists[listIdx].tasks[taskIdx]
                 if (currTask.attachments?.length) {
                     currTask.attachments = [
-                        ...copyBoard.lists[currListIdx].tasks[currTaskIdx].attachments,
+                        ...copyBoard.lists[listIdx].tasks[taskIdx].attachments,
                         this.state.taskImgUrl
                     ]
                 } else {
