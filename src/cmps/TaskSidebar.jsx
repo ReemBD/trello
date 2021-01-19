@@ -11,33 +11,38 @@ import { LabelsPopover } from './LabelsPopover'
 import { DateTimePopover } from './DateTimePopover'
 import { cloneDeep } from 'lodash'
 import { utilService } from '../services/utilService'
+import { cloudinaryService } from '../services/cloudinaryService'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
+import { boardService } from '../services/boardService';
 export class TaskSidebar extends Component {
 
     state = {
-        dueDate: ''
+        dueDate: '',
+        taskImgUrl: ''
     }
 
     onAddNewList = async () => {
-        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const { board, list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
         const newChecklist = {
             "id": utilService.makeId(),
             "title": "Checklist",
             "todos": []
         }
-        if (!copyBoard.lists[currListIdx].tasks[currTaskIdx].checklists) {
-            copyBoard.lists[currListIdx].tasks[currTaskIdx].checklists = []
+        if (!copyBoard.lists[listIdx].tasks[taskIdx].checklists) {
+            copyBoard.lists[listIdx].tasks[taskIdx].checklists = []
         }
-        copyBoard.lists[currListIdx].tasks[currTaskIdx].checklists.push(newChecklist)
+        copyBoard.lists[listIdx].tasks[taskIdx].checklists.push(newChecklist)
         await updateBoard(copyBoard)
     }
 
     onRemoveTask = async () => {
-        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const { board, list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
-        copyBoard.lists[currListIdx].tasks.splice(currTaskIdx, 1)
+        copyBoard.lists[listIdx].tasks.splice(taskIdx, 1)
         updateBoard(copyBoard)
         this.props.history.push(`/board/${board._id}`)
     }
@@ -49,11 +54,38 @@ export class TaskSidebar extends Component {
     }
 
     onSaveDate = () => {
-        const { board, currListIdx, currTaskIdx, updateBoard } = this.props
+        const { board, list, task, updateBoard } = this.props
+        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
-        copyBoard.lists[currListIdx].tasks[currTaskIdx].dueDate = this.state.dueDate
+        copyBoard.lists[listIdx].tasks[taskIdx].dueDate = this.state.dueDate
         updateBoard(copyBoard)
         this.props.togglePopover('')
+    }
+
+    onUploadImg = async ev => {
+        try {
+            const { secure_url } = await cloudinaryService.uploadImg(ev.target.files[0])
+            this.setState({ taskImgUrl: secure_url }, async () => {
+                const { board, list, task, updateBoard } = this.props
+                const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+                const copyBoard = cloneDeep(board)
+                let currTask = copyBoard.lists[listIdx].tasks[taskIdx]
+                if (currTask.attachments?.length) {
+                    currTask.attachments = [
+                        ...copyBoard.lists[listIdx].tasks[taskIdx].attachments,
+                        this.state.taskImgUrl
+                    ]
+                } else {
+                    currTask.attachments = []
+                    currTask.attachments.push(this.state.taskImgUrl)
+                }
+                await updateBoard(copyBoard)
+            })
+
+        } catch (err) {
+            this.setState({ msg: 'Couldnt upload your image try again' })
+            console.log('problem loading the img ', err);
+        }
     }
 
     render() {
@@ -89,8 +121,10 @@ export class TaskSidebar extends Component {
                         <span className="action-txt">Checklist</span>
                     </div>
                     <div className="action-container flex align-center">
-                        <span className="action-icon"><ImageOutlinedIcon /></span>
-                        <span className="action-txt">Image</span>
+                        <label className="action-icon" style={{ width: '100%', cursor: 'pointer' }}>  <ImageOutlinedIcon className="add-img-icon" />
+                            <input onChange={this.onUploadImg} type="file" hidden />
+                            <span className="action-txt">Image</span>
+                        </label>
                     </div>
                     <div className="action-container flex align-center">
                         <span className="action-icon"><ArrowRightAltOutlinedIcon /></span>
