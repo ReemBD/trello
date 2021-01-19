@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Board } from './Board'
 import { BoardPreview } from './BoardPreview'
 import AddIcon from '@material-ui/icons/Add';
 

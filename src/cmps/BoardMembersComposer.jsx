@@ -12,7 +12,6 @@ export class BoardMemberComposer extends Component {
 
     componentDidMount() {
         this.getUsers()
-
     }
 
 

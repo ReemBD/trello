@@ -71,13 +71,13 @@ export class TaskList extends Component {
                         {provided => (
                             <div ref={provided.innerRef} {...provided.droppableProps}>
 
-                                {tasks?.length ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
-                                <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+                                {tasks? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
 
                                 {provided.placeholder}
                             </div>
                         )}
                     </Droppable>
+                    <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
                 </div>
             </article>
         )
