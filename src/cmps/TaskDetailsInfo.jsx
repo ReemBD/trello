@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { cloneDeep } from 'lodash'
 import { boardService } from '../services/boardService'
 import { utilService } from '../services/utilService'
+import { formatRelative } from 'date-fns'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
@@ -103,7 +104,7 @@ export class _TaskDetailsInfo extends Component {
 
                             {task.members.map(member => {
                                 return <div className="task-member-img">
-                                    <img src={member.imgUrl} alt="member" />
+                                    <img src={member.imgUrl} />
                                 </div>
                             })}
                             <div className="task-add-member small-btn-bgc" title="Add Member">
@@ -144,7 +145,7 @@ export class _TaskDetailsInfo extends Component {
                     {task?.dueDate && <div className="card-detail">
                         <h3>Due Date</h3>
                         <div className="task-due-time flex align-center justify-center">
-                            <span style={{ marginLeft: '5px' }}>{utilService.formatTime(task.dueDate)}</span>
+                            <span style={{ marginLeft: '5px' }}>{formatRelative(task.dueDate, Date.now())}</span>
                         </div>
                     </div>}
                 </div>

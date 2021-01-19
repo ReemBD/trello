@@ -24,7 +24,7 @@ export class _TaskDetailsChecklist extends Component {
 
     }
 
-    elTodoRef = React.createRef()
+    elTitleRef = React.createRef()
 
 
     componentDidMount() {
@@ -108,7 +108,7 @@ export class _TaskDetailsChecklist extends Component {
         const taskIdx = boardService.getTaskIdxById(list, task.id)
         boardCopy.lists[listIdx].tasks[taskIdx].checklists = checklists
         await this.props.updateBoard(boardCopy)
-        this.elTodoRef.current?.blur()
+        this.elTitleRef.current?.blur()
     }
 
     onRemoveTodo = (todoIdx, listIdx, ev) => {
@@ -168,7 +168,7 @@ export class _TaskDetailsChecklist extends Component {
                                 onChange={(ev) => this.handleInput(listIdx, ev)}
                                 spellCheck="false"
                                 onKeyDown={this.onEnterPress}
-                                ref={this.elTodoRef}
+                                ref={this.elTitleRef}
                             />
                             <span onClick={() => this.onDeleteChecklist(listIdx)}><button className="secondary-btn" style={{ padding: '5px 8px' }}>Delete</button></span>
                         </div>
@@ -189,7 +189,7 @@ export class _TaskDetailsChecklist extends Component {
                                         value={todo.title}
                                         onChange={(ev) => this.handleTodoChange(todoIdx, listIdx, ev)}
                                         onKeyDown={this.onEnterPress}
-                                        ref={this.elTodoRef}
+
                                         onBlur={this.onUpdateBoard}
                                     />
                                     <DeleteOutlinedIcon className="todo-delete-btn" onClick={(ev) => this.onRemoveTodo(todoIdx, listIdx, ev)} />

@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { TaskPreview } from './TaskPreview'
 import { boardService } from '../services/boardService'
-import { ListTitle } from '../cmps/ListTitle'
+import { ListTitle } from './ListTitle'
 import { TaskComposer } from './TaskComposer'
+import { Droppable } from 'react-beautiful-dnd';
+
 
 export class TaskList extends Component {
     state = {
@@ -54,6 +56,7 @@ export class TaskList extends Component {
         return listIdx
     }
     render() {
+
         const { list, currPopover } = this.props
         const { tasks } = list
         const { isComposerOpen, isListActionsOpen } = this.state
@@ -65,11 +68,26 @@ export class TaskList extends Component {
                     isListActionsOpen={isListActionsOpen}
                 />
                 <div className="task-previews-container">
-                    {tasks?.length ? tasks.map(task => <TaskPreview key={task.id} {...this.props} task={task} />) : ''}
-                    <TaskComposer {...this.props}  titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+                    <Droppable droppableId={list.id}>
+                        {provided => (
+                            <div ref={provided.innerRef} {...provided.droppableProps}>
+
+                                {tasks?.length ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
+                                <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
                 </div>
             </article>
         )
     }
 }
 
+
+
+{/* <div className="task-previews-container">
+    {tasks?.length ? tasks.map(task => <TaskPreview key={task.id} {...this.props} task={task} />) : ''}
+    <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+</div> */}
