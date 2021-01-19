@@ -89,7 +89,7 @@ export class _TaskDetailsInfo extends Component {
         const { labels, isLabelMenuOpen, isMemberModalOpen } = this.state
         return (
             <div className="details-info">
-                <div className="flex">
+                <div className="flex" style={{ flexWrap: 'wrap' }}>
 
                     {task?.members?.length && <div className="card-detail">
                         <h3>Members</h3>
