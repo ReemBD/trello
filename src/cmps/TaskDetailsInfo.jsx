@@ -10,6 +10,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 
 
+
 export class _TaskDetailsInfo extends Component {
     state = {
         labels: [
@@ -135,10 +136,10 @@ export class _TaskDetailsInfo extends Component {
                             </div>
                         </div>
                     </div>}
-                    {task?.dueDate && <div className="card-detail">
+                    {task.dueDate?.timestamp && <div className="card-detail">
                         <h3>Due Date</h3>
                         <div className="task-due-time flex align-center justify-center">
-                            <span style={{ marginLeft: '5px' }}>{formatRelative(task.dueDate, Date.now())}</span>
+                            <span style={{ marginLeft: '5px' }}><span><input type="checkbox" /></span>{formatRelative(task?.dueDate?.timestamp, Date.now())}</span>
                         </div>
                     </div>}
                 </div>

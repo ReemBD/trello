@@ -18,7 +18,10 @@ import { boardService } from '../services/boardService';
 export class TaskSidebar extends Component {
 
     state = {
-        dueDate: '',
+        dueDate: {
+            timestamp: '',
+            isDone: false
+        },
         taskImgUrl: ''
     }
 
@@ -49,8 +52,12 @@ export class TaskSidebar extends Component {
 
     onDateChange = (ev) => {
         let parsedString = parseISO(ev.target.value)
-        let timestampedTime = getTime(parsedString)
-        this.setState({ dueDate: timestampedTime })
+        let timestamp = getTime(parsedString)
+        const dueDate = {
+            timestamp,
+            isDone: false
+        }
+        this.setState({ dueDate })
     }
 
     onSaveDate = () => {
