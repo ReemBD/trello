@@ -84,10 +84,6 @@ export class _Board extends Component {
         const destinationListIdx = await boardService.getListIdxById(copyBoard, destination.droppableId)
         const task = await boardService.getTaskById(copyBoard._id, draggableId)
 
-        console.log('sourceListIdx', sourceListIdx);
-        console.log('destinationListIdx', destinationListIdx);
-        console.log('task', task);
-
         copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
         copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task);
 

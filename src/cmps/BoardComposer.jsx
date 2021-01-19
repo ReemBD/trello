@@ -5,8 +5,6 @@ import { userService } from '../services/userService.js'
 import { withRouter } from 'react-router-dom'
 import { utilService } from '../services/utilService.js'
 import { styleService } from '../services/styleService.js'
-import ClearIcon from '@material-ui/icons/Clear';
-import AddIcon from '@material-ui/icons/Add';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import { BoardMemberComposer } from './BoardMembersComposer.jsx'
 
@@ -29,7 +27,7 @@ export class _BoardComposer extends Component {
     }
 
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         const { board } = this.props
         if (prevProps.board === this.props.board) return
         if (this.props.board) {
@@ -48,12 +46,11 @@ export class _BoardComposer extends Component {
         }
     }
 
-
-
     componentDidMount() {
-        this.loadUsers()
+        this.getUsers()
         this.loadBgs()
     }
+
 
     onAddBoard = async (ev) => {
         ev.preventDefault()
@@ -69,36 +66,20 @@ export class _BoardComposer extends Component {
     }
 
 
-    //gets all the users from the data
-    loadUsers = async () => {
-        const users = await userService.getUsers()
-        this.setState({ users })
-    }
 
-    //gets all the bg style options from the data
+    //gets all the bg style options from the service
     loadBgs = async () => {
         const bgs = await styleService.getBgOptions()
         this.setState({ bgs })
     }
 
 
-
-    addMember = (user) => {
-        var users = this.state.users
-        const members = this.state.newBoard.members
-        members.unshift(user)
-        users = users.filter(currUser => { return currUser._id !== user._id })
-        this.setState({ users, newBoard: { ...this.state.newBoard, members } })
+    //gets the filterd users from the data
+    getUsers = async () => {
+        const { filterMembersBy } = this.state
+        const usersToShow = await userService.filterUsersBy(filterMembersBy)
+        this.setState({ users: usersToShow })
     }
-
-    removeMember = (user) => {
-        var users = this.state.users
-        var members = this.state.newBoard.members
-        members = members.filter(currMember => { return currMember._id !== user._id })
-        users.unshift(user)
-        this.setState({ users, newBoard: { ...this.state.newBoard, members } })
-    }
-
 
 
     handleInput = ({ target }) => {
@@ -112,9 +93,7 @@ export class _BoardComposer extends Component {
                 }
             }
         })
-
     }
-
 
 
     setBg = (bg) => {
@@ -127,22 +106,6 @@ export class _BoardComposer extends Component {
     }
 
 
-    filterMembers = ({ target }) => {
-        const value = target.value
-        this.setState({ filterMembersBy: value }, () => this.getUsers())
-        this.setState({ isMembersPreviewOpen: true })
-
-
-    }
-
-
-    getUsers = async () => {
-        const { filterMembersBy } = this.state
-        const usersToShow = await userService.filterUsersBy(filterMembersBy)
-        this.setState({ users: usersToShow })
-    }
-
-
     toggleMemberPreview = () => {
         const memberPreview = this.state.isMembersPreviewOpen
         this.setState({ isMembersPreviewOpen: !memberPreview })
@@ -151,7 +114,6 @@ export class _BoardComposer extends Component {
 
     closeMembersPreview = () => {
         this.setState({ isMembersPreviewOpen: false })
-        // console.log('isMembersPreviewOpen', this.state.isMembersPreviewOpen);
     }
 
 
@@ -160,16 +122,18 @@ export class _BoardComposer extends Component {
         return members.some(member => member._id === id)
     }
 
+
+
     toggleMember = (user) => {
         let { members } = { ...this.state.newBoard }
         const isMember = this.isBoardMember(user._id)
-        if (isMember) {
-            console.log('before', members);
+
+        if (isMember) {//if the member is part of the board remove it
             members = members.filter(member => member._id !== user._id)
-            console.log('after', members);
-        } else {
+        } else { //else put it in
             members.unshift(user)
         }
+
         const copyBoard = { ...this.state.newBoard }
         copyBoard.members = members
         this.setState({ newBoard: copyBoard })
@@ -178,8 +142,6 @@ export class _BoardComposer extends Component {
 
     render() {
         const { users, bgs, newBoard, isMembersPreviewOpen, btnTxt } = this.state
-        console.log('usersss', users);
-        console.log('newBoard:', newBoard);
 
         return (
             <Fragment>
@@ -189,7 +151,6 @@ export class _BoardComposer extends Component {
                         <div className="demo-board board-card  flex justify-center align-center" style={{ background: newBoard.style.bg }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
-
 
                     </div>
 
@@ -206,20 +167,15 @@ export class _BoardComposer extends Component {
                             <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
                             {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
                         </span>
-
                     </div>
-
 
                     <div className="bg-options">
                         {bgs.map(bg => {
                             return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ background: bg }}> </div>
                         })}
-
                     </div>
                     <button>{btnTxt}</button>
                 </form>
-
-
             </Fragment >
         )
     }
