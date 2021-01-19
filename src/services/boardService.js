@@ -48,7 +48,7 @@ async function getById(boardId) {
 
 
 
-
+// REFACTOR TO SYNCHRONOUS
 async function getTaskById(boardId, taskId) {
     const board = await getById(boardId)
     let tasks = board.lists.map(list => list.tasks)

@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import CloseIcon from '@material-ui/icons/Close';
-import { boardService } from '../services/boardService';
-import DoneIcon from '@material-ui/icons/Done';
+import CloseIcon from '@material-ui/icons/Close'
+import { boardService } from '../services/boardService'
+import DoneIcon from '@material-ui/icons/Done'
+import { socketService } from '../services/socketService'
 
 export class ChangeMembersPopover extends Component {
     state = {
         currTask: {}
     }
+    componentDidMount() {
+        socketService.setup()
+    }
 
+    componentWillUnmount() {
+        socketService.terminate()
+    }
+    
     loadTaskMembers() {
         const { task } = this.props
         return task.members
@@ -73,7 +81,7 @@ export class ChangeMembersPopover extends Component {
                         {boardMembers.map(member => {
                             return <li key={member._id} data-id={member._id} onClick={this.onUpdateTaskMember} className={`popover-section-list-item flex align-center ${this.isTaskMember(member._id) && 'picked'}`}>
                                 <div className="members-popover-img-wrapper">
-                                    <img className="members-popover-member-img" src={member.imgUrl || ''}  />
+                                    <img className="members-popover-member-img" src={member.imgUrl || ''} />
                                 </div>
                                 <span data-id={member._id}>{member.fullname}  ({member.username})</span>
                                 {this.isTaskMember(member._id) && <DoneIcon className="picked-icon" />}

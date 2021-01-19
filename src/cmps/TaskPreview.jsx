@@ -11,6 +11,7 @@ import { TaskEdit } from './TaskEdit'
 import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import { format } from 'date-fns'
 import { Draggable } from 'react-beautiful-dnd';
+import { socketService } from '../services/socketService'
 
 
 export class _TaskPreview extends Component {
@@ -18,6 +19,14 @@ export class _TaskPreview extends Component {
     state = {
         isTaskHovered: false,
         isEditOpen: false
+    }
+
+    componentDidMount() {
+        socketService.setup()
+    }
+
+    componentWillUnmount() {
+        socketService.terminate()
     }
 
     onOpenDetails = async (ev) => {
