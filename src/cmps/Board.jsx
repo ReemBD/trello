@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { utilService } from '../services/utilService'
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
 export class _Board extends Component {
@@ -61,7 +61,7 @@ export class _Board extends Component {
 
     // activate when a dragged item is released
     onDragEnd = async (res) => {
-        const { destination, source, draggableId } = res;
+        const { destination, source, draggableId, type } = res;
         // LOOK LIKE THIS:
         // destination: {droppableId: "g103", index: 0}
         // draggableId: "e101"
@@ -76,15 +76,25 @@ export class _Board extends Component {
 
         const copyBoard = { ...this.props.board }
 
-        const sourceListIdx = await boardService.getListIdxById(copyBoard, source.droppableId)
-        const destinationListIdx = await boardService.getListIdxById(copyBoard, destination.droppableId)
-        const task = await boardService.getTaskById(copyBoard._id, draggableId)
+        if (type === 'task') {
 
-        copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
-        copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task);
+            const sourceListIdx = await boardService.getListIdxById(copyBoard, source.droppableId)
+            const destinationListIdx = await boardService.getListIdxById(copyBoard, destination.droppableId)
+            const task = await boardService.getTaskById(copyBoard._id, draggableId)
+
+            copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
+            copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task);
+
+        } else {
+
+            const list = copyBoard.lists.splice(source.index, 1);
+            copyBoard.lists.splice(destination.index, 0, list);
+        }
 
         this.props.updateBoard(copyBoard)
-    };
+    }
+
+
 
     render() {
         const { board, currPopover, } = this.props
@@ -94,21 +104,38 @@ export class _Board extends Component {
         if (!board) return <h1>loading...</h1>
         return (
             <div className="board board-layout">
-                <ul className="lists-group clear-list flex">
-                    <DragDropContext onDragEnd={this.onDragEnd}>
-                        {lists.map((list, idx) => <li key={list.id} style={{ backgroundColor: list.style.bgColor }} className="task-list-container flex column"><TaskList list={list} listIdx={idx} title={list.title} {...this.props} /></li>)}
-                        <li className="add-list task-list-container flex column">
-                            <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
-                                <div className="input-wrapper align-center flex">
-                                    {!isCurrPopover && <AddIcon />}
-                                    <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
-                                </div>
-                                <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
-                            </form>
-                        </li>
-                    </DragDropContext>
-                </ul>
-            </div>
+
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                    <Droppable
+                        droppableId="all-columns"
+                        direction="horizontal"
+                        type="list"
+                    >
+                        {provided => (
+                            <ul
+                                className="lists-group clear-list flex"
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                            >
+                                {lists.map((list, idx) => <li key={list.id} style={{ backgroundColor: list.style?.bgColor }} className="task-list-container flex column"><TaskList list={list} listIdx={idx} title={list.title} {...this.props} /></li>)}
+                                {provided.placeholder}
+
+
+                                <li className="add-list task-list-container flex column">
+                                    <form {...this.addListHandlers} className={`add-list-form  flex column ${isCurrPopover && 'open'}`}>
+                                        <div className="input-wrapper align-center flex">
+                                            {!isCurrPopover && <AddIcon />}
+                                            <input type="text" value={listToAdd.title} className="add-list-title" placeholder="Add New List" name="title" autoComplete="off" ref={this.elListTitleRef} onChange={this.handleChange} />
+                                        </div>
+                                        <button type="submit" className={`add-list-btn primary-btn ${isCurrPopover && 'open'}`}>Add list</button>
+                                    </form>
+                                </li>
+                                </ul>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+               
+            </div >
         )
     }
 }
