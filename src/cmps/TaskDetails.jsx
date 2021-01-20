@@ -152,6 +152,7 @@ export class _TaskDetails extends Component {
                                             onChange={this.handleTitle}
                                             value={this.state.task.title}
                                             spellCheck="false"
+                                            onBlur={this.onSubmitForm}
                                         />
                                     </form>
                                     <p>in list <span className="details-list-name">{currList?.title}</span></p>
