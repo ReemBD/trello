@@ -120,7 +120,7 @@ export class _TaskPreview extends Component {
         const copyBoard = { ...board }
         copyBoard.lists[listIdx].tasks[taskIdx].title = taskTitle
         const { user } = this.props
-        await this.props.updateBoard(copyBoard, { user, txt: `${user?.fullname || 'Guest'} has changed task (${task.title}) title`, task: { ...this.props.task } })
+        await this.props.updateBoard(copyBoard, { user, txt: `has changed task (${task.title}) title`, task: { ...this.props.task } })
         this.onToggleEdit(ev)
     }
 

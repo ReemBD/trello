@@ -40,7 +40,9 @@ export class ChangeMembersPopover extends Component {
         const miniMember = { _id, username, fullname, imgUrl }
         currTask.members ? currTask.members.push(miniMember) : currTask.members = [miniMember]
         this.setState({ currTask })
-        await updateBoard(board)
+        const { user } = { ...this.props }
+        const activity = { user, txt: `has added ${miniMember.fullname} to task`, task: { ...currTask } }
+        await updateBoard(board, activity)
         // socketService.emit('task updated', { taskId: currTask.id, activityTxt: `${miniMember.fullname} has joined this task.` })
         // socketService.emit('member joined task', currTask.id)
     }
@@ -54,7 +56,9 @@ export class ChangeMembersPopover extends Component {
         const currTask = board.lists[listIdx].tasks[taskIdx]
         currTask.members.splice(memberIdx, 1)
         this.setState({ currTask })
-        await updateBoard(board)
+        const { user } = { ...this.props }
+        const activity = { user, txt: `has removed ${fullname} to task`, task: { ...currTask } }
+        await updateBoard(board,activity)
         // socketService.emit('task updated', { taskId: currTask.id, activityTxt: `${fullname} has left this task.` })
         // socketService.emit('member left task', currTask.id)
 
