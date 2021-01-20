@@ -17,15 +17,16 @@ export function setBoard(boardId) {
 
 
 export function updateBoard(board, activity = null, isEmitting = true) {
+    //ACTIVITY PARAM MUST BE AN OBJECT!
     return async dispatch => {
         try {
-            const updatedBoard = await boardService.save(board)
             if (!activity) console.warn('Warning: You have not entered an activity for this action.')
             if (activity) {
                 const fullActivity = utilService.formActivity(activity)
                 board.activities = [...board.activities, fullActivity] || [fullActivity]
                 console.log('fullActivity: ', fullActivity);
             }
+            const updatedBoard = await boardService.save(board)      
             const action = {
                 type: 'UPDATE_BOARD',
                 updatedBoard

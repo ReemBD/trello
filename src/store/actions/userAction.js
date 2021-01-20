@@ -1,6 +1,5 @@
 import { userService } from "../../services/userService"
 
-
 export function setUser(user, isNewUser) {
     return async (dispatch) => {
         var loggedUser;
