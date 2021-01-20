@@ -21,10 +21,10 @@ export function updateBoard(board, activity = undefined, isEmitting = true) {
     return async dispatch => {
         try {
             if (activity === undefined) console.warn('Warning: You have not entered an activity for this action.')
-            if (activity) {
-                const fullActivity = utilService.formActivity(activity)
-                board.activities = [...board.activities, fullActivity] || [fullActivity]
-                console.log('fullActivity: ', fullActivity);
+            var fullActivity = activity
+            if (activity && isEmitting) {
+                fullActivity = utilService.formActivity(activity)
+                board.activities = [fullActivity, ...board.activities] || [fullActivity]
             }
             const updatedBoard = await boardService.save(board)
             const action = {
@@ -32,7 +32,7 @@ export function updateBoard(board, activity = undefined, isEmitting = true) {
                 updatedBoard
             }
             dispatch(action)
-            isEmitting && socketService.emit('board updated', updatedBoard)
+            isEmitting && socketService.emit('board updated', { updatedBoard, activity: fullActivity })
         } catch (err) {
             console.log('couldnt update board', err);
         }

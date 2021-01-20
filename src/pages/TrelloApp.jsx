@@ -42,10 +42,10 @@ class _TrelloApp extends Component {
         }
     }
 
-    onBoardUpdated = async (updatedBoard) => {
+    onBoardUpdated = async ({updatedBoard, activity}) => {
         console.log('updated!');
         const board = { ...updatedBoard }
-        await this.props.updateBoard(board, undefined, false)
+        await this.props.updateBoard(board, activity, false)
     }
 
     render() {
