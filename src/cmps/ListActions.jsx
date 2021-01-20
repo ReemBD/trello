@@ -1,13 +1,10 @@
 import React from 'react'
 import CloseIcon from '@material-ui/icons/Close';
-
+import {PopoverHeader} from './PopoverHeader'
 export function ListActions({ onToggleComposer, onRemoveList, setCurrPopover }) {
     return (
         <div className="list-actions-popover" onClick={(ev) => ev.stopPropagation()}>
-            <div className="popover-header flex align-center justify-center">
-                <span className="popover-header-title">List Actions</span>
-                <CloseIcon className="close-icon" onClick={() => { setCurrPopover() }} />
-            </div>
+            <PopoverHeader title='List Actions' setCurrPopover={setCurrPopover}/>
             <section className="popover-section">
                 <ul className="popover-section-list clear-list">
                     <li className="add-task popover-section-list-item" onClick={(ev) => {

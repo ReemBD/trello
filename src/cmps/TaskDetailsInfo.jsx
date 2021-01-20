@@ -7,6 +7,7 @@ import { updateBoard } from '../store/actions/boardActions'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
 import { LabelsPopover } from './LabelsPopover'
 import AddIcon from '@material-ui/icons/Add';
+
 import CloseIcon from '@material-ui/icons/Close';
 
 

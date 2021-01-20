@@ -22,7 +22,7 @@ export function updateBoard(board, activity = undefined, isEmitting = true) {
         try {
             if (activity === undefined) console.warn('Warning: You have not entered an activity for this action.')
             var fullActivity = activity
-            if (activity && isEmitting) {
+            if (activity) {
                 fullActivity = utilService.formActivity(activity)
                 board.activities = [fullActivity, ...board.activities] || [fullActivity]
             }
