@@ -44,7 +44,7 @@ export class _LoginSignup extends Component {
         var userCreds;
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
-        
+
         if (!userCreds.password || !userCreds.username) {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
@@ -123,6 +123,10 @@ export class _LoginSignup extends Component {
 
                 <div className={`login-signup-wrapper flex justify-center ${isUploading && 'uploadStage'}`} >
 
+                    <a href='https://www.freepik.com/vectors/website'>Website vector created by stories - www.freepik.com</a>
+
+
+
                     {user && <div className="glass-form flex column">
                         <h1>Welcome {user.fullname}</h1>
                         <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
@@ -131,7 +135,7 @@ export class _LoginSignup extends Component {
                     </div>}
 
 
-                    <form className={`glass-form ${!isNewUser && !user && "ghost"} flex column`} onSubmit={this.onSubmit}>
+                    {!user && <form className={`glass-form ${!isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
                         <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span>
                             <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span>
 
@@ -151,18 +155,21 @@ export class _LoginSignup extends Component {
 
 
                     </form>
-                    <form className={`glass-form ${!user && isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
+
+                    }
+                    {!user && <form className={`glass-form ${isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
                         <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span>
                             <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span>
 
                         <h1 className="login-h1" >Log In</h1>
 
-                        <input type="text" name="username" value={loginCred.username} placeholder="username"  onChange={this.handleInput} />
+                        <input type="text" name="username" value={loginCred.username} placeholder="username" onChange={this.handleInput} />
                         <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
                         <button>Sign In</button>
                         <span style={{ color: '#fff' }}>{msg}</span>
 
                     </form>
+                    }
                 </div>
 
             </Fragment >
