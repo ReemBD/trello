@@ -1,11 +1,22 @@
 .home-page {
+  background-color: #ebeef582;
   .homepage-fold {
-    height: 90vh;
-    background-color: #ebeef582;
+    height: 100vh;
+    background-image: linear-gradient(
+      to bottom right,
+      #ebeefe,
+      #dff2fe,
+      #daf5f7,
+      #e0f6ea,
+      #eef4e0
+    );
+    margin-bottom: 0.5625rem;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     .homepage-image {
       height: 100%;
       width: 980px;
-      background-image: url("../../img/05.Data.svg");
+      background-image: url("../../img/fold-hero.svg");
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
@@ -18,12 +29,17 @@
         font-family: Kaushan, "Segoe UI";
         font-size: 6rem;
         margin-bottom: rem(60px);
+        user-select: none;
       }
 
       h2 {
         font-size: 2.5rem;
         line-height: 35px;
         letter-spacing: 0.3px;
+
+        span {
+          color: #ec3636;
+        }
 
         &:last-of-type {
           margin-bottom: rem(25px);
@@ -36,6 +52,56 @@
         letter-spacing: 1px;
         text-decoration: none;
         line-height: initial;
+
+        transition: transform 0.4s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .features {
+    .features-heading {
+      font-weight: 400;
+      font-size: 28px;
+      margin-bottom: rem(35px);
+    }
+
+    & > div {
+      height: 350px;
+      width: 100%;
+    }
+
+    .features-feature-1 {
+      .feature-1-txt {
+        margin-right: rem(60px);
+      }
+      .feature-1-bg {
+        @include svg-bg;
+        background-image: url("../../img/Successful-completion-of-project.svg");
+      }
+    }
+
+    .features-feature-2 {
+      background-color: #fff;
+      .feature-2-txt {
+        margin-left: rem(60px);
+      }
+      .feature-2-bg {
+        @include svg-bg;
+        background-image: url("../../img/Save-time-and-effort.svg");
+      }
+    }
+
+    .features-feature-3 {
+      .feature-3-txt {
+        margin-right: rem(60px);
+      }
+      .feature-3-bg {
+        @include svg-bg;
+        background-image: url("../../img/Code\ Version\ Control-blue.svg");
       }
     }
   }
