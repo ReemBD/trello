@@ -26,13 +26,12 @@ export class _TaskPreview extends Component {
     }
 
     componentDidMount() {
-        socketService.on('task updated fs', this.onTaskUpdated)
 
+        socketService.on('task updated fs', this.onTaskUpdated)
     }
 
     componentWillUnmount() {
-        socketService.off('task updated fs')
-
+        // socketService.off('task updated fs')
     }
 
     onTaskUpdated = (activityTxt) => {

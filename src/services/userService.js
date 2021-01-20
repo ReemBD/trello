@@ -24,7 +24,6 @@ async function login(user) {
         console.log('couldnt find user');
     }
     return loggedUser
-
 }
 
 async function signup(user) {
