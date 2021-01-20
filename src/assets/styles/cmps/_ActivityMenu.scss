@@ -1,0 +1,7 @@
+.activity-menu {
+    @include popover-main;
+    position: fixed;
+    .popover-header{
+        @include popover-header;
+    }    
+}

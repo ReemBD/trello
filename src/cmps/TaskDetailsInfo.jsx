@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { cloneDeep } from 'lodash'
 import { boardService } from '../services/boardService'
-import { utilService } from '../services/utilService'
 import { formatRelative } from 'date-fns'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
@@ -133,7 +132,7 @@ export class _TaskDetailsInfo extends Component {
                                 <div className={`labels-popover ${!isLabelMenuOpen && "hidden"}`} onClick={(ev) => { ev.stopPropagation() }} style={{ position: 'relative', zIndex: '3', backgroundColor: '#fff' }}>
                                     <div className="popover-header flex align-center justify-center">
                                         <span className="popover-header-title" style={{ fontWeight: '300' }}>Labels</span>
-                                        <CloseIcon className="popover-header-close-btn" style={{ top: '-3px' }} onClick={this.toggleLabelMenu} />
+                                        <CloseIcon className="close-icon" style={{ top: '-3px' }} onClick={this.toggleLabelMenu} />
                                     </div>
                                     <section className="popover-section">
                                         <ul className="popover-section-list clear-list flex column">

@@ -4,6 +4,7 @@
     z-index: 3;
     // background-color: #ffffff5e;
     position: fixed;
+    margin-top: -6px;
     width: 100%;
     margin-left: 0%;
     padding: 4px;
@@ -19,10 +20,14 @@
         padding-top: 10px;
         &>* {
             padding: 3px 3px 0;
-            
+            &:hover {
+                background-color: #3d3d3d36;
+
+                cursor: pointer;
+            }
         }
         & > *:not(:last-child) {
-            margin-inline-end: 1em;
+            margin-inline-end: .8em;
         }
         .notification-icon-container{
             border-radius: 3px;
@@ -30,11 +35,7 @@
                 background-color: #ef4040cc;
 
             }
-            &:hover {
-                background-color: #3d3d3d36;
-
-                cursor: pointer;
-            }
+           
         }
     }
     .board-member-img-wrapper {

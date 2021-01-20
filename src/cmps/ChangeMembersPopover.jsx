@@ -3,7 +3,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { boardService } from '../services/boardService'
 import DoneIcon from '@material-ui/icons/Done'
 import { socketService } from '../services/socketService'
-
+import { PopoverHeader } from './PopoverHeader'
 export class ChangeMembersPopover extends Component {
     state = {
         currTask: {},
@@ -76,10 +76,7 @@ export class ChangeMembersPopover extends Component {
         const boardMembers = this.props.board.members
         return (
             <div className="change-members-popover " onClick={(ev) => { ev.stopPropagation() }}>
-                <div className="popover-header flex align-center justify-center quick-edit-popover">
-                    <span className="popover-header-title">Members</span>
-                    <CloseIcon onClick={() => { this.props.setCurrPopover() }} className="popover-header-close-btn" />
-                </div>
+                <PopoverHeader title='Members' setCurrPopover={this.props.setCurrPopover} />
                 <section className="popover-section">
                     <ul className="popover-section-list clear-list">
                         <h3 className="popover-section-header">Board members</h3>

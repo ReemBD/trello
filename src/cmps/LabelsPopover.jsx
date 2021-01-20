@@ -3,6 +3,7 @@ import { updateBoard } from '../store/actions/boardActions'
 import CloseIcon from '@material-ui/icons/Close';
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
+import { PopoverHeader } from './PopoverHeader';
 export class _LabelsPopover extends Component {
     state = {
         labels: [
@@ -69,10 +70,7 @@ export class _LabelsPopover extends Component {
         const { labels } = this.state
         return (
             <div className="labels-popover quick-edit-popover" >
-                <div className="popover-header flex align-center justify-center">
-                    <span className="popover-header-title">Labels</span>
-                    <CloseIcon className="popover-header-close-btn" onClick={() => { this.props.setCurrPopover() }} />
-                </div>
+                <PopoverHeader title='Labels' setCurrPopover={this.props.setCurrPopover} />
                 <section className="popover-section">
                     <ul className="popover-section-list clear-list flex column">
                         <h3 className="popover-section-header">Labels</h3>
