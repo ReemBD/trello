@@ -25,7 +25,7 @@ class _TrelloApp extends Component {
     }
 
     onTaskUpdated = ({ taskId }) => {
-        
+
     }
 
     componentWillUnmount() {
@@ -45,7 +45,7 @@ class _TrelloApp extends Component {
     onBoardUpdated = async (updatedBoard) => {
         console.log('updated!');
         const board = { ...updatedBoard }
-        await this.props.updateBoard(board, false)
+        await this.props.updateBoard(board, undefined, false)
     }
 
     render() {

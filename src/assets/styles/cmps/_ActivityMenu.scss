@@ -1,7 +1,20 @@
 .activity-menu {
     @include popover-main;
     position: fixed;
+    bottom: -8px;
+    top: 50px;
+    width: 339px;
+    right: -100%;
+
+    z-index: 4;
+    transition: right .5s;
+    &.open {
+        right: -10px;
+    }
     .popover-header{
         @include popover-header;
     }    
+    .popover-section{
+        @include popover-section;
+    }
 }

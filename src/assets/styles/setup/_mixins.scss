@@ -98,30 +98,29 @@
 //   }
 
 @mixin popover-header {
-    font-size: 0.7em;
-    position: relative;
-    height: 40px;
+  font-size: 0.7em;
+  position: relative;
+  height: 40px;
+  color: #3d3d3d;
+  position: relative;
+  margin-bottom: 8px;
+  text-align: center;
+  padding-inline-start: 11px;
+  padding-inline-end: 11px;
+  &-title {
+    border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+    flex-grow: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+  }
+  .close-icon {
+    width: 18px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
     color: #3d3d3d;
-    position: relative;
-    margin-bottom: 8px;
-    text-align: center;
-    padding-inline-start: 11px;
-    padding-inline-end: 11px;
-    &-title {
-      border-bottom: 1px solid rgba(9, 30, 66, 0.13);
-      flex-grow: 1;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-size: 1.2em;
-      
-    }
-    .close-icon {
-      width: 18px;
-      position: absolute;
-      right: 10px;
-      cursor: pointer;
-      color: #3d3d3d;
-    }
+  }
   // &-close-btn {
   //   color: #6b778c;
   //   padding: 10px 12px 10px 8px;
@@ -163,4 +162,14 @@
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
+}
+
+@mixin board-member-img {
+  width: 30px;
+  margin: 4px;
+  @include aspect-ratio(1, 1);
+  .board-member-img {
+    border-radius: 999px;
+    width: 100%;
+  }
 }

@@ -5,6 +5,7 @@ import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
 import { PopoverHeader } from './PopoverHeader';
 import { cloneDeep } from 'lodash'
+
 export class _LabelsPopover extends Component {
     state = {
         labels: [

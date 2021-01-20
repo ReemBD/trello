@@ -13,7 +13,7 @@ import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import { format } from 'date-fns'
 import { Draggable } from 'react-beautiful-dnd';
 import { socketService } from '../services/socketService'
-
+import BoardMemberImg from './BoardMemberImg'
 
 export class _TaskPreview extends Component {
 
@@ -38,7 +38,7 @@ export class _TaskPreview extends Component {
         this.setState({ unreadNotificationsCount: unreadNotificationsCount + 1 }, () => {
             // console.log('unread notif count: ', this.state.unreadNotificationsCount);
         })
-    }   
+    }
 
     componentDidMount() {
         const { task } = this.props
@@ -171,7 +171,7 @@ export class _TaskPreview extends Component {
                                     </div>
                                     {task.members?.length ?
                                         <div className="task-members-imgs flex">
-                                            {task.members.map(member => { return <div key={member._id} className="task-member-img-wrapper"><img className="task-member-preview-img" src={member.imgUrl} /></div> })}
+                                            {task.members.map(member => { return <BoardMemberImg key={member._id} member={member} /> })}
                                         </div>
                                         : ''}
 
@@ -207,10 +207,10 @@ const mapStateToProps = state => {
 export const TaskPreview = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TaskPreview))
 
 
-/* 
+/*
 Sockets activities plan:
 logged in user is adding somebody to a task.
-at the same time board is updated , 
+at the same time board is updated ,
 updateUserActivities is sent,
 "you have been added to the task."
 
