@@ -150,7 +150,8 @@ export class _TaskDetailsActivity extends Component {
                                 <div className="activity-info flex column justify-center">
                                     <p className="activity-txt">
                                         <span className="activity-member-name">{activity.byMember.fullname} </span>
-                                        {activity.txt}
+                                        <span>{activity.txt} </span>
+                                        <span>{activity.task.title}</span>
                                     </p>
                                     <div className="activity-date">
                                         <span>{formatDistance(activity.createdAt, Date.now())}</span>
