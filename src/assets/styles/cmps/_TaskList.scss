@@ -29,8 +29,7 @@
       border: none;
       color: #fff;
       padding: 4px;
-      border-radius: 5px;
-      
+      border-radius: 4px;
     }
 
     ::placeholder {
@@ -57,10 +56,10 @@
     cursor: pointer;
     padding: 5px;
     width: 100%;
-    transition: all .3s;
+    transition: all 0.3s;
 
-    &:hover{
-      background-color: rgba(9,30,66,.08);
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.08);
     }
 
     input[name="title"] {
@@ -70,7 +69,8 @@
         color: #5e6c84;
       }
       &:focus {
-        border: 2px solid lightskyblue;
+        // border: 2px solid lightskyblue;
+        background-color: rgba(9, 30, 66, 0.08);
         border-radius: 2px;
       }
     }
@@ -95,5 +95,10 @@
   }
   .save-task-btn {
     margin-top: 5px;
+  }
+
+  .task-previews-container {
+    max-height: 75vh;
+    overflow-y: overlay;
   }
 }

@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import { storageService } from '../services/storageService.js'
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : 'http://localhost:3031'
 export const socketService = createSocketService()
-
+// socketService.setup()
 // export const socketService = createDummySocketService()
 
 window.socketService = socketService

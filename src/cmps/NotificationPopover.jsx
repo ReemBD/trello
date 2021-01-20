@@ -11,11 +11,16 @@ export class NotificationPopover extends Component {
         this.setState({ notifications })
     }
 
-
+    onReadNotification = (notificationId) => {
+        const { notifications } = this.state
+        const notificationIdx = notifications.findIndex(notification => notification.id === notificationId)
+        notifications.splice(notificationIdx, 1)
+        this.setState({notifications})
+    }
     render() {
         const { notifications } = this.state
-        const { board,setCurrPopover } = this.props
-        
+        const { board, setCurrPopover } = this.props
+
         if (!notifications) return <h1>Loading...</h1>
         return (
             <div className="notification-popover flex column" onClick={ev => ev.stopPropagation()}>
@@ -33,7 +38,7 @@ export class NotificationPopover extends Component {
                         {notifications.map(notification => {
                             return <li key={notification.id} className="popover-section-list-item flex">
                                 <div className="checkbox-container " title="mark-read">
-                                <input type="checkbox" className={`read-notification-checkbox`} />
+                                    <input type="checkbox" className={`read-notification-checkbox`} onChange={() => { this.onReadNotification(notification.id) }} />
                                 </div>
                                 <div className="notification-details">
                                     <div className="notification-details-header flex column justify-center align-start">

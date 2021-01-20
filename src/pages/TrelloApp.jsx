@@ -17,14 +17,17 @@ class _TrelloApp extends Component {
 
     componentDidMount = async () => {
         const { boardId } = this.props.match.params
+        const { user } = this.props
         socketService.setup()
-        socketService.emit('member connected', boardId)
+        socketService.emit('member connected', { userId: '123', boardId })
         socketService.on('board updated fs', this.onBoardUpdated)
         await this.props.setBoard(boardId)
     }
 
     componentWillUnmount() {
         socketService.off('board updated fs', this.onBoardUpdated)
+        // socketService.off('task updated fs')
+        // socketService.off('do notification fs')
         socketService.terminate()
     }
 
@@ -37,7 +40,7 @@ class _TrelloApp extends Component {
 
     onBoardUpdated = async (updatedBoard) => {
         console.log('updated!');
-        const board = {...updatedBoard}
+        const board = { ...updatedBoard }
         await this.props.updateBoard(board, false)
     }
 
@@ -64,7 +67,8 @@ const mapStateToProps = state => {
     return {
         board: state.boardReducer.currBoard,
         isOverlayOpen: state.boardReducer.isOverlayOpen,
-        currPopover: state.popoverReducer.currPopover
+        currPopover: state.popoverReducer.currPopover,
+        user: state.userReducer.user
     }
 }
 
