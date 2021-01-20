@@ -101,7 +101,7 @@ export class _Board extends Component {
         const { listToAdd } = this.state
         if (!board) return <h1>loading...</h1>
         return (
-            <div className="board board-layout">
+            <div className="board board-layout" style={{ height: "82vh" }}>
 
                 <DragDropContext onDragEnd={this.onDragEnd} >
                     <Droppable
