@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { updateBoard } from '../store/actions/boardActions'
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@material-ui/icons/Close'
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
 import { PopoverHeader } from './PopoverHeader';
+import { cloneDeep } from 'lodash'
 export class _LabelsPopover extends Component {
     state = {
         labels: [
@@ -64,6 +65,12 @@ export class _LabelsPopover extends Component {
         return labels.findIndex(label => label.id === labelId)
     }
 
+    handleChange = (labelIdx, ev) => {
+        const { labels } = this.state
+        const labelsCopy = cloneDeep(labels)
+        labelsCopy[labelIdx].title = ev.target.value
+        this.setState({ labels: labelsCopy })
+    }
 
 
     render() {
@@ -74,7 +81,21 @@ export class _LabelsPopover extends Component {
                 <section className="popover-section">
                     <ul className="popover-section-list clear-list flex column">
                         <h3 className="popover-section-header">Labels</h3>
-                        {labels.map(label => <div data-id={label.id} onClick={this.onToggleLabel} key={label.id} className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></div>)}
+                        {labels.map((label, labelIdx) => {
+                            return (
+                                <div className="flex">
+                                    <input
+                                        data-id={label.id}
+                                        onClick={this.onToggleLabel}
+                                        key={label.id}
+                                        onChange={(ev) => this.handleChange(labelIdx, ev)}
+                                        value={labels[labelIdx].title}
+                                        className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></input>
+                                    <span>Yo</span>
+                                </div>
+
+                            )
+                        })}
                     </ul>
                 </section>
             </div>
