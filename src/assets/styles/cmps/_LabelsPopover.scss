@@ -1,5 +1,7 @@
 .labels-popover {
    @include popover-main;
+   position: fixed;
+   top: 30px;
     .popover-header {
         height: 40px;
         color: #212121;

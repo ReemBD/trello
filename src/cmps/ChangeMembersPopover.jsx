@@ -29,6 +29,7 @@ export class ChangeMembersPopover extends Component {
         const member = members.find(member => member._id === id)
         this.isTaskMember(member._id) ? this.onRemoveTaskMember(member)
             : this.onAddTaskMember(member)
+
     }
 
     onAddTaskMember = async (member) => {
@@ -75,7 +76,7 @@ export class ChangeMembersPopover extends Component {
         const boardMembers = this.props.board.members
         return (
             <div className="change-members-popover " onClick={(ev) => { ev.stopPropagation() }}>
-                <div className="popover-header flex align-center justify-center">
+                <div className="popover-header flex align-center justify-center quick-edit-popover">
                     <span className="popover-header-title">Members</span>
                     <CloseIcon onClick={() => { this.props.setCurrPopover() }} className="popover-header-close-btn" />
                 </div>

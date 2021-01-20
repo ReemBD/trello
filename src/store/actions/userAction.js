@@ -18,6 +18,14 @@ export function setUser(user, isNewUser) {
     }
 }
 
+export function updateUserActivities(user) {
+    return async (dispatch) => {
+        try {
+            
+        }
+    }
+
+}
 
 export function clearUser() {
     return (dispatch) => {

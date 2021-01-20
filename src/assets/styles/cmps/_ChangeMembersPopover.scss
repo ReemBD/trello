@@ -1,5 +1,7 @@
 .change-members-popover {
     @include popover-main;
+    position: fixed;
+    top: 65px;
     .popover-header {
         height: 40px;
         color: #212121;

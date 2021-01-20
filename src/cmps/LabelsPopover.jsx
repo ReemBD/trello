@@ -68,7 +68,7 @@ export class _LabelsPopover extends Component {
     render() {
         const { labels } = this.state
         return (
-            <div className="labels-popover" >
+            <div className="labels-popover quick-edit-popover" >
                 <div className="popover-header flex align-center justify-center">
                     <span className="popover-header-title">Labels</span>
                     <CloseIcon className="popover-header-close-btn" onClick={() => { this.props.setCurrPopover() }} />
