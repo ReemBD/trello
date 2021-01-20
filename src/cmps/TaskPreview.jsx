@@ -22,7 +22,8 @@ export class _TaskPreview extends Component {
         isEditOpen: false,
         taskTitle: '',
         titleBeforeChange: '',
-        unreadNotificationsCount: 0
+        unreadNotificationsCount: 0,
+        isLabelOpen: false,
     }
 
     componentDidMount() {
@@ -124,9 +125,14 @@ export class _TaskPreview extends Component {
         this.onToggleEdit(ev)
     }
 
+    toggleLabel = () => {
+        const { isLabelOpen } = this.state
+        this.setState({ isLabelOpen: !isLabelOpen })
+    }
+
     render() {
         const { task, list, taskIdx } = this.props
-        const { isEditOpen, isTaskHovered, unreadNotificationsCount } = this.state
+        const { isEditOpen, isTaskHovered, unreadNotificationsCount, isLabelOpen } = this.state
         return (
             <Fragment>
                 <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
@@ -145,7 +151,15 @@ export class _TaskPreview extends Component {
                                 }
                                 {task.labels?.length && <div className="top-line-preview-container flex">
                                     <div className="labels-container flex">
-                                        {task.labels.map(label => { return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+                                        {task.labels.map(label => {
+                                            return (
+                                                <div onClick={(ev) => {
+                                                    ev.stopPropagation()
+                                                    this.toggleLabel()
+                                                }} style={{ backgroundColor: label.color }} key={label.id} className={`task-label ${isLabelOpen && "open"}`} title={label.title}>{isLabelOpen ? label.title : ''}</div>
+                                            )
+
+                                        })}
 
                                     </div>
                                     <div className="quick-edit-wrapper">

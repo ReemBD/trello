@@ -19,7 +19,7 @@
     }
     &-list {
       @include popover-section-list;
-      margin: 0 0 5px 25px;
+      margin: 0 0 5px 5px;
 
       &-item {
         width: 100%;
@@ -39,6 +39,8 @@
       svg {
         cursor: pointer;
         margin: 0 3px;
+        width: 22px;
+        fill: #6e6868;
       }
     }
   }
