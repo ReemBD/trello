@@ -24,13 +24,12 @@ export class _TaskPreview extends Component {
     }
 
     componentDidMount() {
-        socketService.on('task updated fs', this.onTaskUpdated)
 
+        socketService.on('task updated fs', this.onTaskUpdated)
     }
 
     componentWillUnmount() {
-        socketService.off('task updated fs')
-
+        // socketService.off('task updated fs')
     }
 
     onTaskUpdated = (activityTxt) => {
@@ -95,7 +94,7 @@ export class _TaskPreview extends Component {
                             ref={provided.innerRef}
                         >
                             <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
-                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving' }  `} onClick={this.onOpenDetails} >
+                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving'}  `} onClick={this.onOpenDetails} >
                                 {(task.attachments) ?
                                     <div className="preview-img" style={{ backgroundImage: `url(${task.attachments.slice(-1)[0]})` }}>
                                     </div>

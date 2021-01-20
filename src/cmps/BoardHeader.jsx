@@ -11,11 +11,11 @@ export class BoardHeader extends Component {
 
     componentDidMount() {
         const { boardId } = this.props.match.params
-        socketService.on('do notification fs', this.incNotificationBadge)
+        //  socketService.on('do notification fs', this.incNotificationBadge)
     }
 
     componentWillUnmount() {
-        socketService.off('do notification fs', this.incNotifcationBadge)
+        // socketService.off('do notification fs', this.incNotifcationBadge)
     }
 
     incNotificationBadge = (notification) => {
@@ -40,6 +40,7 @@ export class BoardHeader extends Component {
                         <li className={`notification-icon-container ${currBadgeCount && 'unread'}`}>
                             <NotificationsIcon onClick={ev => {
                                 ev.stopPropagation()
+                                this.setState({ currBadgeCount: 0 })
                                 setCurrPopover('NOTIFICATION_POPOVER')
                             }} />
                         </li>
