@@ -26,8 +26,7 @@ export class _TaskPreview extends Component {
     }
 
     componentDidMount() {
-
-        socketService.on('task updated fs', this.onTaskUpdated)
+        // socketService.on('task updated fs', this.onTaskUpdated)
     }
 
     componentWillUnmount() {
@@ -39,7 +38,7 @@ export class _TaskPreview extends Component {
         this.setState({ unreadNotificationsCount: unreadNotificationsCount + 1 }, () => {
             // console.log('unread notif count: ', this.state.unreadNotificationsCount);
         })
-    }
+    }   
 
     componentDidMount() {
         const { task } = this.props
@@ -208,3 +207,11 @@ const mapStateToProps = state => {
 export const TaskPreview = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TaskPreview))
 
 
+/* 
+Sockets activities plan:
+logged in user is adding somebody to a task.
+at the same time board is updated , 
+updateUserActivities is sent,
+"you have been added to the task."
+
+*/

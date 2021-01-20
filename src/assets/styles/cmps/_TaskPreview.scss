@@ -101,8 +101,9 @@
     }
   }
   .edit-icon {
-    font-size: 1.3em;
+    font-size: 2em;
     position: absolute;
+    padding: 4px;
     right: 2px;
     cursor: pointer;
     // padding: 5px;
@@ -111,15 +112,6 @@
       background-color: rgb(206, 209, 218);
     }
   }
-  // .task-description {
-  //     font-weight: 700;
-  //     text-overflow: clip;
-  //     cursor: pointer;
-  // }
-  // .task-created-at {
-  //     font-weight: normal;
-  //     cursor: pointer;
-  // }
 }
 
 .quick-btn {

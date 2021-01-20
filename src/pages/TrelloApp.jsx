@@ -24,6 +24,10 @@ class _TrelloApp extends Component {
         await this.props.setBoard(boardId)
     }
 
+    onTaskUpdated = ({ taskId }) => {
+        
+    }
+
     componentWillUnmount() {
         socketService.off('board updated fs', this.onBoardUpdated)
         // socketService.off('task updated fs')
