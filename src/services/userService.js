@@ -15,10 +15,10 @@ async function getUsers() {
 }
 
 async function login(user) {
-    console.log(user);
+    console.log('user creds:', user);
     let loggedUser;
     try {
-        loggedUser = await httpService.get(`${endpoint}/?password=${user.password}&username=${user.username}}`)
+        loggedUser = await httpService.post(`${endpoint}/login/?password=${user.password}&username=${user.username}`)
         console.log('logged', loggedUser);
     } catch (err) {
         console.log('couldnt find user');
