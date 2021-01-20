@@ -1,209 +1,211 @@
 // --------------------------------------------------- Compose Board -----------------------------------------------------------------
 
 .composer-screen {
-    backdrop-filter: blur(13px);
-    transition: opacity 0.1s;
-    opacity: 1;
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    // width: 100vw;
-    z-index: 1;
-    background-color: rgba(7, 7, 7, 0.335);
+  backdrop-filter: blur(13px);
+  transition: opacity 0.1s;
+  opacity: 1;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  // width: 100vw;
+  z-index: 1;
+  background-color: rgba(7, 7, 7, 0.335);
 
-    &.transparent {
-        transition: opacity 0.1s;
-        opacity: 0;
-        z-index: -1;
-    }
+  &.transparent {
+    transition: opacity 0.1s;
+    opacity: 0;
+    z-index: -1;
+  }
 }
 
 .board-composer {
-    width: 70%;
-    // height: 70%;
-    padding: 3em;
-    background: rgba(255, 255, 255, 0.808);
+  width: 70%;
+  // height: 70%;
+  padding: 3em;
+  background: rgba(255, 255, 255, 0.808);
 
-    backdrop-filter: blur(5.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    border-radius: 6px;
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border-radius: 6px;
 
-    .compose-board-btn {
-        align-self: flex-end;
-        border-radius: 0.5em;
-        padding: 1em;
-        margin: 0.5em;
-        transition: color 0.2s;
-        cursor: pointer;
+  .compose-board-btn {
+    align-self: flex-end;
+    border-radius: 0.5em;
+    padding: 1em;
+    margin: 0.5em;
+    transition: color 0.2s;
+    cursor: pointer;
 
-        &:hover {
-        }
+    &:hover {
     }
+  }
 
-    textarea.title {
-        background-color: transparent;
-        font-size: 1.5em;
-        outline: none;
-        border: none;
-        color: #ffffff;
-        width: 90%;
-        text-align: center;
-        font-weight: 400;
-        letter-spacing: 0.5px;
+  textarea.title {
+    background-color: #e6dede6b;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    height: 38px;
+    line-height: 31px;
+  }
+
+  textarea {
+    background-color: rgba(255, 255, 255, 0.438);
+    border: none;
+    resize: none;
+    width: 80%;
+    overflow: break-row;
+    outline: none;
+    font-family: Segoe UI;
+    -moz-appearance: none;
+    &::placeholder {
+      font-family: Segoe UI;
     }
+  }
 
+  .dec {
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    background-color: #fff;
     textarea {
-        background-color: rgba(255, 255, 255, 0.438);
-        border: none;
-        resize: none;
-        width: 80%;
-        overflow: break-row;
-        outline: none;
-        font-family: Segoe UI;
-        -moz-appearance: none;
-        &::placeholder {
-            font-family: Segoe UI;
-        }
+      width: -webkit-fill-available;
     }
-
-    .dec {
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 3px;
-        margin-bottom: 10px;
-        background-color: #fff;
-        textarea {
-            width: -webkit-fill-available;
-        }
-        .addIcon {
-            width: 30px;
-            // background-color: #eef0f1;
-            margin-top: 3px;
-            margin-right: 5px;
-            cursor: pointer;
-            transition: color 0.2s;
-            &:hover {
-                color: rgba(0, 0, 0, 0.609);
-            }
-        }
+    .addIcon {
+      width: 30px;
+      // background-color: #eef0f1;
+      margin-top: 3px;
+      margin-right: 5px;
+      cursor: pointer;
+      transition: color 0.2s;
+      &:hover {
+        color: rgba(0, 0, 0, 0.609);
+      }
     }
+  }
 }
 .bg-options {
-    display: grid;
-    border-radius: 12px;
-    // grid-template-columns: repeat(4, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
-    margin-top: 20px;
-    // background-color: rgba(255, 255, 255, 0.568);
+  display: grid;
+  border-radius: 12px;
+  // grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
+  margin-top: 20px;
+  // background-color: rgba(255, 255, 255, 0.568);
 }
 
 .member-preview {
-    display: inline-block;
-    cursor: pointer;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .bg-preview {
-    height: 5em;
-    width: 5em;
-    border-radius: 5px;
-    margin: 0 .8em .8em 0;
-    background-size: cover;
-    cursor: pointer;
-    &:hover {
-        border: 1px solid #3d3d3d;
-        z-index: 5;
-        position: relative;
-        box-shadow: 1px 0px 8px #4343434f;
-    }
+  height: 5em;
+  width: 5em;
+  border-radius: 5px;
+  margin: 0 0.8em 0.8em 0;
+  background-size: cover;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #3d3d3d;
+    z-index: 5;
+    position: relative;
+    box-shadow: 1px 0px 8px #4343434f;
+  }
 }
 
 .boards {
-    &.change-members-popover {
-        position: absolute;
-        right: 20px;
-        width: 400px;
-        height: 300px;
-        overflow-y: scroll;
-        border-radius: 10px;
+  &.change-members-popover {
+    position: absolute;
+    right: 20px;
+    width: 400px;
+    height: 300px;
+    overflow-y: scroll;
+    border-radius: 10px;
 
-        .popover-header {
-            position: fixed;
-            width: 380px;
-            height: 50px;
-            background-color: rgb(46, 46, 46);
-            border-top-left-radius: 10px;
+    .popover-header {
+      position: fixed;
+      width: 380px;
+      height: 50px;
+      background-color: rgb(46, 46, 46);
+      border-top-left-radius: 10px;
 
-            input {
-                border: none;
-                border-radius: 5px;
-                width: 93%;
-                height: 30px;
-                outline: none;
-            }
-        }
+      input {
+        border: none;
+        border-radius: 5px;
+        width: 93%;
+        height: 30px;
+        outline: none;
+      }
     }
+  }
 }
 
 .members-popup {
-    height: 300px;
-    overflow-y: auto;
-    width: fit-content;
-    position: absolute;
-    z-index: 1;
-    // background-color: #fdfdfd;
-    transition: all 0.5s;
-    box-shadow: -1px 3px 7px 3px #58585882;
+  height: 300px;
+  overflow-y: auto;
+  width: fit-content;
+  position: absolute;
+  z-index: 1;
+  // background-color: #fdfdfd;
+  transition: all 0.5s;
+  box-shadow: -1px 3px 7px 3px #58585882;
 
-    &.transparent {
-        box-shadow: none;
-        height: 0;
+  &.transparent {
+    box-shadow: none;
+    height: 0;
+  }
+  li {
+    border-top: 1px solid #ebe8e8b8;
+    transition: all 0.3s;
+    justify-content: space-between;
+    &:last-child {
+      border-bottom: 1px solid #ebe8e8b8;
     }
-    li {
-        border-top: 1px solid #ebe8e8b8;
-        transition: all 0.3s;
-        justify-content: space-between;
-        &:last-child {
-            border-bottom: 1px solid #ebe8e8b8;
-        }
-        &:hover {
-            background-color: #ebe8e8b8;
-        }
-        .icon {
-            transition: transform 0.3s;
-            cursor: pointer;
-            .remove {
-                transform: rotate(45);
-            }
-        }
+    &:hover {
+      background-color: #ebe8e8b8;
     }
-    input {
-        background-color: transparent;
-        font-weight: 100;
-        font-size: 1em;
-        outline: none;
-        border: none;
-        color: #5f5e5e;
+    .icon {
+      transition: transform 0.3s;
+      cursor: pointer;
+      .remove {
+        transform: rotate(45);
+      }
     }
+  }
+  input {
+    background-color: transparent;
+    font-weight: 100;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    color: #5f5e5e;
+  }
 }
 
 .board-card.demo-board {
-    display: inline-flex;
-    margin: 1em;
-    background-size: cover;
-    margin-bottom: 2em;
-    color: #fff;
-    *::placeholder {
-        color: rgba(255, 255, 255, 0.705);
-        font-size: 0.8em;
-    }
+  display: inline-flex;
+  margin: 1em;
+  background-size: cover;
+  margin-bottom: 2em;
+  color: #333;
+  *::placeholder {
+    color: #333;
+    font-size: 0.8em;
+  }
 }
 
 .avatarPic {
-    height: 2.5em;
-    width: 2.5em;
-    object-fit: cover;
-    border-radius: 3em;
-    margin: 1em;
+  height: 2.5em;
+  width: 2.5em;
+  object-fit: cover;
+  border-radius: 3em;
+  margin: 1em;
 }

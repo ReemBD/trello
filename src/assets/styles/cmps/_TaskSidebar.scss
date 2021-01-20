@@ -21,6 +21,12 @@
         margin-bottom: 8px;
         user-select: none;
 
+        &:last-of-type {
+          &:hover {
+            background-color: #ef4040cc;
+          }
+        }
+
         transition: background-color 0.2s;
 
         &:hover {

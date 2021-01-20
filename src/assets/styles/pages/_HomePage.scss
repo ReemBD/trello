@@ -52,57 +52,135 @@
         letter-spacing: 1px;
         text-decoration: none;
         line-height: initial;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-btn::before {
+        content: "";
+        width: 50px;
+        position: absolute;
+        top: 0;
+        left: -50px;
+        bottom: 0;
+        z-index: 9;
+        background: -webkit-gradient(
+          linear,
+          left top,
+          right top,
+          from(rgba(255, 255, 255, 0.2)),
+          color-stop(50%, #fff),
+          to(rgba(255, 255, 255, 0.2))
+        );
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.2) 0%,
+          #fff 50%,
+          rgba(255, 255, 255, 0.2) 100%
+        );
+      }
 
-        transition: transform 0.4s;
-
-        &:hover {
-          transform: scale(1.1);
-        }
+      .cta-btn:hover:before {
+        -webkit-animation: lightning-effect 1.5s ease-in-out;
+        animation: lightning-effect 1.5s ease-in-out;
       }
     }
   }
+}
 
-  .features {
-    .features-heading {
-      font-weight: 400;
-      font-size: 28px;
-      margin-bottom: rem(35px);
-    }
+.features {
+  .features-heading {
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: rem(35px);
+  }
 
-    & > div {
-      height: 350px;
-      width: 100%;
-    }
+  & > div {
+    height: 350px;
+    width: 100%;
+  }
 
-    .features-feature-1 {
-      .feature-1-txt {
-        margin-right: rem(60px);
-      }
-      .feature-1-bg {
-        @include svg-bg;
-        background-image: url("../../img/Successful-completion-of-project.svg");
-      }
+  .features-feature-1 {
+    .feature-1-txt {
+      margin-right: rem(60px);
     }
+    .feature-1-bg {
+      @include svg-bg;
+      background-image: url("../../img/Successful-completion-of-project.svg");
+    }
+  }
 
-    .features-feature-2 {
-      background-color: #fff;
-      .feature-2-txt {
-        margin-left: rem(60px);
-      }
-      .feature-2-bg {
-        @include svg-bg;
-        background-image: url("../../img/Save-time-and-effort.svg");
-      }
+  .features-feature-2 {
+    background-color: #fff;
+    .feature-2-txt {
+      margin-left: rem(60px);
     }
+    .feature-2-bg {
+      @include svg-bg;
+      background-image: url("../../img/Save-time-and-effort.svg");
+    }
+  }
 
-    .features-feature-3 {
-      .feature-3-txt {
-        margin-right: rem(60px);
-      }
-      .feature-3-bg {
-        @include svg-bg;
-        background-image: url("../../img/Code\ Version\ Control-blue.svg");
-      }
+  .features-feature-3 {
+    .feature-3-txt {
+      margin-right: rem(60px);
     }
+    .feature-3-bg {
+      @include svg-bg;
+      background-image: url("../../img/Code\ Version\ Control-blue.svg");
+    }
+  }
+}
+
+/*Keyframes*/
+@-webkit-keyframes lightning-effect {
+  0% {
+    left: -50px;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(rgba(255, 255, 255, 0.2)),
+      color-stop(50%, #fff),
+      to(rgba(255, 255, 255, 0.2))
+    );
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.2) 0%,
+      #fff 50%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  }
+  50% {
+    left: 100%;
+  }
+  to {
+    left: -50px;
+    background: 0 0;
+  }
+}
+@keyframes lightning-effect {
+  0% {
+    left: -50px;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      from(rgba(255, 255, 255, 0.2)),
+      color-stop(50%, #fff),
+      to(rgba(255, 255, 255, 0.2))
+    );
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.2) 0%,
+      #fff 50%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  }
+  50% {
+    left: 100%;
+  }
+  to {
+    left: -50px;
+    background: 0 0;
   }
 }

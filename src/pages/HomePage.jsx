@@ -9,7 +9,7 @@ export class HomePage extends Component {
                         <h1>Chello</h1>
                         <h2>Task Managment.</h2>
                         <h2>The <span>Clever</span> Way.</h2>
-                        <a href="/board/6007f8c0cbf9ab1410de1800" className="cta-btn primary-btn">Start Now</a>
+                        <a href="/board/6008a088b5c86f53d8c9d788" className="cta-btn primary-btn">Start Now</a>
                     </div>
                     <div className="homepage-image">
                     </div>
