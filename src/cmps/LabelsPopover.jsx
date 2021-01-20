@@ -118,7 +118,7 @@ export class _LabelsPopover extends Component {
                         {labels.map((label, labelIdx) => {
                             return (
 
-                                <div className="flex">
+                                <div className="flex" key={label.id}>
                                     <input
                                         data-id={label.id}
                                         onClick={this.onToggleLabel}

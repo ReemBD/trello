@@ -46,7 +46,7 @@ export class _TaskDetailsInfo extends Component {
                         <div className="member-imgs flex align-center">
 
                             {task.members.map(member => {
-                                return <div className="task-member-img">
+                                return <div key={member._id} className="task-member-img">
                                     <img src={member.imgUrl} />
                                 </div>
                             })}
@@ -63,7 +63,7 @@ export class _TaskDetailsInfo extends Component {
                         <h3>Labels</h3>
                         <div className="task-labels flex">
                             {task.labels.map(label => {
-                                return <span className="task-label-preview flex align-center justify-center" style={{ backgroundColor: label.color }}>
+                                return <span key={label.id} className="task-label-preview flex align-center justify-center" style={{ backgroundColor: label.color }}>
                                     <span className="label-title">{label?.title}</span>
                                 </span>
                             })}

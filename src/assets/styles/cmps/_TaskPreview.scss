@@ -46,6 +46,18 @@
         height: 8px;
         border-radius: 5px;
         margin-inline-end: 2.5px;
+        padding: 0 10px;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.2px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 3px;
+
+        transition: height 0.3s;
+      }
+      .open {
+        height: 20px;
       }
     }
   }
