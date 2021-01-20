@@ -26,7 +26,9 @@ export class _TaskDetailsActivity extends Component {
         const task = currBoard.lists[listIdx].tasks[taskIdx]
 
         const taskActivities = currBoard.activities.filter(activity => {
-            return activity.task.id === task.id
+            if (activity.task) {
+                return activity.task.id === task.id
+            }
         })
         this.setState({ taskActivities })
     }

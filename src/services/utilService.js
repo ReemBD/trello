@@ -29,12 +29,13 @@ function makeId(length = 5) {
     return txt;
 }
 
-function formActivity({ user, txt }) {
+function formActivity({ user, txt, task = null }) {
     return {
         id: makeId(),
         createdAt: Date.now(),
         txt,
-        byMember: { imgUrl: user.imgUrl, fullname: user.fullname || 'Guest' },
+        byMember: { imgUrl: user?.imgUrl, fullname: user?.fullname || 'Guest' },
+        task: task ? { id: task.id, title: task.title } : null
     }
 }
 function formatTime(timestamp) {
