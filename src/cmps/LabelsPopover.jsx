@@ -5,6 +5,7 @@ import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
 import { PopoverHeader } from './PopoverHeader';
 import { cloneDeep } from 'lodash'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 export class _LabelsPopover extends Component {
     state = {
         labels: [
@@ -15,11 +16,14 @@ export class _LabelsPopover extends Component {
             { id: '105', color: "#c377e0", title: '', isPicked: false },
             { id: '107', color: "#1f79bf", title: '', isPicked: false },
             { id: '108', color: "#3cc2e0", title: '', isPicked: false },
-        ]
+        ],
+        elRefs: []
     }
+
 
     componentDidMount() {
         this.markExistingLabels()
+        this.setRefs()
     }
 
     markExistingLabels() {
@@ -31,11 +35,20 @@ export class _LabelsPopover extends Component {
             if (labelsIdsMap.includes(taskLabel.id)) {
                 const labelIdx = labels.findIndex(currLabel => currLabel.id === taskLabel.id)
                 labels[labelIdx].isPicked = true
+                labels[labelIdx].title = taskLabel.title
             }
         })
         this.setState({ labels })
     }
 
+    setRefs() {
+        const refs = []
+        this.state.labels.forEach(label => {
+            refs.push(React.createRef())
+        })
+        this.setState({ elRefs: refs })
+
+    }
     onToggleLabel = ev => {
         ev.stopPropagation()
         const { labels } = { ...this.state }
@@ -72,9 +85,30 @@ export class _LabelsPopover extends Component {
         this.setState({ labels: labelsCopy })
     }
 
+    onEnterPress = ev => {
+        if (!ev.target.value) return
+        if (ev.keyCode === 13 && ev.shiftKey === false) {
+            ev.preventDefault()
+            const { board, list, task, updateBoard } = this.props
+            const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+            const boardCopy = cloneDeep(board)
+            const { labels } = this.state
+            const labelsToAdd = labels.filter(label => label.isPicked)
+            boardCopy.lists[listIdx].tasks[taskIdx].labels = labelsToAdd
+            updateBoard(boardCopy)
+
+        }
+    }
+
+    onEditLabel = (labelIdx, ev) => {
+        ev.stopPropagation()
+        const { elRefs } = this.state
+        elRefs[labelIdx].current.focus()
+    }
+
 
     render() {
-        const { labels } = this.state
+        const { labels, elRefs } = this.state
         return (
             <div className="labels-popover quick-edit-popover" >
                 <PopoverHeader title='Labels' setCurrPopover={this.props.setCurrPopover} />
@@ -83,15 +117,19 @@ export class _LabelsPopover extends Component {
                         <h3 className="popover-section-header">Labels</h3>
                         {labels.map((label, labelIdx) => {
                             return (
+
                                 <div className="flex">
                                     <input
                                         data-id={label.id}
                                         onClick={this.onToggleLabel}
+                                        onMouseDown={(ev) => ev.preventDefault()}
                                         key={label.id}
                                         onChange={(ev) => this.handleChange(labelIdx, ev)}
                                         value={labels[labelIdx].title}
+                                        onKeyDown={this.onEnterPress}
+                                        ref={elRefs[labelIdx]}
                                         className={`popover-section-list-item ${label.isPicked && 'picked'}`} style={{ backgroundColor: label.color }}></input>
-                                    <span>Yo</span>
+                                    <EditOutlinedIcon onClick={(ev) => this.onEditLabel(labelIdx, ev)} />
                                 </div>
 
                             )
