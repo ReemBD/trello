@@ -15,7 +15,8 @@ export const boardService = {
     getListAndTaskIdxById,
     getEmptyList,
     getNotifications,
-    saveNotifications
+    saveNotifications,
+    getListByTaskId
 }
 
 const endpoint = 'board'
@@ -74,6 +75,12 @@ function getListIdxById(board, listId) {
     return listIdx
 }
 
+function getListByTaskId(board, taskId) {
+    const list = board.lists.find(list => {
+        return list.tasks.some(task => task.id === taskId)
+    })
+    return list
+}
 function getListAndTaskIdxById(board, listId, taskId) {
     const list = board.lists.find(list => list.id === listId)
     const listIdx = getListIdxById(board, listId)
@@ -116,7 +123,7 @@ function getNotifications() {
             txt: 'Its time for shnatz'
         },
         {
-            id: 'i104', 
+            id: 'i104',
             txt: 'Guest has joined the board'
         }
     ]

@@ -50,7 +50,15 @@ export class _Board extends Component {
                     }
                 }
             })
-            updateBoard(board)
+            const { user } = this.props
+            var activity;
+            if (user) {
+                activity = {
+                    user,
+                    txt: `${user.fullname || 'Guest'} has added list (${listToAdd.title}) to the board.`
+                }
+            }
+            updateBoard(board, activity)
         }
     }
 

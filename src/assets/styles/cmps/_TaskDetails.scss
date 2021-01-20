@@ -208,11 +208,14 @@
 
     .activity-txt {
       margin-bottom: 0;
-      text-transform: lowercase;
+      font-size: 16px;
+      font-weight: 400;
       .activity-member-name {
-        font-size: 16px;
         font-weight: 600;
         text-transform: capitalize;
+      }
+      .activity-task-title {
+        text-decoration: underline;
       }
     }
 

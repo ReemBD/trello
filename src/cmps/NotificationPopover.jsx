@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CloseIcon from '@material-ui/icons/Close';
 import { boardService } from '../services/boardService'
+import {PopoverHeader} from './PopoverHeader'
 export class NotificationPopover extends Component {
     state = {
         notifications: []
@@ -24,10 +25,7 @@ export class NotificationPopover extends Component {
         if (!notifications) return <h1>Loading...</h1>
         return (
             <div className="notification-popover flex column" onClick={ev => ev.stopPropagation()}>
-                <div className="popover-header flex align-center justify-center">
-                    <span className="popover-header-title">Notifications</span>
-                    <CloseIcon className="close-icon" onClick={setCurrPopover} />
-                </div>
+                <PopoverHeader title='Notifications' setCurrPopover={setCurrPopover}/>
                 <div className="notification-actions flex space-between">
                     <span className="view-all">View All</span>
                     <span className="mark-all-as-read">Mark All as Read</span>

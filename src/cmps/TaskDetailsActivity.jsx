@@ -26,7 +26,9 @@ export class _TaskDetailsActivity extends Component {
         const task = currBoard.lists[listIdx].tasks[taskIdx]
 
         const taskActivities = currBoard.activities.filter(activity => {
-            return activity.task.id === task.id
+            if (activity.task) {
+                return activity.task.id === task.id
+            }
         })
         this.setState({ taskActivities })
     }
@@ -124,7 +126,7 @@ export class _TaskDetailsActivity extends Component {
                     </div>
                     {taskComments ?
                         taskComments.map((comment, commentIdx) => {
-                            return <div className="task-user-comment flex">
+                            return <div key={comment.id} className="task-user-comment flex">
                                 <div className="task-member-img"><img src={comment.byMember.imgUrl} /></div>
                                 <div className="activity-info flex column justify-center">
                                     <p className="activity-txt">
@@ -143,12 +145,13 @@ export class _TaskDetailsActivity extends Component {
                 <div className={`activity-container ${!isActivityOpen && "hidden"}`}>
                     {taskActivities &&
                         taskActivities.map(activity => {
-                            return <div className="task-user-activity flex">
+                            return <div key={activity.id} className="task-user-activity flex">
                                 <div className="task-member-img"><img src={activity.byMember.imgUrl} /></div>
                                 <div className="activity-info flex column justify-center">
                                     <p className="activity-txt">
                                         <span className="activity-member-name">{activity.byMember.fullname} </span>
-                                        {activity.txt}
+                                        <span>{activity.txt} </span>
+                                        <span className="activity-task-title">{activity.task.title}</span>
                                     </p>
                                     <div className="activity-date">
                                         <span>{formatDistance(activity.createdAt, Date.now())}</span>

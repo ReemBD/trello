@@ -1,5 +1,6 @@
 import { boardService } from '../../services/boardService'
 import { socketService } from '../../services/socketService'
+import { utilService } from '../../services/utilService'
 
 export function setBoard(boardId) {
     return async dispatch => {
@@ -15,20 +16,23 @@ export function setBoard(boardId) {
 }
 
 
-export function updateBoard(board, isEmitting = true, notification = null) {
+export function updateBoard(board, activity = undefined, isEmitting = true) {
+    //ACTIVITY PARAM MUST BE AN OBJECT!
     return async dispatch => {
         try {
+            if (activity === undefined) console.warn('Warning: You have not entered an activity for this action.')
+            var fullActivity = activity
+            if (activity && isEmitting) {
+                fullActivity = utilService.formActivity(activity)
+                board.activities = [fullActivity, ...board.activities] || [fullActivity]
+            }
             const updatedBoard = await boardService.save(board)
             const action = {
                 type: 'UPDATE_BOARD',
                 updatedBoard
             }
             dispatch(action)
-            isEmitting && socketService.emit('board updated', updatedBoard)
-            console.log('notificaiton: ', notification);
-            if (notification) {
-                socketService.emit('do notification', notification)
-            }
+            isEmitting && socketService.emit('board updated', { updatedBoard, activity: fullActivity })
         } catch (err) {
             console.log('couldnt update board', err);
         }

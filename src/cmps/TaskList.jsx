@@ -64,10 +64,10 @@ export class TaskList extends Component {
         return (
             <Draggable draggableId={list.id} index={listIdx} >
 
-                {(provided,snapshot) => (
+                {(provided, snapshot) => (
                     <li
                         style={{ backgroundColor: list.style.bgColor }}
-                        className={`task-list task-list-container ${snapshot.isDragging && 'moving' }  `} 
+                        className={`task-list task-list-container ${snapshot.isDragging && 'moving'}  `}
                         {...provided.dragHandleProps}
                         {...provided.draggableProps}
                         ref={provided.innerRef}>
@@ -75,12 +75,13 @@ export class TaskList extends Component {
                         <ListTitle
                             {...provided.dragHandleProps}
                             {...this.props}
+                            {...this.listTitleHandlersProps}
                             isListActionsOpen={isListActionsOpen} />
 
                         <div className="task-previews-container">
                             <Droppable droppableId={list.id} type="task">
                                 {provided => (
-                                    <div ref={provided.innerRef} {...provided.droppableProps} className="flex column" style={{ flexGrow: "1", minHeight:"1px" }}>
+                                    <div ref={provided.innerRef} {...provided.droppableProps} className="flex column" style={{ flexGrow: "1", minHeight: "1px" }}>
 
                                         {tasks ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
 

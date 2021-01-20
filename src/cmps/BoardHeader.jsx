@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { BoardFilter } from './BoardFilter'
 import NotificationsIcon from '@material-ui/icons/NotificationsNone';
 import { socketService } from '../services/socketService'
 import { NotificationPopover } from './NotificationPopover'
+import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
+import { ActivityMenu } from './ActivityMenu'
 export class BoardHeader extends Component {
 
     state = {
@@ -28,6 +30,7 @@ export class BoardHeader extends Component {
         const { members } = board
         const { currBadgeCount } = this.state
         const isCurrPopover = currPopover === 'NOTIFICATION_POPOVER'
+        // const isActivityCurrPopover = currPopover === 'ACTIVITY_MENU'
         return (
             <>
                 <header className="board-header board-layout flex">
@@ -44,9 +47,14 @@ export class BoardHeader extends Component {
                                 setCurrPopover('NOTIFICATION_POPOVER')
                             }} />
                         </li>
+                        <li><MoreHorizOutlinedIcon className="activity-menu-icon" onClick={ev => {
+                            ev.stopPropagation()
+                            setCurrPopover('ACTIVITY_MENU')
+                        }} /></li>
                     </ul>
                 </header>
                 {isCurrPopover && <NotificationPopover {...this.props} />}
+                <ActivityMenu {...this.props} />
             </>
         )
     }

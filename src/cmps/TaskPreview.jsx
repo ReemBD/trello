@@ -13,7 +13,7 @@ import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import { format } from 'date-fns'
 import { Draggable } from 'react-beautiful-dnd';
 import { socketService } from '../services/socketService'
-
+import BoardMemberImg from './BoardMemberImg'
 
 export class _TaskPreview extends Component {
 
@@ -22,7 +22,8 @@ export class _TaskPreview extends Component {
         isEditOpen: false,
         taskTitle: '',
         titleBeforeChange: '',
-        unreadNotificationsCount: 0
+        unreadNotificationsCount: 0,
+        isLabelOpen: false,
     }
 
     componentDidMount() {
@@ -38,7 +39,7 @@ export class _TaskPreview extends Component {
         this.setState({ unreadNotificationsCount: unreadNotificationsCount + 1 }, () => {
             // console.log('unread notif count: ', this.state.unreadNotificationsCount);
         })
-    }   
+    }
 
     componentDidMount() {
         const { task } = this.props
@@ -117,17 +118,21 @@ export class _TaskPreview extends Component {
         const { taskTitle } = this.state
         const { list, board, task } = this.props
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
-
         const copyBoard = { ...board }
         copyBoard.lists[listIdx].tasks[taskIdx].title = taskTitle
-
-        await this.props.updateBoard(copyBoard)
+        const { user } = this.props
+        await this.props.updateBoard(copyBoard, { user, txt: `has changed task (${task.title}) title`, task: { ...this.props.task } })
         this.onToggleEdit(ev)
+    }
+
+    toggleLabel = () => {
+        const { isLabelOpen } = this.state
+        this.setState({ isLabelOpen: !isLabelOpen })
     }
 
     render() {
         const { task, list, taskIdx } = this.props
-        const { isEditOpen, isTaskHovered, unreadNotificationsCount } = this.state
+        const { isEditOpen, isTaskHovered, unreadNotificationsCount, isLabelOpen } = this.state
         return (
             <Fragment>
                 <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
@@ -146,7 +151,15 @@ export class _TaskPreview extends Component {
                                 }
                                 {task.labels?.length && <div className="top-line-preview-container flex">
                                     <div className="labels-container flex">
-                                        {task.labels.map(label => { return <div style={{ backgroundColor: label.color }} key={label.id} className="task-label" title={label.title}></div> })}
+                                        {task.labels.map(label => {
+                                            return (
+                                                <div onClick={(ev) => {
+                                                    ev.stopPropagation()
+                                                    this.toggleLabel()
+                                                }} style={{ backgroundColor: label.color }} key={label.id} className={`task-label ${isLabelOpen && "open"}`} title={label.title}>{isLabelOpen ? label.title : ''}</div>
+                                            )
+
+                                        })}
 
                                     </div>
                                     <div className="quick-edit-wrapper">
@@ -171,7 +184,7 @@ export class _TaskPreview extends Component {
                                     </div>
                                     {task.members?.length ?
                                         <div className="task-members-imgs flex">
-                                            {task.members.map(member => { return <div key={member._id} className="task-member-img-wrapper"><img className="task-member-preview-img" src={member.imgUrl} /></div> })}
+                                            {task.members.map(member => { return <BoardMemberImg key={member._id} member={member} /> })}
                                         </div>
                                         : ''}
 
@@ -207,10 +220,10 @@ const mapStateToProps = state => {
 export const TaskPreview = connect(mapStateToProps, mapDispatchToProps)(withRouter(_TaskPreview))
 
 
-/* 
+/*
 Sockets activities plan:
 logged in user is adding somebody to a task.
-at the same time board is updated , 
+at the same time board is updated ,
 updateUserActivities is sent,
 "you have been added to the task."
 

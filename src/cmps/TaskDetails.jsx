@@ -141,7 +141,10 @@ export class _TaskDetails extends Component {
             <section onClick={() => currPopover ? this.togglePopover('') : ''} className="task-details">
                 {this.state.isDetailsOpen &&
                     <div className={`${this.props.isOverlayOpen && "main-overlay"} ${!isDetailsOpen && "hidden"}`} onClick={this.onOverlayClick}>
-                        <div className="details-modal flex" onClick={(ev) => ev.stopPropagation()}>
+                        <div className="details-modal flex" onClick={(ev) => {
+                            ev.stopPropagation()
+                            if (currPopover) this.togglePopover('')
+                        }}>
                             <div className="main-details flex column">
 
                                 <div className="details-header flex column">
@@ -158,7 +161,7 @@ export class _TaskDetails extends Component {
                                     <p>in list <span className="details-list-name">{currList?.title}</span></p>
                                 </div>
                                 <div className="details-info">
-                                    <TaskDetailsInfo board={board} list={currList} task={currTask} {...this.props} />
+                                    <TaskDetailsInfo board={board} list={currList} task={currTask} togglePopover={this.togglePopover} currPopover={this.state.currPopover}  {...this.props} />
                                 </div>
                                 <div className="details-description">
                                     <TaskDetailsDesc board={board} list={currList} task={currTask} />

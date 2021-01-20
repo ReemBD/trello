@@ -3,7 +3,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { boardService } from '../services/boardService'
 import DoneIcon from '@material-ui/icons/Done'
 import { socketService } from '../services/socketService'
-
+import { PopoverHeader } from './PopoverHeader'
 export class ChangeMembersPopover extends Component {
     state = {
         currTask: {},
@@ -40,7 +40,9 @@ export class ChangeMembersPopover extends Component {
         const miniMember = { _id, username, fullname, imgUrl }
         currTask.members ? currTask.members.push(miniMember) : currTask.members = [miniMember]
         this.setState({ currTask })
-        await updateBoard(board)
+        const { user } = { ...this.props }
+        const activity = { user, txt: `has added ${miniMember.fullname} to task`, task: { ...currTask } }
+        await updateBoard(board, activity)
         // socketService.emit('task updated', { taskId: currTask.id, activityTxt: `${miniMember.fullname} has joined this task.` })
         // socketService.emit('member joined task', currTask.id)
     }
@@ -54,7 +56,9 @@ export class ChangeMembersPopover extends Component {
         const currTask = board.lists[listIdx].tasks[taskIdx]
         currTask.members.splice(memberIdx, 1)
         this.setState({ currTask })
-        await updateBoard(board)
+        const { user } = { ...this.props }
+        const activity = { user, txt: `has removed ${fullname} to task`, task: { ...currTask } }
+        await updateBoard(board,activity)
         // socketService.emit('task updated', { taskId: currTask.id, activityTxt: `${fullname} has left this task.` })
         // socketService.emit('member left task', currTask.id)
 
@@ -76,10 +80,7 @@ export class ChangeMembersPopover extends Component {
         const boardMembers = this.props.board.members
         return (
             <div className="change-members-popover " onClick={(ev) => { ev.stopPropagation() }}>
-                <div className="popover-header flex align-center justify-center quick-edit-popover">
-                    <span className="popover-header-title">Members</span>
-                    <CloseIcon onClick={() => { this.props.setCurrPopover() }} className="popover-header-close-btn" />
-                </div>
+                <PopoverHeader title='Members' setCurrPopover={this.props.setCurrPopover} />
                 <section className="popover-section">
                     <ul className="popover-section-list clear-list">
                         <h3 className="popover-section-header">Board members</h3>

@@ -37,7 +37,7 @@ export class _TaskComposer extends Component {
                 description: '',
             }
         }, () => {
-            this.props.updateBoard(board, true, {txt: 'Added Task'})
+            this.props.updateBoard(board)
         })
     }
 
