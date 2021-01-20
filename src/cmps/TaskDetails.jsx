@@ -158,7 +158,7 @@ export class _TaskDetails extends Component {
                                     <p>in list <span className="details-list-name">{currList?.title}</span></p>
                                 </div>
                                 <div className="details-info">
-                                    <TaskDetailsInfo board={board} list={currList} task={currTask} {...this.props} />
+                                    <TaskDetailsInfo board={board} list={currList} task={currTask} togglePopover={this.togglePopover} currPopover={this.state.currPopover}  {...this.props} />
                                 </div>
                                 <div className="details-description">
                                     <TaskDetailsDesc board={board} list={currList} task={currTask} />
