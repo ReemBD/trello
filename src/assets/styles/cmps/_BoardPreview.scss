@@ -14,6 +14,11 @@
   &.board-actions-open {
     z-index: 4;
   }
+  .toggle-actions-icon {
+    position: absolute;
+    right: 5px;
+    top: -50px;
+  }
   .card-overlay {
     position: absolute;
     top: 0;
@@ -98,7 +103,7 @@
       box-shadow: 0px 1px 6px #00000099;
       z-index: 1;
       left: -50px;
-      top: 5px;
+      top: -24px;
       position: absolute;
       .popover-header {
           height: 40px;
