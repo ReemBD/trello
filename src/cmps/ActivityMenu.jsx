@@ -28,13 +28,13 @@ export class ActivityMenu extends Component {
                     <ul className="popover-section-list clear-list">
                         {activities.map(activity => {
                             return <li key={activity.id} className="popover-section-list-item">
-                                <BoardMemberImg member={board.members[0]} />
+                                <BoardMemberImg member={activity.byMember} />
                                 <div className="activity-txt">
                                     <span className="activity-by">{activity.byMember.fullname} </span>
                                     <span className="txt">
                                         {activity.txt} {activity.task && <span className="task-title" onClick={() => { this.onOpenTask(activity.task.id) }}>{activity.task.title}</span>}</span>
                                     <div className="activity-at">
-                                        {formatDistanceToNow(new Date(activity.createdAt), {addSuffix: true})}
+                                        {formatDistanceToNow(new Date(activity.createdAt), { addSuffix: true })}
                                     </div>
                                 </div>
                             </li>
