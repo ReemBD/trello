@@ -13,9 +13,19 @@
     margin-bottom: 0.5625rem;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "homepage-heading homepage-heading homepage-image homepage-image homepage-image"
+      "homepage-heading homepage-heading homepage-image homepage-image homepage-image"
+      "homepage-heading homepage-heading homepage-image homepage-image homepage-image";
+
     .homepage-image {
+      grid-area: homepage-image;
       height: 100%;
-      width: 980px;
       background-image: url("../../img/fold-hero.svg");
       background-size: contain;
       background-position: center;
@@ -23,8 +33,7 @@
     }
 
     .homepage-heading {
-      flex-basis: 45%;
-      padding-left: 20%;
+      grid-area: homepage-heading;
       h1 {
         font-family: Kaushan, "Segoe UI";
         font-size: 6rem;
@@ -38,7 +47,7 @@
         letter-spacing: 0.3px;
 
         span {
-          color: #ec3636;
+          color: #df3c86;
         }
 
         &:last-of-type {
@@ -54,133 +63,154 @@
         line-height: initial;
         position: relative;
         overflow: hidden;
-      }
-      .cta-btn::before {
-        content: "";
-        width: 50px;
-        position: absolute;
-        top: 0;
-        left: -50px;
-        bottom: 0;
-        z-index: 9;
-        background: -webkit-gradient(
-          linear,
-          left top,
-          right top,
-          from(rgba(255, 255, 255, 0.2)),
-          color-stop(50%, #fff),
-          to(rgba(255, 255, 255, 0.2))
-        );
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.2) 0%,
-          #fff 50%,
-          rgba(255, 255, 255, 0.2) 100%
-        );
-      }
 
-      .cta-btn:hover:before {
-        -webkit-animation: lightning-effect 1.5s ease-in-out;
-        animation: lightning-effect 1.5s ease-in-out;
+        transition: all 0.2s ease;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -200%;
+          width: 200%;
+          height: 100%;
+          transform: skewX(-20deg);
+          background-image: linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+          );
+        }
+
+        &:hover:after {
+          animation: shine 1.6s ease;
+        }
+
+        &:active {
+          transform: translateY(1px);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
       }
+    }
+  }
+
+  .features {
+    max-width: 980px;
+    margin: 0 auto;
+    h3 {
+      font-size: 30px;
+      line-height: 26px;
+    }
+
+    & > div {
+      height: 350px;
+      width: 100%;
+    }
+
+    span {
+      font-size: rem(18px);
+    }
+
+    .features-feature-1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "feature-1-bg feature-1-bg feature-1-bg feature-1-txt feature-1-txt"
+        "feature-1-bg feature-1-bg feature-1-bg feature-1-txt feature-1-txt"
+        "feature-1-bg feature-1-bg feature-1-bg feature-1-txt feature-1-txt";
+
+      .feature-1-txt {
+        grid-area: feature-1-txt;
+      }
+      .feature-1-bg {
+        @include svg-bg;
+        background-image: url("../../img/Successful-completion-of-project.svg");
+        grid-area: feature-1-bg;
+      }
+    }
+
+    .features-feature-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "feature-2-bg feature-2-bg feature-2-bg feature-2-txt feature-2-txt"
+        "feature-2-bg feature-2-bg feature-2-bg feature-2-txt feature-2-txt"
+        "feature-2-bg feature-2-bg feature-2-bg feature-2-txt feature-2-txt";
+      .feature-2-txt {
+        grid-area: feature-2-bg;
+        transform: translateX(20%);
+      }
+      .feature-2-bg {
+        @include svg-bg;
+        background-image: url("../../img/Save-time-and-effort.svg");
+        grid-area: feature-2-txt;
+      }
+    }
+
+    .features-feature-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "feature-3-bg feature-3-bg feature-3-bg feature-3-txt feature-3-txt"
+        "feature-3-bg feature-3-bg feature-3-bg feature-3-txt feature-3-txt"
+        "feature-3-bg feature-3-bg feature-3-bg feature-3-txt feature-3-txt";
+      .feature-3-txt {
+        grid-area: feature-3-txt;
+      }
+      .feature-3-bg {
+        @include svg-bg;
+        background-image: url("../../img/Code\ Version\ Control-blue.svg");
+        grid-area: feature-3-bg;
+      }
+    }
+  }
+
+  footer {
+    background-color: #333;
+    color: #eee;
+    padding: 20px 0;
+    p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   }
 }
 
-.features {
-  .features-heading {
-    font-weight: 400;
-    font-size: 28px;
-    margin-bottom: rem(35px);
-  }
-
-  & > div {
-    height: 350px;
-    width: 100%;
-  }
-
-  .features-feature-1 {
-    .feature-1-txt {
-      margin-right: rem(60px);
-    }
-    .feature-1-bg {
-      @include svg-bg;
-      background-image: url("../../img/Successful-completion-of-project.svg");
-    }
-  }
-
-  .features-feature-2 {
-    background-color: #fff;
-    .feature-2-txt {
-      margin-left: rem(60px);
-    }
-    .feature-2-bg {
-      @include svg-bg;
-      background-image: url("../../img/Save-time-and-effort.svg");
-    }
-  }
-
-  .features-feature-3 {
-    .feature-3-txt {
-      margin-right: rem(60px);
-    }
-    .feature-3-bg {
-      @include svg-bg;
-      background-image: url("../../img/Code\ Version\ Control-blue.svg");
-    }
-  }
+.homepage-nav {
+  background-color: transparent;
 }
 
-/*Keyframes*/
-@-webkit-keyframes lightning-effect {
-  0% {
-    left: -50px;
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      from(rgba(255, 255, 255, 0.2)),
-      color-stop(50%, #fff),
-      to(rgba(255, 255, 255, 0.2))
-    );
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.2) 0%,
-      #fff 50%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
-  }
-  50% {
-    left: 100%;
-  }
-  to {
-    left: -50px;
-    background: 0 0;
+.colored-nav {
+  background-color: #ebeef5;
+}
+
+@-moz-keyframes shine {
+  100% {
+    left: 200%;
   }
 }
-@keyframes lightning-effect {
-  0% {
-    left: -50px;
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      from(rgba(255, 255, 255, 0.2)),
-      color-stop(50%, #fff),
-      to(rgba(255, 255, 255, 0.2))
-    );
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.2) 0%,
-      #fff 50%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
+@-webkit-keyframes shine {
+  100% {
+    left: 200%;
   }
-  50% {
-    left: 100%;
+}
+@-o-keyframes shine {
+  100% {
+    left: 200%;
   }
-  to {
-    left: -50px;
-    background: 0 0;
+}
+@keyframes shine {
+  100% {
+    left: 200%;
   }
 }
