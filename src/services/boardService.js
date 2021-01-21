@@ -28,13 +28,13 @@ async function query() {
 }
 
 //UPDATES ENTIRE BOARD FOR ANY CHANGE INSIDE THE BOARD
-async function save(board) {
+async function save(board, activity = null) {
     var savedBoard;
 
     if (!board._id) {
         savedBoard = await httpService.post(endpoint, board)
     } else {
-        savedBoard = await httpService.put(`${endpoint}/${board._id}`, board)
+        savedBoard = await httpService.put(`${endpoint}/${board._id}`, { board, activity })
     }
 
     return savedBoard

@@ -18,10 +18,15 @@ export class _Board extends Component {
                 bgColor: '',
                 title: { bgColor: '' }
             }
-        }
+        },
+        isLabelOpen: false
     }
 
     elListTitleRef = React.createRef()
+
+    toggleLabels = (boolean = !this.state.isLabelOpen) => {
+        this.setState({ isLabelOpen: boolean })
+    }
 
     addListHandlers = {
         onClick: (ev) => {
@@ -50,14 +55,7 @@ export class _Board extends Component {
                     }
                 }
             })
-            const { user } = this.props
-            var activity;
-            if (user) {
-                activity = {
-                    user,
-                    txt: `${user.fullname || 'Guest'} has added list (${listToAdd.title}) to the board.`
-                }
-            }
+            var activity = { txt: `has added list (${listToAdd.title}) to the board.` }
             updateBoard(board, activity)
         }
     }
@@ -106,7 +104,7 @@ export class _Board extends Component {
         const { board, currPopover, } = this.props
         const { lists } = board
         const isCurrPopover = (currPopover === 'LIST_ADD')
-        const { listToAdd } = this.state
+        const { listToAdd,isLabelOpen } = this.state
         if (!board) return <h1>loading...</h1>
         return (
             <div className="board board-layout" style={{ height: "82vh" }}>
@@ -125,6 +123,8 @@ export class _Board extends Component {
                             >
                                 {lists.map((list, idx) =>
                                     <TaskList
+                                        toggleLabels={this.toggleLabels}
+                                        isLabelOpen={isLabelOpen}
                                         key={list.id} list={list} listIdx={idx}
                                         title={list.title} {...this.props}
                                     />)}

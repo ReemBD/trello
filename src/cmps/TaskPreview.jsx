@@ -129,14 +129,9 @@ export class _TaskPreview extends Component {
         this.onToggleEdit(ev)
     }
 
-    toggleLabel = () => {
-        const { isLabelOpen } = this.state
-        this.setState({ isLabelOpen: !isLabelOpen })
-    }
-
     render() {
-        const { task, list, taskIdx } = this.props
-        const { isEditOpen, isTaskHovered, unreadNotificationsCount, isLabelOpen } = this.state
+        const { task, list, taskIdx, toggleLabels, isLabelOpen } = this.props
+        const { isEditOpen, isTaskHovered, unreadNotificationsCount } = this.state
         return (
             <Fragment>
                 <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
@@ -159,7 +154,7 @@ export class _TaskPreview extends Component {
                                             return (
                                                 <div onClick={(ev) => {
                                                     ev.stopPropagation()
-                                                    this.toggleLabel()
+                                                    toggleLabels()
                                                 }} style={{ backgroundColor: label.color }} key={label.id} className={`task-label ${isLabelOpen && "open"}`} title={label.title}>{isLabelOpen ? label.title : ''}</div>
                                             )
 

@@ -16,23 +16,23 @@ export function setBoard(boardId) {
 }
 
 
-export function updateBoard(board, activity = undefined, isEmitting = true) {
+export function updateBoard(board, activity = null, isEmitting = true) {
     //ACTIVITY PARAM MUST BE AN OBJECT!
     return async dispatch => {
         try {
-            if (activity === undefined) console.warn('Warning: You have not entered an activity for this action.')
-            var fullActivity = activity
-            if (activity) {
-                fullActivity = utilService.formActivity(activity)
-                board.activities = [fullActivity, ...board.activities] || [fullActivity]
-            }
-            const updatedBoard = await boardService.save(board)
+            // var fullActivity = activity
+            // if (activity) {
+            //     fullActivity = utilService.formActivity(activity)
+            //     board.activities = [fullActivity, ...board.activities] || [fullActivity]
+            // }
+            const updatedBoard = isEmitting ? await boardService.save(board, activity, isEmitting) : board
+            console.log('updatedBoard: ', updatedBoard);
             const action = {
                 type: 'UPDATE_BOARD',
                 updatedBoard
             }
             dispatch(action)
-            isEmitting && socketService.emit('board updated', { updatedBoard, activity: fullActivity })
+            // isEmitting && socketService.emit('board updated', { updatedBoard, activity: fullActivity })
         } catch (err) {
             console.log('couldnt update board', err);
         }

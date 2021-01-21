@@ -89,8 +89,8 @@ export class TaskList extends Component {
                                     </div>
                                 )}
                             </Droppable>
-                            <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
                         </div>
+                            <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
                     </li>
                 )
                 }

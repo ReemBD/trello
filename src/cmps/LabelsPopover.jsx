@@ -96,7 +96,6 @@ export class _LabelsPopover extends Component {
             const labelsToAdd = labels.filter(label => label.isPicked)
             boardCopy.lists[listIdx].tasks[taskIdx].labels = labelsToAdd
             updateBoard(boardCopy)
-
         }
     }
 
