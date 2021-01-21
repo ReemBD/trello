@@ -3,7 +3,8 @@ import { boardService } from '../services/boardService'
 import { toggleTask, setCurrListAndTaskIdx, updateBoard } from '../store/actions/boardActions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@material-ui/icons/CreateOutlined';
 import CheckIcon from '@material-ui/icons/CheckBoxOutlined';
 import DueDateIcon from '@material-ui/icons/QueryBuilderOutlined';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
@@ -58,7 +59,10 @@ export class _TaskPreview extends Component {
         this.setState({ taskTitle: titleBeforeChange })
     }
 
-
+    get doesContainIndics() {
+        const { task } = this.props
+        return task.description || task.checklists?.length || task.dueDate || task.comments?.length || task.members?.length
+    }
     onOpenDetails = async (ev) => {
         ev.stopPropagation()
         if (this.state.isEditOpen) return
@@ -163,7 +167,7 @@ export class _TaskPreview extends Component {
 
                                     </div>
                                     <div className="quick-edit-wrapper">
-                                        {isTaskHovered && <EditIcon fontSize="large" className="edit-icon" onClick={this.onToggleEdit} />}
+                                        {isTaskHovered && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>
                                 </div>}
@@ -174,22 +178,22 @@ export class _TaskPreview extends Component {
                                         {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>}
                                 </div>
-                                <div className="task-preview-icons-container indication-icon flex ">
-                                    <div className="task-preview-indication-icons flex start">
-                                        {task.description && <NotesOutlinedIcon className="description-indication-icon indication-icon" />}
-                                        {task.checklists?.length ? <div className="flex align-center"><CheckIcon className="indication-icon" />{this.taskDoneTodosLength}/{this.taskTodosLength}</div> : ''}
-                                        {task.dueDate ? <div className="flex align-center"><DueDateIcon className="indication-icon" /><div>{format(new Date(task?.dueDate?.timestamp), 'LLL')} {format(new Date(task?.dueDate?.timestamp), 'd')}</div></div> : ''}
-                                        {task.comments && <CommentIcon className="comment-indication-icon indication-icon" />}
-                                        {unreadNotificationsCount ? <div className="notification-indicaiton-container flex align-center"> <NotificationIcon className="indication-icon" /><div className="notification-count">{unreadNotificationsCount}</div></div> : ''}
-                                    </div>
-                                    {task.members?.length ?
-                                        <div className="task-members-imgs flex">
-                                            {task.members.map(member => { return <BoardMemberImg key={member._id} member={member} /> })}
+                                {this.doesContainIndics &&
+                                    <div className="task-preview-icons-container indication-icon flex ">
+                                        <div className="task-preview-indication-icons flex start">
+                                            {task.description && <NotesOutlinedIcon className="description-indication-icon indication-icon" />}
+                                            {task.checklists?.length ? <div className="flex align-center"><CheckIcon className="indication-icon" />{this.taskDoneTodosLength}/{this.taskTodosLength}</div> : ''}
+                                            {task.dueDate ? <div className="flex align-center"><DueDateIcon className="indication-icon" /><div>{format(new Date(task?.dueDate?.timestamp), 'LLL')} {format(new Date(task?.dueDate?.timestamp), 'd')}</div></div> : ''}
+                                            {task.comments && <CommentIcon className="comment-indication-icon indication-icon" />}
                                         </div>
-                                        : ''}
+                                        {task.members?.length ?
+                                            <div className="task-members-imgs flex">
+                                                {task.members.map(member => { return <BoardMemberImg key={member._id} member={member} /> })}
+                                            </div>
+                                            : ''}
 
-                                </div>
-
+                                    </div>
+                                }
                                 {isEditOpen && <button className="primary-btn quick-btn" onClick={this.onSaveTitle}> Save </button>}
                             </div >
 

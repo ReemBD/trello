@@ -39,14 +39,17 @@
     .toggle-actions-icon {
       transition: transform 0.11s;
       position: absolute;
-      right: 10px;
+      right: 0;
       top: -12px;
-      width: 25px;
+      width: 27px;
+      padding-left: 5px;
+      padding-right: 5px;
       border-radius: 3px;
       margin-inline-end: 4px;
       cursor: pointer;
       &:hover {
-        background-color: rgba(61, 61, 61, 0.411);
+        // background-color: rgba(61, 61, 61, 0.411);
+        // background-color: rgb(226, 228, 233)
       }
     }
   }

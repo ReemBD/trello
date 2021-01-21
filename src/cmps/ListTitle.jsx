@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateBoard, toggleOverlay } from '../store/actions/boardActions'
 import { boardService } from '../services/boardService'
+import { utilService } from '../services/utilService'
 import { setCurrPopover } from '../store/actions/popoverActions'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { ListActions } from './ListActions'
@@ -15,7 +16,7 @@ export class _ListTitle extends Component {
 
     componentDidMount() {
         const { title } = this.props
-        
+
         this.setState({ title })
     }
 
@@ -48,6 +49,16 @@ export class _ListTitle extends Component {
         }
     }
 
+    editIconHandlers = {
+        onMouseEnter: ({ target }) => {
+            const { list } = this.props
+            const bgColor = utilService.lightenColor(list.style.title.bgColor, 10)
+            target.style.backgroundColor = bgColor
+        },
+        onMouseLeave: ({ target }) => {
+            target.style.backgroundColor = 'transparent'
+        }
+    }
     onPressEnter = (ev) => {
         ev.preventDefault()
         this.elListTitleRef.current.blur()
@@ -56,7 +67,7 @@ export class _ListTitle extends Component {
     onToggleListActions = (ev) => {
         ev.stopPropagation()
         console.log('event: ', ev.isPropagationStopped());
-            (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
+        (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
 
     }
 
@@ -75,7 +86,11 @@ export class _ListTitle extends Component {
                     value={this.state.title}
                     name="title" />
                 <div className="list-actions-popover-wrapper">
-                    {<MoreHorizIcon onClick={this.onToggleListActions} className={`toggle-actions-icon ${isComposerOpen && 'close'}`} />}
+                    {<MoreHorizIcon
+                        {...this.editIconHandlers}
+                        onClick={this.onToggleListActions}
+
+                        className={`toggle-actions-icon ${isComposerOpen && 'close'}`} />}
                     {isCurrPopover && <ListActions {...this.props} />}
                 </div>
             </form>
