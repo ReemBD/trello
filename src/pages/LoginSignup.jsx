@@ -12,7 +12,7 @@ export class _LoginSignup extends Component {
             username: '',
             fullname: '',
             password: '',
-            imgUrl: 'https://res.cloudinary.com/nofar/image/upload/c_thumb,w_200,g_face/v1610699691/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1dab901.4508913715280626898959_lmrsj5.png'
+            imgUrl: ''
         },
         loginCred: {
             username: '',
@@ -101,13 +101,13 @@ export class _LoginSignup extends Component {
                 username: '',
                 fullname: '',
                 password: '',
-                imgUrl: 'https://res.cloudinary.com/nofar/image/upload/c_thumb,w_200,g_face/v1610699691/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1dab901.4508913715280626898959_lmrsj5.png'
+                imgUrl: ''
             },
             loginCred: {
                 username: '',
                 password: ''
             },
-            isNewUser: false,
+            isNewUser: true,
             msg: '',
             isUploading: false,
         })
@@ -127,11 +127,10 @@ export class _LoginSignup extends Component {
 
                     <div className={`login-signup-wrapper flex  ${isUploading && 'uploadStage'}`} >
 
-                        {/* <a href='https://www.freepik.com/vectors/website'>Website vector created by stories - www.freepik.com</a> */}
 
 
 
-                        {user && <div className="glass-form flex column">
+                        {user && <div className="glass-form ">
                             <h1>Welcome {user.fullname}</h1>
                             <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
                             <button> <Link to="/board"> Start Now </Link> </button>
@@ -139,10 +138,9 @@ export class _LoginSignup extends Component {
                         </div>}
 
 
-                        {!user && <div>
-                            <form className={`glass-form login ${!isNewUser && "ghost"} `} onSubmit={this.onSubmit}>
-                                {/* <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span> */}
-                                {/* <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span> */}
+                        {!user && isNewUser && <div>
+                            <form className={`glass-form   `} onSubmit={this.onSubmit}>
+
 
                                 <h1>Sign Up</h1>
 
@@ -151,8 +149,8 @@ export class _LoginSignup extends Component {
                                 }}>  </div>
 
 
-                                <button className="with-btn">Sign up with google <i class="fab fa-google"></i></button>
-                                <button className="with-btn">Sign up with facebook <i class="fab fa-facebook"></i></button>
+                                <button className="with-btn">Sign up with google <i className="fab fa-google"></i></button>
+                                <button className="with-btn">Sign up with facebook <i className="fab fa-facebook"></i></button>
 
                                 <label> click here to upload your profile
                      <input onChange={this.onUploadImg} type="file" hidden /></label>
@@ -160,7 +158,7 @@ export class _LoginSignup extends Component {
                                 <input type="text" value={signupCred.fullname} name="fullname" placeholder="Name" onChange={this.handleInput} />
                                 <input type="text" value={signupCred.username} name="username" placeholder="username" onChange={this.handleInput} />
                                 <input type="password" className="password" value={signupCred.password} name="password" placeholder="Password" onChange={this.handleInput} />
-                                <span style={{ color: '#fff' }}>{msg}</span>
+                                <span >{msg}</span>
 
 
                             </form>
@@ -169,21 +167,25 @@ export class _LoginSignup extends Component {
 
                         </div>
                         }
-                        {!user && <form className={`glass-form ${isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
-                            <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span>
-                                <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span>
+                        {!user && !isNewUser && <div>
+                            < form className={`glass-form  login`} onSubmit={this.onSubmit}>
 
-                            <h1 className="login-h1" >Log In</h1>
 
-                            <input type="text" name="username" value={loginCred.username} placeholder="username" onChange={this.handleInput} />
-                            <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
-                            <button>Sign In</button>
-                            <span style={{ color: '#fff' }}>{msg}</span>
+                                <h1 >Log In</h1>
 
-                        </form>
+                                <input type="text" name="username" value={loginCred.username} placeholder="username" onChange={this.handleInput} />
+                                <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
+
+                                <span>{msg}</span>
+
+                            </form>
+                            <button className="primary-btn" ><ArrowForwardIcon /></button>
+                            <p>Dont have an account? <span onClick={this.toggleForms} >sign Up</span> </p>
+
+                        </div>
                         }
                         <div className="SVG" >
-                            <img src="../assets/img/login.png" alt=""/>
+                            <img src="../assets/img/login.png" alt="" />
                         </div>
                     </div>
 
