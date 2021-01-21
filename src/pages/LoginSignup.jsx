@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { cloudinaryService } from '../services/cloudinaryService'
 import { setUser, clearUser } from '../store/actions/userAction'
+import ArrowRightOutlinedIcon from '@material-ui/icons/ArrowRightOutlined';
 export class _LoginSignup extends Component {
 
     state = {
@@ -53,8 +55,8 @@ export class _LoginSignup extends Component {
 
         try {
             await this.props.setUser(userCreds, isNewUser)
-
             this.setState({ msg: '' })
+            this.props.history.push(`/board`)//then gos to the boards page
         } catch (err) {
             console.log(err);
             this.setState({ msg: 'somthing went worng!' })
@@ -120,58 +122,73 @@ export class _LoginSignup extends Component {
 
             <Fragment>
                 <div className="login-bg-screen" > </div>
-
-                <div className={`login-signup-wrapper flex justify-center ${isUploading && 'uploadStage'}`} >
-
-                    <a href='https://www.freepik.com/vectors/website'>Website vector created by stories - www.freepik.com</a>
+                <div className="login-container flex justify-center">
 
 
+                    <div className={`login-signup-wrapper flex  ${isUploading && 'uploadStage'}`} >
 
-                    {user && <div className="glass-form flex column">
-                        <h1>Welcome {user.fullname}</h1>
-                        <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
-                        <button> <Link to="/board"> Start Now </Link> </button>
-                        <a onClick={this.onLogout}>logout</a>
-                    </div>}
-
-
-                    {!user && <form className={`glass-form ${!isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
-                        <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span>
-                            <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span>
+                        {/* <a href='https://www.freepik.com/vectors/website'>Website vector created by stories - www.freepik.com</a> */}
 
 
 
-                        <label> click here to upload your profile
+                        {user && <div className="glass-form flex column">
+                            <h1>Welcome {user.fullname}</h1>
+                            <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
+                            <button> <Link to="/board"> Start Now </Link> </button>
+                            <a onClick={this.onLogout}>logout</a>
+                        </div>}
+
+
+                        {!user && <div>
+                            <form className={`glass-form login ${!isNewUser && "ghost"} `} onSubmit={this.onSubmit}>
+                                {/* <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span> */}
+                                {/* <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span> */}
+
+                                <h1>Sign Up</h1>
+
+                                <div className="avatar" style={{
+                                    backgroundImage: ` url(${signupCred.imgUrl})`
+                                }}>  </div>
+
+
+                                <button className="with-btn">Sign up with google <i class="fab fa-google"></i></button>
+                                <button className="with-btn">Sign up with facebook <i class="fab fa-facebook"></i></button>
+
+                                <label> click here to upload your profile
                      <input onChange={this.onUploadImg} type="file" hidden /></label>
-                        <div className="avatar" style={{
-                            backgroundImage: ` url(${signupCred.imgUrl})`
-                        }}>  </div>
-                        <h1>Create Account</h1>
-                        <input type="text" value={signupCred.fullname} name="fullname" placeholder="Name" onChange={this.handleInput} />
-                        <input type="text" value={signupCred.username} name="username" placeholder="username" onChange={this.handleInput} />
-                        <input type="password" value={signupCred.password} name="password" placeholder="Password" onChange={this.handleInput} />
-                        <button>Sign Up</button>
-                        <span style={{ color: '#fff' }}>{msg}</span>
+
+                                <input type="text" value={signupCred.fullname} name="fullname" placeholder="Name" onChange={this.handleInput} />
+                                <input type="text" value={signupCred.username} name="username" placeholder="username" onChange={this.handleInput} />
+                                <input type="password" className="password" value={signupCred.password} name="password" placeholder="Password" onChange={this.handleInput} />
+                                <span style={{ color: '#fff' }}>{msg}</span>
 
 
-                    </form>
+                            </form>
+                            <button className="primary-btn" ><ArrowForwardIcon /></button>
+                            <p>Already have an account? <span onClick={this.toggleForms} >sign In</span> </p>
 
-                    }
-                    {!user && <form className={`glass-form ${isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
-                        <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span>
-                            <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span>
+                        </div>
+                        }
+                        {!user && <form className={`glass-form ${isNewUser && "ghost"} flex column`} onSubmit={this.onSubmit}>
+                            <span><span className={`form-nav ${isNewUser && 'active'}`} onClick={this.toggleForms}> Signup</span>
+                                <span className={`form-nav ${!isNewUser && 'active'}`} onClick={this.toggleForms}>Login</span> </span>
 
-                        <h1 className="login-h1" >Log In</h1>
+                            <h1 className="login-h1" >Log In</h1>
 
-                        <input type="text" name="username" value={loginCred.username} placeholder="username" onChange={this.handleInput} />
-                        <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
-                        <button>Sign In</button>
-                        <span style={{ color: '#fff' }}>{msg}</span>
+                            <input type="text" name="username" value={loginCred.username} placeholder="username" onChange={this.handleInput} />
+                            <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
+                            <button>Sign In</button>
+                            <span style={{ color: '#fff' }}>{msg}</span>
 
-                    </form>
-                    }
+                        </form>
+                        }
+                        <div className="SVG" >
+                            <img src="../assets/img/login.png" alt=""/>
+                        </div>
+                    </div>
+
+
                 </div>
-
             </Fragment >
         )
     }
