@@ -27,8 +27,9 @@ async function login(user) {
 }
 
 async function signup(user) {
+    console.log('userrrr',user);
     try {
-        await httpService.post(endpoint, user)
+        await httpService.post(`${endpoint}/signup`, user)
         return user
     } catch (err) {
         console.log('problem signing in ', err);

@@ -3,7 +3,7 @@ import { boardService } from '../services/boardService'
 import { toggleTask, setCurrListAndTaskIdx, updateBoard } from '../store/actions/boardActions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-// import EditIcon from '@material-ui/icons/Edit';
+import ContentEditable from "react-contenteditable";
 import EditIcon from '@material-ui/icons/CreateOutlined';
 import CheckIcon from '@material-ui/icons/CheckBoxOutlined';
 import DueDateIcon from '@material-ui/icons/QueryBuilderOutlined';
@@ -89,8 +89,10 @@ export class _TaskPreview extends Component {
 
     onToggleEdit = ev => {
         ev.stopPropagation()
-        this.setState({ isEditOpen: !this.state.isEditOpen })
-        if (this.state.isEditOpen) this.setDefaultTitle()
+        const { isEditOpen } = this.state
+        this.setState({ isEditOpen: !isEditOpen })
+        if (isEditOpen) this.setDefaultTitle()
+        this.props.setListDnd(isEditOpen)
     }
 
 
@@ -111,15 +113,15 @@ export class _TaskPreview extends Component {
         return doneTodos.length
     }
 
-    onHandleInput = ({ target }) => {
-        const { value } = target
 
-        this.setState({ taskTitle: value })
-    }
+    handleChange = evt => {
+        this.setState({ taskTitle: evt.target.value });
+    };
 
     onSaveTitle = async (ev) => {
         console.log('save');
         const { taskTitle } = this.state
+        if (!taskTitle) return
         const { list, board, task } = this.props
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = { ...board }
@@ -135,7 +137,11 @@ export class _TaskPreview extends Component {
         return (
             <Fragment>
                 <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
-                <Draggable draggableId={task.id} index={taskIdx}>
+                <Draggable
+                    draggableId={task.id}
+                    index={taskIdx}
+                    isDragDisabled={isEditOpen}
+                >
                     {(provided, snapshot) => (
                         <div
                             {...provided.draggableProps}
@@ -167,7 +173,16 @@ export class _TaskPreview extends Component {
                                     </div>
                                 </div>}
                                 <div className="task-title-wrapper flex space-between ">
-                                    <input key={task.id} disabled={!isEditOpen} type="text" className="task-title-input" value={this.state.taskTitle} name="taskTitle" style={{ color: list.style.title.bgColor }} placeholder="Task Title" onChange={this.onHandleInput} />
+
+
+                                    <ContentEditable
+                                        style={{ color: list.style.title.bgColor }}
+                                        html={this.state.taskTitle} // innerHTML of the editable div
+                                        disabled={!isEditOpen} // use true to disable edition
+                                        onChange={this.handleChange} // handle innerHTML change
+                                        className="task-title-input"
+                                    />
+
                                     {!task.labels?.length && <div className="quick-edit-wrapper">
                                         {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}

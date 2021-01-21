@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { cloudinaryService } from '../services/cloudinaryService'
 import { setUser, clearUser } from '../store/actions/userAction'
-import ArrowRightOutlinedIcon from '@material-ui/icons/ArrowRightOutlined';
+import { GoogleLogin } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
+// refresh token
+import { refreshTokenSetup } from '../services/googleService';
+
+
+const clientId = '996251564221-qedkti8vudlin8md60j8dllv408gqodo.apps.googleusercontent.com';
+
 export class _LoginSignup extends Component {
 
     state = {
@@ -18,6 +25,7 @@ export class _LoginSignup extends Component {
             username: '',
             password: ''
         },
+        googleCreds: {},
         isNewUser: false,
         msg: '',
         isUploading: false,
@@ -38,6 +46,29 @@ export class _LoginSignup extends Component {
         })
 
     }
+    // -------------------------------------------------GOOGLE----------------------------------------
+    onSuccessGoogleLogin = (res) => {
+        console.log(res.profileObj);
+        const user = res.profileObj
+        this.setState({
+            signupCred: {
+                username: user.email,
+                fullname: user.name,
+                password: user.googleId,
+                imgUrl: user.imageUrl
+            },
+        })
+        refreshTokenSetup(res);
+    };
+
+    onFailureGoogleLogin = (res) => {
+        console.log('Login failed: res:', res);
+        alert(
+            `Failed to login.  Please ping this to repo owner twitter.com/sivanesh_fiz`
+        );
+    };
+
+
 
     onSubmit = async (ev) => {
         ev.preventDefault()
@@ -110,7 +141,9 @@ export class _LoginSignup extends Component {
             isNewUser: true,
             msg: '',
             isUploading: false,
-        })
+
+        }, () => this.props.history.push(`/login`))
+
     }
 
 
@@ -135,11 +168,18 @@ export class _LoginSignup extends Component {
                             <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
                             <button> <Link to="/board"> Start Now </Link> </button>
                             <a onClick={this.onLogout}>logout</a>
+
+                            <GoogleLogout
+                                clientId={clientId}
+                                buttonText="Logout"
+                                onLogoutSuccess={this.onLogout}
+                            ></GoogleLogout>
+
                         </div>}
 
 
                         {!user && isNewUser && <div>
-                            <form className={`glass-form   `} onSubmit={this.onSubmit}>
+                            <form className={`glass-form`} onSubmit={this.onSubmit}>
 
 
                                 <h1>Sign Up</h1>
@@ -149,7 +189,20 @@ export class _LoginSignup extends Component {
                                 }}>  </div>
 
 
-                                <button className="with-btn">Sign up with google <i className="fab fa-google"></i></button>
+                                <div>
+                                    <GoogleLogin
+                                        className="with-btn"
+                                        clientId={clientId}
+                                        buttonText="Login"
+                                        onSuccess={this.onSuccessGoogleLogin}
+                                        onFailure={this.onFailureGoogleLogin}
+                                        cookiePolicy={'single_host_origin'}
+                                        style={{ marginTop: '100px' }}
+                                        isSignedIn={user === true}
+                                    />
+                                </div>
+
+                                {/* <button className="with-btn">Sign up with google <i className="fab fa-google"></i></button> */}
                                 <button className="with-btn">Sign up with facebook <i className="fab fa-facebook"></i></button>
 
                                 <label> click here to upload your profile

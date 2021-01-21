@@ -10,6 +10,7 @@ export class TaskList extends Component {
     state = {
         isComposerOpen: false,
         isListActionsOpen: false,
+        isDragDisabled: false
     }
 
     elTaskTitleRef = React.createRef()
@@ -55,6 +56,10 @@ export class TaskList extends Component {
         return listIdx
     }
 
+    setDragability = (boolean) => {
+        this.setState({ isDragDisabled: !boolean })
+        console.log('isDragable?', this.state.isDragDisabled);
+    }
 
     render() {
         const { list, currPopover, listIdx } = this.props
@@ -62,7 +67,7 @@ export class TaskList extends Component {
         const { isListActionsOpen } = this.state
 
         return (
-            <Draggable draggableId={list.id} index={listIdx} >
+            <Draggable draggableId={list.id} index={listIdx} isDragDisabled={this.state.isDragDisabled} >
 
                 {(provided, snapshot) => (
                     <li
@@ -83,14 +88,14 @@ export class TaskList extends Component {
                                 {provided => (
                                     <div ref={provided.innerRef} {...provided.droppableProps} className="flex column" style={{ flexGrow: "1", minHeight: "1px" }}>
 
-                                        {tasks ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} task={task} />) : ''}
+                                        {tasks ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} setListDnd={this.setDragability} task={task} />) : ''}
 
                                         {provided.placeholder}
                                     </div>
                                 )}
                             </Droppable>
                         </div>
-                            <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
+                        <TaskComposer {...this.props} titleRef={this.elTaskTitleRef} isComposerOpen={currPopover === `TASK_COMPOSER${list.id}`} onToggleComposer={this.onToggleComposer} />
                     </li>
                 )
                 }

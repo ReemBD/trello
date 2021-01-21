@@ -52,7 +52,7 @@
       width: 50%;
       display: grid;
       grid-template-columns: repeat(2, minmax(200px, 300px));
-      grid-template-rows: 100px repeat(5, 50px);
+      grid-template-rows: 100px repeat(4, 50px);
       column-gap: 15px;
       row-gap: 30px;
 

@@ -9,7 +9,7 @@ export function userReducer(state = initialState, action) {
         case 'SET_USER':
             return { ...state, user: action.loggedUser }
         case 'CLEAR_USER':
-            return { ...state, user: {} }
+            return { ...state, user: null }
         default:
             console.log('state')
             return state
