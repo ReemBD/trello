@@ -162,7 +162,7 @@ export class _LoginSignup extends Component {
 
 
                             </form>
-                            <button className="primary-btn" ><ArrowForwardIcon /></button>
+                            <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Already have an account? <span onClick={this.toggleForms} >sign In</span> </p>
 
                         </div>
@@ -179,14 +179,12 @@ export class _LoginSignup extends Component {
                                 <span>{msg}</span>
 
                             </form>
-                            <button className="primary-btn" ><ArrowForwardIcon /></button>
+                            <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Dont have an account? <span onClick={this.toggleForms} >sign Up</span> </p>
 
                         </div>
                         }
-                        <div className="SVG" >
-                            <img src="../assets/img/login.png" alt="" />
-                        </div>
+                        <div className="SVG" ></div>
                     </div>
 
 
