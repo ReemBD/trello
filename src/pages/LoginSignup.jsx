@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { cloudinaryService } from '../services/cloudinaryService'
 import { setUser, clearUser } from '../store/actions/userAction'
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { GoogleLogin } from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 // refresh token
@@ -32,20 +33,8 @@ export class _LoginSignup extends Component {
     }
 
 
-    handleInput = ({ target }) => {
-        const value = target.value
-        const field = target.name
-        var typeOfForm = this.state.isNewUser ? 'signupCred' : 'loginCred'
-        this.setState(prevState => {
-            return {
-                [typeOfForm]: {
-                    ...prevState[typeOfForm],
-                    [field]: value
-                }
-            }
-        })
 
-    }
+
     // -------------------------------------------------GOOGLE----------------------------------------
     onSuccessGoogleLogin = (res) => {
         console.log(res.profileObj);
@@ -63,10 +52,9 @@ export class _LoginSignup extends Component {
 
     onFailureGoogleLogin = (res) => {
         console.log('Login failed: res:', res);
-        
+
     };
-
-
+    //-------------------------------------------------------------------------------------------------------------
 
     onSubmit = async (ev) => {
         ev.preventDefault()
@@ -93,7 +81,19 @@ export class _LoginSignup extends Component {
 
     }
 
-
+    handleInput = ({ target }) => {
+        const value = target.value
+        const field = target.name
+        var typeOfForm = this.state.isNewUser ? 'signupCred' : 'loginCred'
+        this.setState(prevState => {
+            return {
+                [typeOfForm]: {
+                    ...prevState[typeOfForm],
+                    [field]: value
+                }
+            }
+        })
+    }
 
 
     toggleForms = (ev) => {
@@ -101,7 +101,8 @@ export class _LoginSignup extends Component {
 
         this.setState(prevState => {
             return {
-                isNewUser: !prevState.isNewUser
+                isNewUser: !prevState.isNewUser,
+                msg: ''
             }
         })
     }
@@ -182,9 +183,9 @@ export class _LoginSignup extends Component {
 
                                 <h1>Sign Up</h1>
 
-                                <label> <div className="avatar" style={{
+                                <label> <div className="avatar flex justify-center align-center" style={{
                                     backgroundImage: ` url(${signupCred.imgUrl})`
-                                }}>  </div>
+                                }}> <AddAPhotoIcon style={{color:' #dadbdb'}} className={signupCred.imgUrl && 'hidden'} />  </div>
                                     <input onChange={this.onUploadImg} type="file" hidden /></label>
 
 
@@ -228,8 +229,8 @@ export class _LoginSignup extends Component {
                                 <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
 
 
+                                <span style={{ display: 'block' }}>{msg}</span>
                             </form>
-                            <span style={{ display: 'block' }}>{msg}</span>
                             <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Dont have an account? <span onClick={this.toggleForms} >sign Up</span> </p>
 
