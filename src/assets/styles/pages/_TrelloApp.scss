@@ -1,11 +1,9 @@
 .main-bg {
-    // background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
     background-image: linear-gradient(to top, #5ee7dece 0%, #b490cad8 100%);
 
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
-    // z-index: 1;
     right: 0;
     left: 0;
     top: 0;
@@ -15,9 +13,8 @@
 
 .bg-overlay {
     background-color: #ebeef582;
-    // min-width: 1300px;
     overflow-x: auto;
-    min-height: 92vh;
+    min-height: 94vh;
     margin: 0 1em;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
