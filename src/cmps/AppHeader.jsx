@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import AppsIcon from '@material-ui/icons/Apps';
 import { connect } from 'react-redux'
 
 export class _AppHeader extends Component {
+    state = {
+        navBgc: ''
+    }
+
+    componentDidMount() {
+        document.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                this.setState({ navBgc: 'colored-nav' })
+            } else {
+                this.setState({ navBgc: 'homepage-nav' })
+            }
+        })
+    }
+
     render() {
+        const currPath = this.props.history.location.pathname
+        const { navBgc } = this.state
         return (
-            <header className="main-nav-header flex">
+            <header className={`main-nav-header flex  ${currPath === '/' ? navBgc : ''}`}>
                 <div className="logo"></div>
                 <ul className="main-nav flex clear-list flex ">
                     <li className="logo"><NavLink to="/"><span>Chello</span></NavLink></li>
@@ -27,4 +43,4 @@ const mapStateToProps = state => {
     }
 }
 
-export const AppHeader = connect(mapStateToProps)(_AppHeader)
+export const AppHeader = connect(mapStateToProps)(withRouter(_AppHeader))
