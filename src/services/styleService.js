@@ -21,5 +21,7 @@ async function getBgOptions() {
         "url('https://res.cloudinary.com/nofar/image/upload/v1611088228/trello%20background/pexels-photo-4101555_svdfsl.jpg')",
         "url('https://res.cloudinary.com/nofar/image/upload/v1611088214/trello%20background/pexels-photo-1591305_ui4iai.jpg')",
         "url('https://res.cloudinary.com/nofar/image/upload/v1611059426/photo-1610377551984-9dc3f82aa31f_wuk20y.jpg')",
+        "url('https://res.cloudinary.com/nofar/image/upload/v1611328219/photo-1610720684893-619cd7a5cde5_zqn2tf.jpg')",
+        
     ]
 }

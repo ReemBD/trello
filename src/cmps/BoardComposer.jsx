@@ -17,8 +17,8 @@ export class _BoardComposer extends Component {
             members: [],
             style: {
                 bg: '#3d3d3d'
-            },
-            description: ''
+            }
+            
         },
         users: [],
         bgs: [],
@@ -37,7 +37,6 @@ export class _BoardComposer extends Component {
                     style: {
                         bg: board.style.bg
                     },
-                    description: board.description,
                     members: board.members,
                     _id: board._id
                 },
@@ -149,25 +148,19 @@ export class _BoardComposer extends Component {
                         <div className="demo-board board-card  flex justify-center align-center" style={{ backgroundImage: newBoard.style.bg, backgroundSize: "cover" }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board Title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
-                    </div>
-                    <div className="flex row dec">
-                        <textarea
-                            placeholder="Description"
-                            value={newBoard.description}
-                            name="description"
-                            onChange={this.handleInput}
-                            spellCheck="false"
-                        />
                         <span>
-                            <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
-                            {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
-                        </span>
+                        <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
+                        {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
+                    </span>
                     </div>
+
                     <div className="bg-options">
                         {bgs.map(bg => {
                             return <div className="bg-preview" key={utilService.makeId()} onClick={() => this.setBg(bg)} style={{ backgroundImage: bg, backgroundSize: "cover" }}> </div>
                         })}
                     </div>
+
+                  
                     <button className="primary-btn compose-board-btn">{btnTxt}</button>
                 </form>
             </Fragment >

@@ -62,7 +62,7 @@ class _TrelloApp extends Component {
             <div onClick={() => {
                 setCurrPopover()
                 // if (isOverlayOpen) toggleOverlay()
-            }} style={{ paddingTop: '5vh' }}>
+            }} style={{ paddingTop: '6vh' }}>
                 <div className="main-bg" style={{ backgroundImage: board.style.bg }} onClick={ev => { ev.stopPropagation() }}></div>
                 <div className="bg-overlay">
                     <BoardHeader {...this.props} onToggleDashboard={this.toggleDashboard} />

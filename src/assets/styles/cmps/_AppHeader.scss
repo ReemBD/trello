@@ -49,4 +49,18 @@
       }
     }
   }
+  .user-desc {
+    gap: 5px;
+    font-weight: 600;
+  }
+  .avatar-header {
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 4em;
+    border: 1px solid $clr2;
+  }
+  .logout{
+    cursor: pointer;
+  }
+
 }

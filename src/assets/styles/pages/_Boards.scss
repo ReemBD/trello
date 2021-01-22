@@ -1,19 +1,5 @@
-// -----------------------------------------------------PAGE LAYOUT--------------------------------------------------------------------
-
-// .boards-hero {
-//     width: 100%;
-//     height: 40vh;
-
-//     h1 {
-//         font-size: 70px;
-//         max-width: 600px;
-//         line-height: 80px;
-//         padding: 1em;
-//     }
-// }
-
 .boards-bg {
-  background: #6263643f;
+  background-image: linear-gradient(to bottom right, #ebeefe, #dff2fe, #daf5f7, #e0f6ea, #eef4e0);
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
@@ -25,6 +11,18 @@
 }
 
 .glass-screen {
+  background-image: linear-gradient(to bottom right, #ffffff, #ffffffbf, #f3f3f3, #f3f3f330, #ffffff00);
+
+  box-shadow: 0 8px 32px 0 rgba(182, 182, 182, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 2em;
+  margin-top: 2em;
+  text-align: center;
+  user-select: none;
+  text-align: left;
+
   backdrop-filter: blur(7.5px);
   -webkit-backdrop-filter: blur(7.5px);
   border-radius: 10px;
@@ -44,12 +42,19 @@
   margin: 0 auto;
   padding-top: 5vh;
   justify-content: center;
+
+  .bg-overlay {
+    background-color: transparent !important;
+    box-shadow: 0 0 0 #fff;
+  }
 }
 
 .boards-page {
   flex-grow: 1;
 
   .user-boards-section {
+    padding-left: 2em;
+    padding-top: 4em;
     margin-bottom: $boards-section-mb;
     .user-boards-title {
       @include header-title;
