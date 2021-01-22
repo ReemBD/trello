@@ -30,7 +30,6 @@ class _TrelloApp extends Component {
     }
 
     toggleDashboard = (boolean = !this.state.isDashboardOpen) => {
-        console.log('boolean: ', boolean);
         this.setState({ isDashboardOpen: boolean })
     }
 
@@ -49,7 +48,6 @@ class _TrelloApp extends Component {
     }
 
     onBoardUpdated = async ({ updatedBoard, activity }) => {
-        console.log('updated!');
         const board = { ...updatedBoard }
         await this.props.updateBoard(board, null, false)
     }
@@ -65,6 +63,7 @@ class _TrelloApp extends Component {
             }} style={{ paddingTop: '5vh' }}>
                 <div className="main-bg" style={{ backgroundImage: board.style.bg }} onClick={ev => { ev.stopPropagation() }}></div>
                 <div className="bg-overlay">
+                    {isDashboardOpen && <div className="dashboard-overlay"></div>}
                     <BoardHeader {...this.props} onToggleDashboard={this.toggleDashboard} />
                     {isDashboardOpen ? <Dashboard board={board} /> : <Board {...this.props} />}
                     {this.props.match.params.listId && <TaskDetails />}

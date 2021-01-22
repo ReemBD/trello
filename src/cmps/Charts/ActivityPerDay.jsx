@@ -21,6 +21,7 @@ export default class ActivityPerDay extends Component {
         if (!data) return  <h1>Loading</h1>
         return (
             <div>
+                <h3>Activity per Day</h3>
                 <Bar data={data} width={400} height={400} />
             </div>
         )

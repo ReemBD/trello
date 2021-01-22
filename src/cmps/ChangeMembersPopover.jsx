@@ -24,14 +24,17 @@ export class ChangeMembersPopover extends Component {
     onUpdateTaskMember = async (ev) => {
         ev.stopPropagation()
         const { membersRef } = this.props
-        // console.log('membersRef width: ', membersRef.current.clientWidth);
         const { id } = ev.target.dataset
         const { board } = { ...this.props }
         const { members } = board
         const member = members.find(member => member._id === id)
-        this.isTaskMember(member._id) ? this.onRemoveTaskMember(member)
-            : this.onAddTaskMember(member)
-
+        this.isTaskMember(member._id) ? await this.onRemoveTaskMember(member)
+            : await this.onAddTaskMember(member)
+        if (membersRef.current) {
+            membersRef.current.clientWidth > 97 ?
+            membersRef.current.classList.add('narrow-down')
+            : membersRef.current.classList.remove('narrow-down')
+        }
     }
 
     onAddTaskMember = async (member) => {
@@ -43,6 +46,7 @@ export class ChangeMembersPopover extends Component {
         currTask.members ? currTask.members.push(miniMember) : currTask.members = [miniMember]
         this.setState({ currTask })
         const activity = { txt: `has added ${miniMember.fullname} to task`, task: { ...currTask } }
+        const { membersRef } = this.props
         await updateBoard(board, activity)
     }
 

@@ -36,7 +36,7 @@ export default class MyChart extends Component {
         const { data } = this.state
         return (
             <div className="tasks-per-person">
-                <h3>Tasks Per Person</h3>
+                <h3>Tasks per Person</h3>
                 <Doughnut data={data} height={400} />
             </div>
         );

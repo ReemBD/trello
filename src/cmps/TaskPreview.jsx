@@ -8,7 +8,6 @@ import EditIcon from '@material-ui/icons/CreateOutlined';
 import CheckIcon from '@material-ui/icons/CheckBoxOutlined';
 import DueDateIcon from '@material-ui/icons/QueryBuilderOutlined';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
-import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import { TaskEdit } from './TaskEdit'
 import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import { format } from 'date-fns'
@@ -30,24 +29,22 @@ export class _TaskPreview extends Component {
 
     membersRef = React.createRef()
 
-    componentDidMount() {
-        // socketService.on('task updated fs', this.onTaskUpdated)
-    }
 
-    componentWillUnmount() {
-        // socketService.off('task updated fs')
+    componentDidMount() {
+        const { task } = this.props
+        this.setState({ taskTitle: task.title, titleBeforeChange: task.title })
+
+        if (this.membersRef.current) {
+            this.membersRef.current.clientWidth > 97 ?
+            this.membersRef.current.classList.add('narrow-down')
+            : this.membersRef.current.classList.remove('narrow-down')
+        }
     }
 
     onTaskUpdated = (activityTxt) => {
         const { unreadNotificationsCount } = { ...this.state }
         this.setState({ unreadNotificationsCount: unreadNotificationsCount + 1 }, () => {
-            // console.log('unread notif count: ', this.state.unreadNotificationsCount);
         })
-    }
-
-    componentDidMount() {
-        const { task } = this.props
-        this.setState({ taskTitle: task.title, titleBeforeChange: task.title })
     }
 
     componentDidUpdate(prevProps) {
@@ -175,7 +172,12 @@ export class _TaskPreview extends Component {
                                     </div>
                                     <div className="quick-edit-wrapper">
                                         {isTaskHovered && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                                        {isEditOpen && <TaskEdit {...this.props} membersRef={this.membersRef} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
+                                        {isEditOpen && <TaskEdit
+                                            {...this.props}
+                                            membersRef={this.membersRef}
+                                            task={task}
+                                            list={list}
+                                            onToggleEdit={this.onToggleEdit} />}
                                     </div>
                                 </div>}
                                 <div className="task-title-wrapper flex space-between ">

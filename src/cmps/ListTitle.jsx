@@ -9,7 +9,8 @@ import { ListActions } from './ListActions'
 
 export class _ListTitle extends Component {
     state = {
-        title: ''
+        title: '',
+        isListActionsOpen: false
     }
 
     elListTitleRef = React.createRef()
@@ -65,15 +66,18 @@ export class _ListTitle extends Component {
     }
 
     onToggleListActions = (ev) => {
-        ev.stopPropagation()
-        console.log('event: ', ev.isPropagationStopped());
-        (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`) ? this.props.setCurrPopover() : this.props.setCurrPopover(`LIST_ACTIONS${this.props.list.id}`)
+        console.log('isPropagation stopped? ', ev.stopPropagation);
+        this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
+    }
 
+    handleClickOutside = ev => {
+        this.setState({ isListActionsOpen: false })
     }
 
     render() {
         const { list, isComposerOpen } = this.props
         const isCurrPopover = (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`)
+        const { isListActionsOpen } = this.state
         if (!list) return <h1>Loading...</h1>
         return (
             <form onSubmit={this.onPressEnter}
@@ -91,7 +95,7 @@ export class _ListTitle extends Component {
                         onClick={this.onToggleListActions}
 
                         className={`toggle-actions-icon ${isComposerOpen && 'close'}`} />}
-                    {isCurrPopover && <ListActions {...this.props} />}
+                    {isListActionsOpen && <ListActions {...this.props} handleClickOutside={this.handleClickOutside} />}
                 </div>
             </form>
         )

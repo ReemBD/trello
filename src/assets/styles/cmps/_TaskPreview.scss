@@ -103,7 +103,7 @@
     }
     .task-members-imgs {
       // justify-content: space-between;
-
+      
       .task-member-img-wrapper {
         @include aspect-ratio(1, 1);
         width: 27px;
@@ -112,6 +112,10 @@
           width: 100%;
           border-radius: 999px;
         }
+      }
+      &.narrow-down>*:not(:last-child){
+        // width: 22px;
+        margin-right: -5px;
       }
     }
   }

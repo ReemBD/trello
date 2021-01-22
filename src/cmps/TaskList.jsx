@@ -42,12 +42,12 @@ export class TaskList extends Component {
             this.setState({ isComposerOpen: !this.state.isComposerOpen }, () => {
                 this.elTaskTitleRef.current.focus()
             })
-        },
-        onToggleListActions: ev => {
-            //'More...' Popover toggler (from List title)
-            ev.stopPropagation()
-            this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
         }
+        // onToggleListActions: ev => {
+        //     //'More...' Popover toggler (from List title)
+        //     ev.stopPropagation()
+        //     this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
+        // }
     }
 
     get listIdx() {
@@ -81,7 +81,7 @@ export class TaskList extends Component {
                             {...provided.dragHandleProps}
                             {...this.props}
                             {...this.listTitleHandlersProps}
-                            isListActionsOpen={isListActionsOpen} />
+                            /* isListActionsOpen={isListActionsOpen} */ />
 
                         <div className="task-previews-container">
                             <Droppable droppableId={list.id} type="task">

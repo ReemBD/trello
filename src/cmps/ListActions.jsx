@@ -4,16 +4,19 @@ import { PopoverHeader } from './PopoverHeader'
 import onClickOutside from 'react-onclickoutside'
 
 
-export class ListActions extends Component {
+export class _ListActions extends Component {
     state = {
         listColors: ['#9895E0', '#4A94F8', '#56c991', '#3cc2e0', '#eb5a46', '#ac0275', '#67c0a4', '#F5E50E'],
     }
 
     onSetListColor = (color) => {
-        console.log('hello');
         const { board, listIdx, updateBoard } = { ...this.props }
         board.lists[listIdx].style.title.bgColor = color
         updateBoard(board)
+    }
+
+    handleClickOutside = () => {
+        this.props.handleClickOutside()
     }
     render() {
         const { onToggleComposer, onRemoveList, setCurrPopover } = this.props
@@ -43,3 +46,5 @@ export class ListActions extends Component {
         )
     }
 }
+
+export const ListActions = onClickOutside(_ListActions)

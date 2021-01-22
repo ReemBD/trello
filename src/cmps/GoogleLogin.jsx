@@ -8,7 +8,6 @@ const clientId ='996251564221-qedkti8vudlin8md60j8dllv408gqodo.apps.googleuserco
 
 function Login() {
   const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res.profileObj);
     alert(
       `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
     );

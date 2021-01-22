@@ -15,7 +15,6 @@ async function getUsers() {
 }
 
 async function login(user) {
-    console.log('user creds:', user);
     let loggedUser;
     try {
         loggedUser = await httpService.post(`${endpoint}/login/?password=${user.password}&username=${user.username}`)

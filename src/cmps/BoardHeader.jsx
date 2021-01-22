@@ -24,7 +24,6 @@ export class BoardHeader extends Component {
 
     incNotificationBadge = (notification) => {
         this.setState({ currBadgeCount: this.state.currBadgeCount + 1 }, () => {
-            console.log('notification:', notification);
         })
     }
     render() {
@@ -52,7 +51,7 @@ export class BoardHeader extends Component {
                         <li title="dashboard">
                             <DashboardOutlinedIcon
                                 className="dashboard-icon"
-                                onClick={()=>onToggleDashboard()}
+                                onClick={() => onToggleDashboard()}
                             />
                         </li>
                         <li title="activity"><MoreHorizOutlinedIcon className="activity-menu-icon" onClick={ev => {
@@ -61,7 +60,9 @@ export class BoardHeader extends Component {
                         }} /></li>
                     </ul>
                 </header>
-                {isCurrPopover && <NotificationPopover {...this.props} />}
+                {isCurrPopover
+                    &&
+                    <NotificationPopover {...this.props} />}
                 <ActivityMenu {...this.props} />
             </>
         )

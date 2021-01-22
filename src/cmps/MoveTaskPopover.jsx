@@ -14,7 +14,6 @@ export class MoveTaskPopover extends Component {
     }
 
     handleInput = (ev) => {
-        console.log(ev.target.value)
         this.setState({ selectedListIdx: ev.target.value })
     }
 

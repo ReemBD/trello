@@ -26,7 +26,6 @@ export class _LoginSignup extends Component {
             username: '',
             password: ''
         },
-        googleCreds: {},
         isNewUser: false,
         msg: '',
         isUploading: false,

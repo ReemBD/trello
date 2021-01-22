@@ -26,7 +26,6 @@ export function updateBoard(board, activity = null, isEmitting = true) {
             //     board.activities = [fullActivity, ...board.activities] || [fullActivity]
             // }
             const updatedBoard = isEmitting ? await boardService.save(board, activity, isEmitting) : board
-            console.log('updatedBoard: ', updatedBoard);
             const action = {
                 type: 'UPDATE_BOARD',
                 updatedBoard
