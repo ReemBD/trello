@@ -2,6 +2,7 @@
     @include popover-main;
     position: fixed;
     top: 65px;
+    
     .popover-header {
         height: 40px;
         color: #212121;
@@ -14,7 +15,8 @@
     }
     .popover-section {
         @include popover-section;
-
+        max-height: 270px;
+        overflow-y: scroll;
         &-header {
             @include popover-section-header;
         }

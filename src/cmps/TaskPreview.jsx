@@ -25,7 +25,10 @@ export class _TaskPreview extends Component {
         titleBeforeChange: '',
         unreadNotificationsCount: 0,
         isLabelOpen: false,
+        isManyMembers: false,
     }
+
+    membersRef = React.createRef()
 
     componentDidMount() {
         // socketService.on('task updated fs', this.onTaskUpdated)
@@ -172,7 +175,7 @@ export class _TaskPreview extends Component {
                                     </div>
                                     <div className="quick-edit-wrapper">
                                         {isTaskHovered && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                                        {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
+                                        {isEditOpen && <TaskEdit {...this.props} membersRef={this.membersRef} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>
                                 </div>}
                                 <div className="task-title-wrapper flex space-between ">
@@ -188,7 +191,7 @@ export class _TaskPreview extends Component {
 
                                     {!task.labels?.length && <div className="quick-edit-wrapper">
                                         {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
-                                        {isEditOpen && <TaskEdit {...this.props} task={task} list={list} onToggleEdit={this.onToggleEdit} />}
+                                        {isEditOpen && <TaskEdit {...this.props} task={task} membersRef={this.membersRef} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>}
                                 </div>
                                 {this.doesContainIndics &&
@@ -200,7 +203,7 @@ export class _TaskPreview extends Component {
                                             {task.comments && <CommentIcon className="comment-indication-icon indication-icon" />}
                                         </div>
                                         {task.members?.length ?
-                                            <div className="task-members-imgs flex">
+                                            <div ref={this.membersRef} className="task-members-imgs flex">
                                                 {task.members.map(member => { return <BoardMemberImg key={member._id} member={member} /> })}
                                             </div>
                                             : ''}

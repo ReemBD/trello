@@ -23,6 +23,8 @@ export class ChangeMembersPopover extends Component {
 
     onUpdateTaskMember = async (ev) => {
         ev.stopPropagation()
+        const { membersRef } = this.props
+        // console.log('membersRef width: ', membersRef.current.clientWidth);
         const { id } = ev.target.dataset
         const { board } = { ...this.props }
         const { members } = board
@@ -55,7 +57,7 @@ export class ChangeMembersPopover extends Component {
         this.setState({ currTask })
         const { user } = { ...this.props }
         const activity = { txt: `has removed ${fullname} from task`, task: { ...currTask } }
-        await updateBoard(board,activity)
+        await updateBoard(board, activity)
     }
 
     isTaskMember(id) {
