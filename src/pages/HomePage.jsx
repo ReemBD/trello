@@ -10,9 +10,7 @@ export class HomePage extends Component {
                         <h1>Chello</h1>
                         <h2>Task Managment,</h2>
                         <h2>The <span>Clever</span> Way.</h2>
-                        <div className="btn-container">
-                            <a href="/board/6008a088b5c86f53d8c9d788" className="cta-btn primary-btn">Start Now</a>
-                        </div>
+                        <a href="/board/6008a088b5c86f53d8c9d788" className="cta-btn primary-btn">Start Now</a>
                     </div>
                     <div className="homepage-image">
                     </div>
@@ -46,6 +44,15 @@ export class HomePage extends Component {
                             <span>Choose the project view that suits your style, and collaborate no matter where you are.</span>
                         </div>
                     </div>
+
+                    <section className="bottom-cta flex justify-center">
+                        <a href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Get Started</a>
+                    </section>
                 </section>
                 <footer className="flex align-center justify-center">
                     <p>® 2021 Chello | Reem Ben David | <a href="https://www.linkedin.com/in/yehonathan-segev-743a431a5/">Yehonathan Segev</a> | Nofar Yunger</p>
