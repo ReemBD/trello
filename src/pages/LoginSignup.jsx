@@ -63,9 +63,7 @@ export class _LoginSignup extends Component {
 
     onFailureGoogleLogin = (res) => {
         console.log('Login failed: res:', res);
-        alert(
-            `Failed to login.  Please ping this to repo owner twitter.com/sivanesh_fiz`
-        );
+        
     };
 
 
@@ -164,16 +162,16 @@ export class _LoginSignup extends Component {
 
 
                         {user && <div className="glass-form ">
-                            <h1>Welcome {user.fullname}</h1>
+                            <h2>Welcome {user.fullname}</h2>
                             <div className="avatar" style={{ backgroundImage: `url(${user.imgUrl})` }}> </div>
-                            <button> <Link to="/board"> Start Now </Link> </button>
-                            <a onClick={this.onLogout}>logout</a>
-
-                            <GoogleLogout
+                            <button className="primary-btn"> <Link to="/board"> Start Now </Link> </button>
+                            <a onClick={this.onLogout}> <GoogleLogout
                                 clientId={clientId}
                                 buttonText="Logout"
                                 onLogoutSuccess={this.onLogout}
-                            ></GoogleLogout>
+                            ></GoogleLogout></a>
+
+
 
                         </div>}
 
@@ -184,37 +182,37 @@ export class _LoginSignup extends Component {
 
                                 <h1>Sign Up</h1>
 
-                                <div className="avatar" style={{
+                                <label> <div className="avatar" style={{
                                     backgroundImage: ` url(${signupCred.imgUrl})`
                                 }}>  </div>
+                                    <input onChange={this.onUploadImg} type="file" hidden /></label>
 
 
-                                <div>
-                                    <GoogleLogin
-                                        className="with-btn"
-                                        clientId={clientId}
-                                        buttonText="Login"
-                                        onSuccess={this.onSuccessGoogleLogin}
-                                        onFailure={this.onFailureGoogleLogin}
-                                        cookiePolicy={'single_host_origin'}
-                                        style={{ marginTop: '100px' }}
-                                        isSignedIn={user === true}
-                                    />
-                                </div>
+                                <GoogleLogin
+                                    className="with-btn"
+                                    clientId={clientId}
+                                    buttonText="Login"
+                                    onSuccess={this.onSuccessGoogleLogin}
+                                    onFailure={this.onFailureGoogleLogin}
+                                    cookiePolicy={'single_host_origin'}
 
-                                {/* <button className="with-btn">Sign up with google <i className="fab fa-google"></i></button> */}
+                                    isSignedIn={user === true}
+                                />
+
+
                                 <button className="with-btn">Sign up with facebook <i className="fab fa-facebook"></i></button>
 
-                                <label> click here to upload your profile
-                     <input onChange={this.onUploadImg} type="file" hidden /></label>
+
+
+
 
                                 <input type="text" value={signupCred.fullname} name="fullname" placeholder="Name" onChange={this.handleInput} />
-                                <input type="text" value={signupCred.username} name="username" placeholder="username" onChange={this.handleInput} />
+                                <input type="text" value={signupCred.username} name="username" placeholder="Username" onChange={this.handleInput} />
                                 <input type="password" className="password" value={signupCred.password} name="password" placeholder="Password" onChange={this.handleInput} />
-                                <span >{msg}</span>
 
 
                             </form>
+                            <span style={{ display: 'block' }}>{msg}</span>
                             <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Already have an account? <span onClick={this.toggleForms} >sign In</span> </p>
 
@@ -226,12 +224,12 @@ export class _LoginSignup extends Component {
 
                                 <h1 >Log In</h1>
 
-                                <input type="text" name="username" value={loginCred.username} placeholder="username" onChange={this.handleInput} />
+                                <input type="text" name="username" value={loginCred.username} placeholder="Username" onChange={this.handleInput} />
                                 <input type="password" name="password" value={loginCred.password} placeholder="Password" onChange={this.handleInput} />
 
-                                <span>{msg}</span>
 
                             </form>
+                            <span style={{ display: 'block' }}>{msg}</span>
                             <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Dont have an account? <span onClick={this.toggleForms} >sign Up</span> </p>
 
