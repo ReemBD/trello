@@ -6,12 +6,13 @@ import { setCurrPopover } from '../store/actions/popoverActions'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { TaskDetails } from '../cmps/TaskDetails'
 import { socketService } from '../services/socketService'
+import { Dashboard } from '../cmps/Dashboard'
 
 
 class _TrelloApp extends Component {
 
     state = {
-
+        isDashboardOpen: false
     }
 
 
@@ -28,6 +29,11 @@ class _TrelloApp extends Component {
 
     }
 
+    toggleDashboard = (boolean = !this.state.isDashboardOpen) => {
+        console.log('boolean: ', boolean);
+        this.setState({ isDashboardOpen: boolean })
+    }
+
     componentWillUnmount() {
         socketService.off('board updated fs', this.onBoardUpdated)
         // socketService.off('task updated fs')
@@ -42,7 +48,7 @@ class _TrelloApp extends Component {
         }
     }
 
-    onBoardUpdated = async ({updatedBoard, activity}) => {
+    onBoardUpdated = async ({ updatedBoard, activity }) => {
         console.log('updated!');
         const board = { ...updatedBoard }
         await this.props.updateBoard(board, null, false)
@@ -50,6 +56,7 @@ class _TrelloApp extends Component {
 
     render() {
         const { board, setCurrPopover } = this.props
+        const { isDashboardOpen } = this.state
         if (!board) return <h1>loading...</h1>
         return (
             <div onClick={() => {
@@ -58,8 +65,8 @@ class _TrelloApp extends Component {
             }} style={{ paddingTop: '60px' }}>
                 <div className="main-bg" style={{ backgroundImage: board.style.bg }} onClick={ev => { ev.stopPropagation() }}></div>
                 <div className="bg-overlay">
-                    <BoardHeader {...this.props} />
-                    <Board {...this.props} />
+                    <BoardHeader {...this.props} onToggleDashboard={this.toggleDashboard} />
+                    {isDashboardOpen ? <Dashboard board={board} /> : <Board {...this.props} />}
                     {this.props.match.params.listId && <TaskDetails />}
                 </div>
             </div>

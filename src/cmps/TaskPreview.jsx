@@ -118,9 +118,12 @@ export class _TaskPreview extends Component {
     }
 
     onSaveTitle = async (ev) => {
-        console.log('save');
         const { taskTitle } = this.state
         const { list, board, task } = this.props
+        if (taskTitle === task.title) {
+            this.onToggleEdit(ev)
+            return
+        }
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = { ...board }
         copyBoard.lists[listIdx].tasks[taskIdx].title = taskTitle

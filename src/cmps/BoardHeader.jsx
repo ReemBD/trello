@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { BoardFilter } from './BoardFilter'
-import NotificationsIcon from '@material-ui/icons/NotificationsNone';
 import { socketService } from '../services/socketService'
 import { NotificationPopover } from './NotificationPopover'
+import NotificationsIcon from '@material-ui/icons/NotificationsNone';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
+import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import { ActivityMenu } from './ActivityMenu'
 export class BoardHeader extends Component {
 
     state = {
-        currBadgeCount: 0
+        currBadgeCount: 0,
     }
 
     componentDidMount() {
@@ -20,13 +21,14 @@ export class BoardHeader extends Component {
         // socketService.off('do notification fs', this.incNotifcationBadge)
     }
 
+
     incNotificationBadge = (notification) => {
         this.setState({ currBadgeCount: this.state.currBadgeCount + 1 }, () => {
             console.log('notification:', notification);
         })
     }
     render() {
-        const { board, setCurrPopover, currPopover } = this.props
+        const { board, setCurrPopover, currPopover, onToggleDashboard } = this.props
         const { members } = board
         const { currBadgeCount } = this.state
         const isCurrPopover = currPopover === 'NOTIFICATION_POPOVER'
@@ -47,7 +49,13 @@ export class BoardHeader extends Component {
                                 setCurrPopover('NOTIFICATION_POPOVER')
                             }} />
                         </li>
-                        <li><MoreHorizOutlinedIcon className="activity-menu-icon" onClick={ev => {
+                        <li title="dashboard">
+                            <DashboardOutlinedIcon
+                                className="dashboard-icon"
+                                onClick={()=>onToggleDashboard()}
+                            />
+                        </li>
+                        <li title="activity"><MoreHorizOutlinedIcon className="activity-menu-icon" onClick={ev => {
                             ev.stopPropagation()
                             setCurrPopover('ACTIVITY_MENU')
                         }} /></li>

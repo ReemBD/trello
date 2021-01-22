@@ -4,6 +4,7 @@ import { PopoverHeader } from './PopoverHeader'
 import { utilService } from '../services/utilService'
 import { boardService } from '../services/boardService';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 export class ActivityMenu extends Component {
     state = {
         activites: []
