@@ -47,15 +47,13 @@ export class Boards extends Component {
                 <div className="glass-screen "></div>
                 <div className="boards-bg "></div>
                 <div className="board-page-container flex">
-                <div className="boards-page bg-overlay main-layout flex column board-layout">
-                    <section className="user-boards-section">
-                    <div className="user-boards-title">Your Boards</div>
-                    <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
-                    </section>
-                    <section className="starred-boards">
-                        <div className="starred-boards-title">Starred</div>
-                    </section>
-                </div>
+                    <div className="boards-page bg-overlay main-layout flex column board-layout">
+                        <section className="user-boards-section">
+                            <div className="user-boards-title">Your Boards</div>
+                            <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
+                        </section>
+
+                    </div>
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
                     <BoardComposer board={boardToEdit} />

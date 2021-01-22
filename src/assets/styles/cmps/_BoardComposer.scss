@@ -9,7 +9,6 @@
   left: 0;
   top: 0;
   bottom: 0;
-  // width: 100vw;
   z-index: 1;
   background-color: rgba(7, 7, 7, 0.335);
 
@@ -21,14 +20,18 @@
 }
 
 .board-composer {
-  width: 70%;
-  // height: 70%;
+  width: 460px;
   padding: 3em;
   background: rgba(255, 255, 255, 0.808);
 
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   border-radius: 6px;
+
+  @media screen and(max-width:500px) {
+    width: 355px;
+    padding: 2em;
+  }
 
   .compose-board-btn {
     align-self: flex-end;
@@ -70,35 +73,22 @@
     }
   }
 
-  .dec {
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    textarea {
-      width: -webkit-fill-available;
-    }
-    .addIcon {
-      width: 30px;
-      // background-color: #eef0f1;
-      margin-top: 3px;
-      margin-right: 5px;
-      cursor: pointer;
-      transition: color 0.2s;
-      &:hover {
-        color: rgba(0, 0, 0, 0.609);
-      }
+  .addIcon {
+    width: 30px;
+    margin-top: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: color 0.2s;
+    &:hover {
+      color: rgba(0, 0, 0, 0.609);
     }
   }
 }
 .bg-options {
   display: grid;
   border-radius: 12px;
-  // grid-template-columns: repeat(4, 1fr);
   grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
   margin-top: 20px;
-  // background-color: rgba(255, 255, 255, 0.568);
 }
 
 .member-preview {

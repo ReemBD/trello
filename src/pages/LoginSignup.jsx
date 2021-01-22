@@ -7,6 +7,7 @@ import { setUser, clearUser } from '../store/actions/userAction'
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { GoogleLogin } from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
+import { eventBusService } from '../services/eventBusService'
 // refresh token
 import { refreshTokenSetup } from '../services/googleService';
 
@@ -26,12 +27,18 @@ export class _LoginSignup extends Component {
             username: '',
             password: ''
         },
-        isNewUser: false,
+        googleCreds: {},
+        isNewUser: true,
         msg: '',
         isUploading: false,
     }
 
+    componentDidMount() {
+        this.unsubscribe = eventBusService.on('logout', () => {
+            this.onLogout()
+        });
 
+    }
 
 
     // -------------------------------------------------GOOGLE----------------------------------------
@@ -140,7 +147,8 @@ export class _LoginSignup extends Component {
             msg: '',
             isUploading: false,
 
-        }, () => this.props.history.push(`/login`))
+        })
+        // , () => this.props.history.push(`/login`))
 
     }
 
@@ -184,7 +192,7 @@ export class _LoginSignup extends Component {
 
                                 <label> <div className="avatar flex justify-center align-center" style={{
                                     backgroundImage: ` url(${signupCred.imgUrl})`
-                                }}> <AddAPhotoIcon style={{color:' #dadbdb'}} className={signupCred.imgUrl && 'hidden'} />  </div>
+                                }}> <AddAPhotoIcon style={{ color: ' #dadbdb' }} className={signupCred.imgUrl && 'hidden'} />  </div>
                                     <input onChange={this.onUploadImg} type="file" hidden /></label>
 
 
