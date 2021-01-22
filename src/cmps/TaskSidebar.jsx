@@ -65,6 +65,7 @@ export class TaskSidebar extends Component {
         const { board, list, task, updateBoard } = this.props
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
+        if (!this.state.dueDate.timestamp) return
         copyBoard.lists[listIdx].tasks[taskIdx].dueDate = this.state.dueDate
         updateBoard(copyBoard)
         this.props.togglePopover('')
