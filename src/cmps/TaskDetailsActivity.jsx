@@ -62,12 +62,19 @@ export class _TaskDetailsActivity extends Component {
     saveComment = async (ev) => {
         ev.preventDefault()
         const { txt } = this.state.comment
+        const { user } = this.props
         const commentToAdd = {
-            byMember: { _id: 'u101', fullname: 'Abi Abambi', imgUrl: 'https://www.maccosmetics.ca/media/export/cms/products/640x600/mac_sku_MW3A53_640x600_1.jpg' },
             id: utilService.makeId(),
             createdAt: Date.now(),
             txt
         }
+        let byMember;
+        if (!user) {
+            byMember = { _id: 'guest', fullname: 'Guest', imgUrl: 'https://res.cloudinary.com/nofar/image/upload/v1611336021/psvaqtmh8ithfqe8ah27.png' }
+        } else {
+            byMember = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl }
+        }
+        commentToAdd.byMember = byMember
         const { currBoard, list, task } = this.props
         const copyTask = cloneDeep(task)
         const copyBoard = cloneDeep(currBoard)
@@ -93,7 +100,7 @@ export class _TaskDetailsActivity extends Component {
     }
 
     render() {
-        const { currBoard } = this.props
+        const { currBoard, user } = this.props
         const { listId, taskId } = this.props.match.params
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(currBoard, listId, taskId)
         const task = currBoard.lists[listIdx].tasks[taskIdx]
@@ -108,8 +115,8 @@ export class _TaskDetailsActivity extends Component {
                     <button onClick={this.onToggleDetails} className="secondary-btn">Show Details</button>
                 </div>
                 <div className="task-comments">
-                    <div className="new-comment flex">
-                        <div className="task-member-img"><PermIdentityOutlinedIcon /></div>
+                    <div className="new-comment flex align-center">
+                        <div className="task-member-img">{(user) ? <img src={user.imgUrl} /> : <PermIdentityOutlinedIcon />}</div>
                         <form>
                             <div className="comment-box">
                                 <textarea
@@ -137,7 +144,7 @@ export class _TaskDetailsActivity extends Component {
                                         <span>{comment.txt}</span>
                                     </div>
                                 </div>
-                                <span onClick={() => this.onRemoveComment(listIdx, taskIdx, commentIdx)} className="comment-dlt-container" ><DeleteOutlinedIcon className="comment-dlt-btn" /></span>
+                                {(comment.byMember._id === user?._id) ? <span onClick={() => this.onRemoveComment(listIdx, taskIdx, commentIdx)} className="comment-dlt-container" ><DeleteOutlinedIcon className="comment-dlt-btn" /></span> : ''}
                             </div>
                         })
                         : ''}
@@ -170,6 +177,7 @@ export class _TaskDetailsActivity extends Component {
 const mapStateToProps = state => {
     return {
         currBoard: state.boardReducer.currBoard,
+        user: state.userReducer.user
     }
 }
 
