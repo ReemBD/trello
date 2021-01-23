@@ -25,13 +25,13 @@ export class BoardHeader extends Component {
         // const isActivityCurrPopover = currPopover === 'ACTIVITY_MENU'
         return (
             <>
-                <header className={`board-header board-layout flex ${className}`}>
+                <header className={`board-header board-layout  ${className}`}>
                     <div className="board-title">{board.title}</div>
                     <div className="members-nav-display flex">
                         {members.map(member => { return <div key={member._id} className="board-member-img-wrapper"><img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /></div> })}
                     </div>
                     <ul className="board-nav clear-list flex">
-                        <li><BoardFilter /></li>
+                        <li className="board-filter-container"><BoardFilter /></li>
                         <li className={`notification-icon-container ${currBadgeCount && 'unread'}`}>
                             <NotificationsIcon onClick={ev => {
                                 ev.stopPropagation()

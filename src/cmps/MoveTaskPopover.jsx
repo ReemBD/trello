@@ -26,9 +26,10 @@ export class MoveTaskPopover extends Component {
         copyBoard.lists[+selectedListIdx].tasks.push(taskToMove[0])
         await updateBoard(copyBoard)
         setCurrPopover()
-        this.props.history.push(`/board/${board._id}/${board.lists[selectedListIdx].id}/${task.id}`)
-
-
+        const { taskId, listId } = this.props.match.params
+        if (taskId && listId) {
+            this.props.history.push(`/board/${board._id}/${board.lists[selectedListIdx].id}/${task.id}`)
+        }
     }
     render() {
         const { board, list, task } = this.props

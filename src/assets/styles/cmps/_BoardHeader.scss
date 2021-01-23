@@ -1,4 +1,6 @@
 .board-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
     align-items: center;
     position: fixed;
@@ -20,7 +22,7 @@
     }
 
     .board-nav {
-        padding-top: 10px;
+        justify-self: end;
         & > * {
             padding: 3px 3px 0;
             &:hover {
@@ -39,6 +41,10 @@
             }
         }
     }
+    .members-nav-display {
+        justify-self: center;
+
+    }
     .board-member-img-wrapper {
         width: 30px;
         margin: 4px;
@@ -48,11 +54,39 @@
             width: 100%;
         }
     }
+    .board-filter-container {
+        // background-color: #3d3d3d36;
+        padding: 0;
+    }
+    .board-filter {
+        height: 100%;
+        max-width: 32px;
+        position: relative;
+        border-radius: 4px;
+        transition: max-width .3s;
+        &.open {
+            background: #ababab8f;
+            max-width: 200px;
+            transition: max-width .3s;
+        }
+        input {
+            padding: 5px;
+            margin-inline-end: 3px;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+        .filter-icon {
+            position: absolute;
+            right: 4px;
+        }
+    }
 }
 
 @media (max-width: 700px) {
     .board-header {
-        display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         align-items: center;

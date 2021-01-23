@@ -157,7 +157,7 @@ export class _TaskPreview extends Component {
                                     </div>
                                     : ''
                                 }
-                                {task.labels?.length && <div className="top-line-preview-container flex">
+                                {task.labels?.length ? <div className="top-line-preview-container flex">
                                     <div className="labels-container flex">
                                         {task.labels.map(label => {
                                             return (
@@ -169,7 +169,7 @@ export class _TaskPreview extends Component {
 
                                         })}
 
-                                    </div>
+                                    </div> 
                                     <div className="quick-edit-wrapper">
                                         {isTaskHovered && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit
@@ -179,7 +179,7 @@ export class _TaskPreview extends Component {
                                             list={list}
                                             onToggleEdit={this.onToggleEdit} />}
                                     </div>
-                                </div>}
+                                </div> : ''}
                                 <div className="task-title-wrapper flex space-between ">
 
 

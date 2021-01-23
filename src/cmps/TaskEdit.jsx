@@ -7,7 +7,10 @@ import LabelIcon from '@material-ui/icons/LabelOutlined';
 import ChangeMembersIcon from '@material-ui/icons/PeopleOutline';
 import RemoveIcon from '@material-ui/icons/DeleteOutline';
 import ChangeDueDateIcon from '@material-ui/icons/QueryBuilder';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
 import { DateTimePopover } from './DateTimePopover'
+import { MoveTaskPopover } from './MoveTaskPopover'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
 
@@ -27,7 +30,7 @@ export class TaskEdit extends Component {
                 Component: ChangeMembersPopover,
                 Icon: ChangeMembersIcon
             },
-            { title: 'Move' },
+            { title: 'Move', Icon: ArrowForwardIcon, Component: MoveTaskPopover },
             { title: 'Copy' },
             {
                 title: 'Change Due Date',
