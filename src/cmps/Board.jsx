@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { utilService } from '../services/utilService'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { LoadingSpinner } from './LoadingSpinner';
 
 
 export class _Board extends Component {
@@ -105,7 +106,7 @@ export class _Board extends Component {
         const { lists } = board
         const isCurrPopover = (currPopover === 'LIST_ADD')
         const { listToAdd,isLabelOpen } = this.state
-        if (!board) return <h1>loading...</h1>
+        if (!board) return <LoadingSpinner/>
         return (
             <div className={`board board-layout ${isDashboardOpen && 'slide-from-left'}`} style={{ height: "76vh" }}>
 

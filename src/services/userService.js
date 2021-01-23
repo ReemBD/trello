@@ -25,10 +25,10 @@ async function login(user) {
     return loggedUser
 }
 
-async function signup(user) {
-    console.log('userrrr',user);
+async function signup(user, isGoogle) {
+    console.log('userrrr', user);
     try {
-        await httpService.post(`${endpoint}/signup`, user)
+        await httpService.post(`${endpoint}/signup`, { user, isGoogle })
         return user
     } catch (err) {
         console.log('problem signing in ', err);

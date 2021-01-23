@@ -68,4 +68,12 @@
     margin-bottom: 20px;
   }
 }
+
+@media screen and(min-width:1300px) {
+  .boards-page {
+    .user-boards-section {
+      padding-left: 4em;
+    }
+  }
+}
 // -------------------------------------------------------------

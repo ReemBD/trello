@@ -37,7 +37,7 @@ export class _AppHeader extends Component {
                     <li className="logo"><NavLink to="/"><span>Chello</span></NavLink></li>
                     <li><NavLink to="/board"><AppsIcon /><span>Boards</span></NavLink></li>
                     {!user && <li><NavLink to="/login"><PersonRoundedIcon /><span >Login</span></NavLink></li>}
-                    {user && <li className="user-desc flex align-center"> <img className="avatar-header" src={user.imgUrl} /> Hello {user.fullname}  </li>}
+                    {user && <li className="user-desc flex align-center"> Hello {user.fullname} </li>}
                     {user && <li className="logout flex align-center" onClick={this.logout} > Logout </li>}
                 </ul>
             </header>

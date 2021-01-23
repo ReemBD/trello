@@ -1,11 +1,12 @@
 import { userService } from "../../services/userService"
 
-export function setUser(user, isNewUser) {
+export function setUser(user, isNewUser,isGoogle) {
     return async (dispatch) => {
         var loggedUser;
         try {
-            if (isNewUser) loggedUser = await userService.signup(user)
+            if (isNewUser) loggedUser = await userService.signup(user,isGoogle)
             else loggedUser = await userService.login(user)
+            delete loggedUser.password
             const action = {
                 type: 'SET_USER',
                 loggedUser

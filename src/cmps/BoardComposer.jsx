@@ -18,7 +18,7 @@ export class _BoardComposer extends Component {
             style: {
                 bg: '#3d3d3d'
             }
-            
+
         },
         users: [],
         bgs: [],
@@ -50,6 +50,23 @@ export class _BoardComposer extends Component {
         this.loadBgs()
     }
 
+    componentWillUnmount() {
+        this.setState({
+            isMembersPreviewOpen: false,
+            newBoard: {
+                title: '',
+                members: [],
+                style: {
+                    bg: '#3d3d3d'
+                }
+
+            },
+            users: [],
+            bgs: [],
+            filterMembersBy: '',
+            btnTxt: 'Create Board'
+        })
+    }
 
     onAddBoard = async (ev) => {
         ev.preventDefault()
@@ -149,9 +166,9 @@ export class _BoardComposer extends Component {
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board Title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
                         <span>
-                        <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
-                        {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
-                    </span>
+                            <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
+                            {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
+                        </span>
                     </div>
 
                     <div className="bg-options">
@@ -160,7 +177,7 @@ export class _BoardComposer extends Component {
                         })}
                     </div>
 
-                  
+
                     <button className="primary-btn compose-board-btn">{btnTxt}</button>
                 </form>
             </Fragment >
