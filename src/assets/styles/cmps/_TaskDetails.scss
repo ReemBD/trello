@@ -1,11 +1,17 @@
 .details-modal {
-  width: 768px;
-  margin: 48px auto 80px;
   border-radius: 2px;
   background-color: $task-bgc-clr;
   z-index: 20;
   padding-top: rem(20px);
-  min-height: 93vh;
+  margin: 48px 10px 80px;
+  flex-direction: column;
+
+  @media (min-width: 800px) {
+    width: 768px;
+    min-height: 93vh;
+    margin: 48px auto 80px;
+    flex-direction: row;
+  }
 
   transition: height 0.3s;
   .main-details {
@@ -15,7 +21,7 @@
 
     & > * {
       position: relative;
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 600;
       padding: 4px 12px;
       line-height: 24px;
@@ -23,8 +29,12 @@
     }
     .details-header {
       form {
-        width: 100%;
+        width: 80%;
         position: relative;
+
+        @media (min-width: 800px) {
+          width: 100%;
+        }
       }
 
       p {
@@ -34,6 +44,14 @@
       .details-list-name {
         text-decoration: underline;
       }
+
+      textarea {
+        font-size: 1.5rem;
+
+        @media (max-width: 335px) {
+          font-size: 1rem;
+        }
+      }
     }
 
     .details-info {
@@ -42,7 +60,7 @@
 
         h3 {
           text-transform: uppercase;
-          font-size: 12px;
+          font-size: 0.75rem;
           font-weight: 400;
           letter-spacing: 0.48px;
           color: #5e6c84;
@@ -64,15 +82,18 @@
   .details-buttons {
     flex-grow: 1;
     position: relative;
-    margin-right: 10px;
-
-    .task-details-close-btn {
-      position: absolute;
-      right: 15px;
+    margin: 0 auto;
+    @media (min-width: 800px) {
+      margin-right: 20px;
     }
   }
 }
 
+.task-details-close-btn {
+  position: relative;
+  left: 24%;
+  z-index: 4;
+}
 .detail-labels {
   .task-labels {
     & > * {
@@ -103,7 +124,7 @@
     background-color: #61bd4f;
     padding: 0 12px;
     letter-spacing: 0.2px;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #fff;
     border-radius: 3px;
     margin-left: 3px;
@@ -114,7 +135,7 @@
 .task-middle-details {
   .details-description {
     position: relative;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
     padding: 4px 8px;
     line-height: 24px;
@@ -144,7 +165,7 @@
 .details-checklist {
   margin-bottom: rem(15px);
   position: relative;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   padding: 4px 8px;
   line-height: 24px;
@@ -173,6 +194,7 @@
 }
 
 .task-activity {
+  margin-bottom: rem(15px);
   .activity-header {
     position: relative;
 
@@ -208,7 +230,7 @@
 
     .activity-txt {
       margin-bottom: 0;
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 400;
       .activity-member-name {
         font-weight: 600;
@@ -221,7 +243,7 @@
 
     .activity-date {
       span {
-        font-size: 12px;
+        font-size: 0.75rem;
       }
     }
   }
@@ -231,7 +253,7 @@
     .comment-dlt-btn {
       position: absolute;
       top: 35.5px;
-      font-size: 20px;
+      font-size: 1.25rem;
       padding: 2px;
       border-radius: 3px;
       display: flex;
@@ -263,7 +285,7 @@
     box-shadow: 0 1px 2px -1px rgba(9, 30, 66, 0.25),
       0 0 0 1px rgba(9, 30, 66, 0.08);
     span {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 400;
     }
   }
@@ -294,7 +316,7 @@
       .task-desc-buttons {
         button {
           padding: 3px 6px;
-          font-size: 12px;
+          font-size: 0.75rem;
         }
       }
     }
@@ -304,9 +326,15 @@
 .due-date-popover {
   @include popover-main;
   z-index: 30;
-  left: -350px;
-  width: 335px;
   position: absolute;
+  left: 0;
+  top: -85px;
+  width: 270px;
+  @media (min-width: 800px) {
+    width: 335px;
+    left: -350px;
+    top: 15px;
+  }
 
   .popover-header {
     @include popover-header;
@@ -337,7 +365,7 @@
   margin-bottom: rem(15px);
   .details-images {
     position: relative;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
     padding: 4px 12px;
     line-height: 24px;
@@ -368,9 +396,15 @@
 .move-task-popover {
   @include popover-main;
   z-index: 30;
-  left: -350px;
-  width: 335px;
   position: absolute;
+  left: 0;
+  top: -145px;
+  width: 250px;
+  @media (min-width: 800px) {
+    width: 335px;
+    left: -350px;
+    top: 15px;
+  }
 
   .popover-header {
     @include popover-header;
