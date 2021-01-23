@@ -12,29 +12,20 @@ export class BoardHeader extends Component {
         currBadgeCount: 0,
     }
 
-    componentDidMount() {
-        const { boardId } = this.props.match.params
-        //  socketService.on('do notification fs', this.incNotificationBadge)
-    }
-
-    componentWillUnmount() {
-        // socketService.off('do notification fs', this.incNotifcationBadge)
-    }
-
 
     incNotificationBadge = (notification) => {
         this.setState({ currBadgeCount: this.state.currBadgeCount + 1 }, () => {
         })
     }
     render() {
-        const { board, setCurrPopover, currPopover, onToggleDashboard } = this.props
+        const { board, setCurrPopover, currPopover, onToggleDashboard, className } = this.props
         const { members } = board
         const { currBadgeCount } = this.state
         const isCurrPopover = currPopover === 'NOTIFICATION_POPOVER'
         // const isActivityCurrPopover = currPopover === 'ACTIVITY_MENU'
         return (
             <>
-                <header className="board-header board-layout flex">
+                <header className={`board-header board-layout flex ${className}`}>
                     <div className="board-title">{board.title}</div>
                     <div className="members-nav-display flex">
                         {members.map(member => { return <div key={member._id} className="board-member-img-wrapper"><img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /></div> })}

@@ -12,7 +12,8 @@ import { Dashboard } from '../cmps/Dashboard'
 class _TrelloApp extends Component {
 
     state = {
-        isDashboardOpen: false
+        isDashboardOpen: false,
+        isBoardClosed: false
     }
 
 
@@ -30,7 +31,12 @@ class _TrelloApp extends Component {
     }
 
     toggleDashboard = (boolean = !this.state.isDashboardOpen) => {
-        this.setState({ isDashboardOpen: boolean })
+        this.setState({ isDashboardOpen: boolean }, () => {
+            this.state.isBoardClosed ? this.setState({isBoardClosed: false}) :
+            setTimeout(() => {
+                this.setState({ isBoardClosed: true })
+            }, 1000)
+        })
     }
 
     componentWillUnmount() {
@@ -47,6 +53,8 @@ class _TrelloApp extends Component {
         }
     }
 
+
+
     onBoardUpdated = async ({ updatedBoard, activity }) => {
         const board = { ...updatedBoard }
         await this.props.updateBoard(board, null, false)
@@ -54,7 +62,7 @@ class _TrelloApp extends Component {
 
     render() {
         const { board, setCurrPopover } = this.props
-        const { isDashboardOpen } = this.state
+        const { isDashboardOpen,isBoardClosed } = this.state
         if (!board) return <h1>loading...</h1>
         return (
             <div onClick={() => {
@@ -62,11 +70,13 @@ class _TrelloApp extends Component {
                 // if (isOverlayOpen) toggleOverlay()
             }} style={{ paddingTop: '6vh' }}>
                 <div className="main-bg" style={{ backgroundImage: board.style.bg }} onClick={ev => { ev.stopPropagation() }}></div>
-                <div className="bg-overlay">
-                    {isDashboardOpen && <div className="dashboard-overlay"></div>}
-                    <BoardHeader {...this.props} onToggleDashboard={this.toggleDashboard} />
-                    {isDashboardOpen ? <Dashboard board={board} /> : <Board {...this.props} />}
+                <div className={`bg-overlay `}>
+                    <BoardHeader {...this.props} className={isDashboardOpen && 'dashboard-mode'} toggleDashboardNew={this.toggleDashboardNew} onToggleDashboard={this.toggleDashboard} />
+                    {!isBoardClosed && <Board {...this.props} isDashboardOpen={isDashboardOpen} />}
                     {this.props.match.params.listId && <TaskDetails />}
+                </div>
+                <div className={`dashboard-screen ${isDashboardOpen && 'slide-to-right'} ${!isDashboardOpen && 'hidden'}`}>
+                    <Dashboard board={board} />
                 </div>
             </div>
         )

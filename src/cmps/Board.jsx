@@ -101,13 +101,13 @@ export class _Board extends Component {
 
 
     render() {
-        const { board, currPopover, } = this.props
+        const { board, currPopover, isDashboardOpen } = this.props
         const { lists } = board
         const isCurrPopover = (currPopover === 'LIST_ADD')
         const { listToAdd,isLabelOpen } = this.state
         if (!board) return <h1>loading...</h1>
         return (
-            <div className="board board-layout" style={{ height: "76vh" }}>
+            <div className={`board board-layout ${isDashboardOpen && 'slide-from-left'}`} style={{ height: "76vh" }}>
 
                 <DragDropContext onDragEnd={this.onDragEnd} >
                     <Droppable

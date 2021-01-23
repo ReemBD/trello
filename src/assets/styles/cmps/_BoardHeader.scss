@@ -1,24 +1,27 @@
 .board-header {
     justify-content: space-between;
     align-items: center;
-    z-index: 3;
-    // background-color: #ffffff5e;
     position: fixed;
-    margin-top: -6px;
-    width: 100%;
-    margin-left: 0%;
-    padding: 4px;
+    z-index: 3;
+    background-color: #ffffff5e;
+    right: 0;
+    left: 0;
+    padding: 4px ;
+    border-radius: 8px 8px 0 0 ;
+    margin-right: 14px;
+    margin-left: 14px;
+    
     .board-title {
         @include header-title;
     }
     ul {
         margin: 0;
-        margin-right: 3em;
+        margin-right: 1em;
     }
 
     .board-nav {
         padding-top: 10px;
-        &>* {
+        & > * {
             padding: 3px 3px 0;
             &:hover {
                 background-color: #3d3d3d36;
@@ -27,15 +30,13 @@
             }
         }
         & > *:not(:last-child) {
-            margin-inline-end: .8em;
+            margin-inline-end: 0.8em;
         }
-        .notification-icon-container{
+        .notification-icon-container {
             border-radius: 3px;
-            &.unread{
+            &.unread {
                 background-color: #ef4040cc;
-
             }
-           
         }
     }
     .board-member-img-wrapper {
@@ -45,6 +46,35 @@
         .board-member-img {
             border-radius: 999px;
             width: 100%;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .board-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        padding-inline-end: 10px;
+        padding-inline-start: 10px;
+        
+        .board-title {
+            grid-column: 1;
+            margin-inline-start: 0;
+        }
+        .members-nav-display {
+            justify-self: end;
+            margin-top: 5px;
+        }
+        .board-member-img-wrapper:not(:last-child) {
+            grid-column: 2;
+            margin-right: -5px;
+        }
+        .board-nav {
+            grid-column: 1/-1;
+            margin-right: 0;
+            justify-content: space-between;
         }
     }
 }
