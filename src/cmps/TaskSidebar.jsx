@@ -64,6 +64,7 @@ export class TaskSidebar extends Component {
     }
 
     onSaveDate = () => {
+
         const { board, list, task, updateBoard } = this.props
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)

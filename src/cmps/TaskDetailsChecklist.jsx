@@ -148,7 +148,7 @@ export class _TaskDetailsChecklist extends Component {
     render() {
         const { checklists, newTodos } = this.state
         const { percentDone } = this
-        if (!checklists) return <LoadingSpinner/>
+        if (!checklists) return <LoadingSpinner />
         return (
             <div className="task-checklist">
                 { checklists?.map((checklist, listIdx) => {
@@ -184,7 +184,7 @@ export class _TaskDetailsChecklist extends Component {
                                         value={todo.title}
                                         onChange={(ev) => this.handleTodoChange(todoIdx, listIdx, ev)}
                                         onKeyDown={this.onEnterPress}
-
+                                        autoComplete="false"
                                         onBlur={this.onUpdateBoard}
                                     />
                                     <DeleteOutlinedIcon className="todo-delete-btn" onClick={(ev) => this.onRemoveTodo(todoIdx, listIdx, ev)} />
@@ -195,6 +195,7 @@ export class _TaskDetailsChecklist extends Component {
                         }
                         <input
                             type="text"
+                            autoComplete="false"
                             name={listIdx}
                             placeholder="Add an item"
                             className="task-todo-input"

@@ -406,15 +406,14 @@
     top: 15px;
   }
 
+  .move-task-body {
+    margin: 0 auto;
+  }
+
   .popover-header {
     @include popover-header;
     margin-bottom: 5px;
     border-bottom: 1px solid rgba(9, 30, 66, 0.13);
-  }
-
-  .popover-header-title {
-    border: none;
-    padding-left: rem(30px);
   }
 
   svg {
