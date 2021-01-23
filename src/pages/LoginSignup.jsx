@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { cloudinaryService } from '../services/cloudinaryService'
+import { styleService } from '../services/styleService'
 import { setUser, clearUser } from '../store/actions/userAction'
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { GoogleLogin } from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 import { eventBusService } from '../services/eventBusService'
+import Avatar from 'react-avatar';
 // refresh token
 import { refreshTokenSetup } from '../services/googleService';
 
@@ -31,6 +33,7 @@ export class _LoginSignup extends Component {
         isNewUser: true,
         msg: '',
         isUploading: false,
+        isGoogle: false
     }
 
     componentDidMount() {
@@ -51,9 +54,10 @@ export class _LoginSignup extends Component {
                 fullname: user.name,
                 password: user.googleId,
                 imgUrl: user.imageUrl
-            },
+            }, isGoogle: true
         })
         refreshTokenSetup(res);
+
     };
 
     onFailureGoogleLogin = (res) => {
@@ -64,7 +68,7 @@ export class _LoginSignup extends Component {
 
     onSubmit = async (ev) => {
         ev.preventDefault()
-        const { signupCred, loginCred, isNewUser } = this.state
+        const { signupCred, loginCred, isNewUser,isGoogle } = this.state
 
         var userCreds;
         if (isNewUser) userCreds = signupCred
@@ -74,10 +78,9 @@ export class _LoginSignup extends Component {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
-
-
+    
         try {
-            await this.props.setUser(userCreds, isNewUser)
+            await this.props.setUser(userCreds, isNewUser,isGoogle)
             this.setState({ msg: '' })
             this.props.history.push(`/board`)//then gos to the boards page
         } catch (err) {
@@ -146,6 +149,7 @@ export class _LoginSignup extends Component {
             isNewUser: true,
             msg: '',
             isUploading: false,
+            isGoogle: false
 
         })
         // , () => this.props.history.push(`/login`))
@@ -161,7 +165,7 @@ export class _LoginSignup extends Component {
 
             <Fragment>
                 <div className="login-bg-screen" > </div>
-                <div className="login-container flex justify-center">
+                <div className="login-container flex justify-center ">
 
 
                     <div className={`login-signup-wrapper flex  ${isUploading && 'uploadStage'}`} >
@@ -189,7 +193,7 @@ export class _LoginSignup extends Component {
 
 
                                 <h1>Sign Up</h1>
-
+                                {/* <Avatar className="login-avatar" name={signupCred.fullname.toUpperCase()} size="100" textSizeRatio={1.75} fgColor='#fff' round={true} src={signupCred.imgUrl} /> */}
                                 <label> <div className="avatar flex justify-center align-center" style={{
                                     backgroundImage: ` url(${signupCred.imgUrl})`
                                 }}> <AddAPhotoIcon style={{ color: ' #dadbdb' }} className={signupCred.imgUrl && 'hidden'} />  </div>
@@ -199,7 +203,7 @@ export class _LoginSignup extends Component {
                                 <GoogleLogin
                                     className="with-btn"
                                     clientId={clientId}
-                                    buttonText="Login"
+                                    buttonText="Login with Google"
                                     onSuccess={this.onSuccessGoogleLogin}
                                     onFailure={this.onFailureGoogleLogin}
                                     cookiePolicy={'single_host_origin'}
@@ -208,7 +212,7 @@ export class _LoginSignup extends Component {
                                 />
 
 
-                                <button className="with-btn">Sign up with facebook <i className="fab fa-facebook"></i></button>
+                                {/* <button className="with-btn">Sign up with facebook <i className="fab fa-facebook"></i></button> */}
 
 
 

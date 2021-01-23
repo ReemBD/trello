@@ -11,6 +11,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import { LoadingSpinner } from './LoadingSpinner'
 
 export class _TaskDetailsChecklist extends Component {
 
@@ -147,7 +148,7 @@ export class _TaskDetailsChecklist extends Component {
     render() {
         const { checklists, newTodos } = this.state
         const { percentDone } = this
-        if (!checklists) return <div>Loading...</div>
+        if (!checklists) return <LoadingSpinner/>
         return (
             <div className="task-checklist">
                 { checklists?.map((checklist, listIdx) => {

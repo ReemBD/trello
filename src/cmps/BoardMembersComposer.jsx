@@ -3,7 +3,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import AddIcon from '@material-ui/icons/Add';
 import { userService } from '../services/userService';
-import { PopoverHeader } from './PopoverHeader'
+import { LoadingSpinner } from './LoadingSpinner';
+
 export class BoardMemberComposer extends Component {
     state = {
         users: [],
@@ -33,7 +34,7 @@ export class BoardMemberComposer extends Component {
     render() {
         const { isBoardMember, toggleMember, closeModal } = this.props
         const { users } = this.state
-        if (!users) return 'Loading...'
+        if (!users) return <LoadingSpinner/>
         return (
             <div className="change-members-popover boards " onClick={(ev) => { ev.stopPropagation() }}>
                 <div className="popover-header boards flex align-center justify-center">

@@ -7,6 +7,7 @@ import { BoardHeader } from '../cmps/BoardHeader'
 import { TaskDetails } from '../cmps/TaskDetails'
 import { socketService } from '../services/socketService'
 import { Dashboard } from '../cmps/Dashboard'
+import { LoadingSpinner } from '../cmps/LoadingSpinner.jsx'
 
 
 class _TrelloApp extends Component {
@@ -63,7 +64,7 @@ class _TrelloApp extends Component {
     render() {
         const { board, setCurrPopover } = this.props
         const { isDashboardOpen,isBoardClosed } = this.state
-        if (!board) return <h1>loading...</h1>
+        if (!board) return <LoadingSpinner/>
         return (
             <div onClick={() => {
                 setCurrPopover()

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { boardService } from '../services/boardService.js'
 import { BoardList } from '../cmps/BoardList'
 import { BoardComposer } from '../cmps/BoardComposer.jsx'
+import { LoadingSpinner } from '../cmps/LoadingSpinner.jsx'
 
 export class Boards extends Component {
 
@@ -40,7 +41,7 @@ export class Boards extends Component {
     render() {
 
         const { boards, isComposerOpen, boardToEdit } = this.state
-        if (!boards) return <h1>loading...</h1>
+        if (!boards) return <LoadingSpinner/>
         return (
             <Fragment>
 

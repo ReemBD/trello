@@ -6,6 +6,7 @@ import { utilService } from '../services/utilService'
 import { setCurrPopover } from '../store/actions/popoverActions'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { ListActions } from './ListActions'
+import { LoadingSpinner } from './LoadingSpinner'
 
 export class _ListTitle extends Component {
     state = {
@@ -78,7 +79,7 @@ export class _ListTitle extends Component {
         const { list, isComposerOpen } = this.props
         const isCurrPopover = (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`)
         const { isListActionsOpen } = this.state
-        if (!list) return <h1>Loading...</h1>
+        if (!list) return <LoadingSpinner/>
         return (
             <form onSubmit={this.onPressEnter}
                 autoComplete="off"
