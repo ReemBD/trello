@@ -110,4 +110,19 @@
       }
     }
   }
+
+  .copy-task-popover {
+    @include popover-main;
+    position: absolute;
+    z-index: 30;
+    left: -185px;
+    top: 51px;
+    .popover-header {
+      @include popover-header;
+    }
+
+    .copy-task-body {
+      width: 225px;
+    }
+  }
 }
