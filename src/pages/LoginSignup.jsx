@@ -78,10 +78,7 @@ export class _LoginSignup extends Component {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
-        // if (userCreds === loginCred && !userCreds.imgUrl) {
-        //     userCreds.imgUrl = styleService.letterAvatar(userCreds.fullname)
-        // }
-
+    
         try {
             await this.props.setUser(userCreds, isNewUser,isGoogle)
             this.setState({ msg: '' })
