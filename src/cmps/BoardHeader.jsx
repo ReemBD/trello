@@ -6,6 +6,8 @@ import NotificationsIcon from '@material-ui/icons/NotificationsNone';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import { ActivityMenu } from './ActivityMenu'
+import  BoardMemberImg  from './BoardMemberImg'
+
 export class BoardHeader extends Component {
 
     state = {
@@ -28,7 +30,12 @@ export class BoardHeader extends Component {
                 <header className={`board-header board-layout  ${className}`}>
                     <div className="board-title">{board.title}</div>
                     <div className="members-nav-display flex">
-                        {members.map(member => { return <div key={member._id} className="board-member-img-wrapper"><img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /></div> })}
+                        {members.map(member => { return <div key={member._id} className="board-member-img-wrapper">
+                            
+                            {/* <img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /> */}
+                            <BoardMemberImg member={member} />
+
+                            </div> })}
                     </div>
                     <ul className="board-nav clear-list flex">
                         <li className="board-filter-container"><BoardFilter /></li>

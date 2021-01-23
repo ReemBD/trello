@@ -8,6 +8,7 @@ import { updateBoard } from '../store/actions/boardActions'
 import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import { LoadingSpinner } from './LoadingSpinner'
 
 
 export class _TaskDetailsActivity extends Component {
@@ -106,7 +107,7 @@ export class _TaskDetailsActivity extends Component {
         const task = currBoard.lists[listIdx].tasks[taskIdx]
         const taskComments = task?.comments
         const { isActivityOpen, taskActivities, comment } = this.state
-        if (!taskActivities) return <div>Loading...</div>
+        if (!taskActivities) return <LoadingSpinner/>
         return (
             <div className="task-activity">
                 <div className="activity-header flex">
