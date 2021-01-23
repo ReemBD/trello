@@ -148,15 +148,18 @@ export class _TaskDetails extends Component {
                             <div className="main-details flex column">
 
                                 <div className="details-header flex column">
-                                    <form>
+                                    <form className="flex">
                                         <DvrOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
-                                        <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea" style={{ fontSize: '24px' }}
+                                        <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea"
                                             name="title"
                                             onChange={this.handleTitle}
                                             value={this.state.task.title}
                                             spellCheck="false"
                                             onBlur={this.onSubmitForm}
                                         />
+                                        <div className="task-details-close-btn close-btn flex align-center justify-center">
+                                            <CloseIcon onClick={this.onCloseModal} />
+                                        </div>
                                     </form>
                                     <p>in list <span className="details-list-name">{currList?.title}</span></p>
                                 </div>
@@ -180,9 +183,7 @@ export class _TaskDetails extends Component {
                                 </div>
                             </div>
                             <div className="details-buttons">
-                                <div className="task-details-close-btn close-btn flex align-center justify-center">
-                                    <CloseIcon onClick={this.onCloseModal} />
-                                </div>
+
 
                                 <div className="task-sidebar">
                                     <TaskSidebar board={board} list={currList} task={currTask} togglePopover={this.togglePopover} currPopover={this.state.currPopover} {...this.props} />

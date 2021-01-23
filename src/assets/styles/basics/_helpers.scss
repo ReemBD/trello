@@ -80,7 +80,7 @@
   resize: none;
   font-family: inherit;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
   height: 36px;
   border: none;
   border-radius: 3px;
@@ -111,7 +111,7 @@
 }
 
 .task-section-heading {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
 }
 
@@ -133,15 +133,14 @@
   svg {
     border-radius: 2em;
     background-color: darken(#eee, 5%);
-    font-size: 26px;
+    font-size: 1.625rem;
     padding: 2px;
   }
 }
 
-
 .todo-delete-btn {
   opacity: 0;
-  font-size: 20px;
+  font-size: 1.25rem;
   padding: 2px;
   border-radius: 3px;
   display: flex;
