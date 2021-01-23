@@ -63,9 +63,14 @@ export class _TaskDetailsChecklist extends Component {
 
     handleCheckbox = (todoIdx, listIdx, ev) => {
         const copyChecklists = cloneDeep(this.state.checklists)
-        copyChecklists[listIdx].todos[todoIdx].isDone = ev.target.checked
+        const todo = copyChecklists[listIdx].todos[todoIdx]
+        todo.isDone = ev.target.checked
         this.setState({ checklists: copyChecklists }, () => {
-            this.onUpdateBoard()
+            if (todo.isDone) {
+                this.onUpdateBoard('completed', todo.title)
+            } else {
+                this.onUpdateBoard('unchecked', todo.title)
+            }
         })
     }
 
@@ -93,28 +98,54 @@ export class _TaskDetailsChecklist extends Component {
         if (!ev.target.value) return
         if (ev.keyCode === 13 && ev.shiftKey === false) {
             ev.preventDefault()
-            this.onUpdateBoard()
+            if (ev.target.name === 'title') {
+                this.onUpdateBoard('changeTitle')
+            } else {
+                this.onUpdateBoard('changeTxt')
+
+            }
         }
     }
 
-    onUpdateBoard = async () => {
+    onUpdateBoard = async (activityType, title) => {
         const { board, list, task } = this.props
         const { checklists } = this.state
         const boardCopy = cloneDeep(board)
         const listIdx = boardService.getListIdxById(board, list.id)
         const taskIdx = boardService.getTaskIdxById(list, task.id)
         boardCopy.lists[listIdx].tasks[taskIdx].checklists = checklists
-        await this.props.updateBoard(boardCopy)
+        const { user } = this.props
+        let txt
+        if (activityType === 'completed') {
+            txt = `completed "${title}" on task `
+        } else if (activityType === 'changeTxt') {
+            txt = 'changed a todo in task'
+        } else if (activityType === 'unchecked') {
+            txt = `unchecked "${title}" on task`
+        } else if (activityType === 'remove') {
+            txt = `removed "${title}" from task`
+        } else if (activityType === 'newTodo') {
+            txt = `added a todo: "${title}" to task`
+        } else {
+            txt = 'changed checklist title in'
+        }
+        const activity = {
+            user,
+            txt,
+            task,
+        }
+        await this.props.updateBoard(boardCopy, activity)
         this.elTitleRef.current?.blur()
     }
 
     onRemoveTodo = (todoIdx, listIdx, ev) => {
         let copyChecklists = cloneDeep(this.state.checklists)
+        const todoToRemove = copyChecklists[listIdx].todos[todoIdx]
         copyChecklists[listIdx].todos.splice(todoIdx, 1)
         if (!copyChecklists[listIdx].todos.length) {
             copyChecklists.splice(listIdx, 1)
         }
-        this.setState({ checklists: copyChecklists }, () => this.onUpdateBoard())
+        this.setState({ checklists: copyChecklists }, () => this.onUpdateBoard('remove', todoToRemove.title))
 
     }
 
@@ -129,7 +160,7 @@ export class _TaskDetailsChecklist extends Component {
             const copyChecklists = cloneDeep(this.state.checklists)
             copyChecklists[listIdx].todos.push(todoToAdd)
             this.setState({ checklists: copyChecklists }, () => {
-                this.onUpdateBoard()
+                this.onUpdateBoard('newTodo', todoToAdd.title)
                 const newTodos = [...this.state.newTodos]
                 newTodos[listIdx] = ''
                 this.setState({ newTodos })

@@ -93,7 +93,13 @@ export class _TaskDetails extends Component {
         const currListIdx = boardService.getListIdxById(board, list.id)
         const taskIdx = boardCopy.lists[currListIdx].tasks.findIndex(currTask => currTask.id === task.id)
         boardCopy.lists[currListIdx].tasks[taskIdx] = task
-        await this.props.updateBoard(boardCopy)
+        const { user } = this.props
+        const activity = {
+            user,
+            txt: `has changed task (${task.title}) title`,
+            task,
+        }
+        await this.props.updateBoard(boardCopy, activity)
         this.elTitleRef.current.blur()
     }
 
@@ -129,7 +135,7 @@ export class _TaskDetails extends Component {
 
     render() {
         const { isDetailsOpen, currPopover } = this.state
-        const { board } = this.props
+        const { board, user } = this.props
         const { listId, taskId } = this.props.match.params
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
         const currList = board.lists[listIdx]
@@ -167,7 +173,7 @@ export class _TaskDetails extends Component {
                                     <TaskDetailsInfo board={board} list={currList} task={currTask} togglePopover={this.togglePopover} currPopover={this.state.currPopover}  {...this.props} />
                                 </div>
                                 <div className="details-description">
-                                    <TaskDetailsDesc board={board} list={currList} task={currTask} />
+                                    <TaskDetailsDesc board={board} list={currList} task={currTask} user={user} />
                                 </div>
                                 {currTask.attachments?.length ?
                                     <div className="details-attachments">
@@ -176,7 +182,7 @@ export class _TaskDetails extends Component {
                                     : ''
                                 }
                                 <div className="details-checklist">
-                                    <TaskDetailsChecklist board={board} list={currList} task={currTask} />
+                                    <TaskDetailsChecklist board={board} list={currList} task={currTask} user={user} />
                                 </div>
                                 <div className="details-activity">
                                     <TaskDetailsActivity board={board} list={currList} task={currTask} {...this.props} />
@@ -210,7 +216,8 @@ const mapStateToProps = state => {
         board: state.boardReducer.currBoard,
         currListIdx: state.boardReducer.currListIdx,
         currTaskIdx: state.boardReducer.currTaskIdx,
-        isOverlayOpen: state.boardReducer.isOverlayOpen
+        isOverlayOpen: state.boardReducer.isOverlayOpen,
+        user: state.userReducer.user
     }
 }
 
