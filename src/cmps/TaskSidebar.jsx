@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined'
 import ChangeMembersIcon from '@material-ui/icons/PeopleOutline'
 import QueryBuilderOutlinedIcon from '@material-ui/icons/QueryBuilderOutlined'
-import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
+import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined'
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
 import ArrowRightAltOutlinedIcon from '@material-ui/icons/ArrowRightAltOutlined'
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
 import { LabelsPopover } from './LabelsPopover'
 import { DateTimePopover } from './DateTimePopover'
 import { MoveTaskPopover } from './MoveTaskPopover'
+import { CopyTaskPopover } from './CopyTaskPopover'
 import { cloneDeep } from 'lodash'
 import { utilService } from '../services/utilService'
 import { cloudinaryService } from '../services/cloudinaryService'
@@ -139,6 +141,11 @@ export class TaskSidebar extends Component {
                         <span className="action-icon"><ArrowRightAltOutlinedIcon /></span>
                         <span className="action-txt">Move</span>
                         {currPopover === 'move' && <MoveTaskPopover setCurrPopover={() => togglePopover('')} {...this.props} />}
+                    </div>
+                    <div className="action-container flex align-center" onClick={() => togglePopover('copy')}>
+                        <span className="action-icon"><FileCopyOutlinedIcon /></span>
+                        <span className="action-txt">Copy</span>
+                        {currPopover === 'copy' && <CopyTaskPopover setCurrPopover={() => togglePopover('')} {...this.props} />}
                     </div>
                     <div className="action-container flex align-center" onClick={this.onRemoveTask}>
                         <span className="action-icon"><DeleteOutlineOutlinedIcon /></span>

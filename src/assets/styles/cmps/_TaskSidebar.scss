@@ -1,7 +1,10 @@
 .task-sidebar {
-  position: absolute;
-  top: 100px;
+  top: 73px;
   width: 100%;
+
+  @media (min-width: 800px) {
+    position: absolute;
+  }
 
   .sidebar {
     .sidebar-heading {
@@ -13,6 +16,13 @@
     }
 
     .sidebar-actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: rem(10px);
+      @media (min-width: 800px) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
       .action-container {
         background-color: rgba(9, 30, 66, 0.075);
         border-radius: 3px;
@@ -20,6 +30,12 @@
         cursor: pointer;
         margin-bottom: 8px;
         user-select: none;
+        width: calc(50% - 8px);
+        margin-left: 8px;
+
+        @media (min-width: 800px) {
+          width: 100%;
+        }
 
         &:last-of-type {
           &:hover {
@@ -37,7 +53,7 @@
 
           svg {
             position: absolute;
-            font-size: 20px;
+            font-size: 1.25rem;
             top: -10px;
             left: 4px;
 
@@ -48,27 +64,65 @@
         }
 
         .action-txt {
-          font-size: 14px;
+          font-size: 0.875rem;
           width: 100%;
           margin-left: 35px;
         }
 
         .change-members-popover {
           position: absolute;
-          left: -200px;
-          top: 86px;
-          width: 335px;
           z-index: 30;
+          left: -4px;
+          top: -120px;
+          width: 280px;
+          @media (min-width: 800px) {
+            width: 335px;
+            left: -200px;
+            top: 86px;
+          }
+
+          .popover-section-list {
+            @media (max-width: 800px) {
+              padding-inline-end: 0;
+            }
+          }
+
+          .popover-section-list-item {
+            @media (max-width: 800px) {
+              margin-inline-start: 0;
+              font-size: 1.01em;
+            }
+          }
         }
 
         .labels-popover {
           position: absolute;
-          left: -185px;
-          top: 51px;
-          width: 320px;
           z-index: 30;
+          left: 0;
+          top: -250px;
+          width: 250px;
+          @media (min-width: 800px) {
+            left: -185px;
+            top: 51px;
+            width: 320px;
+          }
         }
       }
+    }
+  }
+
+  .copy-task-popover {
+    @include popover-main;
+    position: absolute;
+    z-index: 30;
+    left: -185px;
+    top: 51px;
+    .popover-header {
+      @include popover-header;
+    }
+
+    .copy-task-body {
+      width: 225px;
     }
   }
 }

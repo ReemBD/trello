@@ -4,13 +4,12 @@
   position: fixed;
   background-color: #ebeef582;
   z-index: 10;
-  left: 0;
-  right: 0;
+  width: 100%;
 
   transition: background-color 0.5s;
 
   .main-nav {
-    & > * {
+    & > *:not(:first-child) {
       margin-inline-start: 1em;
     }
   }
@@ -24,7 +23,7 @@
   }
   ul {
     width: 100%;
-    margin: 4px 1em;
+    margin: 4px 3em;
 
     li {
       a {
@@ -43,7 +42,6 @@
 
       &:first-of-type {
         flex-grow: 1;
-        // margin-left: 50px;
         font-size: 1.5em;
         font-family: Kaushan;
       }
@@ -59,8 +57,7 @@
     border-radius: 4em;
     border: 1px solid $clr2;
   }
-  .logout{
+  .logout {
     cursor: pointer;
   }
-
 }

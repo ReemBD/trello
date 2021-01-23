@@ -155,10 +155,9 @@ export class _TaskDetailsChecklist extends Component {
                         <CheckBoxOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
                         <div className="flex align-center space-between">
 
-                            <textarea
+                            <textarea style={{ width: '70%' }}
                                 className="task-textarea"
                                 value={checklist.title}
-                                style={{ width: 'auto' }}
                                 name="title"
                                 onChange={(ev) => this.handleInput(listIdx, ev)}
                                 spellCheck="false"

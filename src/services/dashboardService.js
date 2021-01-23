@@ -70,7 +70,7 @@ function getActivityPerDayData(board) {
                     '#FF6384',
                     '#36A2EB',
                     '#FFCE56',
-                    '#FFCE56',
+                    '#c377e0',
                     '#FFCE56',
                     '#FFCE56',
                     '#FFCE56',
@@ -79,8 +79,8 @@ function getActivityPerDayData(board) {
                 backgroundColor: [
                     '#FF638450',
                     '#36A2EB50',
-                    '#FFCE56',
-                    '#FFCE56',
+                    '#FFCE5650',
+                    '#c377e050',
                     '#FFCE56',
                     '#FFCE56',
                     '#FFCE56',
@@ -89,7 +89,7 @@ function getActivityPerDayData(board) {
                     '#FF6384',
                     '#36A2EB',
                     '#FFCE56',
-                    '#FFCE56',
+                    '#c377e0',
                     '#FFCE56',
                     '#FFCE56',
                     '#FFCE56',
@@ -127,7 +127,7 @@ function getTasksPerDayData(board) {
         labels,
         datasets: [
             {
-                label: 'Activity',
+                label: 'Tasks',
                 data: tasksPerDay,
                 barPercentage: 0.8,
                 borderColor: [

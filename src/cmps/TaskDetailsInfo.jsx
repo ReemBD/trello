@@ -60,11 +60,11 @@ export class _TaskDetailsInfo extends Component {
                             </div>
                         </div>
                     </div>}
-                    {task.labels?.length && <div className="card-detail detail-labels">
+                    {(task.labels?.length) ? <div className="card-detail detail-labels">
                         <h3>Labels</h3>
                         <div className="task-labels flex">
                             {task.labels.map(label => {
-                                return <span key={label.id} className="task-label-preview flex align-center justify-center" style={{ backgroundColor: label.color }}>
+                                return <span onClick={() => togglePopover('labels')} key={label.id} className="task-label-preview flex align-center justify-center" style={{ backgroundColor: label.color }}>
                                     <span className="label-title">{label?.title}</span>
                                 </span>
                             })}
@@ -73,7 +73,7 @@ export class _TaskDetailsInfo extends Component {
                                 {currPopver === 'labels' && <LabelsPopover setCurrPopover={() => togglePopover('')} {...this.props} />}
                             </div>
                         </div>
-                    </div>}
+                    </div> : ''}
                     {task.dueDate?.timestamp && <div className="card-detail">
                         <h3>Due Date</h3>
                         <div className="task-due-time flex align-center justify-center">

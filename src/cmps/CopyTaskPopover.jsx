@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import { boardService } from '../services/boardService'
+import { utilService } from '../services/utilService'
 import CloseIcon from '@material-ui/icons/Close';
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { cloneDeep } from 'lodash'
 
-
-
-export class MoveTaskPopover extends Component {
-
+export class CopyTaskPopover extends Component {
     state = {
         selectedListIdx: 0
     }
@@ -17,29 +14,27 @@ export class MoveTaskPopover extends Component {
         this.setState({ selectedListIdx: ev.target.value })
     }
 
-    onMoveSaveClick = async () => {
-        const { board, list, task, updateBoard, setCurrPopover } = this.props
+    onCopyClick = async () => {
+        const { board, task, updateBoard, setCurrPopover } = this.props
         const { selectedListIdx } = this.state
-        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
-        const taskToMove = copyBoard.lists[listIdx].tasks.splice(taskIdx, 1)
-        copyBoard.lists[+selectedListIdx].tasks.push(taskToMove[0])
+        const copyTask = cloneDeep(task)
+        copyTask.id = utilService.makeId()
+        copyTask.createdAt = Date.now()
+        copyBoard.lists[selectedListIdx].tasks.push(copyTask)
         await updateBoard(copyBoard)
         setCurrPopover()
-        const { taskId, listId } = this.props.match.params
-        if (taskId && listId) {
-            this.props.history.push(`/board/${board._id}/${board.lists[selectedListIdx].id}/${task.id}`)
-        }
     }
+
     render() {
         const { board, list, task } = this.props
         return (
-            <div className="move-task-popover" onClick={(ev) => ev.stopPropagation()}>
+            <div className="copy-task-popover" onClick={(ev) => ev.stopPropagation()}>
                 <div className="popover-header flex align-center justify-center">
-                    <div className="popover-header-title flex justify-center">Move Task</div>
+                    <div className="popover-header-title flex justify-center">Copy Task</div>
                     <CloseIcon onClick={() => this.props.setCurrPopover()} />
                 </div>
-                <div className="move-task-body flex column  justify-center align-center">
+                <div className="copy-task-body flex column  justify-center align-center">
                     <h3>Select Destination</h3>
                     <FormControl style={{ marginBottom: '10px', minWidth: '120px' }} >
                         <Select
@@ -56,7 +51,7 @@ export class MoveTaskPopover extends Component {
                             })}
                         </Select>
                     </FormControl>
-                    <button onClick={this.onMoveSaveClick} className="date-close-btn primary-btn">Move</button>
+                    <button onClick={this.onCopyClick} className="date-close-btn primary-btn">Copy</button>
                 </div>
             </div>
         )

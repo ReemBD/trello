@@ -31,9 +31,8 @@ export class _AppHeader extends Component {
         const { user } = this.props
         console.log('user from header:', user);
         return (
-            <header className={`main-nav-header flex  ${currPath === '/' ? navBgc : ''}`}>
-                <div className="logo"></div>
-                <ul className="main-nav flex clear-list flex ">
+            <header className={`main-nav-header flex  ${currPath === '/' ? navBgc : ''} ${currPath === '/login' || currPath === '/board' ? "homepage-nav" : ""}`}>
+                <ul className="main-nav  flex clear-list flex ">
                     <li className="logo"><NavLink to="/"><span>Chello</span></NavLink></li>
                     <li><NavLink to="/board"><AppsIcon /><span>Boards</span></NavLink></li>
                     {!user && <li><NavLink to="/login"><PersonRoundedIcon /><span >Login</span></NavLink></li>}
