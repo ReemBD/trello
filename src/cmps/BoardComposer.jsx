@@ -143,12 +143,12 @@ export class _BoardComposer extends Component {
         return (
             <Fragment>
                 <form className="board-composer board-composer-layout flex column" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
-                    <div className="flex justify-center">
+                    <div className="flex justify-center align-center board-details-wrapper">
 
                         <div className="demo-board board-card  flex justify-center align-center" style={{ backgroundImage: newBoard.style.bg, backgroundSize: "cover" }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board Title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
-                        <span>
+                        <span className="edit-board-members">
                         <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
                         {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
                     </span>
