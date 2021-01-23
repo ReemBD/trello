@@ -36,8 +36,8 @@ export class _TaskPreview extends Component {
 
         if (this.membersRef.current) {
             this.membersRef.current.clientWidth > 97 ?
-            this.membersRef.current.classList.add('narrow-down')
-            : this.membersRef.current.classList.remove('narrow-down')
+                this.membersRef.current.classList.add('narrow-down')
+                : this.membersRef.current.classList.remove('narrow-down')
         }
     }
 
@@ -152,7 +152,7 @@ export class _TaskPreview extends Component {
                             ref={provided.innerRef}
                         >
                             <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving'} ${isEditOpen && ' quickEdit'}  `} onClick={this.onOpenDetails} >
-                                {(task.attachments) ?
+                                {(task.attachments?.length) ?
                                     <div className="preview-img" style={{ backgroundImage: `url(${task.attachments.slice(-1)[0]})` }}>
                                     </div>
                                     : ''
@@ -169,7 +169,7 @@ export class _TaskPreview extends Component {
 
                                         })}
 
-                                    </div> 
+                                    </div>
                                     <div className="quick-edit-wrapper">
                                         {isTaskHovered && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit
