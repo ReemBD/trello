@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import CloseIcon from '@material-ui/icons/Close';
 import { boardService } from '../services/boardService'
 import {PopoverHeader} from './PopoverHeader'
+
 export class NotificationPopover extends Component {
     state = {
         notifications: []

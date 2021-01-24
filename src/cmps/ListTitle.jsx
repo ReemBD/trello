@@ -18,12 +18,7 @@ export class _ListTitle extends Component {
 
     componentDidMount() {
         const { title } = this.props
-
         this.setState({ title })
-    }
-
-    componentWillUnmount() {
-
     }
 
     updateBoard = async (board) => {
@@ -77,15 +72,15 @@ export class _ListTitle extends Component {
 
     render() {
         const { list, isComposerOpen } = this.props
-        const isCurrPopover = (this.props.currPopover === `LIST_ACTIONS${this.props.list.id}`)
         const { isListActionsOpen } = this.state
-        if (!list) return <LoadingSpinner/>
+        if (!list) return <LoadingSpinner />
         return (
             <form onSubmit={this.onPressEnter}
                 autoComplete="off"
                 className="list-title flex align-center"
                 style={{ backgroundColor: `${list.style.title.bgColor}` }}>
-                <input {...this.listTitleHandlers}
+                <input
+                    {...this.listTitleHandlers}
                     placeholder="Enter list title"
                     ref={this.elListTitleRef}
                     value={this.state.title}

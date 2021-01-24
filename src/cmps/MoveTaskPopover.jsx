@@ -6,7 +6,6 @@ import Select from "@material-ui/core/Select";
 import { cloneDeep } from 'lodash'
 
 
-
 export class MoveTaskPopover extends Component {
 
     state = {
@@ -32,7 +31,7 @@ export class MoveTaskPopover extends Component {
         }
     }
     render() {
-        const { board, list, task } = this.props
+        const { board } = this.props
         return (
             <div className="move-task-popover" onClick={(ev) => ev.stopPropagation()}>
                 <div className="popover-header flex align-center justify-center">

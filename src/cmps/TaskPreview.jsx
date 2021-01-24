@@ -192,7 +192,8 @@ export class _TaskPreview extends Component {
                                     />
 
                                     {!task.labels?.length && <div className="quick-edit-wrapper">
-                                        {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                                        {(isTaskHovered || isEditOpen) && 
+                                        <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} membersRef={this.membersRef} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>}
                                 </div>

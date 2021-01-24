@@ -27,7 +27,7 @@ export class CopyTaskPopover extends Component {
     }
 
     render() {
-        const { board, list, task } = this.props
+        const { board } = this.props
         return (
             <div className="copy-task-popover" onClick={(ev) => ev.stopPropagation()}>
                 <div className="popover-header flex align-center justify-center">

@@ -27,6 +27,11 @@
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);
   border-radius: 6px;
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
   .board-details-wrapper {
     margin-bottom: 20px;
     gap: 20px;
@@ -131,6 +136,8 @@
       overflow-y: scroll;
       margin-top: 0;
     }
+
+    
     .popover-header {
       background-color: #ececec;
       margin-bottom: 0;
@@ -198,6 +205,7 @@
   display: inline-flex;
   background-size: cover;
   color: #333;
+  
   &:hover {
     border: none;
     cursor: initial;
@@ -215,3 +223,4 @@
   border-radius: 3em;
   margin: 1em;
 }
+

@@ -40,10 +40,11 @@
             }
         }
     }
+    
     .members-nav-display {
         justify-self: center;
-
     }
+
     .board-member-img-wrapper {
         width: 30px;
         margin: 4px;
@@ -53,10 +54,12 @@
             width: 100%;
         }
     }
+
     .board-filter-container {
         // background-color: #3d3d3d36;
         padding: 0;
     }
+
     .board-filter {
         height: 100%;
         max-width: 32px;
@@ -64,10 +67,11 @@
         border-radius: 4px;
         transition: max-width .3s;
         &.open {
-            background: #ababab8f;
+            background: #d5d2d5;
             max-width: 200px;
             transition: max-width .3s;
         }
+
         input {
             padding: 5px;
             margin-inline-end: 3px;
@@ -77,9 +81,21 @@
             height: 100%;
             width: 100%;
         }
+
         .filter-icon {
             position: absolute;
             right: 4px;
+        }
+    }
+    .go-back-icon {
+        position: absolute;
+        left: 26px;
+        cursor: pointer;
+        top: 60px;
+        font-size: 2em;
+        padding: 4px;
+        &:hover {
+            background-color: #3d3d3d36;
         }
     }
 }

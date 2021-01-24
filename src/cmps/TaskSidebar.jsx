@@ -18,6 +18,7 @@ import { cloudinaryService } from '../services/cloudinaryService'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
 import { boardService } from '../services/boardService';
+
 export class TaskSidebar extends Component {
 
     state = {

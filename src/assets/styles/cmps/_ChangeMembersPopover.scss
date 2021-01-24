@@ -2,7 +2,9 @@
     @include popover-main;
     position: fixed;
     top: 65px;
-    
+    .board-member-img {
+        margin-inline-end: 5px;
+    }
     .popover-header {
         height: 40px;
         color: #212121;
@@ -43,6 +45,8 @@
         }
     }
 }
+
+
 .members-popover-img-wrapper {
     width: 40px;
     @include aspect-ratio(1, 1);

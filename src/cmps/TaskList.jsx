@@ -9,7 +9,6 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 export class TaskList extends Component {
     state = {
         isComposerOpen: false,
-        isListActionsOpen: false,
         isDragDisabled: false
     }
 
@@ -32,8 +31,9 @@ export class TaskList extends Component {
         onRemoveList: () => {
             const listIdx = this.listIdx
             const { board, updateBoard } = { ...this.props }
+            const activity = { txt: `has removed list ${board.lists[listIdx].title}` }
             board.lists.splice(listIdx, 1)
-            updateBoard(board)
+            updateBoard(board, activity)
 
         },
         onToggleComposer: ev => {
@@ -43,11 +43,6 @@ export class TaskList extends Component {
                 this.elTaskTitleRef.current.focus()
             })
         }
-        // onToggleListActions: ev => {
-        //     //'More...' Popover toggler (from List title)
-        //     ev.stopPropagation()
-        //     this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
-        // }
     }
 
     get listIdx() {
@@ -64,7 +59,6 @@ export class TaskList extends Component {
     render() {
         const { list, currPopover, listIdx } = this.props
         const { tasks } = list
-        const { isListActionsOpen } = this.state
 
         return (
             <Draggable draggableId={list.id} index={listIdx} isDragDisabled={this.state.isDragDisabled} >
@@ -81,7 +75,7 @@ export class TaskList extends Component {
                             {...provided.dragHandleProps}
                             {...this.props}
                             {...this.listTitleHandlersProps}
-                            /* isListActionsOpen={isListActionsOpen} */ />
+                        />
 
                         <div className="task-previews-container">
                             <Droppable droppableId={list.id} type="task">

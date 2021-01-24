@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import { BoardActions } from './BoardActions'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
