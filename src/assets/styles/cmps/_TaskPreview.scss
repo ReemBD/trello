@@ -1,14 +1,14 @@
 .task-preview {
   font-size: 0.8em;
-  margin-bottom: 8px;
   border-radius: 4px;
   background-color: #fff;
-  padding: 4px;
-  width: 100%;
-
+  padding: 4px 6px;
+  width: 98%;
   min-height: 30px;
   transition: transform 0.5s;
   rotate: 0deg;
+  margin-bottom: 8px;
+
   &:hover {
     background-color: #f3f3f3;
   }
@@ -75,6 +75,7 @@
       outline: none;
       border: none;
       padding: 4px;
+      padding-left: 0;
       border-radius: 5px;
       height: 100%;
       width: 92%;
@@ -98,15 +99,16 @@
       }
       .indication-icon {
         width: 15px;
-        color: #6b788c;
+        margin-right: 2px;
       }
     }
     .date-indication {
-      padding: 0 3px;
       border-radius: 3px;
     }
     .complete {
+      padding: 0 4px;
       background-color: #61bd4f;
+      color: #fff;
     }
     .task-members-imgs {
       // justify-content: space-between;
@@ -138,6 +140,10 @@
     &:hover {
       background-color: rgb(206, 209, 218);
     }
+  }
+
+  &.last-child {
+    margin-bottom: 0;
   }
 }
 

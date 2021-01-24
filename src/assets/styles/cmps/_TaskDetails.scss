@@ -269,6 +269,13 @@
       }
     }
   }
+
+  .task-user-comment {
+    .task-member-img {
+      transform: translateY(-4px);
+      margin-right: 3px;
+    }
+  }
 }
 
 .task-comments {
@@ -276,6 +283,10 @@
 
   .new-comment {
     margin-bottom: rem(10px);
+
+    .task-member-img {
+      transform: translateY(-3.5px);
+    }
   }
   .comment-txt {
     margin: 4px 2px 4px 0;

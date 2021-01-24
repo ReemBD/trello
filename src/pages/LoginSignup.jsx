@@ -16,7 +16,7 @@ import { refreshTokenSetup } from '../services/googleService';
 
 const clientId = '996251564221-qedkti8vudlin8md60j8dllv408gqodo.apps.googleusercontent.com';
 
-export class _LoginSignup extends Component {
+class _LoginSignup extends Component {
 
     state = {
         signupCred: {
@@ -68,23 +68,29 @@ export class _LoginSignup extends Component {
 
     onSubmit = async (ev) => {
         ev.preventDefault()
-        const { signupCred, loginCred, isNewUser,isGoogle } = this.state
+        ev.stopPropagation()
+        const { signupCred, loginCred, isNewUser, isGoogle } = this.state
 
         var userCreds;
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
 
+
         if (!userCreds.password || !userCreds.username) {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
-    
+
         try {
-            await this.props.setUser(userCreds, isNewUser,isGoogle)
+            const { setUser } = this.props
+            await setUser(userCreds, isNewUser, isGoogle)
+            const { user } = this.props
+            if (!user) return
             this.setState({ msg: '' })
             this.props.history.push(`/board`)//then gos to the boards page
         } catch (err) {
-            console.log(err);
+            console.log('inside the catchhhhhhhhhhhhhhhhhhhhhhhhhh')
+            console.log(err, 'inside catch');
             this.setState({ msg: 'somthing went worng!' })
         }
 
@@ -226,7 +232,7 @@ export class _LoginSignup extends Component {
                             </form>
                             <span style={{ display: 'block' }}>{msg}</span>
                             <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
-                            <p>Already have an account? <span onClick={this.toggleForms} >sign In</span> </p>
+                            <p>Already have an account? <span onClick={this.toggleForms} >Sign In</span> </p>
 
                         </div>
                         }
@@ -241,9 +247,9 @@ export class _LoginSignup extends Component {
 
 
                                 <span style={{ display: 'block' }}>{msg}</span>
+                                <button type="submit" className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             </form>
-                            <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
-                            <p>Dont have an account? <span onClick={this.toggleForms} >sign Up</span> </p>
+                            <p>Dont have an account? <span onClick={this.toggleForms} >Sign Up</span> </p>
 
                         </div>
                         }

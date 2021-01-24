@@ -150,7 +150,7 @@ export class _TaskPreview extends Component {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                         >
-                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving'} ${isEditOpen && ' quickEdit'}  `} onClick={this.onOpenDetails} >
+                            <div {...this.taskPreviewHandlers} className={`task-preview ${snapshot.isDragging && 'moving'} ${isEditOpen && ' quickEdit'} ${this.props.className}`} onClick={this.onOpenDetails} >
                                 {(task.attachments?.length) ?
                                     <div className="preview-img" style={{ backgroundImage: `url(${task.attachments.slice(-1)[0]})` }}>
                                     </div>
@@ -191,8 +191,8 @@ export class _TaskPreview extends Component {
                                     />
 
                                     {!task.labels?.length && <div className="quick-edit-wrapper">
-                                        {(isTaskHovered || isEditOpen) && 
-                                        <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                                        {(isTaskHovered || isEditOpen) &&
+                                            <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} membersRef={this.membersRef} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>}
                                 </div>

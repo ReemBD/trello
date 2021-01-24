@@ -6,6 +6,7 @@
   width: 272px;
   min-width: 272px;
   padding: 10px;
+  padding-right: 6px;
 
   // transition: transform 0.5s;
   // transform: rotate(0deg);
@@ -58,12 +59,14 @@
     font-size: 0.8em;
     cursor: pointer;
     width: 100%;
+    margin-top: 8px;
+
     transition: all 0.3s;
-    
+
     &:hover {
       background-color: rgba(9, 30, 66, 0.08);
     }
-    
+
     input[name="title"] {
       padding: 5px;
       width: 100%;
@@ -101,7 +104,15 @@
   }
 
   .task-previews-container {
-    max-height:60vh;
     overflow-y: auto;
+    max-height: 60vh;
+
+    @media (min-height: 775px) {
+      max-height: 68vh;
+    }
+
+    @media (min-height: 1100px) {
+      max-height: 77vh;
+    }
   }
 }

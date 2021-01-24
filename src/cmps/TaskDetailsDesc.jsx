@@ -45,7 +45,9 @@ export class _TaskDetailsDesc extends Component {
         const { board, user } = this.props
         const { listId, taskId } = this.props.match.params
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, listId, taskId)
-        const { task } = this.props
+        let task = cloneDeep(this.props.task)
+        const currTask = cloneDeep(this.state.currTask)
+        task = currTask
         const boardCopy = cloneDeep(board)
         boardCopy.lists[listIdx].tasks[taskIdx] = task
         const activity = {

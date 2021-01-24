@@ -112,11 +112,11 @@ export class _TaskDetailsActivity extends Component {
                 <div className="activity-header flex">
                     <TextsmsOutlinedIcon style={{ position: 'absolute', left: '-30px', top: '3px' }} />
                     <h3 className="task-section-heading" style={{ padding: '4px 8px' }}>Activity</h3>
-                    <button onClick={this.onToggleDetails} className="secondary-btn">Show Details</button>
+                    <button onClick={this.onToggleDetails} className="secondary-btn">{(isActivityOpen) ? 'Hide Activity' : 'Show Activity'}</button>
                 </div>
                 <div className="task-comments">
                     <div className="new-comment flex align-center">
-                        <div className="task-member-img">{(user) ? <img src={user.imgUrl} /> : <PermIdentityOutlinedIcon />}</div>
+                        <div className="task-member-img">{(user) ? <img src={user.imgUrl} /> : <img src="https://res.cloudinary.com/nofar/image/upload/v1611336021/psvaqtmh8ithfqe8ah27.png" />}</div>
                         <form>
                             <div className="comment-box">
                                 <textarea
