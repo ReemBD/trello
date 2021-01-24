@@ -24,10 +24,22 @@ export class _TaskDetailsInfo extends Component {
     }
 
     onDateCheckChange = (listIdx, taskIdx, ev) => {
-        const { currBoard, updateBoard } = this.props
+        const { currBoard, updateBoard, user, task } = this.props
         const copyBoard = cloneDeep(currBoard)
-        copyBoard.lists[listIdx].tasks[taskIdx].dueDate.isDone = ev.target.checked
-        updateBoard(copyBoard)
+        const taskDueDate = copyBoard.lists[listIdx].tasks[taskIdx].dueDate
+        taskDueDate.isDone = ev.target.checked
+        let txt
+        if (taskDueDate.isDone) {
+            txt = 'marked the due date complete on'
+        } else {
+            txt = 'marked the due date incomplete on'
+        }
+        const activity = {
+            user,
+            txt,
+            task,
+        }
+        updateBoard(copyBoard, activity)
     }
 
 

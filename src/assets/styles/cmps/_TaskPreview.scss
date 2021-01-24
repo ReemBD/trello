@@ -101,9 +101,16 @@
         color: #6b788c;
       }
     }
+    .date-indication {
+      padding: 0 3px;
+      border-radius: 3px;
+    }
+    .complete {
+      background-color: #61bd4f;
+    }
     .task-members-imgs {
       // justify-content: space-between;
-      
+
       .task-member-img-wrapper {
         @include aspect-ratio(1, 1);
         width: 27px;
@@ -113,7 +120,7 @@
           border-radius: 999px;
         }
       }
-      &.narrow-down>*:not(:last-child){
+      &.narrow-down > *:not(:last-child) {
         // width: 22px;
         margin-right: -5px;
       }
