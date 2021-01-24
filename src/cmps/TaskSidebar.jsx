@@ -30,7 +30,7 @@ export class TaskSidebar extends Component {
         taskImgUrl: ''
     }
 
-    onAddNewList = async () => {
+    onAddNewList = () => {
         const { board, list, task, updateBoard, user } = this.props
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const copyBoard = cloneDeep(board)
@@ -48,7 +48,8 @@ export class TaskSidebar extends Component {
             txt: `added ${newChecklist.title} to`,
             task,
         }
-        await updateBoard(copyBoard, activity)
+        updateBoard(copyBoard, activity)
+        console.log('after update')
     }
 
     onRemoveTask = async () => {
@@ -61,8 +62,8 @@ export class TaskSidebar extends Component {
             txt: `removed task`,
             task,
         }
-        updateBoard(copyBoard, activity)
         this.props.history.push(`/board/${board._id}`)
+        await updateBoard(copyBoard, activity)
     }
 
     onDateChange = (ev) => {

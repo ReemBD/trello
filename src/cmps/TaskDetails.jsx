@@ -99,8 +99,8 @@ export class _TaskDetails extends Component {
             txt: `has changed task (${task.title}) title`,
             task,
         }
-        await this.props.updateBoard(boardCopy, activity)
         this.elTitleRef.current.blur()
+        await this.props.updateBoard(boardCopy, activity)
     }
 
     getCurrTask = async (boardId, taskId) => {
@@ -159,7 +159,7 @@ export class _TaskDetails extends Component {
                                         <textarea onKeyDown={this.onEnterPress} ref={this.elTitleRef} className="task-textarea"
                                             name="title"
                                             onChange={this.handleTitle}
-                                            value={this.state.task.title}
+                                            value={this.state.task?.title}
                                             spellCheck="false"
                                             onBlur={this.onSubmitForm}
                                         />
