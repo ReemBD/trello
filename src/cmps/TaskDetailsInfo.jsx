@@ -8,11 +8,6 @@ import { ChangeMembersPopover } from './ChangeMembersPopover'
 import { LabelsPopover } from './LabelsPopover'
 import AddIcon from '@material-ui/icons/Add';
 
-import CloseIcon from '@material-ui/icons/Close';
-
-
-
-
 export class _TaskDetailsInfo extends Component {
     state = {
         isMemberModalOpen: false,

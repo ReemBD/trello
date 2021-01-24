@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { updateBoard } from '../store/actions/boardActions'
-import CloseIcon from '@material-ui/icons/Close'
 import { boardService } from '../services/boardService'
 import { connect } from 'react-redux'
 import { PopoverHeader } from './PopoverHeader';
 import { cloneDeep } from 'lodash'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+
 export class _LabelsPopover extends Component {
     state = {
         labels: [

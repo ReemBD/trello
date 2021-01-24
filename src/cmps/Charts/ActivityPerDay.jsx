@@ -5,20 +5,22 @@ import React, { Component } from 'react'
 
 export default class ActivityPerDay extends Component {
     state = {
-      data: {}
+        data: {}
     }
 
     componentDidMount() {
-        const { board } = this.props,
-             data  =  dashboardService.getActivityPerDayData(board)
-        this.setState({data},()=>{
-            console.log('Data: ', this.state.data);
-        })
+        // const { board } = this.props,
+        //     data = dashboardService.getActivityPerDayData(board)
+        // this.setState({ data }, () => {
+        //     console.log('Data: ', this.state.data);
+        // })
     }
 
     render() {
-        const { data } = this.state
-        if (!data) return  <h1>Loading</h1>
+        const { board } = this.props,
+            data = dashboardService.getActivityPerDayData(board)
+        // const { data } = this.state
+        if (!data) return <h1>Loading</h1>
         return (
             <div>
                 <h3>Activity per Day</h3>

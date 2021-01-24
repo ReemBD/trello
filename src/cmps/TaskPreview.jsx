@@ -12,7 +12,6 @@ import { TaskEdit } from './TaskEdit'
 import CommentIcon from '@material-ui/icons/TextsmsOutlined';
 import { format } from 'date-fns'
 import { Draggable } from 'react-beautiful-dnd';
-import { socketService } from '../services/socketService'
 import BoardMemberImg from './BoardMemberImg'
 
 export class _TaskPreview extends Component {
@@ -136,7 +135,7 @@ export class _TaskPreview extends Component {
 
     render() {
         const { task, list, taskIdx, toggleLabels, isLabelOpen } = this.props
-        const { isEditOpen, isTaskHovered, unreadNotificationsCount } = this.state
+        const { isEditOpen, isTaskHovered } = this.state
         return (
             <Fragment>
                 <div className={`${isEditOpen && 'main-overlay'}`} onClick={this.onToggleEdit}></div>
