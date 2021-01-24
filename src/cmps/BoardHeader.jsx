@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { BoardFilter } from './BoardFilter'
-import { socketService } from '../services/socketService'
 import { NotificationPopover } from './NotificationPopover'
 import NotificationsIcon from '@material-ui/icons/NotificationsNone';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
-import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
+// import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
+import DashboardOutlinedIcon from '@material-ui/icons/TimelineOutlined';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { ActivityMenu } from './ActivityMenu'
-import  BoardMemberImg  from './BoardMemberImg'
+import BoardMemberImg from './BoardMemberImg'
 
 export class BoardHeader extends Component {
 
@@ -20,7 +21,7 @@ export class BoardHeader extends Component {
         })
     }
     render() {
-        const { board, setCurrPopover, currPopover, onToggleDashboard, className } = this.props
+        const { board, setCurrPopover, currPopover, onToggleDashboard, className, isDashboardOpen } = this.props
         const { members } = board
         const { currBadgeCount } = this.state
         const isCurrPopover = currPopover === 'NOTIFICATION_POPOVER'
@@ -28,14 +29,16 @@ export class BoardHeader extends Component {
         return (
             <>
                 <header className={`board-header board-layout  ${className}`}>
+                    {isDashboardOpen && <ArrowBackIcon className="go-back-icon" onClick={()=>onToggleDashboard()}/>}
                     <div className="board-title">{board.title}</div>
                     <div className="members-nav-display flex">
-                        {members.map(member => { return <div key={member._id} className="board-member-img-wrapper">
-                            
-                            {/* <img alt={member.fullname} title={member.fullname} className="board-member-img" src={member.imgUrl} /> */}
-                            <BoardMemberImg member={member} />
+                        {members.map(member => {
+                            return <div key={member._id} className="board-member-img-wrapper">
 
-                            </div> })}
+                                <BoardMemberImg member={member} />
+
+                            </div>
+                        })}
                     </div>
                     <ul className="board-nav clear-list flex">
                         <li className="board-filter-container"><BoardFilter /></li>

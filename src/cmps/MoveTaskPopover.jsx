@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService'
-import CloseIcon from '@material-ui/icons/Close';
+import { PopoverHeader } from './PopoverHeader'
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { cloneDeep } from 'lodash'
-
 
 
 export class MoveTaskPopover extends Component {
@@ -32,13 +31,10 @@ export class MoveTaskPopover extends Component {
         }
     }
     render() {
-        const { board, list, task } = this.props
+        const { board } = this.props
         return (
             <div className="move-task-popover" onClick={(ev) => ev.stopPropagation()}>
-                <div className="popover-header flex align-center justify-center">
-                    <div className="popover-header-title flex justify-center">Move Task</div>
-                    <CloseIcon onClick={() => this.props.setCurrPopover()} />
-                </div>
+                <PopoverHeader title="Move Task" setCurrPopover={this.props.setCurrPopover} />
                 <div className="move-task-body flex column  justify-center align-center">
                     <h3>Select Destination</h3>
                     <FormControl style={{ marginBottom: '10px', minWidth: '120px' }} >

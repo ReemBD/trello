@@ -41,7 +41,7 @@ export class Boards extends Component {
     render() {
 
         const { boards, isComposerOpen, boardToEdit } = this.state
-        if (!boards) return <LoadingSpinner/>
+        if (!boards) return <LoadingSpinner />
         return (
             <Fragment>
 
@@ -57,7 +57,7 @@ export class Boards extends Component {
                     </div>
                 </div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
-                    <BoardComposer board={boardToEdit} />
+                    <BoardComposer board={boardToEdit} onToggleCompose={this.onToggleCompose} />
                 </div>
 
             </Fragment>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { utilService } from '../services/utilService'
-import CloseIcon from '@material-ui/icons/Close';
+import { PopoverHeader } from './PopoverHeader'
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { cloneDeep } from 'lodash'
@@ -27,13 +27,10 @@ export class CopyTaskPopover extends Component {
     }
 
     render() {
-        const { board, list, task } = this.props
+        const { board } = this.props
         return (
             <div className="copy-task-popover" onClick={(ev) => ev.stopPropagation()}>
-                <div className="popover-header flex align-center justify-center">
-                    <div className="popover-header-title flex justify-center">Copy Task</div>
-                    <CloseIcon onClick={() => this.props.setCurrPopover()} />
-                </div>
+                <PopoverHeader title="Copy Task" setCurrPopover={this.props.setCurrPopover} />
                 <div className="copy-task-body flex column  justify-center align-center">
                     <h3>Select Destination</h3>
                     <FormControl style={{ marginBottom: '10px', minWidth: '120px' }} >

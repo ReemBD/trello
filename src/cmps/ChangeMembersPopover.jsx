@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import CloseIcon from '@material-ui/icons/Close'
 import { boardService } from '../services/boardService'
 import DoneIcon from '@material-ui/icons/Done'
-import { socketService } from '../services/socketService'
 import { PopoverHeader } from './PopoverHeader'
+import BoardMemberImg from './BoardMemberImg'
+
 export class ChangeMembersPopover extends Component {
     state = {
         currTask: {},
@@ -51,7 +51,6 @@ export class ChangeMembersPopover extends Component {
         const currTask = board.lists[listIdx].tasks[taskIdx]
         currTask.members.splice(memberIdx, 1)
         this.setState({ currTask })
-        const { user } = { ...this.props }
         const activity = { txt: `has removed ${fullname} from task`, task: { ...currTask } }
         await updateBoard(board, activity)
     }
@@ -78,9 +77,8 @@ export class ChangeMembersPopover extends Component {
                         <h3 className="popover-section-header">Board members</h3>
                         {boardMembers.map(member => {
                             return <li key={member._id} data-id={member._id} onClick={this.onUpdateTaskMember} className={`popover-section-list-item flex align-center ${this.isTaskMember(member._id) && 'picked'}`}>
-                                <div className="members-popover-img-wrapper">
-                                    <img className="members-popover-member-img" src={member.imgUrl || ''} />
-                                </div>
+                                    <BoardMemberImg member={member} size={40} className="board-member-img"/>
+                                
                                 <span data-id={member._id}>{member.fullname}  ({member.username})</span>
                                 {this.isTaskMember(member._id) && <DoneIcon className="picked-icon" />}
                             </li>

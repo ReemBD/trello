@@ -14,27 +14,10 @@ import { LoadingSpinner } from './LoadingSpinner'
 export class _TaskDetailsActivity extends Component {
     state = {
         isActivityOpen: false,
-        taskActivities: [],
         comment: {
             txt: ''
         },
     }
-
-    componentDidMount() {
-        const { currBoard } = this.props
-        const { listId, taskId } = this.props.match.params
-        const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(currBoard, listId, taskId)
-        const task = currBoard.lists[listIdx].tasks[taskIdx]
-
-        const taskActivities = currBoard.activities.filter(activity => {
-            if (activity.task) {
-                return activity.task.id === task.id
-            }
-        })
-        this.setState({ taskActivities })
-    }
-
-
 
     onToggleDetails = () => {
         this.setState({ isActivityOpen: !this.state.isActivityOpen })
@@ -88,7 +71,12 @@ export class _TaskDetailsActivity extends Component {
 
         const { taskIdx, listIdx } = boardService.getListAndTaskIdxById(currBoard, list.id, task.id)
         copyBoard.lists[listIdx].tasks[taskIdx] = copyTask
-        await this.props.updateBoard(copyBoard)
+        const activity = {
+            user,
+            txt: `commented  "${txt}" on`,
+            task,
+        }
+        await this.props.updateBoard(copyBoard, activity)
         const comment = { txt: '' }
         this.setState({ comment })
 
@@ -97,7 +85,13 @@ export class _TaskDetailsActivity extends Component {
     onRemoveComment = async (listIdx, taskIdx, commentIdx) => {
         const copyBoard = cloneDeep(this.props.currBoard)
         copyBoard.lists[listIdx].tasks[taskIdx].comments.splice(commentIdx, 1)
-        await this.props.updateBoard(copyBoard)
+        const { user, task } = this.props
+        const activity = {
+            user,
+            txt: `removed a comment from`,
+            task,
+        }
+        await this.props.updateBoard(copyBoard, activity)
     }
 
     render() {
@@ -106,8 +100,13 @@ export class _TaskDetailsActivity extends Component {
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(currBoard, listId, taskId)
         const task = currBoard.lists[listIdx].tasks[taskIdx]
         const taskComments = task?.comments
-        const { isActivityOpen, taskActivities, comment } = this.state
-        if (!taskActivities) return <LoadingSpinner/>
+        const taskActivities = currBoard.activities.filter(activity => {
+            if (activity.task) {
+                return activity.task.id === task.id
+            }
+        })
+        const { isActivityOpen, comment } = this.state
+        if (!taskActivities) return <LoadingSpinner />
         return (
             <div className="task-activity">
                 <div className="activity-header flex">

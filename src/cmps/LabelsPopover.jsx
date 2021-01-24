@@ -59,16 +59,20 @@ export class _LabelsPopover extends Component {
         this.setState({ labels }, async () => {
             delete labels[labelIdx].isPicked
             const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
+            const activity = { task }
             if (task.labels?.some(label => label.id === labelId)) {
                 const taskLabelIdx = task.labels.findIndex(label => label.id === labelId)
                 task.labels.splice(taskLabelIdx, 1)
                 board.lists[listIdx].tasks[taskIdx] = task
+                activity.txt = `has removed label from task`
             }
             else {
                 task.labels = task.labels ? [...task.labels, labels[labelIdx]] : [labels[labelIdx]]
                 board.lists[listIdx].tasks[taskIdx] = task
+                activity.txt = `has added label to task`
             }
-            await updateBoard(board)
+
+            await updateBoard(board, activity)
             this.markExistingLabels()
         })
     }

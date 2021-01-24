@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import BoardMemberImg from './BoardMemberImg';
 import { PopoverHeader } from './PopoverHeader'
-import { utilService } from '../services/utilService'
 import { boardService } from '../services/boardService';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 

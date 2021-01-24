@@ -9,11 +9,16 @@ import { cloneDeep } from 'lodash'
 export class TaskDetailsAttachments extends Component {
 
     onDeleteImg = (imgIdx) => {
-        const { board, list, task, updateBoard } = this.props
+        const { board, list, task, updateBoard, user } = this.props
         const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
         const boardCopy = cloneDeep(board)
         boardCopy.lists[listIdx].tasks[taskIdx].attachments.splice(imgIdx, 1)
-        updateBoard(boardCopy)
+        const activity = {
+            user,
+            txt: `removed an image from`,
+            task,
+        }
+        updateBoard(boardCopy, activity)
 
     }
     render() {

@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { utilService } from '../services/utilService.js'
 import { styleService } from '../services/styleService.js'
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import CloseIcon from '@material-ui/icons/Close';
 import { BoardMemberComposer } from './BoardMembersComposer.jsx'
 
 export class _BoardComposer extends Component {
@@ -72,7 +73,7 @@ export class _BoardComposer extends Component {
         ev.preventDefault()
         var { newBoard } = this.state
         if (newBoard._id) {
-            var newBoard = { ...this.props.board, ...newBoard }
+            newBoard = { ...this.props.board, ...newBoard }
         }
 
         const savedBoard = await boardService.save(newBoard)//add a new board to data
@@ -155,20 +156,24 @@ export class _BoardComposer extends Component {
 
 
     render() {
-        const { users, bgs, newBoard, isMembersPreviewOpen, btnTxt } = this.state
-
+        const { bgs, newBoard, isMembersPreviewOpen, btnTxt } = this.state
+        const { onToggleCompose } = this.props
         return (
             <Fragment>
+
                 <form className="board-composer board-composer-layout flex column" onClick={(ev) => ev.stopPropagation()} onSubmit={this.onAddBoard} >
+                    <div className="close-btn flex align-center justify-center">
+                        <CloseIcon onClick={onToggleCompose} />
+                    </div>
                     <div className="flex justify-center align-center board-details-wrapper">
 
                         <div className="demo-board board-card  flex justify-center align-center" style={{ backgroundImage: newBoard.style.bg, backgroundSize: "cover" }}>
                             <textarea className="title" onChange={this.handleInput} placeholder="Enter Board Title " name="title" autoComplete="off" value={newBoard.title} />
                         </div>
                         <span className="edit-board-members">
-                        <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
-                        {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
-                    </span>
+                            <GroupAddIcon className="addIcon" onClick={this.toggleMemberPreview} />
+                            {isMembersPreviewOpen && <BoardMemberComposer isBoardMember={this.isBoardMember} toggleMember={this.toggleMember} closeModal={this.closeMembersPreview} />}
+                        </span>
                     </div>
 
                     <div className="bg-options">

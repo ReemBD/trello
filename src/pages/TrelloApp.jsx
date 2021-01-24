@@ -20,31 +20,26 @@ class _TrelloApp extends Component {
 
     componentDidMount = async () => {
         const { boardId } = this.props.match.params
-        const { user } = this.props
         socketService.setup()
         socketService.emit('member connected', { userId: '123', boardId })
         socketService.on('board updated fs', this.onBoardUpdated)
         await this.props.setBoard(boardId)
     }
 
-    onTaskUpdated = ({ taskId }) => {
-
-    }
-
     toggleDashboard = (boolean = !this.state.isDashboardOpen) => {
         this.setState({ isDashboardOpen: boolean }, () => {
-            this.state.isBoardClosed ? this.setState({isBoardClosed: false}) :
-            setTimeout(() => {
-                this.setState({ isBoardClosed: true })
-            }, 1000)
+            this.state.isBoardClosed ? this.setState({ isBoardClosed: false }) :
+                setTimeout(() => {
+                    this.setState({ isBoardClosed: true })
+                }, 1000)
         })
     }
 
-    componentWillUnmount() {
+    async componentWillUnmount() {
         socketService.off('board updated fs', this.onBoardUpdated)
-        // socketService.off('task updated fs')
-        // socketService.off('do notification fs')
         socketService.terminate()
+        const { setBoard } = this.props
+        await setBoard(null)
     }
 
     componentDidUpdate(prevProps) {
@@ -54,8 +49,6 @@ class _TrelloApp extends Component {
         }
     }
 
-
-
     onBoardUpdated = async ({ updatedBoard, activity }) => {
         const board = { ...updatedBoard }
         await this.props.updateBoard(board, null, false)
@@ -63,8 +56,8 @@ class _TrelloApp extends Component {
 
     render() {
         const { board, setCurrPopover } = this.props
-        const { isDashboardOpen,isBoardClosed } = this.state
-        if (!board) return <LoadingSpinner/>
+        const { isDashboardOpen, isBoardClosed } = this.state
+        if (!board) return <LoadingSpinner />
         return (
             <div onClick={() => {
                 setCurrPopover()
@@ -72,11 +65,12 @@ class _TrelloApp extends Component {
             }} style={{ paddingTop: '54px' }}>
                 <div className="main-bg" style={{ backgroundImage: board.style.bg }} onClick={ev => { ev.stopPropagation() }}></div>
                 <div className={`bg-overlay `}>
-                    <BoardHeader {...this.props} className={isDashboardOpen && 'dashboard-mode'} toggleDashboardNew={this.toggleDashboardNew} onToggleDashboard={this.toggleDashboard} />
+                    <BoardHeader {...this.props} className={isDashboardOpen && 'dashboard-mode'} isDashboardOpen={isDashboardOpen} onToggleDashboard={this.toggleDashboard} />
                     {!isBoardClosed && <Board {...this.props} isDashboardOpen={isDashboardOpen} />}
                     {this.props.match.params.listId && <TaskDetails />}
                 </div>
-                <div className={`dashboard-screen ${isDashboardOpen && 'slide-to-right'} ${!isDashboardOpen && 'hidden'}`}>
+                <div
+                    className={`dashboard-screen ${isDashboardOpen && 'slide-to-right'} ${!isDashboardOpen && 'hidden'}`}>
                     <Dashboard board={board} />
                 </div>
             </div>

@@ -47,7 +47,7 @@ export class BoardMemberComposer extends Component {
                         {users.map(user => {
                             return <li key={user._id} data-id={user._id} onClick={() => toggleMember(user)} style={{ height: '60px' }} className={`popover-section-list-item flex align-center ${isBoardMember(user._id) && 'picked'}`}>
                                 {isBoardMember(user._id) ? <DoneIcon /> : <AddIcon />}
-                                <img className="avatarPic" src={user.imgUrl} />
+                                <img className="avatarPic" alt="avatar picture" src={user.imgUrl} />
                                 <span data-id={user._id}>{user.fullname} </span>
 
                             </li>

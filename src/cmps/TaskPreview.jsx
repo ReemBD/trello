@@ -192,7 +192,8 @@ export class _TaskPreview extends Component {
                                     />
 
                                     {!task.labels?.length && <div className="quick-edit-wrapper">
-                                        {(isTaskHovered || isEditOpen) && <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
+                                        {(isTaskHovered || isEditOpen) && 
+                                        <EditIcon className="edit-icon" onClick={this.onToggleEdit} />}
                                         {isEditOpen && <TaskEdit {...this.props} task={task} membersRef={this.membersRef} list={list} onToggleEdit={this.onToggleEdit} />}
                                     </div>}
                                 </div>
@@ -201,7 +202,7 @@ export class _TaskPreview extends Component {
                                         <div className="task-preview-indication-icons flex start">
                                             {task.description && <NotesOutlinedIcon className="description-indication-icon indication-icon" />}
                                             {task.checklists?.length ? <div className="flex align-center"><CheckIcon className="indication-icon" />{this.taskDoneTodosLength}/{this.taskTodosLength}</div> : ''}
-                                            {task.dueDate ? <div className="flex align-center"><DueDateIcon className="indication-icon" /><div>{format(new Date(task?.dueDate?.timestamp), 'LLL')} {format(new Date(task?.dueDate?.timestamp), 'd')}</div></div> : ''}
+                                            {task.dueDate ? <div className={`date-indication  flex align-center ${task.dueDate.isDone ? "complete" : ""}`}><DueDateIcon className="indication-icon" /><div>{format(new Date(task?.dueDate?.timestamp), 'LLL')} {format(new Date(task?.dueDate?.timestamp), 'd')}</div></div> : ''}
                                             {task.comments && <CommentIcon className="comment-indication-icon indication-icon" />}
                                         </div>
                                         {task.members?.length ?
