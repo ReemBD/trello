@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
-import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
-import AppsIcon from '@material-ui/icons/Apps';
+
 import { connect } from 'react-redux'
 import { clearUser, setUserAfterRefresh } from '../store/actions/userAction'
 import { eventBusService } from '../services/eventBusService'
 import { userService } from '../services/userService'
 
-export class _AppHeader extends Component {
+ class _AppHeader extends Component {
     state = {
         navBgc: ''
     }
@@ -32,7 +31,9 @@ export class _AppHeader extends Component {
 
 
     logout() {
-        eventBusService.emit('logout')
+        // eventBusService.emit('logout')
+        // this.props.clearUser()
+        clearUser()
     }
 
     render() {
@@ -46,7 +47,7 @@ export class _AppHeader extends Component {
                     {user && <li className="user-desc flex align-center"> Hello, {user.fullname.substring(0, user.fullname.indexOf(' '))} </li>}
                     <li><NavLink to="/board"><span>Boards</span></NavLink></li>
                     {!user && <li><NavLink to="/login"><span >Login</span></NavLink></li>}
-                    {user && <li className="logout flex align-center" onClick={this.logout} > Logout </li>}
+                    {user && <li className="logout flex align-center" onClick={this.props.clearUser} > Logout </li>}
                 </ul>
             </header>
         )
