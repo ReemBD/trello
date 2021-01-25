@@ -6,9 +6,9 @@ export class DateTimePopover extends Component {
 
 
     render() {
-        const { classNames } = this.props
+        const { className } = this.props
         return (
-            <div className={`due-date-popover quick-edit-popover ${classNames && classNames}`} onClick={(ev) => ev.stopPropagation()}>
+            <div className={`due-date-popover quick-edit-popover ${className && className}`} onClick={(ev) => ev.stopPropagation()}>
                 <PopoverHeader title='Due Date' setCurrPopover={this.props.setCurrPopover} />
                 <div className="due-date-body flex justify-center align-center">
                     <DateTime onChange={this.props.onDateChange} />

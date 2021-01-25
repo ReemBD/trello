@@ -6,7 +6,7 @@ import onClickOutside from 'react-onclickoutside'
 
 export class _ListActions extends Component {
     state = {
-        listColors: ['#9895E0', '#4A94F8', '#56c991', '#3cc2e0', '#eb5a46', '#ac0275', '#67c0a4', '#F5E50E'],
+        listColors: ['#9895E0', '#4A94F8', '#56c991', '#3cc2e0', '#eb5a46', '#ac0275', '#67c0a4', '#E91E63'],
     }
 
     onSetListColor = (color) => {

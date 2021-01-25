@@ -44,18 +44,13 @@ export class Boards extends Component {
         if (!boards) return <LoadingSpinner />
         return (
             <Fragment>
-
-                <div className="glass-screen "></div>
-                <div className="boards-bg "></div>
-                <div className="board-page-container flex">
-                    <div className="boards-page bg-overlay main-layout flex column board-layout">
-                        <section className="user-boards-section">
-                            <div className="user-boards-title">Your Boards</div>
-                            <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
-                        </section>
-
+                <div className="glass-container">
+                    <div className="glass-screen  ">
+                        <h3 className="boards-title board-layout">Your boards</h3>
+                        <BoardList boards={boards} onRemove={this.onRemove} onEdit={this.editBoard} onToggleCompose={this.onToggleCompose} />
                     </div>
                 </div>
+                <div className="boards-bg "></div>
                 <div onClick={this.onToggleCompose} className={`composer-screen flex justify-center align-center ${!isComposerOpen && 'transparent'}`}>
                     <BoardComposer board={boardToEdit} onToggleCompose={this.onToggleCompose} />
                 </div>

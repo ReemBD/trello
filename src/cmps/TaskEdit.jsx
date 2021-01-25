@@ -15,13 +15,6 @@ import { MoveTaskPopover } from './MoveTaskPopover'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
 
-/* FOR DEMO 3:
-the TaskEdit component renders the quick edit buttons which on click, opens the respected popover.
-as you can see, it is built in a way that assuming in the future a programmer would like to add a new component, 
-all that is required is to add another object to the state.
-
-*/
-
 const popovers = [
     {
         title: 'Edit Labels',
@@ -33,13 +26,20 @@ const popovers = [
         Component: ChangeMembersPopover,
         Icon: ChangeMembersIcon
     },
-    { title: 'Move', Icon: ArrowForwardIcon, Component: MoveTaskPopover },
-    { title: 'Copy', Icon: FileCopyOutlinedIcon },
+    {
+        title: 'Move',
+        Icon: ArrowForwardIcon,
+        Component: MoveTaskPopover
+    },
+    {
+        title: 'Copy',
+        Icon: FileCopyOutlinedIcon
+    },
     {
         title: 'Change Due Date',
         Component: DateTimePopover,
         Icon: ChangeDueDateIcon,
-        classNames: 'quick-edit-datepicker'
+        className: 'quick-edit-datepicker'
     },
 ]
 
@@ -90,7 +90,8 @@ export class TaskEdit extends Component {
                         key={popover.title}
                         {...this.dueDateHandlers}
                         {...this.props}
-                        {...popover} />
+                        {...popover}
+                    />
                 })}
                 <a className="quick-task-editor-buttons-item js-edit-labels" href="#" onClick={this.onRemoveTask}>
                     <span className="icon-sm icon-label light"></span>

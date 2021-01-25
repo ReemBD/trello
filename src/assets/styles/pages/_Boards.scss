@@ -17,6 +17,14 @@
   z-index: -4;
 }
 
+.glass-container {
+  padding-top: 70px;
+  .boards-title {
+    text-transform: capitalize;
+    margin-bottom: 30px;  
+  }
+}
+
 .glass-screen {
   background-image: linear-gradient(
     to bottom right,
@@ -26,35 +34,28 @@
     #f3f3f330,
     #ffffff00
   );
-
   box-shadow: 0 8px 32px 0 rgba(182, 182, 182, 0.37);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border-radius: 15px;
   padding: 2em;
   margin-top: 2em;
   text-align: center;
   user-select: none;
   text-align: left;
-
-  backdrop-filter: blur(7.5px);
-  -webkit-backdrop-filter: blur(7.5px);
   border-radius: 10px;
   padding: 2em;
   margin: 0 auto;
-  left: 5%;
-  top: 90px;
-  min-height: 50%;
   height: -webkit-fill-available;
-  width: 90%;
-  position: fixed;
+  margin-right: 40px;
+  margin-left: 40px;
+  
+  
   z-index: -1;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .board-page-container {
   margin: 0 auto;
-  padding-top: 5vh;
+  // padding-top: 5vh;
   justify-content: center;
 
   .bg-overlay {

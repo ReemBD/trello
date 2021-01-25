@@ -1,12 +1,12 @@
 // ------------------------------------------------------- board grid cards-------------------------------------------------------
 
-
 .board-card {
   color: #fff;
   position: relative;
   backdrop-filter: blur(13.5px);
   -webkit-backdrop-filter: blur(13.5px);
   border-radius: 3px;
+  width: 100%;
   background-size: cover;
   &:hover {
     border: 2px solid #3d3d3d;
@@ -29,20 +29,13 @@
     border-radius: 3px;
 
     // background-color: desaturate(#c95656, 50);
-    background: linear-gradient(
-      180deg,
-      rgba(252, 252, 252, 0) 21%,
-      rgba(32, 32, 32, 0.5130427170868348) 93%
-    );
-
-  
+    background: linear-gradient(180deg, rgba(252, 252, 252, 0) 21%, rgba(32, 32, 32, 0.5130427170868348) 93%);
   }
   // background: rgba(255, 255, 255, 0.924);
   // box-shadow: -1px 4px 5px 0px rgb(177 177 179 );
 
   cursor: pointer;
-  width: 220px;
-  height: 100px;
+  height: 120px;
   a {
     text-decoration: none;
     width: 100%;
@@ -54,10 +47,9 @@
     justify-content: center;
   }
   h1 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: #fff;
     font-weight: unset;
-    
   }
   .icon-btn {
     position: absolute;
@@ -65,7 +57,7 @@
     right: 3px;
     color: #fff;
     opacity: 0;
-    transition: opacity .087s;
+    transition: opacity 0.087s;
     cursor: pointer;
     .icon {
       width: 20px;
@@ -78,7 +70,6 @@
     &:hover {
       background-color: #ffffff40;
     }
-
   }
 
   &:hover {
@@ -90,7 +81,7 @@
   &.add-board {
     background-color: #3d3d3d;
     &:hover {
-      background-color:black;
+      background-color: black;
     }
   }
 }
@@ -99,43 +90,43 @@
   position: relative;
   font-size: 14px;
   .board-actions-popover {
-      @include popover-main;
-      box-shadow: 0px 1px 6px #00000099;
-      z-index: 1;
-      left: -50px;
-      top: -24px;
-      position: absolute;
-      .popover-header {
-          height: 40px;
-          font-size: 14px;
-          color: #212121;
-          position: relative;
-          margin-bottom: 8px;
-          text-align: center;
-          padding-inline-start: 11px;
-          padding-inline-end: 11px;
-          @include popover-header;
-      }
-      .popover-section {
-          @include popover-section;
+    @include popover-main;
+    box-shadow: 0px 1px 6px #00000099;
+    z-index: 1;
+    left: -50px;
+    top: -24px;
+    position: absolute;
+    .popover-header {
+      height: 40px;
+      font-size: 14px;
+      color: #212121;
+      position: relative;
+      margin-bottom: 8px;
+      text-align: center;
+      padding-inline-start: 11px;
+      padding-inline-end: 11px;
+      @include popover-header;
+    }
+    .popover-section {
+      @include popover-section;
 
-          &-header {
-              @include popover-section-header;
-          }
-          &-list {
-              @include popover-section-list;
-              cursor: pointer;
-              &-item {
-                  color: $clr2;
-                  margin-inline-start: 7px;
-                  padding-top: 8px;
-                  padding-bottom: 8px;
-                  font-size: 1.2em;
-                  &:hover {
-                      background-color: rgb(245, 246, 248);
-                  }
-              }
-          }
+      &-header {
+        @include popover-section-header;
       }
+      &-list {
+        @include popover-section-list;
+        cursor: pointer;
+        &-item {
+          color: $clr2;
+          margin-inline-start: 7px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          font-size: 1.2em;
+          &:hover {
+            background-color: rgb(245, 246, 248);
+          }
+        }
+      }
+    }
   }
 }
