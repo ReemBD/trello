@@ -8,6 +8,7 @@
             min-width: 272px;
             .add-list-form {
                 @include list-title;
+                
                 position: relative;
                 background-color: rgba(140, 125, 125, 0.24);
                 height: 40px;

@@ -3,16 +3,15 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { cloudinaryService } from '../services/cloudinaryService'
-import { styleService } from '../services/styleService'
 import { setUser, clearUser } from '../store/actions/userAction'
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { GoogleLogin } from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
-import { eventBusService } from '../services/eventBusService'
-import Avatar from 'react-avatar';
+
 import { refreshTokenSetup } from '../services/googleService';
 
 const clientId = '996251564221-qedkti8vudlin8md60j8dllv408gqodo.apps.googleusercontent.com';
+const absoluteURI = (process.env.NODE_ENV === 'production') ? 'http://herokupath' : 'http://localhost:3031'
 
 class _LoginSignup extends Component {
 
@@ -34,12 +33,6 @@ class _LoginSignup extends Component {
         isGoogle: false
     }
 
-    componentDidMount() {
-        // this.unsubscribe = eventBusService.on('logout', () => {
-        //     this.onLogout()
-        // });
-
-    }
 
 
     // -------------------------------------------------GOOGLE----------------------------------------
@@ -203,6 +196,10 @@ class _LoginSignup extends Component {
                                 <GoogleLogin
                                     className="with-btn"
                                     clientId={clientId}
+                                    clientSecret="dFOQhDq1oIii5Tv7Z1QxMDRV"
+                                    proxy={true}
+                                    callbackURL={absoluteURI + "/auth/google/callback"}
+
                                     buttonText="Login with Google"
                                     onSuccess={this.onSuccessGoogleLogin}
                                     onFailure={this.onFailureGoogleLogin}
@@ -210,11 +207,6 @@ class _LoginSignup extends Component {
 
                                     isSignedIn={user === true}
                                 />
-
-
-                                {/* <button className="with-btn">Sign up with facebook <i className="fab fa-facebook"></i></button> */}
-
-
 
 
 

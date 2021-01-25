@@ -81,22 +81,29 @@ export class _Board extends Component {
 
         const copyBoard = { ...this.props.board }
 
+        const activity = {}
         if (type === 'task') {
 
             const sourceListIdx = boardService.getListIdxById(copyBoard, source.droppableId)
             const destinationListIdx = boardService.getListIdxById(copyBoard, destination.droppableId)
-
             const task = copyBoard.lists[sourceListIdx].tasks.splice(source.index, 1);
             copyBoard.lists[destinationListIdx].tasks.splice(destination.index, 0, task[0]);
+
+            const sourceListName = copyBoard.lists[sourceListIdx].title
+            const destinationListName = copyBoard.lists[destinationListIdx].title
+            activity.txt = `has moved ${task[0].title} from ${sourceListName} to ${destinationListName}`
 
         } else {
 
             const list = copyBoard.lists.splice(source.index, 1);
             copyBoard.lists.splice(destination.index, 0, list[0]);
 
+            activity.txt = `has moved list ${list[0].title}`
         }
 
-        this.props.updateBoard(copyBoard)
+
+
+        this.props.updateBoard(copyBoard, activity)
     }
 
 
@@ -105,8 +112,8 @@ export class _Board extends Component {
         const { board, currPopover, isDashboardOpen } = this.props
         const { lists } = board
         const isCurrPopover = (currPopover === 'LIST_ADD')
-        const { listToAdd,isLabelOpen } = this.state
-        if (!board) return <LoadingSpinner/>
+        const { listToAdd, isLabelOpen } = this.state
+        if (!board) return <LoadingSpinner />
         return (
             <div className={`board board-layout ${isDashboardOpen && 'slide-from-left'}`} style={{ height: "76vh" }}>
 

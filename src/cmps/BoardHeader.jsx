@@ -41,7 +41,7 @@ export class BoardHeader extends Component {
                         })}
                     </div>
                     <ul className="board-nav clear-list flex">
-                        <li className="board-filter-container"><BoardFilter /></li>
+                        {/* <li className="board-filter-container"><BoardFilter /></li> */}
                         <li className={`notification-icon-container ${currBadgeCount && 'unread'}`}>
                             <NotificationsIcon onClick={ev => {
                                 ev.stopPropagation()
