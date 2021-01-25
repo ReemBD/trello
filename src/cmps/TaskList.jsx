@@ -82,7 +82,7 @@ export class TaskList extends Component {
                                 {provided => (
                                     <div ref={provided.innerRef} {...provided.droppableProps} className="flex column" style={{ flexGrow: "1", minHeight: "1px" }}>
 
-                                        {tasks ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} setListDnd={this.setDragability} task={task} />) : ''}
+                                        {tasks ? tasks.map((task, idx) => <TaskPreview key={task.id} taskIdx={idx} {...this.props} setListDnd={this.setDragability} task={task} className={(idx === tasks.length - 1) && "last-child"} />) : ''}
 
                                         {provided.placeholder}
                                     </div>

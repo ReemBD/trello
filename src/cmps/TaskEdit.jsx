@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { boardService } from '../services/boardService'
 import { LabelsPopover } from './LabelsPopover'
-import { ChangeMembersPopover } from '../cmps/ChangeMembersPopover'
+import { ChangeMembersPopover } from './ChangeMembersPopover'
+import { CopyTaskPopover } from './CopyTaskPopover'
 import { QuickEditButton } from './QuickEditButton'
 import LabelIcon from '@material-ui/icons/LabelOutlined';
 import ChangeMembersIcon from '@material-ui/icons/PeopleOutline';
@@ -33,7 +34,7 @@ const popovers = [
         Icon: ChangeMembersIcon
     },
     { title: 'Move', Icon: ArrowForwardIcon, Component: MoveTaskPopover },
-    { title: 'Copy', Icon: FileCopyOutlinedIcon },
+    { title: 'Copy', Icon: FileCopyOutlinedIcon},
     {
         title: 'Change Due Date',
         Component: DateTimePopover,
@@ -100,15 +101,3 @@ export class TaskEdit extends Component {
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         board: state.boardReducer.currBoard
-//     }
-// }
-
-// const mapDispatchToProps = {
-//     updateBoard
-// }
-
-// export const TaskEdit = connect(mapStateToProps, mapDispatchToProps)(_TaskEdit)
