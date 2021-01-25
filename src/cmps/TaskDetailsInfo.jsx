@@ -5,8 +5,9 @@ import { formatRelative } from 'date-fns'
 import { connect } from 'react-redux'
 import { updateBoard } from '../store/actions/boardActions'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
+import BoardMemberImg from './BoardMemberImg'
 import { LabelsPopover } from './LabelsPopover'
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Add'
 
 export class _TaskDetailsInfo extends Component {
     state = {
@@ -55,7 +56,8 @@ export class _TaskDetailsInfo extends Component {
 
                             {task.members.map(member => {
                                 return <div key={member._id} className="task-member-img">
-                                    <img src={member.imgUrl} />
+                                    {/* <img src={member.imgUrl} /> */}
+                                    <BoardMemberImg member={member} />
                                 </div>
                             })}
                             <div className="task-add-member small-btn-bgc" title="Add Member">
