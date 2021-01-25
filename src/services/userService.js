@@ -2,14 +2,14 @@ import { httpService } from './httpService'
 import { sessionService } from './sessionStorageService'
 const endpoint = 'user'
 const KEY = 'loggedUserDB'
-   
+
 export const userService = {
     getUsers,
     login,
     signup,
-    filterUsersBy, 
-    checkLoggedUser
-
+    filterUsersBy,
+    checkLoggedUser,
+    logout
 }
 
 async function getUsers() {
@@ -58,4 +58,14 @@ async function filterUsersBy(value) {
 
 function checkLoggedUser() {
     return sessionService.load(KEY)
+}
+
+async function logout() {
+    try {
+        await httpService.post(`${endpoint}/logout`)
+        sessionService.clear()
+    } catch (err) {
+        console.log('couldnt log out ', err);
+    }
+
 }

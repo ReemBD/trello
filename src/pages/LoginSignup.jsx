@@ -10,9 +10,7 @@ import { GoogleLogin } from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 import { eventBusService } from '../services/eventBusService'
 import Avatar from 'react-avatar';
-// refresh token
 import { refreshTokenSetup } from '../services/googleService';
-
 
 const clientId = '996251564221-qedkti8vudlin8md60j8dllv408gqodo.apps.googleusercontent.com';
 
@@ -37,9 +35,9 @@ class _LoginSignup extends Component {
     }
 
     componentDidMount() {
-        this.unsubscribe = eventBusService.on('logout', () => {
-            this.onLogout()
-        });
+        // this.unsubscribe = eventBusService.on('logout', () => {
+        //     this.onLogout()
+        // });
 
     }
 
@@ -74,7 +72,6 @@ class _LoginSignup extends Component {
         var userCreds;
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
-
 
         if (!userCreds.password || !userCreds.username) {
             this.setState({ msg: 'you need to fill all the feilds' })
@@ -113,10 +110,8 @@ class _LoginSignup extends Component {
         })
     }
 
-
     toggleForms = (ev) => {
         ev.preventDefault()
-
         this.setState(prevState => {
             return {
                 isNewUser: !prevState.isNewUser,
@@ -124,8 +119,6 @@ class _LoginSignup extends Component {
             }
         })
     }
-
-
 
 
     onUploadImg = async ev => {
@@ -161,7 +154,6 @@ class _LoginSignup extends Component {
             isGoogle: false
 
         })
-        // , () => this.props.history.push(`/login`))
 
     }
 

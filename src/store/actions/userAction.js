@@ -22,16 +22,23 @@ export function setUser(user, isNewUser, isGoogle) {
 
 
 export function clearUser() {
-    sessionService.clear()
-    return (dispatch) => {
-        const action = {
-            type: 'CLEAR_USER',
-
+    console.log('logging out from action');
+    return async (dispatch) => {
+        try{
+             userService.logout()
+        
+            const action = {
+                type: 'CLEAR_USER',
+            }
+            dispatch(action)
+            
+        }catch{
+            console.log('couldnt log out!!');
         }
-        dispatch(action)
     }
 }
 export function setUserAfterRefresh(loggedUser) {
+
     return (dispatch) => {
         const action = {
             type: 'SET_USER',
