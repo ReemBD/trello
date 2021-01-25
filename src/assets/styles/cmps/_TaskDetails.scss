@@ -22,7 +22,7 @@
     & > * {
       position: relative;
       font-size: 1.125rem;
-      font-weight: 600;
+      font-family: Poppings-medium;
       padding: 4px 12px;
       line-height: 24px;
       letter-spacing: 0.2px;
@@ -61,7 +61,7 @@
         h3 {
           text-transform: uppercase;
           font-size: 0.75rem;
-          font-weight: 400;
+          // font-weight: 400;
           letter-spacing: 0.48px;
           color: #5e6c84;
           margin-left: 5px;
@@ -136,14 +136,14 @@
   .details-description {
     position: relative;
     font-size: 1.125rem;
-    font-weight: 600;
+    font-family: Poppings-medium;
     padding: 4px 8px;
     line-height: 24px;
     letter-spacing: 0.2px;
 
     textarea {
       margin-bottom: 10px;
-      font-weight: 400;
+      // font-weight: 400;
     }
   }
 
@@ -166,7 +166,7 @@
   margin-bottom: rem(15px);
   position: relative;
   font-size: 1.125rem;
-  font-weight: 600;
+  font-family: Poppings-medium;
   padding: 4px 8px;
   line-height: 24px;
   letter-spacing: 0.2px;
@@ -231,9 +231,9 @@
     .activity-txt {
       margin-bottom: 0;
       font-size: 1rem;
-      font-weight: 400;
+      // font-weight: 400;
       .activity-member-name {
-        font-weight: 600;
+        font-family: Poppings-medium;
         text-transform: capitalize;
       }
       .activity-task-title {
@@ -297,7 +297,7 @@
       0 0 0 1px rgba(9, 30, 66, 0.08);
     span {
       font-size: 0.875rem;
-      font-weight: 400;
+      // font-weight: 400;
     }
   }
   form {
@@ -306,8 +306,9 @@
       margin-left: 5px;
       .comment-textarea {
         resize: none;
-        font-family: inherit;
-        font-weight: 300;
+        font-family: Poppings-light;
+        // font-weight: 300;
+        
         height: 36px;
         border-radius: 3px;
         padding: 4px 8px;
@@ -377,7 +378,7 @@
   .details-images {
     position: relative;
     font-size: 1.125rem;
-    font-weight: 600;
+    font-family: Poppings-medium;
     padding: 4px 12px;
     line-height: 24px;
     letter-spacing: 0.2px;

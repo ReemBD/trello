@@ -26,7 +26,7 @@ export class BoardPreview extends Component {
         const { board, onRemove, onEdit } = this.props
         return (
             <div {...this.boardPreviewHandlers}
-                className={`board-card flex flex justify-center align-center ${this.state.isBoardActionsOpen && 'board-actions-open'}`} style={{ backgroundImage: board.style.bg }} >
+                className={`board-card flex flex justify-center align-center ${this.state.isBoardActionsOpen && 'board-actions-open'}`} style={{ backgroundImage: board.style?.bg }} >
                 <Link to={`/board/${board._id}`}><h1>{board.title}</h1></Link>
                 <div className="card-overlay"></div>
                 <div className="board-actions-popover-wrapper">

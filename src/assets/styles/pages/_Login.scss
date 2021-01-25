@@ -75,7 +75,7 @@
     h1,
     h2 {
       text-align: center;
-      font-weight: 600;
+      font-family: Poppings-medium;
       margin: 40px 0;
       line-height: 40px;
       color: #6c63ff;
@@ -105,13 +105,13 @@
       }
 
       &::placeholder {
-        font-weight: 100;
+      font-family: Poppings-light;
         color: #131111;
         padding-left: 5px;
       }
     }
     label {
-      font-weight: 600;
+      font-family: Poppings-medium;
       cursor: pointer;
       color: #dadbdb;
       grid-column: 1/-1;
@@ -163,7 +163,7 @@
       display: inline-block;
       width: 50%;
       cursor: pointer;
-      font-weight: 100;
+      font-family: Poppings-light;
 
       &.active {
         border-bottom: 1px solid rgb(255, 255, 255);

@@ -1,4 +1,5 @@
 @import "../setup/variables";
+@import "../setup/typography";
 
 * {
   box-sizing: border-box;
@@ -8,7 +9,7 @@ html {
   line-height: 20px;
   color: $clr2;
   scroll-behavior: smooth;
-  font-family: "Segoe UI", sans-serif;
+  font-family: Poppings, "Segoe UI", sans-serif;
   font-size: 14px;
   @media (min-width: 800px) {
     font-size: 16px;
@@ -82,8 +83,5 @@ input:-internal-autofill-selected {
   appearance: menulist-button;
   background-color: rgba(232, 240, 254, 0) !important;
   background-image: none !important;
-  color: -internal-light-dark(
-    rgba(0, 0, 0, 0),
-    rgba(255, 255, 255, 0)
-  ) !important;
+  color: -internal-light-dark(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0)) !important;
 }

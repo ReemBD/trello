@@ -68,10 +68,7 @@ class _LoginSignup extends Component {
 
     onSubmit = async (ev) => {
         ev.preventDefault()
-<<<<<<< HEAD
-=======
         ev.stopPropagation()
->>>>>>> 5f6dcb7cbc8fc7aa36a620c177b1c87d43559cde
         const { signupCred, loginCred, isNewUser, isGoogle } = this.state
 
         var userCreds;
@@ -85,23 +82,19 @@ class _LoginSignup extends Component {
         }
 
         try {
-<<<<<<< HEAD
-            await this.props.setUser(userCreds, isNewUser, isGoogle)
-=======
             const { setUser } = this.props
             await setUser(userCreds, isNewUser, isGoogle)
             const { user } = this.props
             if (!user) return
->>>>>>> 5f6dcb7cbc8fc7aa36a620c177b1c87d43559cde
             this.setState({ msg: '' })
-            if (this.props.user)this.props.history.push(`/board`)//then gos to the boards page
+            if (this.props.user) this.props.history.push(`/board`)//then gos to the boards page
             else this.props.history.push(`/login`)
-             
+
         } catch (err) {
             console.log('inside the catchhhhhhhhhhhhhhhhhhhhhhhhhh')
             console.log(err, 'inside catch');
             this.setState({ msg: 'somthing went worng!' })
-            this.props.history.push(`/login`)    
+            this.props.history.push(`/login`)
         }
 
     }
@@ -256,8 +249,8 @@ class _LoginSignup extends Component {
 
 
                                 <span style={{ display: 'block' }}>{msg}</span>
-                                <button type="submit" className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             </form>
+                            <button type="submit" className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Dont have an account? <span onClick={this.toggleForms} >Sign Up</span> </p>
 
                         </div>

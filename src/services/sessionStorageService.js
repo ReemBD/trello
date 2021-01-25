@@ -16,10 +16,6 @@ function store(key, value) {
 
 }
 
-// function store(key, value) {
-//     sessionStorage[key] = JSON.stringify(value);
-// }
-
 
 function load(key, defaultValue = null) {
     var value = sessionStorage.getItem(key);

@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import AppsIcon from '@material-ui/icons/Apps';
 import { connect } from 'react-redux'
-import { clearUser, setUser } from '../store/actions/userAction'
+import { clearUser, setUserAfterRefresh } from '../store/actions/userAction'
 import { eventBusService } from '../services/eventBusService'
 import { userService } from '../services/userService'
 
@@ -22,7 +22,8 @@ export class _AppHeader extends Component {
         })
 
         const loggedUser = userService.checkLoggedUser()
-        if (loggedUser) this.props.setUser(loggedUser)
+        console.log('user from header:', loggedUser);
+        if (loggedUser) this.props.setUserAfterRefresh(loggedUser)
 
     }
 
@@ -38,7 +39,6 @@ export class _AppHeader extends Component {
         const currPath = this.props.history.location.pathname
         const { navBgc } = this.state
         const { user } = this.props
-        console.log('user from header:', user);
         return (
             <header className={`main-nav-header flex align-center  ${currPath === '/' ? navBgc : ''} ${currPath === '/login' || currPath === '/board' ? "homepage-nav" : ""}`}>
                 <ul className="main-nav  flex clear-list flex ">
@@ -66,7 +66,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     clearUser,
-    setUser
+    setUserAfterRefresh
 }
 
 

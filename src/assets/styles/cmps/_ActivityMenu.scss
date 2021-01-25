@@ -7,16 +7,15 @@
     background-color: #f4f5f7;
     right: -100%;
     z-index: 4;
-    transition: right .5s;
+    transition: right 0.5s;
     &.open {
         right: -10px;
     }
 
-    
-    .popover-header{
+    .popover-header {
         @include popover-header;
-    }    
-    .popover-section{
+    }
+    .popover-section {
         @include popover-section;
         overflow-y: scroll;
         max-height: 93%;
@@ -31,11 +30,11 @@
                 display: grid;
                 margin-bottom: 10px;
                 .activity-by {
-                    font-weight: 600;
+                    font-family: Poppings-medium;
                 }
                 .activity-at {
                     margin-top: 5px;
-                    font-size: .7em;
+                    font-size: 0.7em;
                 }
                 .task-title {
                     text-decoration: underline;
