@@ -12,7 +12,10 @@ export class _ListActions extends Component {
     onSetListColor = (color) => {
         const { board, listIdx, updateBoard } = { ...this.props }
         board.lists[listIdx].style.title.bgColor = color
-        updateBoard(board)
+        const activity = {
+            txt: `has changed list "${board.lists[listIdx].title}" color`
+        }
+        updateBoard(board, activity)
     }
 
     handleClickOutside = () => {
