@@ -68,7 +68,7 @@ export class _LoginSignup extends Component {
 
     onSubmit = async (ev) => {
         ev.preventDefault()
-        const { signupCred, loginCred, isNewUser,isGoogle } = this.state
+        const { signupCred, loginCred, isNewUser, isGoogle } = this.state
 
         var userCreds;
         if (isNewUser) userCreds = signupCred
@@ -78,14 +78,17 @@ export class _LoginSignup extends Component {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
         }
-    
+
         try {
-            await this.props.setUser(userCreds, isNewUser,isGoogle)
+            await this.props.setUser(userCreds, isNewUser, isGoogle)
             this.setState({ msg: '' })
-            this.props.history.push(`/board`)//then gos to the boards page
+            if (this.props.user)this.props.history.push(`/board`)//then gos to the boards page
+            else this.props.history.push(`/login`)
+             
         } catch (err) {
             console.log(err);
             this.setState({ msg: 'somthing went worng!' })
+            this.props.history.push(`/login`)    
         }
 
     }
@@ -193,7 +196,6 @@ export class _LoginSignup extends Component {
 
 
                                 <h1>Sign Up</h1>
-                                {/* <Avatar className="login-avatar" name={signupCred.fullname.toUpperCase()} size="100" textSizeRatio={1.75} fgColor='#fff' round={true} src={signupCred.imgUrl} /> */}
                                 <label> <div className="avatar flex justify-center align-center" style={{
                                     backgroundImage: ` url(${signupCred.imgUrl})`
                                 }}> <AddAPhotoIcon style={{ color: ' #dadbdb' }} className={signupCred.imgUrl && 'hidden'} />  </div>

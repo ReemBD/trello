@@ -3,8 +3,9 @@ import { NavLink, withRouter } from 'react-router-dom'
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import AppsIcon from '@material-ui/icons/Apps';
 import { connect } from 'react-redux'
-import { clearUser } from '../store/actions/userAction'
+import { clearUser, setUser } from '../store/actions/userAction'
 import { eventBusService } from '../services/eventBusService'
+import { userService } from '../services/userService'
 
 export class _AppHeader extends Component {
     state = {
@@ -19,7 +20,15 @@ export class _AppHeader extends Component {
                 this.setState({ navBgc: 'homepage-nav' })
             }
         })
+
+        const loggedUser = userService.checkLoggedUser()
+        if (loggedUser) this.props.setUser(loggedUser)
+
     }
+
+
+
+
 
     logout() {
         eventBusService.emit('logout')
@@ -56,7 +65,8 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-    clearUser
+    clearUser,
+    setUser
 }
 
 
