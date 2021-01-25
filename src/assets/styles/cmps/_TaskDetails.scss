@@ -39,6 +39,10 @@
 
       p {
         padding: 0 8px;
+
+        @media (max-width: 400px) {
+          font-size: 0.8rem;
+        }
       }
 
       .details-list-name {
@@ -48,7 +52,7 @@
       textarea {
         font-size: 1.5rem;
 
-        @media (max-width: 335px) {
+        @media (max-width: 400px) {
           font-size: 1rem;
         }
       }
@@ -74,6 +78,12 @@
 
         .task-add-member {
           z-index: 21;
+        }
+        .change-members-popover {
+          @media (max-width: 400px) {
+            width: 340px;
+            left: 0;
+          }
         }
       }
     }
@@ -308,7 +318,7 @@
         resize: none;
         font-family: Poppings-light;
         // font-weight: 300;
-        
+
         height: 36px;
         border-radius: 3px;
         padding: 4px 8px;
