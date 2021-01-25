@@ -15,13 +15,13 @@ export default class MyChart extends Component {
     }
 
     render() {
-        const { board } = this.props,
+        const { board,className } = this.props,
         data = dashboardService.getTasksPerDayData(board)
         // const { data } = this.state
         return (
-            <div className="tasks-per-person">
+            <div className={`tasks-per-person ${className}`}>
                 <h3>New Tasks per Day</h3>
-                <Line data={data} height={400} />
+                <Line data={data} height={400} width={400} />
             </div>
         );
     }

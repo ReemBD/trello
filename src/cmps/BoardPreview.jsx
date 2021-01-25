@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { BoardActions } from './BoardActions'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { LoadingSpinner } from './LoadingSpinner';
 
 export class BoardPreview extends Component {
 
@@ -24,6 +25,7 @@ export class BoardPreview extends Component {
 
     render() {
         const { board, onRemove, onEdit } = this.props
+        if (!board) return <LoadingSpinner/>
         return (
             <div {...this.boardPreviewHandlers}
                 className={`board-card flex flex justify-center align-center ${this.state.isBoardActionsOpen && 'board-actions-open'}`} style={{ backgroundImage: board.style.bg }} >

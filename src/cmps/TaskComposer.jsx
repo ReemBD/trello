@@ -37,7 +37,9 @@ export class _TaskComposer extends Component {
                 description: '',
             }
         }, () => {
-            this.props.updateBoard(board)
+            const activity = { task }
+            activity.txt = `has added new task ${task.title} to list ${list.title}`
+            this.props.updateBoard(board, activity)
         })
     }
 

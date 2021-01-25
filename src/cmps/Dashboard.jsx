@@ -2,11 +2,18 @@ import React, { Component } from 'react'
 import TasksPerPerson from './Charts/TasksPerPerson'
 import ActivityPerDay from './Charts/ActivityPerDay'
 import TasksPerDay from './Charts/TasksPerDay'
+import { dashboardService } from '../services/dashboardService'
+import { DashboardDatalist } from './DashboardDatalist'
+import { DashboardDataPreview } from './DashboardDataPreview'
 
 export class Dashboard extends Component {
 
     state = {
 
+    }
+    componentDidMount() {
+        const { board } = this.props
+        dashboardService.getDashboardPrevsData(board)
     }
 
     handleClickOutside = ev => {
@@ -15,11 +22,24 @@ export class Dashboard extends Component {
 
     render() {
         const { board } = this.props
+        const prevsData = dashboardService.getDashboardPrevsData(board)
+        const Charts = [
+            { Chart: TasksPerPerson, props: { ...this.props, className: "grid-chart" } },
+            { Chart: ActivityPerDay, props: { ...this.props, className: "grid-chart" } },
+            { Chart: TasksPerDay, props: { ...this.props, className: "grid-chart" } },
+        ]
+
         return (
-            <div className="dashboard flex space-between board-layout">
-                <TasksPerPerson {...this.props} />
-                <ActivityPerDay {...this.props} />
-                <TasksPerDay {...this.props} />
+            <div className="dashboard  board-layout">
+                {prevsData.map((data, idx) => {
+                    const { Chart, props } = Charts[idx]
+                    return (
+                        <section key={data.title} className="dashboard-grid-section">
+                            <DashboardDataPreview data={data} />
+                            <Chart {...props} />
+                        </section>
+                    )
+                })}
             </div>
         )
     }

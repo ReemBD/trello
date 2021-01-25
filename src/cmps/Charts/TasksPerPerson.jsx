@@ -26,20 +26,14 @@ export default class MyChart extends Component {
         }
     }
 
-    componentDidMount() {
-        // const { board } = this.props,
-        //     { data } = dashboardService.getTasksPerPeopleData(board)
-        // this.setState({ data })
-    }
-
     render() {
-        const { board } = this.props,
+        const { board,className } = this.props,
         { data } = dashboardService.getTasksPerPeopleData(board)
         // const { data } = this.state
         return (
-            <div className="tasks-per-person">
+            <div className={`tasks-per-person ${className}`}>
                 <h3>Tasks per Person</h3>
-                <Doughnut data={data} height={400} />
+                <Doughnut data={data} height={400} width= {400} />
             </div>
         );
     }

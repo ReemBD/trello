@@ -169,3 +169,17 @@
     width: 100%;
   }
 }
+
+@mixin side-menu-btn {
+  text-align: start;
+  background-color: transparent;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: capitalize;
+  color: #54637d;
+  border: none;
+  &:hover {
+      background-color: rgb(218, 219, 227);
+  }
+}

@@ -6,7 +6,7 @@ import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 // import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import DashboardOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { ActivityMenu } from './ActivityMenu'
+import { SideMenu } from './SideMenu'
 import BoardMemberImg from './BoardMemberImg'
 
 export class BoardHeader extends Component {
@@ -29,7 +29,7 @@ export class BoardHeader extends Component {
         return (
             <>
                 <header className={`board-header board-layout  ${className}`}>
-                    {isDashboardOpen && <ArrowBackIcon className="go-back-icon" onClick={()=>onToggleDashboard()}/>}
+                    {isDashboardOpen && <ArrowBackIcon className="go-back-icon" onClick={() => onToggleDashboard()} />}
                     <div className="board-title">{board.title}</div>
                     <div className="members-nav-display flex">
                         {members.map(member => {
@@ -64,7 +64,7 @@ export class BoardHeader extends Component {
                 {isCurrPopover
                     &&
                     <NotificationPopover {...this.props} />}
-                <ActivityMenu {...this.props} />
+                <SideMenu {...this.props} />
             </>
         )
     }

@@ -34,7 +34,7 @@ const popovers = [
         Icon: ChangeMembersIcon
     },
     { title: 'Move', Icon: ArrowForwardIcon, Component: MoveTaskPopover },
-    { title: 'Copy', Icon: FileCopyOutlinedIcon},
+    { title: 'Copy', Icon: FileCopyOutlinedIcon },
     {
         title: 'Change Due Date',
         Component: DateTimePopover,
@@ -87,6 +87,7 @@ export class TaskEdit extends Component {
             <div className="quick-task-editor-buttons">
                 {popovers.map(popover => {
                     return <QuickEditButton
+                        key={popover.title}
                         {...this.dueDateHandlers}
                         {...this.props}
                         {...popover} />

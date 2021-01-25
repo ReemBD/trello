@@ -3,7 +3,8 @@ import { zonedTimeToUtc, utcToZonedTime, format } from 'date-fns-tz'
 export const dashboardService = {
     getTasksPerPeopleData,
     getActivityPerDayData,
-    getTasksPerDayData
+    getTasksPerDayData,
+    getDashboardPrevsData
 }
 
 function getTasksPerPeopleData(board) {
@@ -163,3 +164,56 @@ function getTasksPerDayData(board) {
     }
 }
 
+function getDashboardPrevsData(board) {
+
+    const currTime = Date.now()
+    const oneWeekMS = 6048000000
+
+    const boardActivity = board.activities,
+        totalActivity = boardActivity.length,
+        newActivity = boardActivity.filter(activity => {
+            return activity.createdAt >= currTime - oneWeekMS
+        }),
+        totalNewActivity = newActivity.length
+
+
+    const boardTasks = _getAllTasks(board),
+        totalTasks = boardTasks.length,
+        newTasks = boardTasks.filter(task => {
+            return task.createdAt >= currTime - oneWeekMS
+        }),
+        totalNewTasks = newTasks.length,
+
+        overDueTasks = boardTasks.filter(task => {
+            return task.dueDate > currTime
+        }),
+        totalOverDueTasks = overDueTasks.length,
+
+        newOverdueTasks = overDueTasks.filter(task => {
+            return task.createdAt >= currTime - oneWeekMS
+        }),
+        totalNewOverDueTasks = newOverdueTasks.length
+
+
+    return [
+
+        { title: 'Tasks', total: totalTasks, new: totalNewTasks,bgColor:'#56c991' },
+        { title: 'Activity', total: totalActivity, new: totalNewActivity, bgColor: '#9895e0' },
+        { title: 'Overdue', total: totalOverDueTasks, new: totalNewOverDueTasks,bgColor:'#3cc2e0' }
+    ]
+
+}
+
+function _getAllTasks(board) {
+    return board.lists.reduce((acc, list) => {
+        acc = [...acc, ...list.tasks]
+        return acc
+    }, [])
+}
+
+function _getZonedDate(timestamp = Date.now()) {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const date = new Date(timestamp)
+    const zonedDate = utcToZonedTime(date, timeZone)
+    return zonedDate
+}
