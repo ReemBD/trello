@@ -136,7 +136,9 @@
       overflow-y: scroll;
       margin-top: 0;
     }
-
+.member-name{
+  margin-left: 8px;
+}
     
     .popover-header {
       background-color: #ececec;
@@ -215,12 +217,3 @@
     font-size: 0.8em;
   }
 }
-
-.avatarPic {
-  height: 2.5em;
-  width: 2.5em;
-  object-fit: cover;
-  border-radius: 3em;
-  margin: 1em;
-}
-

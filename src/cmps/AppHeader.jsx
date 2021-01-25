@@ -27,15 +27,6 @@ import { userService } from '../services/userService'
     }
 
 
-
-
-
-    logout() {
-        // eventBusService.emit('logout')
-        // this.props.clearUser()
-        clearUser()
-    }
-
     render() {
         const currPath = this.props.history.location.pathname
         const { navBgc } = this.state

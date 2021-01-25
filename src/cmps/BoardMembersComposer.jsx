@@ -4,6 +4,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import AddIcon from '@material-ui/icons/Add';
 import { userService } from '../services/userService';
 import { LoadingSpinner } from './LoadingSpinner';
+import BoardMemberImg from './BoardMemberImg';
 
 export class BoardMemberComposer extends Component {
     state = {
@@ -47,8 +48,8 @@ export class BoardMemberComposer extends Component {
                         {users.map(user => {
                             return <li key={user._id} data-id={user._id} onClick={() => toggleMember(user)} style={{ height: '60px' }} className={`popover-section-list-item flex align-center ${isBoardMember(user._id) && 'picked'}`}>
                                 {isBoardMember(user._id) ? <DoneIcon /> : <AddIcon />}
-                                <img className="avatarPic" alt="avatar picture" src={user.imgUrl} />
-                                <span data-id={user._id}>{user.fullname} </span>
+                                <BoardMemberImg member={user} size={40} />
+                                <span className="member-name" data-id={user._id}>{user.fullname} </span>
 
                             </li>
                         })}
