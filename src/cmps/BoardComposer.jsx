@@ -76,7 +76,10 @@ export class _BoardComposer extends Component {
             newBoard = { ...this.props.board, ...newBoard }
         }
 
-        const savedBoard = await boardService.save(newBoard)//add a new board to data
+        const activity = {
+            txt: 'updated the board'
+        }
+        const savedBoard = await boardService.save(newBoard, activity)//add a new board to data
         this.props.history.push(`/board/${savedBoard._id}`)//then gos to the board page
     }
 

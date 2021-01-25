@@ -8,7 +8,7 @@
 
   .sidebar {
     .sidebar-heading {
-      font-weight: 400;
+      // font-weight: 400;
       font-size: 14px;
       text-transform: uppercase;
       text-align: center;
@@ -87,11 +87,22 @@
             }
           }
 
+          .popover-section-header {
+            @include popover-header;
+            color: #5e6c84;
+            height: initial;
+          }
+
           .popover-section-list-item {
+            font-size: 0.8rem;
             @media (max-width: 800px) {
               margin-inline-start: 0;
-              font-size: 1.01em;
             }
+          }
+
+          .task-member-preview-img {
+            height: 35px !important;
+            width: 35px !important;
           }
         }
 
@@ -115,14 +126,19 @@
     @include popover-main;
     position: absolute;
     z-index: 30;
-    left: -185px;
-    top: 51px;
+    top: -145px;
+    left: 0;
+    width: 250px;
+    @media (min-width: 800px) {
+      left: -185px;
+      top: 51px;
+      width: 335px;
+    }
     .popover-header {
       @include popover-header;
     }
 
     .copy-task-body {
-      width: 225px;
       margin: 0 auto;
     }
   }

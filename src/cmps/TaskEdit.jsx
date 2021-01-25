@@ -65,10 +65,10 @@ export class TaskEdit extends Component {
         onSaveDate: () => {
             const { board, list, task, updateBoard } = this.props
             const { listIdx, taskIdx } = boardService.getListAndTaskIdxById(board, list.id, task.id)
-            const copyBoard = { ...board }
+            const boardCopy = { ...board }
             if (!this.state.dueDate.timestamp) return
-            copyBoard.lists[listIdx].tasks[taskIdx].dueDate = this.state.dueDate
-            updateBoard(copyBoard)
+            boardCopy.lists[listIdx].tasks[taskIdx].dueDate = this.state.dueDate
+            updateBoard(boardCopy)
             this.props.setCurrPopover()
         }
     }

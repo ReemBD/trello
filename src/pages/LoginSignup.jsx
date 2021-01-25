@@ -10,9 +10,7 @@ import { GoogleLogin } from 'react-google-login';
 import { GoogleLogout } from 'react-google-login';
 import { eventBusService } from '../services/eventBusService'
 import Avatar from 'react-avatar';
-// refresh token
 import { refreshTokenSetup } from '../services/googleService';
-
 
 const clientId = '996251564221-qedkti8vudlin8md60j8dllv408gqodo.apps.googleusercontent.com';
 
@@ -37,9 +35,9 @@ class _LoginSignup extends Component {
     }
 
     componentDidMount() {
-        this.unsubscribe = eventBusService.on('logout', () => {
-            this.onLogout()
-        });
+        // this.unsubscribe = eventBusService.on('logout', () => {
+        //     this.onLogout()
+        // });
 
     }
 
@@ -75,7 +73,6 @@ class _LoginSignup extends Component {
         if (isNewUser) userCreds = signupCred
         else userCreds = loginCred
 
-
         if (!userCreds.password || !userCreds.username) {
             this.setState({ msg: 'you need to fill all the feilds' })
             return
@@ -87,11 +84,14 @@ class _LoginSignup extends Component {
             const { user } = this.props
             if (!user) return
             this.setState({ msg: '' })
-            this.props.history.push(`/board`)//then gos to the boards page
+            if (this.props.user) this.props.history.push(`/board`)//then gos to the boards page
+            else this.props.history.push(`/login`)
+
         } catch (err) {
             console.log('inside the catchhhhhhhhhhhhhhhhhhhhhhhhhh')
             console.log(err, 'inside catch');
             this.setState({ msg: 'somthing went worng!' })
+            this.props.history.push(`/login`)
         }
 
     }
@@ -110,10 +110,8 @@ class _LoginSignup extends Component {
         })
     }
 
-
     toggleForms = (ev) => {
         ev.preventDefault()
-
         this.setState(prevState => {
             return {
                 isNewUser: !prevState.isNewUser,
@@ -121,8 +119,6 @@ class _LoginSignup extends Component {
             }
         })
     }
-
-
 
 
     onUploadImg = async ev => {
@@ -158,7 +154,6 @@ class _LoginSignup extends Component {
             isGoogle: false
 
         })
-        // , () => this.props.history.push(`/login`))
 
     }
 
@@ -199,7 +194,6 @@ class _LoginSignup extends Component {
 
 
                                 <h1>Sign Up</h1>
-                                {/* <Avatar className="login-avatar" name={signupCred.fullname.toUpperCase()} size="100" textSizeRatio={1.75} fgColor='#fff' round={true} src={signupCred.imgUrl} /> */}
                                 <label> <div className="avatar flex justify-center align-center" style={{
                                     backgroundImage: ` url(${signupCred.imgUrl})`
                                 }}> <AddAPhotoIcon style={{ color: ' #dadbdb' }} className={signupCred.imgUrl && 'hidden'} />  </div>
@@ -247,8 +241,8 @@ class _LoginSignup extends Component {
 
 
                                 <span style={{ display: 'block' }}>{msg}</span>
-                                <button type="submit" className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             </form>
+                            <button type="submit" className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
                             <p>Dont have an account? <span onClick={this.toggleForms} >Sign Up</span> </p>
 
                         </div>

@@ -23,9 +23,10 @@
     user-select: none;
     outline: none;
     input {
+      letter-spacing: 0.5px;
       user-select: none;
       background-color: transparent;
-      font-weight: 600;
+      font-family: Poppings-medium;
       outline: none;
       border: none;
       color: #fff;
@@ -69,7 +70,7 @@
 
     input[name="title"] {
       padding: 5px;
-      width: 100%;
+      width: 100%; 
       color: #5e6c84;
       &::placeholder {
         color: #5e6c84;
@@ -91,7 +92,7 @@
       font-size: 1.1em;
       &::placeholder {
         color: #fff;
-        font-weight: 400;
+        // font-weight: 400;
       }
     }
     textarea {

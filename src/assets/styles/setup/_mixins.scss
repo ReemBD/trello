@@ -135,7 +135,7 @@
 
 @mixin popover-section-header {
   text-transform: uppercase;
-  font-weight: 600;
+  font-family: Poppings-medium;
   font-size: 1em;
   letter-spacing: 0.05em;
   color: $clr2;
@@ -148,7 +148,7 @@
 
 @mixin header-title {
   font-size: 20px;
-  font-weight: 700;
+  font-family: Poppings-medium;
   margin-inline-start: 1.5em;
 }
 
