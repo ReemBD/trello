@@ -50,7 +50,7 @@ export class _TaskDetailsInfo extends Component {
             <div className="details-info">
                 <div className="flex" style={{ flexWrap: 'wrap' }}>
 
-                    {task?.members?.length && <div className="card-detail">
+                    {task?.members?.length ? <div className="card-detail">
                         <h3>Members</h3>
                         <div className="member-imgs flex align-center">
 
@@ -68,7 +68,7 @@ export class _TaskDetailsInfo extends Component {
                                 />}
                             </div>
                         </div>
-                    </div>}
+                    </div> : ''}
                     {(task.labels?.length) ? <div className="card-detail detail-labels">
                         <h3>Labels</h3>
                         <div className="task-labels flex">
