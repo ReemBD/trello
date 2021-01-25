@@ -91,12 +91,14 @@
             @include popover-header;
             color: #5e6c84;
             height: initial;
+            font-weight: unset;
           }
 
           .popover-section-list-item {
             font-size: 0.8rem;
             @media (max-width: 800px) {
               margin-inline-start: 0;
+              font-family: Poppings;
             }
           }
 

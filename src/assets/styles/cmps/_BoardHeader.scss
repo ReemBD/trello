@@ -15,7 +15,7 @@
   .board-title {
     @include header-title;
     margin-inline-start: 0.5em;
-   font-family: Poppings-medium;
+    font-family: Poppings-medium;
   }
   ul {
     margin: 0;
@@ -46,6 +46,7 @@
 
   .members-nav-display {
     justify-self: center;
+    display: flex;
   }
 
   .board-member-img-wrapper {
@@ -114,14 +115,16 @@
     align-items: center;
     padding-inline-end: 10px;
     padding-inline-start: 10px;
+    display: flex; 
 
     .board-title {
       grid-column: 1;
       margin-inline-start: 0;
+      font-size: 18px;
+      margin-right: 12px;
     }
     .members-nav-display {
-      justify-self: end;
-      margin-top: 5px;
+      display: none;
     }
     .board-member-img-wrapper:not(:last-child) {
       grid-column: 2;

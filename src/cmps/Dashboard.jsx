@@ -24,9 +24,9 @@ export class Dashboard extends Component {
         const { board } = this.props
         const prevsData = dashboardService.getDashboardPrevsData(board)
         const Charts = [
-            { Chart: TasksPerPerson, props: { ...this.props, className: "grid-chart" } },
-            { Chart: ActivityPerDay, props: { ...this.props, className: "grid-chart" } },
-            { Chart: TasksPerDay, props: { ...this.props, className: "grid-chart" } },
+            { Chart: TasksPerPerson, props: { ...this.props, className: "grid-chart",width: 400,height: 400 } },
+            { Chart: ActivityPerDay, props: { ...this.props, className: "grid-chart", width: 400,height: 400 } },
+            { Chart: TasksPerDay, props: { ...this.props, className: "grid-chart",width: 400, height: 400 } },
         ]
 
         return (
