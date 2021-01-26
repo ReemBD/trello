@@ -10,7 +10,7 @@ export class HomePage extends Component {
                         <h1>Chello</h1>
                         <h2>Task Managment,</h2>
                         <h2>The <span>Clever</span> Way.</h2>
-                        <a href="/board/600c504bd8ab8f77385f28c6" className="cta-btn primary-btn">Start Now</a>
+                        <a href="/board/600dd8e1580369065cfff3eb" className="cta-btn primary-btn">Start Now</a>
                     </div>
                     <div className="homepage-image">
                     </div>
@@ -46,7 +46,7 @@ export class HomePage extends Component {
                     </div>
 
                     <section className="bottom-cta flex justify-center">
-                        <a href="/board/600c504bd8ab8f77385f28c6">
+                        <a href="/board/600dd8e1580369065cfff3eb">
                             <span></span>
                             <span></span>
                             <span></span>
