@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import { boardService } from '../services/boardService'
 import { LabelsPopover } from './LabelsPopover'
 import { ChangeMembersPopover } from './ChangeMembersPopover'
-import { CopyTaskPopover } from './CopyTaskPopover'
 import { QuickEditButton } from './QuickEditButton'
 import LabelIcon from '@material-ui/icons/LabelOutlined';
 import ChangeMembersIcon from '@material-ui/icons/PeopleOutline';
 import RemoveIcon from '@material-ui/icons/DeleteOutline';
 import ChangeDueDateIcon from '@material-ui/icons/QueryBuilder';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined'
 import { DateTimePopover } from './DateTimePopover'
 import { MoveTaskPopover } from './MoveTaskPopover'
 import { parseISO } from 'date-fns'
 import { getTime } from 'date-fns'
+
 
 const popovers = [
     {
@@ -32,16 +31,13 @@ const popovers = [
         Component: MoveTaskPopover
     },
     {
-        title: 'Copy',
-        Icon: FileCopyOutlinedIcon
-    },
-    {
         title: 'Change Due Date',
         Component: DateTimePopover,
         Icon: ChangeDueDateIcon,
         className: 'quick-edit-datepicker'
     },
 ]
+
 
 export class TaskEdit extends Component {
 

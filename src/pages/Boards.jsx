@@ -41,7 +41,7 @@ export class Boards extends Component {
     render() {
 
         const { boards, isComposerOpen, boardToEdit } = this.state
-        if (!boards) return <LoadingSpinner />
+        if (!boards.length) return <LoadingSpinner />
         return (
             <Fragment>
                 <div className="glass-container">
