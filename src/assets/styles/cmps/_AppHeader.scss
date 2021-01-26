@@ -33,7 +33,7 @@
 
         transition: color 0.2s;
         &:hover {
-          color: darken(#333, 10%);
+          color: lighten(#333, 20%);
         }
       }
 
@@ -45,6 +45,10 @@
         flex-grow: 1;
         font-size: 1.5em;
         font-family: Kaushan;
+
+        a {
+          width: fit-content;
+        }
       }
     }
   }

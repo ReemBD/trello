@@ -33,7 +33,7 @@ class _AppHeader extends Component {
         return (
             <header className={`main-nav-header flex align-center  ${currPath === '/' ? navBgc : ''} ${currPath === '/login' || currPath === '/board' ? "homepage-nav" : ""}`}>
                 <ul className="main-nav  flex clear-list flex ">
-                    <li className="logo"><NavLink to="/"><span>Chello</span></NavLink></li>
+                    <li className="logo"><span><NavLink to="/">Chello</NavLink></span></li>
                     {user && <li className="user-desc flex align-center"> Hello, {user.fullname.substring(0, user.fullname.indexOf(' '))} </li>}
                     <li><NavLink to="/board"><span>Boards</span></NavLink></li>
                     {!user && <li><NavLink to="/login"><span >Login</span></NavLink></li>}
