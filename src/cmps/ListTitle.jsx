@@ -62,7 +62,6 @@ export class _ListTitle extends Component {
     }
 
     onToggleListActions = (ev) => {
-        console.log('isPropagation stopped? ', ev.stopPropagation);
         this.setState({ isListActionsOpen: !this.state.isListActionsOpen })
     }
 

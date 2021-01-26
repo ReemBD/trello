@@ -6,7 +6,7 @@ import { clearUser, setUserAfterRefresh } from '../store/actions/userAction'
 import { eventBusService } from '../services/eventBusService'
 import { userService } from '../services/userService'
 
- class _AppHeader extends Component {
+class _AppHeader extends Component {
     state = {
         navBgc: ''
     }
@@ -21,7 +21,6 @@ import { userService } from '../services/userService'
         })
 
         const loggedUser = userService.checkLoggedUser()
-        console.log('user from header:', loggedUser);
         if (loggedUser) this.props.setUserAfterRefresh(loggedUser)
 
     }

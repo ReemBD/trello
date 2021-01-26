@@ -146,14 +146,14 @@
   .details-description {
     position: relative;
     font-size: 1.125rem;
-    font-family: Poppings-medium;
+    font-family: Poppings-medium, "Segoe UI";
     padding: 4px 8px;
     line-height: 24px;
     letter-spacing: 0.2px;
 
     textarea {
       margin-bottom: 10px;
-      // font-weight: 400;
+      font-family: Poppings, "Segoe UI";
     }
   }
 
@@ -254,6 +254,7 @@
     .activity-date {
       span {
         font-size: 0.75rem;
+        font-family: "Poppings-light", "Segoe UI";
       }
     }
   }
@@ -307,7 +308,7 @@
       0 0 0 1px rgba(9, 30, 66, 0.08);
     span {
       font-size: 0.875rem;
-      // font-weight: 400;
+      font-family: "Poppings", "Segoe UI";
     }
   }
   form {

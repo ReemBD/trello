@@ -53,7 +53,6 @@ export class TaskList extends Component {
 
     setDragability = (boolean) => {
         this.setState({ isDragDisabled: !boolean })
-        console.log('isDragable?', this.state.isDragDisabled);
     }
 
     render() {
