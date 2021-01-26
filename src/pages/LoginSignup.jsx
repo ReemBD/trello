@@ -37,7 +37,6 @@ class _LoginSignup extends Component {
 
     // -------------------------------------------------GOOGLE----------------------------------------
     onSuccessGoogleLogin = (res) => {
-        console.log(res.profileObj);
         const user = res.profileObj
         this.setState({
             signupCred: {
@@ -81,7 +80,6 @@ class _LoginSignup extends Component {
             else this.props.history.push(`/login`)
 
         } catch (err) {
-            console.log('inside the catchhhhhhhhhhhhhhhhhhhhhhhhhh')
             console.log(err, 'inside catch');
             this.setState({ msg: 'somthing went worng!' })
             this.props.history.push(`/login`)
@@ -118,13 +116,11 @@ class _LoginSignup extends Component {
         this.setState({ isUploading: true })
         try {
             const { secure_url } = await cloudinaryService.uploadImg(ev.target.files[0])
-            console.log('url:', secure_url);
             this.setState({ signupCred: { ...this.state.signupCred, imgUrl: secure_url }, isUploading: false }
                 , console.log('imgUrl', this.state.signupCred))
 
         } catch (err) {
             this.setState({ msg: 'Couldnt upload your image try again' })
-            console.log('problem loading the img ', err);
         }
     }
 

@@ -49,7 +49,6 @@ export class TaskSidebar extends Component {
             task,
         }
         updateBoard(copyBoard, activity)
-        console.log('after update')
     }
 
     onRemoveTask = async () => {

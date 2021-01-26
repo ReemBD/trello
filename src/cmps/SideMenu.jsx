@@ -20,9 +20,7 @@ export class SideMenu extends Component {
 
     loadBgs = async () => {
         const bgs = await styleService.getBgOptions()
-        this.setState({ bgs }, () => {
-            console.log('backgrounds: ', this.state.bgs);
-        })
+        this.setState({ bgs })
     }
 
     onChangeBoardBg = (bg) => {
@@ -71,7 +69,7 @@ export class SideMenu extends Component {
                 }
 
                 {
-                    (currSection === 'background' && <BackgroundMenu goBack={()=>{this.onChangeSection('activity')}} backgrounds={bgs} onChangeBoardBg={this.onChangeBoardBg} />)
+                    (currSection === 'background' && <BackgroundMenu goBack={() => { this.onChangeSection('activity') }} backgrounds={bgs} onChangeBoardBg={this.onChangeBoardBg} />)
                 }
             </div>
         )

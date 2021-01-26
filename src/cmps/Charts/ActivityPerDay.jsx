@@ -8,16 +8,9 @@ export default class ActivityPerDay extends Component {
         data: {}
     }
 
-    componentDidMount() {
-        // const { board } = this.props,
-        //     data = dashboardService.getActivityPerDayData(board)
-        // this.setState({ data }, () => {
-        //     console.log('Data: ', this.state.data);
-        // })
-    }
 
     render() {
-        const { board,className } = this.props,
+        const { board, className } = this.props,
             data = dashboardService.getActivityPerDayData(board)
         // const { data } = this.state
         if (!data) return <h1>Loading</h1>

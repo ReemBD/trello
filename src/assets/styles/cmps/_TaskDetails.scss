@@ -146,14 +146,14 @@
   .details-description {
     position: relative;
     font-size: 1.125rem;
-    font-family: Poppings-medium;
+    font-family: Poppings-medium, "Segoe UI";
     padding: 4px 8px;
     line-height: 24px;
     letter-spacing: 0.2px;
 
     textarea {
       margin-bottom: 10px;
-      // font-weight: 400;
+      font-family: Poppings, "Segoe UI";
     }
   }
 
