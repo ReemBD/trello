@@ -1,5 +1,12 @@
 .login-bg-screen {
-  background-image: linear-gradient(to bottom right, #ebeefe, #dff2fe, #daf5f7, #e0f6ea, #eef4e0);
+  background-image: linear-gradient(
+    to bottom right,
+    #ebeefe,
+    #dff2fe,
+    #daf5f7,
+    #e0f6ea,
+    #eef4e0
+  );
   position: absolute;
   right: 0;
   top: 0;
@@ -29,7 +36,14 @@
   }
 
   .login-signup-wrapper {
-    background-image: linear-gradient(to bottom right, #ffffff, #ffffffbf, #f3f3f3, #f3f3f330, #ffffff00);
+    background-image: linear-gradient(
+      to bottom right,
+      #ffffff,
+      #ffffffbf,
+      #f3f3f3,
+      #f3f3f330,
+      #ffffff00
+    );
 
     box-shadow: 0 8px 32px 0 rgba(182, 182, 182, 0.37);
     backdrop-filter: blur(8px);
@@ -45,13 +59,35 @@
     user-select: none;
     text-align: left;
 
+    .inputs-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @media (min-width: 800px) {
+        display: block;
+      }
+    }
+
+    .actions-container {
+      width: 300px;
+      p {
+        margin: 10px 0;
+      }
+    }
+
     .glass-form {
-      width: 50%;
+      width: 80%;
       display: grid;
       grid-template-columns: repeat(2, minmax(150px, 300px));
       grid-template-rows: 100px repeat(4, 50px);
       column-gap: 15px;
       row-gap: 30px;
+
+      @media (min-width: 800px) {
+        width: 50%;
+      }
 
       &.login {
         grid-template-rows: 100px repeat(3, 50px);
@@ -105,7 +141,7 @@
       }
 
       &::placeholder {
-      font-family: Poppings-light;
+        font-family: Poppings-light;
         color: #131111;
         padding-left: 5px;
       }
@@ -185,6 +221,11 @@
   background-image: url("../../img/login.svg");
   height: 100%;
   width: 100%;
+  display: none;
+
+  @media (min-width: 800px) {
+    display: block;
+  }
 }
 
 i {
@@ -240,12 +281,14 @@ i {
   }
 
   .login-container .login-signup-wrapper {
+    justify-content: center;
     .glass-form {
       width: 100%;
       justify-self: center;
       margin: 0 auto;
       h1 {
         margin: 0px 0px;
+        align-self: center;
       }
     }
   }

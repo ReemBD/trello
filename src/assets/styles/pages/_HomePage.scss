@@ -1,9 +1,8 @@
-
 .home-page {
   background-color: #ebeef582;
   font-size: 16px;
   @media (max-width: 980px) {
-    font-size: 14px;
+    font-size: 12px;
   }
   .homepage-fold {
     height: 100vh;
@@ -53,14 +52,22 @@
         font-family: Kaushan, "Segoe UI";
         font-size: 6em;
         margin-bottom: rem(60px);
+        margin-top: rem(25px);
+        @media (min-width: 800px) {
+          margin-top: 0;
+        }
         user-select: none;
       }
 
       h2 {
-        font-size: 2.5em;
-        line-height: 35px;
         letter-spacing: 0.3px;
         font-family: Poppings-medium;
+        font-size: 2em;
+        line-height: 25px;
+        @media (min-width: 800px) {
+          font-size: 2.5em;
+          line-height: 35px;
+        }
 
         span {
           color: #df3c86;

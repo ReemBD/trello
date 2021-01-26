@@ -182,7 +182,7 @@ class _LoginSignup extends Component {
                         </div>}
 
 
-                        {!user && isNewUser && <div>
+                        {!user && isNewUser && <div className="inputs-container">
                             <form className={`glass-form`} onSubmit={this.onSubmit}>
 
 
@@ -214,11 +214,13 @@ class _LoginSignup extends Component {
                                 <input type="text" value={signupCred.username} name="username" placeholder="Username" onChange={this.handleInput} />
                                 <input type="password" className="password" value={signupCred.password} name="password" placeholder="Password" onChange={this.handleInput} />
 
+                                <div className="actions-container">
 
+                                    <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
+                                    <span style={{ display: 'block' }}>{msg}</span>
+                                    <p>Already have an account? <span onClick={this.toggleForms} >Sign In</span> </p>
+                                </div>
                             </form>
-                            <span style={{ display: 'block' }}>{msg}</span>
-                            <button className="primary-btn" onClick={this.onSubmit}><ArrowForwardIcon /></button>
-                            <p>Already have an account? <span onClick={this.toggleForms} >Sign In</span> </p>
 
                         </div>
                         }
