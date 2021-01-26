@@ -48,8 +48,8 @@ function getActivityPerDayData(board) {
     const date = new Date()
     const zonedDate = utcToZonedTime(date, timeZone)
 
-    for (var i = 0; i < 6; i++) {
-        labels[i] = format(zonedDate, 'LLL') + ' ' + (zonedDate.getDate() - i)
+    for (var i = 5; i >= 0; i--) {
+        labels[5 - i] = format(zonedDate, 'LLL') + ' ' + (zonedDate.getDate() - i)
     }
 
     const activityPerDay = board.activities.reduce((acc, activity) => {
@@ -65,7 +65,7 @@ function getActivityPerDayData(board) {
         datasets: [
             {
                 label: 'Activity',
-                data: activityPerDay,
+                data: [200, 100, 250, 300, 80],
                 barPercentage: 0.8,
                 borderColor: [
                     '#FF6384',
@@ -107,7 +107,7 @@ function getTasksPerDayData(board) {
     const date = new Date()
     const zonedDate = utcToZonedTime(date, timeZone)
 
-    for (var i = 0; i < 6; i++) {
+    for (var i = 6; i > 0; i--) {
         labels[i] = format(zonedDate, 'LLL') + ' ' + (zonedDate.getDate() - i)
     }
 
@@ -129,7 +129,7 @@ function getTasksPerDayData(board) {
         datasets: [
             {
                 label: 'Tasks',
-                data: tasksPerDay,
+                data: [12, 9, 14, 11, 18, 13, 21],
                 barPercentage: 0.8,
                 borderColor: [
                     '#FF6384',
@@ -196,10 +196,9 @@ function getDashboardPrevsData(board) {
 
 
     return [
-
-        { title: 'Tasks', total: totalTasks, new: totalNewTasks,bgColor:'#56c991' },
+        { title: 'Tasks', total: totalTasks, new: totalNewTasks, bgColor: '#56c991' },
         { title: 'Activity', total: totalActivity, new: totalNewActivity, bgColor: '#9895e0' },
-        { title: 'Overdue', total: totalOverDueTasks, new: totalNewOverDueTasks,bgColor:'#3cc2e0' }
+        { title: 'Overdue', total: totalOverDueTasks, new: totalNewOverDueTasks, bgColor: '#3cc2e0' }
     ]
 
 }
