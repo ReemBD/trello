@@ -22,6 +22,7 @@ export class _TaskComposer extends Component {
         ev.preventDefault()
         ev.stopPropagation()
         const { task } = { ...this.state }
+        if (!task.title) return
         const { board } = { ...this.props }
         const { list } = this.props
         const listIdx = boardService.getListIdxById(board, list.id)

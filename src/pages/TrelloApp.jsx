@@ -17,7 +17,6 @@ class _TrelloApp extends Component {
         isBoardClosed: false
     }
 
-
     componentDidMount = async () => {
         const { boardId } = this.props.match.params
         socketService.setup()
@@ -39,7 +38,7 @@ class _TrelloApp extends Component {
         socketService.off('board updated fs', this.onBoardUpdated)
         socketService.terminate()
         const { setBoard } = this.props
-        await setBoard(null)
+        setBoard(null)
     }
 
     componentDidUpdate(prevProps) {
@@ -49,9 +48,10 @@ class _TrelloApp extends Component {
         }
     }
 
-    onBoardUpdated = async ({ updatedBoard, activity }) => {
+    onBoardUpdated = async ({ updatedBoard }) => {
         const board = { ...updatedBoard }
-        await this.props.updateBoard(board, null, false)
+        console.log('INSIDE ONBOARDUPDATED');
+        this.props.updateBoard(board, null, false)
     }
 
     render() {

@@ -9,8 +9,14 @@ export const userService = {
   signup,
   filterUsersBy,
   checkLoggedUser,
+  getLoggedinUser,
   logout,
 };
+
+async function getLoggedinUser() {
+  const res = await httpService.get(`${endpoint}/loggedin`)
+  return res
+}
 
 async function getUsers() {
   const users = await httpService.get(endpoint);

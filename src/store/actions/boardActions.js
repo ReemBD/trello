@@ -1,4 +1,6 @@
 import { boardService } from "../../services/boardService";
+import { userService } from '../../services/userService';
+import { socketService } from '../../services/socketService'
 
 export function setBoard(boardId) {
   return async (dispatch) => {
@@ -14,18 +16,20 @@ export function setBoard(boardId) {
   };
 }
 
-export function updateBoard(board, activity = null, isEmitting = true) {
+export function updateBoard(board, activity, isEmitting = true) {
   //ACTIVITY PARAM MUST BE AN OBJECT!
   return async (dispatch) => {
     try {
-      const updatedBoard = isEmitting
-        ? await boardService.save(board, activity, isEmitting)
-        : board;
       const action = {
         type: "UPDATE_BOARD",
-        updatedBoard,
+        updatedBoard: { ...board }
       };
       dispatch(action);
+      if (isEmitting) {
+        const loggedinUser = await userService.getLoggedinUser()
+        const updatedBoard = await boardService.save(board, activity)
+        socketService.emit('board updated', { updatedBoard, loggedinUser, activity })
+      }
     } catch (err) {
       console.log("couldnt update board", err);
     }

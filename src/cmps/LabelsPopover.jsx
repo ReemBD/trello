@@ -72,8 +72,8 @@ export class _LabelsPopover extends Component {
                 activity.txt = `has added label to task`
             }
 
-            await updateBoard(board, activity)
             this.markExistingLabels()
+            await updateBoard(board, activity)
         })
     }
 
